@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-00-Master-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{D2A9DD57-B9F7-42F1-9545-0EF00F8A8655}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{8665ADA1-CD1F-4838-92EB-AC5E46A22A61}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -77,13 +77,13 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Pull to Staging\EP Management Group"
+          DTS:refId="Package\Pull to Staging\EP ManagementGroup Extract"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
           DTS:DTSID="{521CEC1C-20EB-4A19-A9AF-CF3916159B3D}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="EP Management Group"
+          DTS:ObjectName="EP ManagementGroup Extract"
           DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
@@ -111,6 +111,27 @@
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
               <PackageName>01-02-Protocols-Extract.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>ParentAuditKey</ParameterName>
+                <BindedVariableOrParameterName>User::ParentAuditKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Pull to Staging\EP Staff Extract"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{C4A858BE-4EAF-4095-856D-F60BFC3EE22A}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EP Staff Extract"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>01-04-Staff-Extract.dtsx</PackageName>
               <ParameterAssignment>
                 <ParameterName>ParentAuditKey</ParameterName>
                 <BindedVariableOrParameterName>User::ParentAuditKey</BindedVariableOrParameterName>
@@ -232,7 +253,30 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Pull to Staging\EP Enrollments Extract"
+          TopLeft="453,9" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\Pull to Staging\EP ManagementGroup Extract"
+          TopLeft="30,11" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Pull to Staging\EP Protocols Extract"
+          TopLeft="256,10" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Pull to Staging\EP Staff Extract"
+          TopLeft="35,85" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="682,182"
+          Size="682,225"
+          Id="Package\Pull to Staging"
+          TopLeft="116,150" />
         <NodeLayout
           Size="160,42"
           Id="Package\SQL Audit Begin"
@@ -240,26 +284,7 @@
         <NodeLayout
           Size="152,42"
           Id="Package\SQL Audit End"
-          TopLeft="378,325" />
-        <NodeLayout
-          Size="194,42"
-          Id="Package\Pull to Staging\EP Management Group"
-          TopLeft="30,11" />
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Pull to Staging\EP Protocols Extract"
-          TopLeft="256,10" />
-        <NodeLayout
-          Size="192,42"
-          Id="Package\Pull to Staging\EP Enrollments Extract"
-          TopLeft="453,9" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="682,92"
-          Size="682,135"
-          Id="Package\Pull to Staging"
-          TopLeft="116,150" />
+          TopLeft="374,436" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="454.5,102">
@@ -284,18 +309,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="455.5,285">
+          TopLeft="453.5,375">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,40"
+              EndConnector="0,61"
               Start="0,0"
-              End="0,32.5">
+              End="0,53.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.5" />
+                    End="0,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
