@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-00-Master-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{8665ADA1-CD1F-4838-92EB-AC5E46A22A61}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{F3EE6B4A-F3D3-4EA5-80E1-89C55AB4919C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -98,6 +98,27 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Pull to Staging\EP Protocol Status History Extract"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{D5FEBA7B-1870-44DF-8842-0C443B8DD5CF}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EP Protocol Status History Extract"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>01-05-ProtocolStatusHistory-Extract.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>ParentAuditKey</ParameterName>
+                <BindedVariableOrParameterName>User::ParentAuditKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Pull to Staging\EP Protocols Extract"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
@@ -140,6 +161,16 @@
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Pull to Staging.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{946D77A7-3212-4058-AE8F-FB2E5330E237}"
+          DTS:From="Package\Pull to Staging\EP Protocols Extract"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Pull to Staging\EP Protocol Status History Extract" />
+      </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SQL Audit Begin"
@@ -259,7 +290,7 @@
           Id="Package\Pull to Staging\EP Enrollments Extract"
           TopLeft="453,9" />
         <NodeLayout
-          Size="220,42"
+          Size="199,42"
           Id="Package\Pull to Staging\EP ManagementGroup Extract"
           TopLeft="30,11" />
         <NodeLayout
@@ -270,11 +301,49 @@
           Size="152,42"
           Id="Package\Pull to Staging\EP Staff Extract"
           TopLeft="35,85" />
+        <NodeLayout
+          Size="237,42"
+          Id="Package\Pull to Staging\EP Protocol Status History Extract"
+          TopLeft="253,84" />
+        <EdgeLayout
+          Id="Package\Pull to Staging.PrecedenceConstraints[Constraint]"
+          TopLeft="346,52">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25.5,32"
+              Start="0,0"
+              End="25.5,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12"
+                    Point2="0,16"
+                    Point3="4,16" />
+                  <mssgle:LineSegment
+                    End="21.5,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.5,16"
+                    Point2="25.5,16"
+                    Point3="25.5,20" />
+                  <mssgle:LineSegment
+                    End="25.5,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="682,182"
-          Size="682,225"
+          PanelSize="682,200"
+          Size="682,243"
           Id="Package\Pull to Staging"
           TopLeft="116,150" />
         <NodeLayout
@@ -309,18 +378,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="453.5,375">
+          TopLeft="453.5,393">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,61"
+              EndConnector="0,43"
               Start="0,0"
-              End="0,53.5">
+              End="0,35.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53.5" />
+                    End="0,35.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
