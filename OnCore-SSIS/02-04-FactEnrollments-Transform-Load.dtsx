@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="02-04-FactEnrollments-Transform-Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="56"
-  DTS:VersionGUID="{3B90B3C6-F5F4-4426-9973-0B8F3BED93EF}">
+  DTS:VersionBuild="59"
+  DTS:VersionGUID="{B39CC6A2-D7DB-4642-A800-97EDAB794229}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1476,7 +1476,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
         <NodeLayout
           Size="182,42"
           Id="Package\DFT Transform-Load"
-          TopLeft="117,235" />
+          TopLeft="119,324" />
         <NodeLayout
           Size="160,42"
           Id="Package\SQL Audit Begin"
@@ -1484,7 +1484,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
         <NodeLayout
           Size="152,42"
           Id="Package\SQL Audit End"
-          TopLeft="125,402" />
+          TopLeft="127,491" />
         <NodeLayout
           Size="203,42"
           Id="Package\SQL Count Current Rows"
@@ -1492,7 +1492,11 @@ WHERE        (ACTIVE_FLAG = 1)</property>
         <NodeLayout
           Size="164,42"
           Id="Package\SQL Count Rows"
-          TopLeft="133,321" />
+          TopLeft="135,410" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\SQL Truncate FactEnrollments"
+          TopLeft="97.5,231.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="209.75,97">
@@ -1516,19 +1520,19 @@ WHERE        (ACTIVE_FLAG = 1)</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="211.5,277">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="211.25,189">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44"
+              EndConnector="0,42.5"
               Start="0,0"
-              End="0,36.5">
+              End="0,35">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.5" />
+                    End="0,35" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1539,7 +1543,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="215,363">
+          TopLeft="217,452">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1571,36 +1575,20 @@ WHERE        (ACTIVE_FLAG = 1)</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="230,42"
-          Id="Package\SQL Truncate FactEnrollments"
-          TopLeft="333.5,193.5" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="333.5,220.166666666667">
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="213.5,366">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-34.5,35.8333333333333"
+              EndConnector="0,44"
               Start="0,0"
-              End="-27,35.8333333333333">
+              End="0,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-10.5596330275229,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-10.5596330275229,0"
-                    Point2="-14.5596330275229,0"
-                    Point3="-14.5596330275229,4" />
-                  <mssgle:LineSegment
-                    End="-14.5596330275229,31.8333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-14.5596330275229,31.8333333333333"
-                    Point2="-14.5596330275229,35.8333333333333"
-                    Point3="-18.5596330275229,35.8333333333333" />
-                  <mssgle:LineSegment
-                    End="-27,35.8333333333333" />
+                    End="0,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1610,31 +1598,19 @@ WHERE        (ACTIVE_FLAG = 1)</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="290,168">
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="211.25,273.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="43.5,40.8333333333333"
+              EndConnector="0,50.5"
               Start="0,0"
-              End="36,40.8333333333333">
+              End="0,43">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="21.1422018348624,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="21.1422018348624,0"
-                    Point2="25.1422018348624,0"
-                    Point3="25.1422018348624,4" />
-                  <mssgle:LineSegment
-                    End="25.1422018348624,36.8333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="25.1422018348624,36.8333333333333"
-                    Point2="25.1422018348624,40.8333333333333"
-                    Point3="29.1422018348624,40.8333333333333" />
-                  <mssgle:LineSegment
-                    End="36,40.8333333333333" />
+                    End="0,43" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1652,6 +1628,22 @@ WHERE        (ACTIVE_FLAG = 1)</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="145,42"
+          Id="Package\DFT Transform-Load\DC Audit Key"
+          TopLeft="233.5,209.5" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\DFT Transform-Load\RC Insert"
+          TopLeft="235,506" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\DFT Transform-Load\Lookup OnStudyDate_Key"
+          TopLeft="202.5,291.5" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\DFT Transform-Load\OLE DB Destination"
+          TopLeft="222,599" />
+        <NodeLayout
           Size="132,42"
           Id="Package\DFT Transform-Load\RC Extract"
           TopLeft="240,107.5" />
@@ -1660,139 +1652,9 @@ WHERE        (ACTIVE_FLAG = 1)</property>
           Id="Package\DFT Transform-Load\OLE DB Source"
           TopLeft="227.5,5.5" />
         <NodeLayout
-          Size="145,42"
-          Id="Package\DFT Transform-Load\DC Audit Key"
-          TopLeft="233.5,209.5" />
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Row Count Output 1]"
-          TopLeft="306,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[OLE DB Source Output]"
-          TopLeft="306,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
           Size="183,42"
           Id="Package\DFT Transform-Load\Lookup Protocol_Key"
           TopLeft="211.5,417.5" />
-        <NodeLayout
-          Size="209,42"
-          Id="Package\DFT Transform-Load\Lookup OnStudyDate_Key"
-          TopLeft="202.5,291.5" />
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Derived Column Output]"
-          TopLeft="306.5,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40"
-              Start="0,0"
-              End="0,32.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Lookup Match Output]"
-          TopLeft="305,333.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,84"
-              Start="0,0"
-              End="0,76.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,76.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,32.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="177,42"
-          Id="Package\DFT Transform-Load\OLE DB Destination"
-          TopLeft="222,599" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\DFT Transform-Load\RC Insert"
-          TopLeft="235,506" />
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Lookup Match Output1]"
-          TopLeft="300.25,459.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46.5"
-              Start="0,0"
-              End="0,39">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,13.6953125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Row Count Output 11]"
           TopLeft="297.5,548">
@@ -1824,12 +1686,170 @@ WHERE        (ACTIVE_FLAG = 1)</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Row Count Output 1]"
+          TopLeft="306,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[OLE DB Source Output]"
+          TopLeft="306,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Lookup Match Output1]"
+          TopLeft="300.25,459.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.5"
+              Start="0,0"
+              End="0,39">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,13.6953125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Lookup Match Output]"
+          TopLeft="305,333.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84"
+              Start="0,0"
+              End="0,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,32.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Derived Column Output]"
+          TopLeft="306.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Transform-Load\Lookup OnStudyDate_Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dw].[DimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Transform-Load\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT Transform-Load\OLE DB Source">
     <Properties>
@@ -1849,7 +1869,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1859,46 +1879,10 @@ WHERE        (ACTIVE_FLAG = 1)</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT Transform-Load\Lookup OnStudyDate_Key">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dw].[DimDate]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT Transform-Load\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
