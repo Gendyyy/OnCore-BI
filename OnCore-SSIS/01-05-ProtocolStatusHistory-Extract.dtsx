@@ -7,12 +7,12 @@
   DTS:CreatorName="BLUECAT\gendy"
   DTS:DTSID="{F49F6F57-997E-4A49-9A4F-F05022034A45}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="01-05-ProtocolStatusHistory-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{455D1C3C-5AAF-4993-BAAC-46540E13A921}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{C50A95ED-2C84-49F9-8677-D151417645FF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -155,7 +155,6 @@
       DTS:refId="Package\DFT Extract to Staging"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{54BE2C48-00C9-47F0-8F20-666C29E291FF}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -268,7 +267,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">-- get protocol status history for the last 5 years
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">-- get protocol status history for the last 5 years
 select s.protocol_no, s.[status], s.status_date
 from ONCOREPROD..UACC_ONCORE_PROD.SV_PCL_STATUS s inner join protocols p on s.protocol_no = p.protocol_no
 where year(p.created_date) &gt; year(GETDATE()) - 5</property>
@@ -422,7 +421,7 @@ where year(p.created_date) &gt; year(GETDATE()) - 5</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -620,391 +619,6 @@ where year(p.created_date) &gt; year(GETDATE()) - 5</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\DFT Extract to Staging No Err Output"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{22b8f683-055a-490b-8995-c5deaf726c66}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="DFT Extract to Staging No Err Output"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\DFT Extract to Staging No Err Output\OLE DB Source"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="OLE DB Source"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">-- get protocol status history for the last 5 years
-select s.protocol_no, s.[status], s.status_date
-from ONCOREPROD..UACC_ONCORE_PROD.SV_PCL_STATUS s inner join protocols p on s.protocol_no = p.protocol_no
-where year(p.created_date) &gt; year(GETDATE()) - 5</property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable">User::TableName</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">2</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{DDC1C496-85F8-4E00-B4D7-6EACC166A026}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[OnCore-Prod-Staging]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_no]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[protocol_no]"
-                      length="35"
-                      lineageId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_no]"
-                      name="protocol_no"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[status]"
-                      length="100"
-                      lineageId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]"
-                      name="status"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[status_date]"
-                      dataType="dbTimeStamp2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[status_date]"
-                      lineageId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[status_date]"
-                      name="status_date"
-                      scale="7"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[protocol_no]"
-                      dataType="wstr"
-                      length="35"
-                      name="protocol_no" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[status]"
-                      dataType="wstr"
-                      length="100"
-                      name="status" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[status_date]"
-                      dataType="dbTimeStamp2"
-                      name="status_date"
-                      scale="7" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[protocol_no]"
-                      dataType="wstr"
-                      length="35"
-                      lineageId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[protocol_no]"
-                      name="protocol_no" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status]"
-                      dataType="wstr"
-                      length="100"
-                      lineageId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status]"
-                      name="status" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status_date]"
-                      dataType="dbTimeStamp2"
-                      lineageId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status_date]"
-                      name="status_date"
-                      scale="7" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT Extract to Staging No Err Output\OLE DB Stage"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="OLE DB Stage"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[ProtocolStatusHistory]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Connections[OleDbConnection]"
-                  connectionManagerID="{DDC1C496-85F8-4E00-B4D7-6EACC166A026}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[OnCore-Prod-Staging]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="RedirectRow"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[protocol_no]"
-                      cachedDataType="wstr"
-                      cachedLength="35"
-                      cachedName="protocol_no"
-                      externalMetadataColumnId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[protocol_no]"
-                      lineageId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_no]" />
-                    <inputColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[status]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="status"
-                      externalMetadataColumnId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[status]"
-                      lineageId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]" />
-                    <inputColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[status_date]"
-                      cachedDataType="dbTimeStamp2"
-                      cachedName="status_date"
-                      cachedScale="7"
-                      externalMetadataColumnId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[status_date]"
-                      lineageId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[status_date]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[protocol_no]"
-                      dataType="wstr"
-                      length="35"
-                      name="protocol_no" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[status]"
-                      dataType="wstr"
-                      length="35"
-                      name="status" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[status_date]"
-                      dataType="dbDate"
-                      name="status_date" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT Extract to Staging No Err Output\RC Error"
-              componentClassID="Microsoft.RowCount"
-              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
-              name="RC Error">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable to hold the row count."
-                  name="VariableName">User::RowCountError</property>
-              </properties>
-              <inputs>
-                <input
-                  refId="Package\DFT Extract to Staging No Err Output\RC Error.Inputs[Row Count Input 1]"
-                  hasSideEffects="true"
-                  name="Row Count Input 1">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT Extract to Staging No Err Output\RC Error.Outputs[Row Count Output 1]"
-                  name="Row Count Output 1"
-                  synchronousInputId="Package\DFT Extract to Staging No Err Output\RC Error.Inputs[Row Count Input 1]">
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT Extract to Staging No Err Output\RC Extract"
-              componentClassID="Microsoft.RowCount"
-              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
-              name="RC Extract">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable to hold the row count."
-                  name="VariableName">User::RowCountExtract</property>
-              </properties>
-              <inputs>
-                <input
-                  refId="Package\DFT Extract to Staging No Err Output\RC Extract.Inputs[Row Count Input 1]"
-                  hasSideEffects="true"
-                  name="Row Count Input 1">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT Extract to Staging No Err Output\RC Extract.Outputs[Row Count Output 1]"
-                  name="Row Count Output 1"
-                  synchronousInputId="Package\DFT Extract to Staging No Err Output\RC Extract.Inputs[Row Count Input 1]">
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\DFT Extract to Staging No Err Output.Paths[OLE DB Destination Error Output]"
-              endId="Package\DFT Extract to Staging No Err Output\RC Error.Inputs[Row Count Input 1]"
-              name="OLE DB Destination Error Output"
-              startId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Outputs[OLE DB Destination Error Output]" />
-            <path
-              refId="Package\DFT Extract to Staging No Err Output.Paths[OLE DB Source Output]"
-              endId="Package\DFT Extract to Staging No Err Output\RC Extract.Inputs[Row Count Input 1]"
-              name="OLE DB Source Output"
-              startId="Package\DFT Extract to Staging No Err Output\OLE DB Source.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT Extract to Staging No Err Output.Paths[Row Count Output 1]"
-              endId="Package\DFT Extract to Staging No Err Output\OLE DB Stage.Inputs[OLE DB Destination Input]"
-              name="Row Count Output 1"
-              startId="Package\DFT Extract to Staging No Err Output\RC Extract.Outputs[Row Count Output 1]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
       DTS:refId="Package\SQL Audit Begin"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -1174,16 +788,16 @@ where year(p.created_date) &gt; year(GETDATE()) - 5</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{DD51688F-E8D8-4800-8950-3F13794EB3B6}"
+      DTS:DTSID="{C3E92CED-3EB4-421A-8ED7-6F38313070EE}"
       DTS:From="Package\SQL Audit Begin"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\DFT Extract to Staging No Err Output" />
+      DTS:To="Package\DFT Extract to Staging" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{A1E04661-C801-4D83-9AF9-20464A76C044}"
-      DTS:From="Package\DFT Extract to Staging No Err Output"
+      DTS:DTSID="{B4BED2DF-BF36-4A6F-9B3E-59D87C9CE4E1}"
+      DTS:From="Package\DFT Extract to Staging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\SQL Count Rows" />
@@ -1272,36 +886,20 @@ where year(p.created_date) &gt; year(GETDATE()) - 5</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="254,42"
-          Id="Package\DFT Extract to Staging No Err Output"
-          TopLeft="335,221" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="218,171">
+          TopLeft="219,171">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="244,50"
+              EndConnector="0,48"
               Start="0,0"
-              End="244,42.5">
+              End="0,40.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21"
-                    Point2="0,25"
-                    Point3="4,25" />
-                  <mssgle:LineSegment
-                    End="240,25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="240,25"
-                    Point2="244,25"
-                    Point3="244,29" />
-                  <mssgle:LineSegment
-                    End="244,42.5" />
+                    End="0,40.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1312,30 +910,18 @@ where year(p.created_date) &gt; year(GETDATE()) - 5</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="462,263">
+          TopLeft="221,261">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-240,41"
+              EndConnector="0,43"
               Start="0,0"
-              End="-240,33.5">
+              End="0,35.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.5"
-                    Point2="0,20.5"
-                    Point3="-4,20.5" />
-                  <mssgle:LineSegment
-                    End="-236,20.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-236,20.5"
-                    Point2="-240,20.5"
-                    Point3="-240,24.5" />
-                  <mssgle:LineSegment
-                    End="-240,33.5" />
+                    End="0,35.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1516,109 +1102,5 @@ where year(p.created_date) &gt; year(GETDATE()) - 5</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\DFT Extract to Staging No Err Output">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="122,42"
-          Id="Package\DFT Extract to Staging No Err Output\RC Error"
-          TopLeft="145,344" />
-        <NodeLayout
-          Size="151,42"
-          Id="Package\DFT Extract to Staging No Err Output\OLE DB Stage"
-          TopLeft="127,246" />
-        <NodeLayout
-          Size="132,42"
-          Id="Package\DFT Extract to Staging No Err Output\RC Extract"
-          TopLeft="138,158" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\DFT Extract to Staging No Err Output\OLE DB Source"
-          TopLeft="110,58" />
-        <EdgeLayout
-          Id="Package\DFT Extract to Staging No Err Output.Paths[Row Count Output 1]"
-          TopLeft="203.25,200">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46"
-              Start="0,0"
-              End="0,38.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Extract to Staging No Err Output.Paths[OLE DB Source Output]"
-          TopLeft="188.5,100">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="15.5,58"
-              Start="0,0"
-              End="15.5,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25"
-                    Point2="0,29"
-                    Point3="4,29" />
-                  <mssgle:LineSegment
-                    End="11.5,29" />
-                  <mssgle:CubicBezierSegment
-                    Point1="11.5,29"
-                    Point2="15.5,29"
-                    Point3="15.5,33" />
-                  <mssgle:LineSegment
-                    End="15.5,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Extract to Staging No Err Output.Paths[OLE DB Destination Error Output]"
-          TopLeft="204.25,288">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,56"
-              Start="0,0"
-              End="0,48.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-73.20890625,18.533203125,146.4178125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

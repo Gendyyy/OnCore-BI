@@ -7,6 +7,6 @@
     <DTS:ConnectionManager
       DTS:ConnectRetryCount="1"
       DTS:ConnectRetryInterval="5"
-      DTS:ConnectionString="Data Source=COM-ONCORE-SQL;Initial Catalog=OnCoreStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      DTS:ConnectionString="Data Source=COM-ONCORE-SQL;Initial Catalog=OnCoreStaging;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-{DDC1C496-85F8-4E00-B4D7-6EACC166A026}OnCore-Prod-Staging;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

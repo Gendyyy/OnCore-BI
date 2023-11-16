@@ -7,12 +7,12 @@
   DTS:CreatorName="BLUECAT\gendy"
   DTS:DTSID="{8E0A10DB-EA4A-446D-917F-2BDD3E8F0212}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="02-01-DimManagementGroup-Transform-Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{3995FC95-263D-4F08-A395-06B0D6892576}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{BAE66361-9DE0-4823-B3B0-C651BDCB5290}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -191,7 +191,6 @@
       DTS:refId="Package\DFT Transform-Load"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{AB94700E-FCFA-4D94-8129-F40C6B527D24}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -421,7 +420,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -567,7 +566,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dw].[DimManagementGroup] SET [NAME] = ? WHERE [CODE] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dw].[DimManagementGroup] SET [NAME] = ? WHERE [CODE] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -690,7 +689,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        ONC_MANAGEMENT_GROUP_ID, NAME, CODE, ACTIVE_FLAG
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        ONC_MANAGEMENT_GROUP_ID, NAME, CODE, ACTIVE_FLAG
 FROM            ManagementGroup
 WHERE        (ACTIVE_FLAG = 1)</property>
                 <property
@@ -967,7 +966,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [CODE], [NAME] FROM [dw].[DimManagementGroup]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [CODE], [NAME] FROM [dw].[DimManagementGroup]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -1162,853 +1161,6 @@ WHERE        (ACTIVE_FLAG = 1)</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\DFT Transform-Load No Err Output"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{522d6ca2-a5b5-4a2a-b4da-0a8881a897ca}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="DFT Transform-Load No Err Output"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\DFT Transform-Load No Err Output\DC Audit Key"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="DC Audit Key"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT Transform-Load No Err Output\DC Audit Key.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\DC Audit Key.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\DC Audit Key.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\DC Audit Key.Outputs[Derived Column Output].Columns[AuditKey]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT Transform-Load No Err Output\DC Audit Key.Outputs[Derived Column Output].Columns[AuditKey]"
-                      name="AuditKey"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[User::AuditKey]</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[User::AuditKey]</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\DC Audit Key.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\DC Audit Key.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\DC Audit Key.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT Transform-Load No Err Output\DC Audit Key.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\DC Audit Key.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT Transform-Load No Err Output\DC Audit Key.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT Transform-Load No Err Output\Insert Destination"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="Insert Destination"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dw].[DimManagementGroup]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT Transform-Load No Err Output\Insert Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{E190B8E8-B10A-46B9-B012-C6B7F3A402C4}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[OnCoreDW]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="RedirectRow"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input].Columns[ONC_MANAGEMENT_GROUP_ID]"
-                      cachedDataType="numeric"
-                      cachedName="ONC_MANAGEMENT_GROUP_ID"
-                      cachedPrecision="10"
-                      externalMetadataColumnId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ONC_MANAGEMENT_GROUP_ID]"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ONC_MANAGEMENT_GROUP_ID]" />
-                    <inputColumn
-                      refId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input].Columns[NAME]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="NAME"
-                      externalMetadataColumnId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[NAME]"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[NAME]" />
-                    <inputColumn
-                      refId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input].Columns[CODE]"
-                      cachedDataType="wstr"
-                      cachedLength="12"
-                      cachedName="CODE"
-                      externalMetadataColumnId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CODE]"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE]" />
-                    <inputColumn
-                      refId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input].Columns[AuditKey]"
-                      cachedDataType="i4"
-                      cachedName="AuditKey"
-                      externalMetadataColumnId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AuditKey]"
-                      lineageId="Package\DFT Transform-Load No Err Output\DC Audit Key.Outputs[Derived Column Output].Columns[AuditKey]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[surrKey]"
-                      dataType="i4"
-                      name="surrKey" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ONC_MANAGEMENT_GROUP_ID]"
-                      dataType="numeric"
-                      name="ONC_MANAGEMENT_GROUP_ID"
-                      precision="10" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[NAME]"
-                      dataType="wstr"
-                      length="255"
-                      name="NAME" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CODE]"
-                      dataType="wstr"
-                      length="12"
-                      name="CODE" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AuditKey]"
-                      dataType="i4"
-                      name="AuditKey" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\Insert Destination.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT Transform-Load No Err Output\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT Transform-Load No Err Output\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT Transform-Load No Err Output\OLE DB Command"
-              componentClassID="Microsoft.OLEDBCommand"
-              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
-              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
-              name="OLE DB Command"
-              usesDispositions="true"
-              version="2">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dw].[DimManagementGroup] SET [NAME] = ? WHERE [CODE] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT Transform-Load No Err Output\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="{E190B8E8-B10A-46B9-B012-C6B7F3A402C4}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[OnCoreDW]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\DFT Transform-Load No Err Output\OLE DB Command.Inputs[OLE DB Command Input]"
-                  errorOrTruncationOperation="Command Execution"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Command Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Command.Inputs[OLE DB Command Input].Columns[CODE]"
-                      cachedDataType="wstr"
-                      cachedLength="12"
-                      cachedName="CODE"
-                      externalMetadataColumnId="Package\DFT Transform-Load No Err Output\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE]" />
-                    <inputColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Command.Inputs[OLE DB Command Input].Columns[NAME]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="NAME"
-                      externalMetadataColumnId="Package\DFT Transform-Load No Err Output\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[NAME]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      dataType="wstr"
-                      length="255"
-                      name="Param_0">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      dataType="wstr"
-                      length="12"
-                      name="Param_1">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\OLE DB Command.Outputs[OLE DB Command Output]"
-                  exclusionGroup="1"
-                  name="OLE DB Command Output"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\OLE DB Command.Inputs[OLE DB Command Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\OLE DB Command.Outputs[OLE DB Command Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Command Error Output"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\OLE DB Command.Inputs[OLE DB Command Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT Transform-Load No Err Output\OLE DB Source"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="OLE DB Source"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[ManagementGroup]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        ONC_MANAGEMENT_GROUP_ID, NAME, CODE, ACTIVE_FLAG
-FROM            ManagementGroup
-WHERE        (ACTIVE_FLAG = 1)</property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable">User::TableName</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">2</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{DDC1C496-85F8-4E00-B4D7-6EACC166A026}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[OnCore-Prod-Staging]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ONC_MANAGEMENT_GROUP_ID]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ONC_MANAGEMENT_GROUP_ID]"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ONC_MANAGEMENT_GROUP_ID]"
-                      name="ONC_MANAGEMENT_GROUP_ID"
-                      precision="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[NAME]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NAME]"
-                      length="255"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[NAME]"
-                      name="NAME"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CODE]"
-                      length="12"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE]"
-                      name="CODE"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTIVE_FLAG]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTIVE_FLAG]"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTIVE_FLAG]"
-                      name="ACTIVE_FLAG"
-                      precision="1"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ONC_MANAGEMENT_GROUP_ID]"
-                      dataType="numeric"
-                      name="ONC_MANAGEMENT_GROUP_ID"
-                      precision="10" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NAME]"
-                      dataType="wstr"
-                      length="255"
-                      name="NAME" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CODE]"
-                      dataType="wstr"
-                      length="12"
-                      name="CODE" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTIVE_FLAG]"
-                      dataType="numeric"
-                      name="ACTIVE_FLAG"
-                      precision="1" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ONC_MANAGEMENT_GROUP_ID]"
-                      dataType="numeric"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ONC_MANAGEMENT_GROUP_ID]"
-                      name="ONC_MANAGEMENT_GROUP_ID"
-                      precision="10" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NAME]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NAME]"
-                      name="NAME" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CODE]"
-                      dataType="wstr"
-                      length="12"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CODE]"
-                      name="CODE" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTIVE_FLAG]"
-                      dataType="numeric"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTIVE_FLAG]"
-                      name="ACTIVE_FLAG"
-                      precision="1" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT Transform-Load No Err Output\RC Error"
-              componentClassID="Microsoft.RowCount"
-              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
-              name="RC Error">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable to hold the row count."
-                  name="VariableName">User::RowCountError</property>
-              </properties>
-              <inputs>
-                <input
-                  refId="Package\DFT Transform-Load No Err Output\RC Error.Inputs[Row Count Input 1]"
-                  hasSideEffects="true"
-                  name="Row Count Input 1">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\RC Error.Outputs[Row Count Output 1]"
-                  name="Row Count Output 1"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\RC Error.Inputs[Row Count Input 1]">
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT Transform-Load No Err Output\RC Extract"
-              componentClassID="Microsoft.RowCount"
-              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
-              name="RC Extract">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable to hold the row count."
-                  name="VariableName">User::RowCountExtract</property>
-              </properties>
-              <inputs>
-                <input
-                  refId="Package\DFT Transform-Load No Err Output\RC Extract.Inputs[Row Count Input 1]"
-                  hasSideEffects="true"
-                  name="Row Count Input 1">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\RC Extract.Outputs[Row Count Output 1]"
-                  name="Row Count Output 1"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\RC Extract.Inputs[Row Count Input 1]">
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT Transform-Load No Err Output\RC Insert"
-              componentClassID="Microsoft.RowCount"
-              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
-              name="RC Insert">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable to hold the row count."
-                  name="VariableName">User::RowCountInsert</property>
-              </properties>
-              <inputs>
-                <input
-                  refId="Package\DFT Transform-Load No Err Output\RC Insert.Inputs[Row Count Input 1]"
-                  hasSideEffects="true"
-                  name="Row Count Input 1">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\RC Insert.Outputs[Row Count Output 1]"
-                  name="Row Count Output 1"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\RC Insert.Inputs[Row Count Input 1]">
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT Transform-Load No Err Output\RC Update"
-              componentClassID="Microsoft.RowCount"
-              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
-              name="RC Update">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable to hold the row count."
-                  name="VariableName">User::RowCountUpdate</property>
-              </properties>
-              <inputs>
-                <input
-                  refId="Package\DFT Transform-Load No Err Output\RC Update.Inputs[Row Count Input 1]"
-                  hasSideEffects="true"
-                  name="Row Count Input 1">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\RC Update.Outputs[Row Count Output 1]"
-                  name="Row Count Output 1"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\RC Update.Inputs[Row Count Input 1]">
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension"
-              componentClassID="Microsoft.SCD"
-              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
-              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
-              name="Slowly Changing Dimension"
-              version="3">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SELECT statement used to create a schema rowset."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [CODE], [NAME] FROM [dw].[DimManagementGroup]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
-                  name="CurrentRowWhere"></property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
-                  name="UpdateChangingAttributeHistory">true</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
-                  name="FailOnFixedAttributeChange">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the column name for the inferred member."
-                  name="InferredMemberIndicator"></property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether inferred member updates are detected."
-                  name="EnableInferredMember">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
-                  name="FailOnLookupFailure">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies that all rows in the input are new or the transformation detects the change type."
-                  name="IncomingRowChangeType"
-                  typeConverter="IncomingRowChangeType">1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Connections[LookupConnection]"
-                  connectionManagerID="{E190B8E8-B10A-46B9-B012-C6B7F3A402C4}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[OnCoreDW]"
-                  description="Defines the connection to use for lookups in the dimension table"
-                  name="LookupConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
-                  name="Slowly Changing Dimension Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[CODE]"
-                      cachedDataType="wstr"
-                      cachedLength="12"
-                      cachedName="CODE"
-                      externalMetadataColumnId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CODE]"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          name="ColumnType"
-                          typeConverter="ColumnType">1</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[NAME]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="NAME"
-                      externalMetadataColumnId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[NAME]"
-                      lineageId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output].Columns[NAME]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          name="ColumnType"
-                          typeConverter="ColumnType">2</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CODE]"
-                      dataType="wstr"
-                      length="12"
-                      name="CODE" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[NAME]"
-                      dataType="wstr"
-                      length="255"
-                      name="NAME" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Outputs[Unchanged Output]"
-                  description="Unchanged rows"
-                  exclusionGroup="1"
-                  name="Unchanged Output"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Outputs[New Output]"
-                  description="New rows"
-                  exclusionGroup="1"
-                  name="New Output"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
-                  description="Rows with changes in columns tagged FixedAttribute"
-                  exclusionGroup="1"
-                  name="Fixed Attribute Output"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
-                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
-                  exclusionGroup="1"
-                  name="Changing Attribute Updates Output"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
-                  description="HistoricalAttribute (Type 2) changes result in these new rows"
-                  exclusionGroup="2"
-                  name="Historical Attribute Inserts Output"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
-                  description="Information to update unpopulated initial dimension row"
-                  exclusionGroup="1"
-                  name="Inferred Member Updates Output"
-                  synchronousInputId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\DFT Transform-Load No Err Output.Paths[Changing Attribute Updates Output]"
-              endId="Package\DFT Transform-Load No Err Output\RC Update.Inputs[Row Count Input 1]"
-              name="Changing Attribute Updates Output"
-              startId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
-            <path
-              refId="Package\DFT Transform-Load No Err Output.Paths[Derived Column Output]"
-              endId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
-              name="Derived Column Output"
-              startId="Package\DFT Transform-Load No Err Output\DC Audit Key.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\DFT Transform-Load No Err Output.Paths[New Output]"
-              endId="Package\DFT Transform-Load No Err Output\RC Insert.Inputs[Row Count Input 1]"
-              name="New Output"
-              startId="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension.Outputs[New Output]" />
-            <path
-              refId="Package\DFT Transform-Load No Err Output.Paths[OLE DB Destination Error Output]"
-              endId="Package\DFT Transform-Load No Err Output\RC Error.Inputs[Row Count Input 1]"
-              name="OLE DB Destination Error Output"
-              startId="Package\DFT Transform-Load No Err Output\Insert Destination.Outputs[OLE DB Destination Error Output]" />
-            <path
-              refId="Package\DFT Transform-Load No Err Output.Paths[OLE DB Source Output]"
-              endId="Package\DFT Transform-Load No Err Output\RC Extract.Inputs[Row Count Input 1]"
-              name="OLE DB Source Output"
-              startId="Package\DFT Transform-Load No Err Output\OLE DB Source.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT Transform-Load No Err Output.Paths[Row Count Output 1]"
-              endId="Package\DFT Transform-Load No Err Output\DC Audit Key.Inputs[Derived Column Input]"
-              name="Row Count Output 1"
-              startId="Package\DFT Transform-Load No Err Output\RC Extract.Outputs[Row Count Output 1]" />
-            <path
-              refId="Package\DFT Transform-Load No Err Output.Paths[Row Count Output 11]"
-              endId="Package\DFT Transform-Load No Err Output\Insert Destination.Inputs[OLE DB Destination Input]"
-              name="Row Count Output 1"
-              startId="Package\DFT Transform-Load No Err Output\RC Insert.Outputs[Row Count Output 1]" />
-            <path
-              refId="Package\DFT Transform-Load No Err Output.Paths[Row Count Output 12]"
-              endId="Package\DFT Transform-Load No Err Output\OLE DB Command.Inputs[OLE DB Command Input]"
-              name="Row Count Output 1"
-              startId="Package\DFT Transform-Load No Err Output\RC Update.Outputs[Row Count Output 1]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
       DTS:refId="Package\SQL Audit Begin"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -2195,16 +1347,16 @@ WHERE        (ACTIVE_FLAG = 1)</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{CABF69D0-433F-4380-AF79-132CF22BBA76}"
+      DTS:DTSID="{52EEB92C-CEDB-42CF-8E99-C17E865B856E}"
       DTS:From="Package\SQL Audit Begin"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\DFT Transform-Load No Err Output" />
+      DTS:To="Package\DFT Transform-Load" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{B85434DB-7A2A-422D-8C8A-B2A8FE99CE31}"
-      DTS:From="Package\DFT Transform-Load No Err Output"
+      DTS:DTSID="{4BD0207D-A442-436A-B4C8-1A9978895519}"
+      DTS:From="Package\DFT Transform-Load"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\SQL Count Rows" />
@@ -2305,36 +1457,20 @@ WHERE        (ACTIVE_FLAG = 1)</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="245,42"
-          Id="Package\DFT Transform-Load No Err Output"
-          TopLeft="323,233" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="210,189">
+          TopLeft="209,189">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="235.5,44"
+              EndConnector="0,46"
               Start="0,0"
-              End="235.5,36.5">
+              End="0,38.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18"
-                    Point2="0,22"
-                    Point3="4,22" />
-                  <mssgle:LineSegment
-                    End="231.5,22" />
-                  <mssgle:CubicBezierSegment
-                    Point1="231.5,22"
-                    Point2="235.5,22"
-                    Point3="235.5,26" />
-                  <mssgle:LineSegment
-                    End="235.5,36.5" />
+                    End="0,38.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2345,30 +1481,18 @@ WHERE        (ACTIVE_FLAG = 1)</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="445.5,275">
+          TopLeft="211.5,277">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-230.5,46"
+              EndConnector="0,44"
               Start="0,0"
-              End="-230.5,38.5">
+              End="0,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19"
-                    Point2="0,23"
-                    Point3="-4,23" />
-                  <mssgle:LineSegment
-                    End="-226.5,23" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-226.5,23"
-                    Point2="-230.5,23"
-                    Point3="-230.5,27" />
-                  <mssgle:LineSegment
-                    End="-230.5,38.5" />
+                    End="0,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2444,7 +1568,9 @@ WHERE        (ACTIVE_FLAG = 1)</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2478,7 +1604,9 @@ WHERE        (ACTIVE_FLAG = 1)</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2500,7 +1628,9 @@ WHERE        (ACTIVE_FLAG = 1)</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2522,7 +1652,9 @@ WHERE        (ACTIVE_FLAG = 1)</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2544,7 +1676,9 @@ WHERE        (ACTIVE_FLAG = 1)</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2626,7 +1760,9 @@ WHERE        (ACTIVE_FLAG = 1)</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2736,267 +1872,5 @@ WHERE        (ACTIVE_FLAG = 1)</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\DFT Transform-Load No Err Output">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="122,42"
-          Id="Package\DFT Transform-Load No Err Output\RC Error"
-          TopLeft="176,554.5" />
-        <NodeLayout
-          Size="165,42"
-          Id="Package\DFT Transform-Load No Err Output\Insert Destination"
-          TopLeft="150.5,478.5" />
-        <NodeLayout
-          Size="216,42"
-          Id="Package\DFT Transform-Load No Err Output\Slowly Changing Dimension"
-          TopLeft="190,311.5" />
-        <NodeLayout
-          Size="133,42"
-          Id="Package\DFT Transform-Load No Err Output\RC Update"
-          TopLeft="430,420" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\DFT Transform-Load No Err Output\RC Insert"
-          TopLeft="75,388" />
-        <NodeLayout
-          Size="173,42"
-          Id="Package\DFT Transform-Load No Err Output\OLE DB Command"
-          TopLeft="417.5,533.5" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\DFT Transform-Load No Err Output\OLE DB Source"
-          TopLeft="219.5,5.49999999999989" />
-        <NodeLayout
-          Size="132,42"
-          Id="Package\DFT Transform-Load No Err Output\RC Extract"
-          TopLeft="232,107.5" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\DFT Transform-Load No Err Output\DC Audit Key"
-          TopLeft="225.5,209.5" />
-        <EdgeLayout
-          Id="Package\DFT Transform-Load No Err Output.Paths[Row Count Output 12]"
-          TopLeft="500.25,462">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,71.4999999999999"
-              Start="0,0"
-              End="0,63.9999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,63.9999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load No Err Output.Paths[Row Count Output 11]"
-          TopLeft="137.5,430">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="95.5000000000001,48.4999999999999"
-              Start="0,0"
-              End="95.5000000000001,40.9999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2499999999999" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2499999999999"
-                    Point2="0,24.2499999999999"
-                    Point3="4,24.2499999999999" />
-                  <mssgle:LineSegment
-                    End="91.5000000000001,24.2499999999999" />
-                  <mssgle:CubicBezierSegment
-                    Point1="91.5000000000001,24.2499999999999"
-                    Point2="95.5000000000001,24.2499999999999"
-                    Point3="95.5000000000001,28.2499999999999" />
-                  <mssgle:LineSegment
-                    End="95.5000000000001,40.9999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load No Err Output.Paths[Row Count Output 1]"
-          TopLeft="298,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load No Err Output.Paths[OLE DB Source Output]"
-          TopLeft="298,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load No Err Output.Paths[OLE DB Destination Error Output]"
-          TopLeft="235,520.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34"
-              Start="0,0"
-              End="0,26.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-73.20890625,7.533203125,146.4178125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load No Err Output.Paths[New Output]"
-          TopLeft="263.333333333333,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-125.833333333333,34.5000000000001"
-              Start="0,0"
-              End="-125.833333333333,27.0000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,9.95220588235298" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,9.95220588235298"
-                    Point2="0,13.952205882353"
-                    Point3="-4,13.952205882353" />
-                  <mssgle:LineSegment
-                    End="-121.833333333333,13.952205882353" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-121.833333333333,13.952205882353"
-                    Point2="-125.833333333333,13.952205882353"
-                    Point3="-125.833333333333,17.952205882353" />
-                  <mssgle:LineSegment
-                    End="-125.833333333333,27.0000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-90.0080533854167,18.952205882353,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load No Err Output.Paths[Derived Column Output]"
-          TopLeft="298,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load No Err Output.Paths[Changing Attribute Updates Output]"
-          TopLeft="332.666666666667,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="163.833333333333,66.5000000000001"
-              Start="0,0"
-              End="163.833333333333,59.0000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.8933823529412" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22.8933823529412"
-                    Point2="0,26.8933823529412"
-                    Point3="4,26.8933823529412" />
-                  <mssgle:LineSegment
-                    End="159.833333333333,26.8933823529412" />
-                  <mssgle:CubicBezierSegment
-                    Point1="159.833333333333,26.8933823529412"
-                    Point2="163.833333333333,26.8933823529412"
-                    Point3="163.833333333333,30.8933823529412" />
-                  <mssgle:LineSegment
-                    End="163.833333333333,59.0000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="3.38276041666666,31.8933823529412,157.0678125,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

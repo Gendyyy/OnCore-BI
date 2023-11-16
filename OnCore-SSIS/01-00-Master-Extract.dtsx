@@ -7,12 +7,12 @@
   DTS:CreatorName="BLUECAT\gendy"
   DTS:DTSID="{8D60B11F-725B-46F0-86C6-8690828948F5}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="01-00-Master-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{60F4390F-1DD8-46E9-B829-BD528614AD54}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{6677A992-1187-42B4-8A0A-76DFDAACFEC9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -315,6 +315,10 @@
           Id="Package\Pull to Staging\EP ManagementGroup Extract"
           TopLeft="30,11" />
         <NodeLayout
+          Size="282,42"
+          Id="Package\Pull to Staging\EP Protocol Calendar Status History Extract"
+          TopLeft="482,79" />
+        <NodeLayout
           Size="237,42"
           Id="Package\Pull to Staging\EP Protocol Status History Extract"
           TopLeft="225,80" />
@@ -348,17 +352,13 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="282,42"
-          Id="Package\Pull to Staging\EP Protocol Calendar Status History Extract"
-          TopLeft="482,79" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="834,200"
           Size="834,243"
           Id="Package\Pull to Staging"
-          TopLeft="116,150" />
+          TopLeft="114,152" />
         <NodeLayout
           Size="160,42"
           Id="Package\SQL Audit Begin"
@@ -373,26 +373,26 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="81,48"
+              EndConnector="79,50"
               Start="0,0"
-              End="81,40.5">
+              End="79,42.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20" />
+                    End="0,21" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20"
-                    Point2="0,24"
-                    Point3="4,24" />
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="4,25" />
                   <mssgle:LineSegment
-                    End="77,24" />
+                    End="75,25" />
                   <mssgle:CubicBezierSegment
-                    Point1="77,24"
-                    Point2="81,24"
-                    Point3="81,28" />
+                    Point1="75,25"
+                    Point2="79,25"
+                    Point3="79,29" />
                   <mssgle:LineSegment
-                    End="81,40.5" />
+                    End="79,42.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -403,30 +403,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="533,393">
+          TopLeft="531,395">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-83,43"
+              EndConnector="-81,41"
               Start="0,0"
-              End="-83,35.5">
+              End="-81,33.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.5" />
+                    End="0,16.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.5"
-                    Point2="0,21.5"
-                    Point3="-4,21.5" />
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="-4,20.5" />
                   <mssgle:LineSegment
-                    End="-79,21.5" />
+                    End="-77,20.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-79,21.5"
-                    Point2="-83,21.5"
-                    Point3="-83,25.5" />
+                    Point1="-77,20.5"
+                    Point2="-81,20.5"
+                    Point3="-81,24.5" />
                   <mssgle:LineSegment
-                    End="-83,35.5" />
+                    End="-81,33.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
