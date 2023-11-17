@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{F9B664C8-7D91-4AB8-89B8-36F5BBEB95ED}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{60622AEB-592D-41AF-9009-7E023D3F6075}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1545,9 +1545,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="94.4,41.6"
+          Size="92,41.6"
           Id="Package\DF"
-          TopLeft="155,57" />
+          TopLeft="198.333331611421,96.8666669834985" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
