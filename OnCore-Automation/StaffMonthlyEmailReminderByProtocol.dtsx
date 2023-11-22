@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="StaffMonthlyEmailReminderByProtocol"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{5FFA55BB-9E22-459A-A683-F55612636E3D}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{AC7B0163-9254-4A72-9737-DBEED0CF29F4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -32,13 +32,13 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\DF"
+      DTS:refId="Package\DFT StaffMonthlyEmailReminderByProtocol"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{78BC7E38-85CC-43CD-A303-095B14C5B9B9}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="DF"
+      DTS:ObjectName="DFT StaffMonthlyEmailReminderByProtocol"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -46,7 +46,7 @@
           version="1">
           <components>
             <component
-              refId="Package\DF\OLE DB Source"
+              refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -102,7 +102,7 @@ N'Primary CRC;Primary IRB Coordinator' MembersRoles</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DF\OLE DB Source.Connections[OleDbConnection]"
+                  refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[com-dtrust-prod.bluecat.arizona.edu]"
                   connectionManagerRefId="Package.ConnectionManagers[com-dtrust-prod.bluecat.arizona.edu]"
                   description="The OLE DB runtime connection used to access the database."
@@ -110,161 +110,161 @@ N'Primary CRC;Primary IRB Coordinator' MembersRoles</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output]"
+                  refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[subject]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[subject]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[subject]"
+                      externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[subject]"
                       length="76"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[subject]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[subject]"
                       name="subject"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_No]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_No]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Protocol_No]"
+                      externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Protocol_No]"
                       length="10"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_No]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_No]"
                       name="Protocol_No"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PI_Email]"
+                      externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PI_Email]"
                       length="22"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]"
                       name="PI_Email"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersEmails]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersEmails]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersEmails]"
+                      externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersEmails]"
                       length="62"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersEmails]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersEmails]"
                       name="MembersEmails"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersNames]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersNames]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersNames]"
+                      externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersNames]"
                       length="46"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersNames]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersNames]"
                       name="MembersNames"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersRoles]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersRoles]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersRoles]"
+                      externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersRoles]"
                       length="35"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersRoles]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersRoles]"
                       name="MembersRoles"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[subject]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[subject]"
                       codePage="1252"
                       dataType="str"
                       length="76"
                       name="subject" />
                     <externalMetadataColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Protocol_No]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Protocol_No]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="Protocol_No" />
                     <externalMetadataColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PI_Email]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PI_Email]"
                       dataType="wstr"
                       length="22"
                       name="PI_Email" />
                     <externalMetadataColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersEmails]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersEmails]"
                       dataType="wstr"
                       length="62"
                       name="MembersEmails" />
                     <externalMetadataColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersNames]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersNames]"
                       dataType="wstr"
                       length="46"
                       name="MembersNames" />
                     <externalMetadataColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersRoles]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersRoles]"
                       dataType="wstr"
                       length="35"
                       name="MembersRoles" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[subject]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[subject]"
                       codePage="1252"
                       dataType="str"
                       length="76"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[subject]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[subject]"
                       name="subject" />
                     <outputColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Protocol_No]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Protocol_No]"
                       codePage="1252"
                       dataType="str"
                       length="10"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Protocol_No]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Protocol_No]"
                       name="Protocol_No" />
                     <outputColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PI_Email]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PI_Email]"
                       dataType="wstr"
                       length="22"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PI_Email]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PI_Email]"
                       name="PI_Email" />
                     <outputColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersEmails]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersEmails]"
                       dataType="wstr"
                       length="62"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersEmails]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersEmails]"
                       name="MembersEmails" />
                     <outputColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersNames]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersNames]"
                       dataType="wstr"
                       length="46"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersNames]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersNames]"
                       name="MembersNames" />
                     <outputColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersRoles]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersRoles]"
                       dataType="wstr"
                       length="35"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersRoles]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersRoles]"
                       name="MembersRoles" />
                     <outputColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -273,7 +273,7 @@ N'Primary CRC;Primary IRB Coordinator' MembersRoles</property>
               </outputs>
             </component>
             <component
-              refId="Package\DF\Script Component"
+              refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;12"
               description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
@@ -1576,57 +1576,57 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               </properties>
               <inputs>
                 <input
-                  refId="Package\DF\Script Component.Inputs[Input 0]"
+                  refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0]"
                   hasSideEffects="true"
                   name="Input 0">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DF\Script Component.Inputs[Input 0].Columns[subject]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0].Columns[subject]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="76"
                       cachedName="subject"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[subject]" />
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[subject]" />
                     <inputColumn
-                      refId="Package\DF\Script Component.Inputs[Input 0].Columns[Protocol_No]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0].Columns[Protocol_No]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="Protocol_No"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_No]" />
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_No]" />
                     <inputColumn
-                      refId="Package\DF\Script Component.Inputs[Input 0].Columns[PI_Email]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0].Columns[PI_Email]"
                       cachedDataType="wstr"
                       cachedLength="22"
                       cachedName="PI_Email"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]" />
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]" />
                     <inputColumn
-                      refId="Package\DF\Script Component.Inputs[Input 0].Columns[MembersEmails]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0].Columns[MembersEmails]"
                       cachedDataType="wstr"
                       cachedLength="62"
                       cachedName="MembersEmails"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersEmails]" />
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersEmails]" />
                     <inputColumn
-                      refId="Package\DF\Script Component.Inputs[Input 0].Columns[MembersNames]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0].Columns[MembersNames]"
                       cachedDataType="wstr"
                       cachedLength="46"
                       cachedName="MembersNames"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersNames]" />
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersNames]" />
                     <inputColumn
-                      refId="Package\DF\Script Component.Inputs[Input 0].Columns[MembersRoles]"
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0].Columns[MembersRoles]"
                       cachedDataType="wstr"
                       cachedLength="35"
                       cachedName="MembersRoles"
-                      lineageId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersRoles]" />
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersRoles]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DF\Script Component.Outputs[Output 0]"
+                  refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Outputs[Output 0]"
                   name="Output 0"
-                  synchronousInputId="Package\DF\Script Component.Inputs[Input 0]">
+                  synchronousInputId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0]">
                   <externalMetadataColumns />
                 </output>
               </outputs>
@@ -1634,10 +1634,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </components>
           <paths>
             <path
-              refId="Package\DF.Paths[OLE DB Source Output]"
-              endId="Package\DF\Script Component.Inputs[Input 0]"
+              refId="Package\DFT StaffMonthlyEmailReminderByProtocol.Paths[OLE DB Source Output]"
+              endId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0]"
               name="OLE DB Source Output"
-              startId="Package\DF\OLE DB Source.Outputs[OLE DB Source Output]" />
+              startId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1656,51 +1656,39 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="122,42"
-          Id="Package\DF"
+          Size="293,42"
+          Id="Package\DFT StaffMonthlyEmailReminderByProtocol"
           TopLeft="198.333331611421,96.8666669834985" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\DF">
+    design-time-name="Package\DFT StaffMonthlyEmailReminderByProtocol">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="167,42"
-          Id="Package\DF\Script Component"
-          TopLeft="196,205" />
+          Id="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component"
+          TopLeft="181,134" />
         <NodeLayout
           Size="157,42"
-          Id="Package\DF\OLE DB Source"
+          Id="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source"
           TopLeft="191,38" />
         <EdgeLayout
-          Id="Package\DF.Paths[OLE DB Source Output]"
-          TopLeft="269.5,80">
+          Id="Package\DFT StaffMonthlyEmailReminderByProtocol.Paths[OLE DB Source Output]"
+          TopLeft="267,80">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="10,125"
+              EndConnector="0,54"
               Start="0,0"
-              End="10,117.5">
+              End="0,46.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,58.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,58.5"
-                    Point2="0,62.5"
-                    Point3="4,62.5" />
-                  <mssgle:LineSegment
-                    End="6,62.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="6,62.5"
-                    Point2="10,62.5"
-                    Point3="10,66.5" />
-                  <mssgle:LineSegment
-                    End="10,117.5" />
+                    End="0,46.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1713,7 +1701,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DF\OLE DB Source">
+    design-time-name="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
