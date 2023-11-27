@@ -26,12 +26,13 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">COM-ONCORE-SQL</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5ipusBdnU0OYCn+tZwdZ9wAAAAACAAAAAAADZgAAwAAAABAAAACjC7gmOq4IfKciLWOAoJLgAAAAAASAAACgAAAAEAAAAF7t99S0F11X8/slpDOM40uIAAAAkVMQ/mPiYRk6BPCAxqXvC+AT5o0910Cq4l2MK2jydLj9fIjPyUjNmUr2efxGpQaDIGp45u7htIoPAzyjG8jPAvLmcvTeEy5NiCyrlBMZMU6nnUTF54WAYduvRXWEs7jFP7BDr6rOU0S1lTg188dHfMHX2EB3Jv2lRzRNOTvwsdlGoeILloSkGRQAAABu6nfcDsaGfMOgPqfkeWzREWzW9g==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5ipusBdnU0OYCn+tZwdZ9wAAAAACAAAAAAADZgAAwAAAABAAAAAZ6cDd+7zAxHqUBfg7NOjNAAAAAASAAACgAAAAEAAAAHXKqRFp1wPp9P63AvdOClqIAAAAH52nJEystI5TdcxihTFxS4JYeoZxej57HKKMjBgAmhYhWmHPkzf8nOeevjKI+0wZVAOHyJmLomrA3xjQZSSwWWcJKQRf/NZmt3I6hzuR7jbRMxkVyg4gLgX1CGHX4ko/RfLplxo+i+JMiEJ+ZABmkegqIrRYKFLdIf8dd99eAZi3gqR60jxaCRQAAABpwaCJhhCMDv4iB2V18d0X6MZRLw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="StaffMonthlyEmailReminderByMember.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="StaffMonthlyEmailReminderByProtocol.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="SummrayAccrualBulkInsert.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers />
         <SSIS:DeploymentInfo>
@@ -43,10 +44,10 @@
                 <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">17</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">19</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2FA2B155-E15B-43E9-AA2C-EABE4FCDD603}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A98A99D0-A5CD-4EDA-9BAC-0744AF6DD342}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -208,16 +209,30 @@
                 <SSIS:Property SSIS:Name="Name">StaffMonthlyEmailReminderByProtocol</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">18</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">40</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{EA89DD6A-5B01-4254-89EC-806EE9BE1116}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{C5F069F0-4609-4340-A696-68C163FE3F56}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="SMTPClientFromURL">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{B586ECB2-5E0F-47D5-AAA3-DCE398E4F4B4}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">ticketcat-noreply@arizona.edu</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
                 <SSIS:Parameter SSIS:Name="CM.com-dtrust-prod.bluecat.arizona.edu.ConnectByProxy">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
@@ -366,6 +381,23 @@
                   </SSIS:Properties>
                 </SSIS:Parameter>
               </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="SummrayAccrualBulkInsert.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{F22ABBA5-E6D0-4638-95F6-A9C13C0B9A0B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">SummrayAccrualBulkInsert</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{298851EE-54F9-48EC-8A97-C7A11C1906A8}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
             </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>

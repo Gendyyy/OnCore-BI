@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="StaffMonthlyEmailReminderByProtocol"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{AC7B0163-9254-4A72-9737-DBEED0CF29F4}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{5DC745CB-C5EF-47AB-B655-C2EF3C2072B5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,6 +29,17 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{B586ECB2-5E0F-47D5-AAA3-DCE398E4F4B4}"
+      DTS:ObjectName="SMTPClientFromURL">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">ticketcat-noreply@arizona.edu</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -70,14 +81,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select 
-
-'Protocol "1909985869" Monthly Reminder to Update OnCore for Quarterly Report' as subject,
-'1909985869' Protocol_No,
-N'bsherchand@arizona.edu' PI_Email,
-N'gendy@arizona.edu;gendy@arizona.edu;shelbylegendre@arizona.edu' MembersEmails,
-N'Algendy, Ahmed;Algendy, Ahmed;LeGendre, Shelby' MembersNames,
-N'Primary CRC;Primary IRB Coordinator' MembersRoles</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [ClinicalTrialData].[dbo].[AccrualStudyStaffMonthlyReminder]</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -114,24 +118,12 @@ N'Primary CRC;Primary IRB Coordinator' MembersRoles</property>
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[subject]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[subject]"
-                      length="76"
-                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[subject]"
-                      name="subject"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_No]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Protocol_No]"
-                      length="10"
+                      length="35"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_No]"
                       name="Protocol_No"
                       truncationRowDisposition="FailComponent" />
@@ -141,7 +133,7 @@ N'Primary CRC;Primary IRB Coordinator' MembersRoles</property>
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PI_Email]"
-                      length="22"
+                      length="50"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]"
                       name="PI_Email"
                       truncationRowDisposition="FailComponent" />
@@ -151,7 +143,7 @@ N'Primary CRC;Primary IRB Coordinator' MembersRoles</property>
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersEmails]"
-                      length="62"
+                      length="600"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersEmails]"
                       name="MembersEmails"
                       truncationRowDisposition="FailComponent" />
@@ -161,7 +153,7 @@ N'Primary CRC;Primary IRB Coordinator' MembersRoles</property>
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersNames]"
-                      length="46"
+                      length="600"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersNames]"
                       name="MembersNames"
                       truncationRowDisposition="FailComponent" />
@@ -171,7 +163,7 @@ N'Primary CRC;Primary IRB Coordinator' MembersRoles</property>
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersRoles]"
-                      length="35"
+                      length="600"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersRoles]"
                       name="MembersRoles"
                       truncationRowDisposition="FailComponent" />
@@ -179,36 +171,29 @@ N'Primary CRC;Primary IRB Coordinator' MembersRoles</property>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[subject]"
-                      codePage="1252"
-                      dataType="str"
-                      length="76"
-                      name="subject" />
-                    <externalMetadataColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Protocol_No]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
+                      dataType="wstr"
+                      length="35"
                       name="Protocol_No" />
                     <externalMetadataColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PI_Email]"
                       dataType="wstr"
-                      length="22"
+                      length="50"
                       name="PI_Email" />
                     <externalMetadataColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersEmails]"
                       dataType="wstr"
-                      length="62"
+                      length="600"
                       name="MembersEmails" />
                     <externalMetadataColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersNames]"
                       dataType="wstr"
-                      length="46"
+                      length="600"
                       name="MembersNames" />
                     <externalMetadataColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersRoles]"
                       dataType="wstr"
-                      length="35"
+                      length="600"
                       name="MembersRoles" />
                   </externalMetadataColumns>
                 </output>
@@ -218,41 +203,33 @@ N'Primary CRC;Primary IRB Coordinator' MembersRoles</property>
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[subject]"
-                      codePage="1252"
-                      dataType="str"
-                      length="76"
-                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[subject]"
-                      name="subject" />
-                    <outputColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Protocol_No]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
+                      dataType="wstr"
+                      length="35"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Protocol_No]"
                       name="Protocol_No" />
                     <outputColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PI_Email]"
                       dataType="wstr"
-                      length="22"
+                      length="50"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PI_Email]"
                       name="PI_Email" />
                     <outputColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersEmails]"
                       dataType="wstr"
-                      length="62"
+                      length="600"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersEmails]"
                       name="MembersEmails" />
                     <outputColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersNames]"
                       dataType="wstr"
-                      length="46"
+                      length="600"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersNames]"
                       name="MembersNames" />
                     <outputColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersRoles]"
                       dataType="wstr"
-                      length="35"
+                      length="600"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersRoles]"
                       name="MembersRoles" />
                     <outputColumn
@@ -295,19 +272,20 @@ N'Primary CRC;Primary IRB Coordinator' MembersRoles</property>
                     <arrayElement
                       dataType="System.String"><![CDATA[using System;
 using System.Collections.Generic;
+using System.Net.Mail;
 using System.Text;
 
 internal class EmailRecord
 {
     public HashSet<string> RecipientName { get; private set; }
     public HashSet<string> EmailTo { get; private set; }
-    public string EmailCC { get; private set; }
-    public string Subject { get; private set; }
-    public string Body { get; private set; }
+    public MailMessage mailMessage { get; private set; }
     private EmailRecord()
     {
         RecipientName = new HashSet<string>();
         EmailTo = new HashSet<string>();
+        mailMessage = new MailMessage();
+        mailMessage.IsBodyHtml = true;
     }
 
 
@@ -326,6 +304,12 @@ internal class EmailRecord
             {
                 emailRecord.RecipientName.Add(item);
             }
+            
+            return this;
+        }
+        public Builder WithEmailFrom(string emailFrom)
+        {
+            emailRecord.mailMessage.From = new MailAddress(emailFrom);
             return this;
         }
         public Builder WithEmailTo(string emailTo)
@@ -335,22 +319,29 @@ internal class EmailRecord
             {
                 emailRecord.EmailTo.Add(item);
             }
+            foreach (var item in emailRecord.EmailTo)
+            {
+                emailRecord.mailMessage.To.Add(item);
+            }
             return this;
         }
 
         public Builder WithCC(string emailCC)
         {
-            emailRecord.EmailCC = emailCC;
+            if (!string.IsNullOrEmpty(emailCC))
+            {
+                emailRecord.mailMessage.CC.Add(emailCC);
+            }
             return this;
         }
 
-        public Builder WithSubject(string subject)
+        public Builder WithSubject(string protocolNo)
         {
-            emailRecord.Subject = subject;
+            emailRecord.mailMessage.Subject = $"URGENT: Protocol No. {protocolNo} Action Needed for Summary Accrual Upload";
             return this;
         }
 
-        public Builder WithBody(string protocol)
+        public Builder WithBody(string protocolNo)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("<html>");
@@ -358,49 +349,59 @@ internal class EmailRecord
             sb.Append("<meta http-equiv=Content-Type content=\"text/html; charset=windows-1252\">");
             sb.Append("</head>");
             sb.Append("<body lang=EN-US link=\"#0563C1\" vlink=\"#954F72\">");
-            sb.Append($"<br>Dear ");
-
-            foreach (var item in emailRecord.RecipientName)
-            {
-                string[] firstLastNames = item.Split(',');
-                if (firstLastNames.Length > 1)
-                {
-                    sb.Append($"{firstLastNames[1].Trim()}, ");
-                }
-                else
-                {
-                    sb.Append($"{item}, ");
-                }
-
-            }
-            sb.Remove(sb.Length - 2, 2);
-
+            sb.Append($"<br>Dear Clinical Trial Team of Protocol No. <b>{protocolNo}</b>,");
             sb.Append("<br>");
-            sb.Append("<br><b>Please update</b>");
-            sb.Append("<li><b>Subject Accrual: submit a ticket at </b> <a href=\"https://ticketcat.arizona.edu/\"> TicketCat</a> with your file. Even when your accrual data is in another format (e.g. sponsor provided accrual reports), share that via <a href=\"https://ticketcat.arizona.edu/\"> TicketCat</a>. If there are no updates, no new file is needed. </li>");
+
+            //foreach (var item in emailRecord.RecipientName)
+            //{
+            //    string[] firstLastNames = item.Split(',');
+            //    if (firstLastNames.Length > 1)
+            //    {
+            //        sb.Append($"{firstLastNames[1].Trim()}, ");
+            //    }
+            //    else
+            //    {
+            //        sb.Append($"{item}, ");
+            //    }
+
+            //}
+            //sb.Remove(sb.Length - 2, 2);
+
+            sb.Append("<br>Please update the following information in OnCore for <a href = \"https://ctapps.uahs.arizona.edu/oncore/summary-accrual-reporting#:~:text=Summary%20Accrual%20refers%20to%20an,updates%20to%20track%20research%20visits.\">compliance requirements</a> and leadership reports:");
+            sb.Append("<ul>");
+            sb.Append("<li><b>Subject Accruals</b>");
+            sb.Append("<ul>");
+            sb.Append("<li>Submit your summary accrual file using <a href= \"https://ticketcat.arizona.edu/support/catalog/items/73\">this request form</a>. If you encounter issues accessing the link in this email, visit <a href=\"https://ticketcat.arizona.edu/\"> TicketCat</a> and submit your file via the 'OnCore Summary Accrual File Upload' request form.</li>");
+            sb.Append("<li>If your accrual data is in another format (e.g., sponsor-provided accrual reports), please upload this information using the instructions provided in this email, and we will assist in converting it for OnCore.</li>");
+            sb.Append("</ul>");
+            sb.Append("</li>");
             sb.Append("<li><b>IRB expiration dates</b></li>");
-            sb.Append("<li><b>Protocol statuses (open to accrual, closed to accrual, etc.)</b></li>");
-            sb.Append("<li><b>Protocol staff (add or remove staff as needed)</b></li>");
-            sb.Append("<li><b>Target accruals</b></li>");
-            sb.Append("<br>");
-            sb.Append($"<br>Protocol : {protocol}");
-            sb.Append("<br>");
+            sb.Append("<li><b>Protocol Status</b> (open to accrual, closed to accrual, etc.)</li>");
+            sb.Append("<li><b>Protocol Staff</b> (add or remove staff as needed)</li>");
+            sb.Append("<li><b>Target Accrual</b></li>");
+            sb.Append("</ul>");
+            //sb.Append($"<br>Protocol : {protocolNo}");
+            //sb.Append("<br>");
             //sb.Append("<br>*For those that use the summary accrual method, <a href=\"https://arizona.app.box.com/f/4cf24bef6c0a4e0cb1688f7886385ee0\">please upload</a> an updated accrual file. If there are no updates, no new file is needed. These protocols are identified with (Y) after the protocol number.");
             //sb.Append("<br>If your accrual data is in another format (e.g. sponsor provided accrual reports), <a href=\"https://arizona.app.box.com/f/4cf24bef6c0a4e0cb1688f7886385ee0\">please upload</a> this information, and we will assist with converting this information to upload into OnCore.");
             //sb.Append("<br>If you have any questions about this process, please submit a ticket in <a href=\"https://ticketcat.arizona.edu\">TicketCat</a>.");
+            sb.Append("<br>If there are no updates to your protocol, no action is needed.");
             sb.Append("<br>");
             sb.Append("<br><b>Helpful links:</b>");
             sb.Append("<li><a href=\"https://ctapps.uahs.arizona.edu/oncore/summary-accrual-reporting\">Summary Accrual Info Page</a></li>");
             sb.Append("<li><a href=\"https://app.box.com/s/4dexex14ze56mmpix6hq2jhdhs8c4tz7\">Summary Accrual Template</a></li>");
             //sb.Append("<li><a href=\"https://arizona.app.box.com/f/4cf24bef6c0a4e0cb1688f7886385ee0\">Summary Accrual Upload Link</a></li>");
             sb.Append("<br>");
+            sb.Append("<br>Thank you for your prompt attention to this matter.</br>");
+            sb.Append("<br>");
             sb.Append("<br>Sincerely,");
             sb.Append("<br>College of Medicine, Information Technology Services");
-            sb.Append("<br><b>For assistance:</b> submit a ticket at <a href=\"https://ticketcat.arizona.edu/\"> TicketCat</a>");
+            sb.Append("<br>");
+            sb.Append("<br><i>For any inquiries or assistance, please submit a ticket in</i> <a href=\"https://ticketcat.arizona.edu/\"> TicketCat</a>");
             sb.Append("</body>");
             sb.Append("</html>");
 
-            emailRecord.Body = sb.ToString();
+            emailRecord.mailMessage.Body = sb.ToString();
             return this;
         }
 
@@ -408,12 +409,6 @@ internal class EmailRecord
         {
             return emailTo.Split(';');
         }
-
-        //private string[] ExtractProtocols(string protocols)
-        //{
-        //    string[] result = protocols.Split(',');
-        //    return result;
-        //}
 
         public EmailRecord Build()
         {
@@ -512,6 +507,7 @@ public class ScriptMain : UserComponent
         /*
          * Add your code here
          */
+       
     }
 
     /// <summary>
@@ -529,7 +525,7 @@ public class ScriptMain : UserComponent
 
         foreach (var email in emailRecords)
         {
-            emailService.send(email);
+            emailService.send(email.mailMessage);
         }
     }
 
@@ -553,9 +549,10 @@ public class ScriptMain : UserComponent
         {
             EmailRecord email = new EmailRecord.Builder()
                 .WithRecipientName(row.MembersNames)
+                .WithEmailFrom(Variables.SMTPClientFromURL.ToString())
                         .WithEmailTo(row.MembersEmails)
                         .WithCC(row.PIEmail)
-                        .WithSubject(row.subject)
+                        .WithSubject(row.ProtocolNo)
                         .WithBody(row.ProtocolNo)
                         .Build();
             emailRecords.Add(email);
@@ -577,8 +574,8 @@ public class ScriptMain : UserComponent
                       dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
 	<msb:PropertyGroup>
-		<msb:Language>msBuild</msb:Language>
 		<msb:CodeName>SC_3db158b159f245518ad13bc988f321af</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
 		<msb:DisplayName>SC_3db158b159f245518ad13bc988f321af</msb:DisplayName>
 		<msb:ProjectId>{51E3908C-5B4A-4E6B-B34C-8C0CCB32A091}</msb:ProjectId>
 	</msb:PropertyGroup>
@@ -701,6 +698,14 @@ public class Variables
         ParentComponent = Component;
     }
 
+    public String SMTPClientFromURL
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["SMTPClientFromURL"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
 }
 ]]></arrayElement>
                     <arrayElement
@@ -741,97 +746,7 @@ public class Variables
                     <arrayElement
                       dataType="System.String"><![CDATA[UTF8]]></arrayElement>
                     <arrayElement
-                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0CE56D03-05FB-4326-A4ED-89A53FFD72EB}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SC_3db158b159f245518ad13bc988f321af</RootNamespace>
-    <AssemblyName>SC_3db158b159f245518ad13bc988f321af</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>.\bin\Debug\</OutputPath>
-    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DebugSymbols>false</DebugSymbols>
-    <Optimize>true</Optimize>
-    <OutputPath>.\bin\Release\</OutputPath>
-    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Compile Include="EmailRecord.cs" />
-    <Compile Include="EmailService.cs" />
-    <Compile Include="InputQueryRow.cs" />
-    <Compile Include="main.cs" />
-    <Compile Include="BufferWrapper.cs" />
-    <Compile Include="ComponentWrapper.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <!-- Include the build rules for a C# project.-->
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
-  <ProjectExtensions>
-    <VisualStudio>
-      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
-        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
-        <Host Name="ScriptComponent" IconIndex="0" />
-        <ProjectClient>
-          <HostIdentifier>SSIS_SC130</HostIdentifier>
-        </ProjectClient>
-      </FlavorProperties>
-    </VisualStudio>
-  </ProjectExtensions>
-</Project>]]></arrayElement>
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{0CE56D03-05FB-4326-A4ED-89A53FFD72EB}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>SC_3db158b159f245518ad13bc988f321af</RootNamespace><AssemblyName>SC_9B262A111AA44B40AC6EAE98957BF764</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.PipelineHost, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Compile Include="EmailRecord.cs" /><Compile Include="EmailService.cs" /><Compile Include="InputQueryRow.cs" /><Compile Include="main.cs" /><Compile Include="BufferWrapper.cs" /><Compile Include="ComponentWrapper.cs" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><!-- This section defines VSTA properties that describe the host-changable project properties. --><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" /><Host Name="ScriptComponent" IconIndex="0" /><ProjectClient><HostIdentifier>SSIS_SC130</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
                     <arrayElement
@@ -1051,14 +966,14 @@ public class Input0Buffer: ScriptBuffer
     {
     }
 
-    public String subject
+    public String ProtocolNo
     {
         get
         {
             return Buffer.GetString(BufferColumnIndexes[0]);
         }
     }
-    public bool subject_IsNull
+    public bool ProtocolNo_IsNull
     {
         get
         {
@@ -1066,14 +981,14 @@ public class Input0Buffer: ScriptBuffer
         }
     }
 
-    public String ProtocolNo
+    public String PIEmail
     {
         get
         {
             return Buffer.GetString(BufferColumnIndexes[1]);
         }
     }
-    public bool ProtocolNo_IsNull
+    public bool PIEmail_IsNull
     {
         get
         {
@@ -1081,14 +996,14 @@ public class Input0Buffer: ScriptBuffer
         }
     }
 
-    public String PIEmail
+    public String MembersEmails
     {
         get
         {
             return Buffer.GetString(BufferColumnIndexes[2]);
         }
     }
-    public bool PIEmail_IsNull
+    public bool MembersEmails_IsNull
     {
         get
         {
@@ -1096,14 +1011,14 @@ public class Input0Buffer: ScriptBuffer
         }
     }
 
-    public String MembersEmails
+    public String MembersNames
     {
         get
         {
             return Buffer.GetString(BufferColumnIndexes[3]);
         }
     }
-    public bool MembersEmails_IsNull
+    public bool MembersNames_IsNull
     {
         get
         {
@@ -1111,33 +1026,18 @@ public class Input0Buffer: ScriptBuffer
         }
     }
 
-    public String MembersNames
+    public String MembersRoles
     {
         get
         {
             return Buffer.GetString(BufferColumnIndexes[4]);
         }
     }
-    public bool MembersNames_IsNull
-    {
-        get
-        {
-            return IsNull(4);
-        }
-    }
-
-    public String MembersRoles
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[5]);
-        }
-    }
     public bool MembersRoles_IsNull
     {
         get
         {
-            return IsNull(5);
+            return IsNull(4);
         }
     }
 
@@ -1206,46 +1106,17 @@ internal class EmailService
 
     public EmailService()
     {
+        //string SMTPClient = ["User::MyVariable"].Value = "New Value";
         
+
+
         smtpClient = new SmtpClient("ob1.hc4604-54.iphmx.com");
         smtpClient.EnableSsl = true;
         
     }
 
-    private void Configure()
+    public void send(MailMessage mailMessage)
     {
-        
-        mailMessage.IsBodyHtml = true;
-        mailMessage.From = new MailAddress("VPHS-OnCoreIT@email.arizona.edu");
-    }
-    private void setTo(HashSet<string> mailTo)
-    {
-        foreach (string recipient in mailTo)
-        {
-            mailMessage.To.Add(recipient);
-        }
-        
-    }
-    private void setCC(string mailCC)
-    {
-        mailMessage.CC.Add(mailCC);
-    }
-    private void setSubject(string subject)
-    {
-        mailMessage.Subject = subject;
-    }
-    private void setBody(string body)
-    {
-        mailMessage.Body = body;
-    }
-    public void send(EmailRecord emailRecord)
-    {
-        mailMessage = new MailMessage();
-        Configure();
-        setTo(emailRecord.EmailTo);
-        setCC(emailRecord.EmailCC);
-        setSubject(emailRecord.Subject);
-        setBody(emailRecord.Body);
         smtpClient.Send(mailMessage);
     }
 }
@@ -1270,243 +1141,243 @@ internal class EmailService
                   <arrayElements
                     arrayElementCount="2">
                     <arrayElement
-                      dataType="System.String"><![CDATA[SC_3db158b159f245518ad13bc988f321af.dll]]></arrayElement>
+                      dataType="System.String"><![CDATA[SC_9B262A111AA44B40AC6EAE98957BF764.dll]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-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
+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
-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
+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
-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
+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
-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
-AhkoMAAACipSAnstAAAKAnsuAAAKGpRvLwAACioiAhooMAAACipSAnstAAAKAnsuAAAKG5RvLwAA
-CioiAhsoMAAACioeAigxAAAKKh4CKDIAAAoqfgIoMwAACgICczUAAAZ9DgAABAICczYAAAZ9DwAA
-BCqSBHKvAABwGm80AAAKLBUCBQIDKDUAAAoOBHMiAAAGbzMAAAYqSisHAgNvNAAABgNvLwAABi3x
-KgYqOgIoEAAACgIDfRAAAAQqOgIoEAAACgIDfREAAAQqrn4SAAAELR5yvwAAcNAKAAACKDYAAApv
-NwAACnM4AAAKgBIAAAR+EgAABCoafhMAAAQqHgKAEwAABCoafhQAAAQqHgIoOQAACiouczwAAAaA
-FAAABCpKAigQAAAKAnMLAAAGfRUAAAQqABMwAgAuAAAABAAAEQIDKEQAAAYKFgsrGgYHmgwCexUA
-AARvAQAABghvOgAACiYHF1gLBwaOaTLgAioAABMwAgAuAAAABAAAEQIDKEQAAAYKFgsrGgYHmgwC
-exUAAARvAwAABghvOgAACiYHF1gLBwaOaTLgAio6AnsVAAAEA28GAAAGAio6AnsVAAAEA28IAAAG
-AiobMAUA4AEAAAUAABFzOwAACgoGcjEBAHBvPAAACiYGcj8BAHBvPAAACiYGck0BAHBvPAAACiYG
-cuABAHBvPAAACiYGcvABAHBvPAAACiYGclICAHBvPAAACiYCexUAAARvAQAABm8XAAAKCytNEgEo
-GAAACgwIF40qAAABJRYfLJ1vPQAACg0JjmkXMRsGCReabz4AAApyZgIAcCgpAAAKbzwAAAomKxIG
-CHJmAgBwKCkAAApvPAAACiYSASgbAAAKLareDhIB/hYCAAAbbxwAAArcBgZvPwAAChhZGG9AAAAK
-JgZybAIAcG88AAAKJgZydgIAcG88AAAKJgZyqAIAcG88AAAKJgZySQUAcG88AAAKJgZykwUAcG88
-AAAKJgZyLgYAcG88AAAKJgZyrAYAcG88AAAKJgZybAIAcG88AAAKJgZy7AYAcAMoKQAACm88AAAK
-JgZybAIAcG88AAAKJgZybAIAcG88AAAKJgZyDAcAcG88AAAKJgZyQAcAcG88AAAKJgZyJQgAcG88
-AAAKJgZybAIAcG88AAAKJgZy9AgAcG88AAAKJgZyEgkAcG88AAAKJgZyhAkAcG88AAAKJgZyUQoA
-cG88AAAKJgZyYQoAcG88AAAKJgJ7FQAABAZvQQAACm8KAAAGAioBEAAAAgBfAFq5AA4AAAAASgMX
-jSoAAAElFh87nW89AAAKKh4CexUAAAQqAEJTSkIBAAEAAAAAAAwAAAB2NC4wLjMwMzE5AAAAAAUA
-bAAAANQLAAAjfgAAQAwAAOQKAAAjU3RyaW5ncwAAAAAkFwAAdAoAACNVUwCYIQAAEAAAACNHVUlE
-AAAAqCEAAJQCAAAjQmxvYgAAAAAAAAACAAABVxWiCQkDAAAA+gEzABYAAAEAAAAqAAAADAAAABUA
-AABFAAAAIgAAAEEAAAAuAAAABQAAAAUAAAAZAAAAJAAAAAQAAAABAAAABQAAAAEAAAABAAAAAABo
-BQEAAAAAAAYA+APLBwYAjATLBwYARAOrBw8APwgAAAYAcQORBgYA2wORBgYAvAORBgYAcwSRBgYA
-GASRBgYAMQSRBgYAiAORBgYAowPyBAYAWQk7BgYADAPLBwoAAQBgAAYARQdwCj8AkwcAAA4AygFA
-BQ4AuQlABRIATARzAgYACwBgAFcAkwcAAAYAuQY7BhIAbwdzAhYAYAdzAhIAKAdzAhIA7QlzAgYA
-JwOrBwYAgAfrBwYAHAd8Bg4A9wIqBQ4AWAMqBQ4A1wJnBg4ARglABQ4AowZABQYA4gE7BgYAGAU7
-BgYAwwY7BgYAlAI7BgYA7gE7BgYA2QqRBgYAQAc7BgAAAAASAAAAAAABAAEAAAAQAIkBAAA1AAEA
-AQAAABAAoQEAADUABgAMAAAAEACbCgAANQAIABMAAQAQAFwGAAAcAA0AHgABABAAUwcAAGEADgAi
-AAEAEADPCQAAbQAOADEAAQAQADoJAAA1ABAANQABABAAfQgAADUAEQA2AAAAEADyB04INQASADcA
-AAEQAOwITgiFABQAOwACABAASwcAADUAFQA+AAEAswAaAQEA6wAaAQEAfwAhAQEAQwEhAQEAXAEh
-AQEA1gEkASEAxAkoAQEAQwEhAQEA0gAhAQEAmAAhAQEABAEhAQEAIAEsAQEAvgcvAQYAOgk3AQYA
-fQg7AQEA3Qk/AQEA3Qk/AREAUAZDAREAxwJHAREArgFLAQEAlQFPAVAgAAAAAIYILgJTAQEAWCAA
-AAAAgQhAAlsBAQBhIAAAAACGCOoGUwECAGkgAAAAAIEI9gZbAQIAciAAAAAAhggpAIsAAwB6IAAA
-AACBCDUAEAADAIMgAAAAAIYIYAmLAAQAiyAAAAAAgQhsCRAABACUIAAAAACGCK0KiwAFAJwgAAAA
-AIEItgoQAAUApSAAAAAAgRieBwYABgDDIAAAAACGGJ4HBgAGAOcgAAAAAIEApQIGAAYADCEAAAAA
-gQAWB1sBBgBkIQAAAACBAEkAEAAHAHchAAAAAIEAhAkQAAgAhSEAAAAAgQDIChAACQCUIQAAAACG
-AIQBZAEKAPMhAAAAAIYIYAmLAAsA+yEAAAAAgwhsCRAACwAEIgAAAACGCFAFiwAMAAwiAAAAAIMI
-XAUQAAwAFSIAAAAAhggSAosADQAdIgAAAACDCCACEAANACYiAAAAAIYIhwiLAA4ALiIAAAAAgwiW
-CBAADgA3IgAAAACGCA4J/QAPAD8iAAAAAIMIJAkBAA8ASCIAAAAAhhieBwYAEABQIgAAAADGAKoE
-BgAQAFgiAAAAAMYAtQQGABAAuCIAAAAAxgB8CmoBEAA8IwAAAACGGJ4HBgARAE8jAAAAAIYYngeV
-ABEAWiMAAAAAhgiPCYsAFABvIwAAAACGCAIGUAAUAHgjAAAAAIYI1AaLABQAjSMAAAAAhgijBVAA
-FACWIwAAAACGCFAFiwAUAKsjAAAAAIYIkAVQABQAtCMAAAAAhgj8CIsAFADJIwAAAACGCOkFUAAU
-ANIjAAAAAIYItgiLABQA5yMAAAAAhgjRBVAAFADwIwAAAACGCKUIiwAUAAUkAAAAAIYIuQVQABQA
-DiQAAAAAhgCTClAAFAAWJAAAAACGAJsJUAAUAB4kAAAAAIYYngcGABQAPiQAAAAAxgBaCnABFABj
-JAAAAADGAVMKagEYAHYkAAAAAMYBfApqARkAeCQAAAAAhhieB3oBGgCHJAAAAACGGJ4HegEbAEgi
-AAAAAIMYngcGABwAliQAAAAAkwh8B4ABHADCJAAAAACTCK8ChQEcAMkkAAAAAJMIuwKKARwA0SQA
-AAAAlgitCZABHQDYJAAAAACGGJ4HBgAdAOAkAAAAAJEYpAeVAR0A7CQAAAAAhhieBwYAHQAAJQAA
-AACGAFICmQEdADwlAAAAAIYAAgeZAR4AdiUAAAAAhgAiAJkBHwCFJQAAAACGAHgJmQEgAJQlAAAA
-AIYAvwqZASEAkCcAAAAAgQAmCp8BIgCjJwAAAACGAHIBpQEjAAAAAQDBBAAAAQDBBAAAAQDBBAAA
-AQDBBAAAAQDBBAAAAQAPBwAAAQBCAAAAAQCTCQAAAQDQCgAAAQCVAQAAAQDBBAAAAQDBBAAAAQDB
-BAAAAQDBBAAAAQDBBAAAAQCpCgAAAQB1BwAAAgDHCAAAAwA2BwAAAQBPAAAAAgBkAgAAAwB1BwAA
-BAA2BwAAAQB1BwAAAQClCgAAAQDzCQAAAQDzCQAAAQDBBAAAAQBuAgAAAQAOBwAAAQBBAAAAAQCT
-CQAAAQAkBgAAAQAOBwkAngcBABEAngcGABkAngcKACkAngcQADEAngcQADkAngcQAEEAngcQAEkA
-ngcQAFEAngcQAFkAngcQAGEAngcQAHEAngcGAKEAngcGAOEAngcGAAEBngcVAGkAngcGAAwAngcG
-AJkAngcQAJkALQYhAJEAFQYhABEBngcQAJEARwYmAAwAkAc2ABQA/QlFAJEA4wZKABkBewAQABQA
-ZwpQACEB7wIGAJEAGwBKAJEAbAkQAJEAtgoQAJEAngcGAJkAeAFUANkAqgQGANkAtQQGABwAkAdu
-ACQA/QlFACQAZwpQABwAewCFALkAvgGLACkBUgmPALkAngcQABwAngcGAMEAngeVAMEAdQefAMEA
-xwijAMkAFQWnAMEADgasAMEAkwpQAMEAmwlQANkAngcGACkB9QixANkA2wi5ADkBAAK/ADkB1QrI
-AOkAngfOAAkBngcGAAwAewDdAIEAngcGAIEAfQHwACkBpwn2ACkBQgaLAIEAHwX9AIEAxwQBAWkA
-DAWLACAAYwCOAiEAYwCOAi4ACwDNAS4AEwDWAS4AGwD1AS4AIwD+AS4AKwAnAi4AMwAnAi4AOwAn
-Ai4AQwD+AS4ASwAtAi4AUwAnAi4AWwBEAkAAYwCOAkEAYwCOAmAAYwCOAmEAYwCOAoAAYwCOAoEA
-YwCOAqAAYwCOAqEAYwCOAqMAawCOAsAAYwCOAuAAYwCOAgABYwCOAgEBYwCOAiABYwCOAiEBYwCO
-AkABYwCOAkEBYwCOAkMBcwCOAmEBYwCOAoEBYwCOAmACYwCOAoACYwCOAoECYwCOAqACYwCOAsAC
-YwCOAuACYwCOAukCewD1AQADYwCOAgkDewD1ASADYwCOAkADYwCOAmADYwCOAoADYwCOAi0AWgB+
-ANYA4wACAAEABAAGAAYACwAKABcACwAZAAAAVgKqAQAABgeqAQAAOQCyAQAAhwmyAQAAywqyAQAA
-hwmyAQAAYAWyAQAAJAKyAQAAmgiyAQAAKAm2AQAAkwmyAQAABga6AQAA2AayAQAApwW6AQAAYAWy
-AQAAlAW6AQAAAAmyAQAA7QW6AQAAugiyAQAA1QW6AQAAqQiyAQAAvQW6AQAAgAe+AQAAzwLDAQAA
-sQnIAQIAAQADAAEAAgADAAIAAwAFAAEABAAFAAIABQAHAAEABgAHAAIABwAJAAEACAAJAAIACQAL
-AAEACgALAAIAEwANAAEAFAANAAIAFQAPAAEAFgAPAAIAFwARAAEAGAARAAIAGQATAAEAGgATAAIA
-GwAVAAEAHAAVAAIAIwAXAAIAJAAZAAIAJQAbAAIAJgAdAAIAJwAfAAIAKAAhAAIAKQAjAAIAKgAl
-AAIAKwAnAAIALAApAAIALQArAAIALgAtAAIAOAAvAAIAOQAxAAEAOgAxAAIAOwAzABsAPwBnAHcA
-BIAAAAEAAAAAAAAAAAAAAAAAzgQAAAQAAAAAAAAAAAAAAAgBVwAAAAAABAAAAAAAAAAAAAAACAGZ
-AgAAAAAEAAAAAAAAAAAAAAAIATsGAAAAAA0AAAAAAAAAAAAAABEBCQoAAAAADQAAAAAAAAAAAAAA
-EQEyCgAAAAAAAAAAAQAAAPwHAAAMAAIAAAAASGFzaFNldGAxAExpc3RgMQA8TW9kdWxlPgBnZXRf
-Q0MAV2l0aENDAGdldF9FbWFpbENDAHNldF9FbWFpbENDAGVtYWlsQ0MAc2V0Q0MASW5wdXRJRABt
-c2NvcmxpYgBTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYwBBZGQAPEVtYWlsQ0M+a19fQmFja2lu
-Z0ZpZWxkADxTdGFmZk5hbWU+a19fQmFja2luZ0ZpZWxkADxSZWNpcGllbnROYW1lPmtfX0JhY2tp
-bmdGaWVsZAA8UElFbWFpbD5rX19CYWNraW5nRmllbGQAPEVtYWlsVG8+a19fQmFja2luZ0ZpZWxk
-ADxTdGFmZlJvbGVzPmtfX0JhY2tpbmdGaWVsZAA8TnVtYmVyT2ZQcm90b2NvbHM+a19fQmFja2lu
-Z0ZpZWxkADxTdWJqZWN0PmtfX0JhY2tpbmdGaWVsZAA8Qm9keT5rX19CYWNraW5nRmllbGQAQnVp
-bGQAU2VuZABBcHBlbmQAc2VuZABFbWFpbFJlY29yZABlbWFpbFJlY29yZABFbWFpbFNlcnZpY2UA
-ZGVmYXVsdEluc3RhbmNlAGdldF9NZXNzYWdlAE1haWxNZXNzYWdlAG1haWxNZXNzYWdlAElEaXNw
-b3NhYmxlAFJ1bnRpbWVUeXBlSGFuZGxlAEdldFR5cGVGcm9tSGFuZGxlAGdldF9TdGFmZk5hbWUA
-c2V0X1N0YWZmTmFtZQBnZXRfUmVjaXBpZW50TmFtZQBzZXRfUmVjaXBpZW50TmFtZQBXaXRoUmVj
-aXBpZW50TmFtZQBJbnB1dE5hbWUAbmFtZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5QaXBlbGlu
-ZQBUeXBlAFN5c3RlbS5Db3JlAENvbmZpZ3VyZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNv
-dXJjZUN1bHR1cmUAQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UARGlzcG9zZQBFZGl0b3JCcm93c2Fi
-bGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0
-cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxlQXR0cmlidXRlAEFzc2Vt
-Ymx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3
-b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseURlc2Ny
-aXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQ
-cm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAFNTSVNTY3JpcHRDb21w
-b25lbnRFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1l
-Q29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBQcmVFeGVjdXRlAFBvc3RFeGVjdXRlAHZhbHVlAFJlbW92
-ZQBTQ18zZGIxNThiMTU5ZjI0NTUxOGFkMTNiYzk4OGYzMjFhZgBTeXN0ZW0uUnVudGltZS5WZXJz
-aW9uaW5nAFRvU3RyaW5nAEdldFN0cmluZwBnZXRfTGVuZ3RoAFN5c3RlbS5Db21wb25lbnRNb2Rl
-bABTeXN0ZW0uTmV0Lk1haWwAZ2V0X1BJRW1haWwAc2V0X1BJRW1haWwAU0NfM2RiMTU4YjE1OWYy
-NDU1MThhZDEzYmM5ODhmMzIxYWYuZGxsAGdldF9QSUVtYWlsX0lzTnVsbABnZXRfUHJvdG9jb2xO
-b19Jc051bGwAZ2V0X01lbWJlcnNSb2xlc19Jc051bGwAZ2V0X01lbWJlcnNOYW1lc19Jc051bGwA
-Z2V0X01lbWJlcnNFbWFpbHNfSXNOdWxsAGdldF9zdWJqZWN0X0lzTnVsbABzZXRfSXNCb2R5SHRt
-bABwcm90b2NvbABzZXRfRW5hYmxlU3NsAFN5c3RlbQBUcmltAHNldF9Gcm9tAHJlc291cmNlTWFu
-AFNjcmlwdE1haW4AU3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lz
-dGVtLlJlZmxlY3Rpb24ATWFpbEFkZHJlc3NDb2xsZWN0aW9uAEV4Y2VwdGlvbgBTdHJpbmdDb21w
-YXJpc29uAGdldF9Qcm90b2NvbE5vAGdldF9UbwBnZXRfRW1haWxUbwBzZXRfRW1haWxUbwBXaXRo
-RW1haWxUbwBlbWFpbFRvAHNldFRvAEN1bHR1cmVJbmZvAE91dHB1dE5hbWVNYXAAT3V0cHV0TWFw
-AENoYXIAU3RyaW5nQnVpbGRlcgBJbnB1dDBCdWZmZXIAUGlwZWxpbmVCdWZmZXIAU2NyaXB0QnVm
-ZmVyAGdldF9SZXNvdXJjZU1hbmFnZXIAR2V0RW51bWVyYXRvcgAuY3RvcgAuY2N0b3IAU3lzdGVt
-LkRpYWdub3N0aWNzAGVtYWlsUmVjb3JkcwBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2Vz
-AFN5c3RlbS5SZXNvdXJjZXMAU0NfM2RiMTU4YjE1OWYyNDU1MThhZDEzYmM5ODhmMzIxYWYuUHJv
-cGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2VzAERlYnVnZ2luZ01vZGVzAFNDXzNkYjE1OGIxNTlm
-MjQ1NTE4YWQxM2JjOTg4ZjMyMWFmLlByb3BlcnRpZXMAVmFyaWFibGVzAGdldF9TdGFmZlJvbGVz
-AHNldF9TdGFmZlJvbGVzAGdldF9NZW1iZXJzUm9sZXMAZ2V0X01lbWJlcnNOYW1lcwBCdWZmZXJD
-b2x1bW5JbmRleGVzAEdldENvbHVtbkluZGV4ZXMAU2V0dGluZ3MARXF1YWxzAGdldF9NZW1iZXJz
-RW1haWxzAGdldF9OdW1iZXJPZlByb3RvY29scwBzZXRfTnVtYmVyT2ZQcm90b2NvbHMAQ29ubmVj
-dGlvbnMATWFpbEFkZHJlc3MAQ29uY2F0AE9iamVjdABnZXRfU3ViamVjdABzZXRfU3ViamVjdABX
-aXRoU3ViamVjdABzZXRTdWJqZWN0AGdldF9zdWJqZWN0AEVuZE9mUm93c2V0AFNwbGl0AGdldF9E
-ZWZhdWx0AFNtdHBDbGllbnQAc210cENsaWVudABVc2VyQ29tcG9uZW50AFBhcmVudENvbXBvbmVu
-dABTY3JpcHRDb21wb25lbnQAZ2V0X0N1cnJlbnQATWljcm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlw
-dABFeHRyYWN0TGlzdABNaWNyb3NvZnQuU3FsU2VydmVyLlBpcGVsaW5lSG9zdABJbnB1dDBfUHJv
-Y2Vzc0lucHV0AE1vdmVOZXh0AFN5c3RlbS5UZXh0AElucHV0MF9Qcm9jZXNzSW5wdXRSb3cATmV4
-dFJvdwBJbnB1dFF1ZXJ5Um93AHJvdwBnZXRfQm9keQBzZXRfQm9keQBXaXRoQm9keQBzZXRCb2R5
-AGJvZHkAZ2V0X0Fzc2VtYmx5AAAAAC9vAGIAMQAuAGgAYwA0ADYAMAA0AC0ANQA0AC4AaQBwAGgA
-bQB4AC4AYwBvAG0AAT9WAFAASABTAC0ATwBuAEMAbwByAGUASQBUAEAAZQBtAGEAaQBsAC4AYQBy
-AGkAegBvAG4AYQAuAGUAZAB1AAE9RQByAHIAbwByACAAdwBoAGkAbABlACAAYgB1AGkAbABkAGkA
-bgBnACAAZQBtAGEAaQBsACAAPQA+ACAAAA9JAG4AcAB1AHQAIAAwAABxUwBDAF8AMwBkAGIAMQA1
-ADgAYgAxADUAOQBmADIANAA1ADUAMQA4AGEAZAAxADMAYgBjADkAOAA4AGYAMwAyADEAYQBmAC4A
-UAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAANPABoAHQAbQBsAD4AAA08
-AGgAZQBhAGQAPgAAgJE8AG0AZQB0AGEAIABoAHQAdABwAC0AZQBxAHUAaQB2AD0AQwBvAG4AdABl
-AG4AdAAtAFQAeQBwAGUAIABjAG8AbgB0AGUAbgB0AD0AIgB0AGUAeAB0AC8AaAB0AG0AbAA7ACAA
-YwBoAGEAcgBzAGUAdAA9AHcAaQBuAGQAbwB3AHMALQAxADIANQAyACIAPgABDzwALwBoAGUAYQBk
-AD4AAGE8AGIAbwBkAHkAIABsAGEAbgBnAD0ARQBOAC0AVQBTACAAbABpAG4AawA9ACIAIwAwADUA
-NgAzAEMAMQAiACAAdgBsAGkAbgBrAD0AIgAjADkANQA0AEYANwAyACIAPgABEzwAYgByAD4ARABl
-AGEAcgAgAAAFLAAgAAAJPABiAHIAPgAAMTwAYgByAD4APABiAD4AUABsAGUAYQBzAGUAIAB1AHAA
-ZABhAHQAZQA8AC8AYgA+AACCnzwAbABpAD4APABiAD4AUwB1AGIAagBlAGMAdAAgAEEAYwBjAHIA
-dQBhAGwAOgAgAHMAdQBiAG0AaQB0ACAAYQAgAHQAaQBjAGsAZQB0ACAAYQB0ACAAPAAvAGIAPgAg
-ADwAYQAgAGgAcgBlAGYAPQAiAGgAdAB0AHAAcwA6AC8ALwB0AGkAYwBrAGUAdABjAGEAdAAuAGEA
-cgBpAHoAbwBuAGEALgBlAGQAdQAvACIAPgAgAFQAaQBjAGsAZQB0AEMAYQB0ADwALwBhAD4AIAB3
-AGkAdABoACAAeQBvAHUAcgAgAGYAaQBsAGUALgAgAEUAdgBlAG4AIAB3AGgAZQBuACAAeQBvAHUA
+AnsDAAAEKiICA30DAAAEKtICKBAAAAoCcxEAAAooAgAABgJzEQAACigEAAAGAnMSAAAKKAYAAAYC
+KAUAAAYXbxMAAAoqjgIoEAAACgJyAQAAcHMUAAAKfQUAAAQCewUAAAQXbxUAAAoqNgJ7BQAABANv
+FgAACioeAnsGAAAEKiICA30GAAAEKh4CewcAAAQqIgIDfQcAAAQqHgJ7CAAABCoiAgN9CAAABCoe
+AnsJAAAEKiICA30JAAAEKh4CewoAAAQqIgIDfQoAAAQqHgIoEAAACioeAigXAAAKKgAbMAIASAAA
+AAEAABECKBgAAApzCAAABgoCewsAAARvGQAACgsrFBIBKBoAAAoMBghvBQAABm8JAAAGEgEoGwAA
+Ci3j3g4SAf4WAwAAG28cAAAK3CoBEAAAAgAYACE5AA4AAAAAGzACAH0AAAACAAARczQAAAYDbyAA
+AAYoNQAABgJ7DQAABG8sAAAGbx0AAApvNgAABgNvHgAABm83AAAGA28cAAAGbzgAAAYDbxoAAAZv
+OQAABgNvGgAABm86AAAGbzwAAAYKAnsLAAAEBm8eAAAK3hcLcjEAAHAHbx8AAAooIAAACnMhAAAK
+eioAAAABEAAAAAAAAGVlABcXAAABSgJzIgAACn0LAAAEAigmAAAGKioCAwQFKCMAAAoqUgJ7JAAA
+CgJ7JQAAChaUbyYAAAoqIgIWKCcAAAoqUgJ7JAAACgJ7JQAACheUbyYAAAoqIgIXKCcAAAoqUgJ7
+JAAACgJ7JQAAChiUbyYAAAoqIgIYKCcAAAoqUgJ7JAAACgJ7JQAAChmUbyYAAAoqIgIZKCcAAAoq
+UgJ7JAAACgJ7JQAAChqUbyYAAAoqIgIaKCcAAAoqHgIoKAAACioeAigpAAAKKn4CKCoAAAoCAnMq
+AAAGfQwAAAQCAnMrAAAGfQ0AAAQqkgRybwAAcBpvKwAACiwVAgUCAygsAAAKDgRzGQAABm8oAAAG
+KkorBwIDbykAAAYDbyQAAAYt8SoGKjoCKBAAAAoCA30OAAAEKjoCKBAAAAoCA30PAAAEKpYCew8A
+AARvLQAACnJ/AABwby4AAAooLwAACm8wAAAKdCMAAAEqrn4QAAAELR5yowAAcNAKAAACKDEAAApv
+MgAACnMzAAAKgBAAAAR+EAAABCoafhEAAAQqHgKAEQAABCoafhIAAAQqHgIoNAAACiouczIAAAaA
+EgAABCpKAigQAAAKAnMHAAAGfRMAAAQqABMwAgAuAAAAAwAAEQIDKDsAAAYKFgsrGgYHmgwCexMA
+AARvAQAABghvNQAACiYHF1gLBwaOaTLgAipiAnsTAAAEbwUAAAYDczYAAApvNwAACgIqABswAgB6
+AAAABAAAEQIDKDsAAAYKFgsrGgYHmgwCexMAAARvAwAABghvNQAACiYHF1gLBwaOaTLgAnsTAAAE
+bwMAAAZvOAAACg0rIBIDKDkAAAoTBAJ7EwAABG8FAAAGbzoAAAoRBG87AAAKEgMoPAAACi3X3g4S
+A/4WBAAAG28cAAAK3AIqAAABEAAAAgA9AC1qAA4AAAAAggMoPQAACi0WAnsTAAAEbwUAAAZvPgAA
+CgNvOwAACgIqigJ7EwAABG8FAAAGchUBAHADckEBAHAoPwAACm9AAAAKAioTMAQAwQEAAAUAABFz
+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
+GAUIlAEUAH0jAAAAAIYYBQiUARUAjCMAAAAAhgiWAGAAFgA/IQAAAACDGAUIBgAWALIjAAAAAJMI
+uweaARYA3iMAAAAAkwj8Ap8BFgDlIwAAAACTCAgDpAEWAO0jAAAAAJYICQqqARcA9CMAAAAAhhgF
+CAYAFwD8IwAAAACRGAsIrwEXAAgkAAAAAIYYBQgGABcAHCQAAAAAhgCpArMBFwBWJAAAAACGAE8G
+swEYAHAkAAAAAIYAJAezARkACCUAAAAAhgB/ALMBGgApJQAAAACGAOsJswEbAEwlAAAAAIYAVguz
+ARwAGScAAAAAgQCCCrkBHQAsJwAAAACGALUBvwEeAAAAAQAOBQAAAQAOBQAAAQAOBQAAAQAtAgAA
+AQAOBQAAAQAOBQAAAQAOBQAAAQAOBQAAAQAOBQAAAQBJCwAAAQC0BwAAAgA6CQAAAwBSBwAAAQCO
+AAAAAgC7AgAAAwC0BwAABABSBwAAAQC0BwAAAQBFCwAAAQBPCgAAAQBPCgAAAQAOBQAAAQDFAgAA
+AQBdBgAAAQAwBwAAAQCGAAAAAQD6BgAAAQD6BgAAAQAwBwkABQgBABEABQgGABkABQgKACkABQgQ
+ADEABQgQADkABQgQAEEABQgQAEkABQgQAFEABQgQAFkABQgQAGEABQgQAHEABQgGAKEABQgGAOEA
+BQgGAAEBBQgVAGkABQgGAAwABQgGAIEABQgGAIEAGQYhAJkABQgQAJkAKAYhAJkAuwEmANkA9wQG
+ANkAAgUGABQA9wdAABwAWQpQABwAwwpVABEBPAMGAGkALgVgABQA0ABkALkAAQJgABkBxQlqALkA
+BQgQABQABQgGAMEABQhwAMEAtAd6AMEAOgl+AMkANwWCAMEAEgaHAMEAMwtVAMEA9wlVANkABQgG
+ABkBaAmMANkATgmUANkA5AiaACkBNgagANkABwunADEB2AqtAEkBVwK0AEkBXwu9AOkABQjDAAkB
+BQgGAAwA0ADSAGEBBQgQAIEARgbYAAwA9wfsACQAWQpQAIEABQf7AGkB0AAQACQAwwpVABkBbAsB
+AYEAeAD7ABkBxQkGAYEA3wkQAJEABQgGAJEAwAESAYEATQsQABkBAwoYASAAYwCtAiEAYwCtAi4A
+CwDsAS4AEwD1AS4AGwAUAi4AIwAdAi4AKwBGAi4AMwBGAi4AOwBGAi4AQwAdAi4ASwBMAi4AUwBG
+Ai4AWwBjAkAAYwCtAkEAYwCtAmAAYwCtAmEAYwCtAoAAYwCtAqAAYwCtAqMAawCtAsAAYwCtAsEA
+YwCtAuEAYwCtAgEBYwCtAiEBYwCtAkABYwCtAkEBYwCtAkMBcwCtAmABYwCtAoABYwCtAqABYwCt
+AsABYwCtAuABYwCtAgACYwCtAiACYwCtAkACYwCtAkECYwCtAmACYwCtAokCewAUAqkCewAUAiwA
+WQDLAN8ADQECAAEABAAEAAYACQAJABMACgAUAAsAFgAAAK0CxAEAACgHxAEAAC0CzAEAAO8J0QEA
+AHcF0QEAAHsC0QEAAA0J0QEAAJsJ1QEAAO8G0QEAAL4F2QEAAHcF0QEAAKsF2QEAAHMJ0QEAAAQG
+2QEAAC0J0QEAAOwF2QEAABwJ0QEAANQF2QEAAJoA0QEAAL8H3QEAABwD4gEAAA0K5wECAAEAAwAB
+AAIAAwACAAMABQABAAQABQACAAUABwABAAYABwACAAoACQABAAsACQACAAwACwABAA0ACwACAA4A
+DQABAA8ADQACABAADwABABEADwACABIAEQABABMAEQACABoAEwACABsAFQACABwAFwACAB0AGQAC
+AB4AGwACAB8AHQACACAAHwACACEAIQACACIAIwACACMAJQACACwAJwACAC4AKQACAC8AKwABADAA
+KwACADEALQAbADkASQD1AASAAAABAAAAAAAAAAAAAAAAAEsAAAAEAAAAAAAAAAAAAAAfAawAAAAA
+AAQAAAAAAAAAAAAAAB8B8AIAAAAABAAAAAAAAAAAAAAAHwE/BgAAAAANAAAAAAAAAAAAAAAoAWUK
+AAAAAA0AAAAAAAAAAAAAACgBjgoAAAAADQAAAAAAAAAAAAAAKAFcBwAAAAAAAAAAAQAAAGMIAAAM
+AAIAAAAAAABJRFRTVmFyaWFibGUxMDAASURUU1ZhcmlhYmxlczEwMABJRFRTRXZhbHVhdG9yQ29u
+dGV4dDEwMABIYXNoU2V0YDEATGlzdGAxAFNDXzlCMjYyQTExMUFBNDRCNDBBQzZFQUU5ODk1N0JG
+NzY0ADxNb2R1bGU+AGdldF9DQwBXaXRoQ0MAZW1haWxDQwBJbnB1dElEAGdldF9TTVRQQ2xpZW50
+RnJvbVVSTABtc2NvcmxpYgBTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYwBBZGQAPG1haWxNZXNz
+YWdlPmtfX0JhY2tpbmdGaWVsZAA8U3RhZmZOYW1lPmtfX0JhY2tpbmdGaWVsZAA8UmVjaXBpZW50
+TmFtZT5rX19CYWNraW5nRmllbGQAPFBJRW1haWw+a19fQmFja2luZ0ZpZWxkADxFbWFpbFRvPmtf
+X0JhY2tpbmdGaWVsZAA8U3RhZmZSb2xlcz5rX19CYWNraW5nRmllbGQAPE51bWJlck9mUHJvdG9j
+b2xzPmtfX0JhY2tpbmdGaWVsZAA8U3ViamVjdD5rX19CYWNraW5nRmllbGQAQnVpbGQAU2VuZABB
+cHBlbmQAc2VuZABFbWFpbFJlY29yZABlbWFpbFJlY29yZABFbWFpbFNlcnZpY2UAZGVmYXVsdElu
+c3RhbmNlAGdldF9NZXNzYWdlAE1haWxNZXNzYWdlAGdldF9tYWlsTWVzc2FnZQBzZXRfbWFpbE1l
+c3NhZ2UASURpc3Bvc2FibGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAZ2V0
+X1N0YWZmTmFtZQBzZXRfU3RhZmZOYW1lAGdldF9SZWNpcGllbnROYW1lAHNldF9SZWNpcGllbnRO
+YW1lAFdpdGhSZWNpcGllbnROYW1lAElucHV0TmFtZQBuYW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIu
+RHRzLlBpcGVsaW5lAFR5cGUAU3lzdGVtLkNvcmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVz
+b3VyY2VDdWx0dXJlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAERpc3Bvc2UARWRpdG9yQnJvd3Nh
+YmxlU3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0
+dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3Nl
+bWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1l
+d29ya0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNj
+cmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5
+UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0Q29t
+cG9uZW50RW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGlt
+ZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAUHJlRXhlY3V0ZQBQb3N0RXhlY3V0ZQB2YWx1ZQBTeXN0
+ZW0uUnVudGltZS5WZXJzaW9uaW5nAFRvU3RyaW5nAEdldFN0cmluZwBTeXN0ZW0uQ29tcG9uZW50
+TW9kZWwAU3lzdGVtLk5ldC5NYWlsAGdldF9QSUVtYWlsAHNldF9QSUVtYWlsAFNDXzlCMjYyQTEx
+MUFBNDRCNDBBQzZFQUU5ODk1N0JGNzY0LmRsbABnZXRfUElFbWFpbF9Jc051bGwAZ2V0X1Byb3Rv
+Y29sTm9fSXNOdWxsAGdldF9NZW1iZXJzUm9sZXNfSXNOdWxsAGdldF9NZW1iZXJzTmFtZXNfSXNO
+dWxsAGdldF9NZW1iZXJzRW1haWxzX0lzTnVsbABzZXRfSXNCb2R5SHRtbABzZXRfRW5hYmxlU3Ns
+AGdldF9JdGVtAFN5c3RlbQBzZXRfRnJvbQBXaXRoRW1haWxGcm9tAGVtYWlsRnJvbQByZXNvdXJj
+ZU1hbgBTY3JpcHRNYWluAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9u
+AFN5c3RlbS5SZWZsZWN0aW9uAE1haWxBZGRyZXNzQ29sbGVjdGlvbgBFeGNlcHRpb24AU3RyaW5n
+Q29tcGFyaXNvbgBnZXRfUHJvdG9jb2xObwBwcm90b2NvbE5vAGdldF9UbwBnZXRfRW1haWxUbwBz
+ZXRfRW1haWxUbwBXaXRoRW1haWxUbwBlbWFpbFRvAEN1bHR1cmVJbmZvAE91dHB1dE5hbWVNYXAA
+T3V0cHV0TWFwAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRFRTUnVudGltZVdyYXAAQ2hhcgBTdHJpbmdC
+dWlsZGVyAElucHV0MEJ1ZmZlcgBQaXBlbGluZUJ1ZmZlcgBTY3JpcHRCdWZmZXIAZ2V0X1Jlc291
+cmNlTWFuYWdlcgBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lLldyYXBwZXIAR2V0RW51
+bWVyYXRvcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAGVtYWlsUmVjb3JkcwBTeXN0
+ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMAU0NfM2RiMTU4YjE1
+OWYyNDU1MThhZDEzYmM5ODhmMzIxYWYuUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2VzAERl
+YnVnZ2luZ01vZGVzAFNDXzNkYjE1OGIxNTlmMjQ1NTE4YWQxM2JjOTg4ZjMyMWFmLlByb3BlcnRp
+ZXMAZ2V0X1JlYWRPbmx5VmFyaWFibGVzAGdldF9TdGFmZlJvbGVzAHNldF9TdGFmZlJvbGVzAGdl
+dF9NZW1iZXJzUm9sZXMAZ2V0X01lbWJlcnNOYW1lcwBCdWZmZXJDb2x1bW5JbmRleGVzAEdldENv
+bHVtbkluZGV4ZXMAU2V0dGluZ3MARXF1YWxzAGdldF9NZW1iZXJzRW1haWxzAGdldF9OdW1iZXJP
+ZlByb3RvY29scwBzZXRfTnVtYmVyT2ZQcm90b2NvbHMAQ29ubmVjdGlvbnMATWFpbEFkZHJlc3MA
+Q29uY2F0AE9iamVjdABnZXRfU3ViamVjdABzZXRfU3ViamVjdABXaXRoU3ViamVjdABFbmRPZlJv
+d3NldABTcGxpdABnZXRfRGVmYXVsdABTbXRwQ2xpZW50AHNtdHBDbGllbnQAVXNlckNvbXBvbmVu
+dABQYXJlbnRDb21wb25lbnQAU2NyaXB0Q29tcG9uZW50AGdldF9DdXJyZW50AE1pY3Jvc29mdC5T
+cWxTZXJ2ZXIuVHhTY3JpcHQARXh0cmFjdExpc3QATWljcm9zb2Z0LlNxbFNlcnZlci5QaXBlbGlu
+ZUhvc3QASW5wdXQwX1Byb2Nlc3NJbnB1dABNb3ZlTmV4dABTeXN0ZW0uVGV4dABHZXRWYWx1ZVdp
+dGhDb250ZXh0AFNjcmlwdENvbXBvbmVudEV2YWxDb250ZXh0AGdldF9FdmFsdWF0b3JDb250ZXh0
+AElucHV0MF9Qcm9jZXNzSW5wdXRSb3cATmV4dFJvdwBJbnB1dFF1ZXJ5Um93AHJvdwBzZXRfQm9k
+eQBXaXRoQm9keQBnZXRfQXNzZW1ibHkASXNOdWxsT3JFbXB0eQAAAAAvbwBiADEALgBoAGMANAA2
+ADAANAAtADUANAAuAGkAcABoAG0AeAAuAGMAbwBtAAE9RQByAHIAbwByACAAdwBoAGkAbABlACAA
+YgB1AGkAbABkAGkAbgBnACAAZQBtAGEAaQBsACAAPQA+ACAAAA9JAG4AcAB1AHQAIAAwAAAjUwBN
+AFQAUABDAGwAaQBlAG4AdABGAHIAbwBtAFUAUgBMAABxUwBDAF8AMwBkAGIAMQA1ADgAYgAxADUA
+OQBmADIANAA1ADUAMQA4AGEAZAAxADMAYgBjADkAOAA4AGYAMwAyADEAYQBmAC4AUAByAG8AcABl
+AHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAArVQBSAEcARQBOAFQAOgAgAFAAcgBvAHQA
+bwBjAG8AbAAgAE4AbwAuACAAAFMgAEEAYwB0AGkAbwBuACAATgBlAGUAZABlAGQAIABmAG8AcgAg
+AFMAdQBtAG0AYQByAHkAIABBAGMAYwByAHUAYQBsACAAVQBwAGwAbwBhAGQAAA08AGgAdABtAGwA
+PgAADTwAaABlAGEAZAA+AACAkTwAbQBlAHQAYQAgAGgAdAB0AHAALQBlAHEAdQBpAHYAPQBDAG8A
+bgB0AGUAbgB0AC0AVAB5AHAAZQAgAGMAbwBuAHQAZQBuAHQAPQAiAHQAZQB4AHQALwBoAHQAbQBs
+ADsAIABjAGgAYQByAHMAZQB0AD0AdwBpAG4AZABvAHcAcwAtADEAMgA1ADIAIgA+AAEPPAAvAGgA
+ZQBhAGQAPgAAYTwAYgBvAGQAeQAgAGwAYQBuAGcAPQBFAE4ALQBVAFMAIABsAGkAbgBrAD0AIgAj
+ADAANQA2ADMAQwAxACIAIAB2AGwAaQBuAGsAPQAiACMAOQA1ADQARgA3ADIAIgA+AAFhPABiAHIA
+PgBEAGUAYQByACAAQwBsAGkAbgBpAGMAYQBsACAAVAByAGkAYQBsACAAVABlAGEAbQAgAG8AZgAg
+AFAAcgBvAHQAbwBjAG8AbAAgAE4AbwAuACAAPABiAD4AAAs8AC8AYgA+ACwAAAk8AGIAcgA+AACC
+IzwAYgByAD4AUABsAGUAYQBzAGUAIAB1AHAAZABhAHQAZQAgAHQAaABlACAAZgBvAGwAbABvAHcA
+aQBuAGcAIABpAG4AZgBvAHIAbQBhAHQAaQBvAG4AIABpAG4AIABPAG4AQwBvAHIAZQAgAGYAbwBy
+ACAAPABhACAAaAByAGUAZgAgAD0AIAAiAGgAdAB0AHAAcwA6AC8ALwBjAHQAYQBwAHAAcwAuAHUA
+YQBoAHMALgBhAHIAaQB6AG8AbgBhAC4AZQBkAHUALwBvAG4AYwBvAHIAZQAvAHMAdQBtAG0AYQBy
+AHkALQBhAGMAYwByAHUAYQBsAC0AcgBlAHAAbwByAHQAaQBuAGcAIwA6AH4AOgB0AGUAeAB0AD0A
+UwB1AG0AbQBhAHIAeQAlADIAMABBAGMAYwByAHUAYQBsACUAMgAwAHIAZQBmAGUAcgBzACUAMgAw
+AHQAbwAlADIAMABhAG4ALAB1AHAAZABhAHQAZQBzACUAMgAwAHQAbwAlADIAMAB0AHIAYQBjAGsA
+JQAyADAAcgBlAHMAZQBhAHIAYwBoACUAMgAwAHYAaQBzAGkAdABzAC4AIgA+AGMAbwBtAHAAbABp
+AGEAbgBjAGUAIAByAGUAcQB1AGkAcgBlAG0AZQBuAHQAcwA8AC8AYQA+ACAAYQBuAGQAIABsAGUA
+YQBkAGUAcgBzAGgAaQBwACAAcgBlAHAAbwByAHQAcwA6AAEJPAB1AGwAPgAANzwAbABpAD4APABi
+AD4AUwB1AGIAagBlAGMAdAAgAEEAYwBjAHIAdQBhAGwAcwA8AC8AYgA+AACCoTwAbABpAD4AUwB1
+AGIAbQBpAHQAIAB5AG8AdQByACAAcwB1AG0AbQBhAHIAeQAgAGEAYwBjAHIAdQBhAGwAIABmAGkA
+bABlACAAdQBzAGkAbgBnACAAPABhACAAaAByAGUAZgA9ACAAIgBoAHQAdABwAHMAOgAvAC8AdABp
+AGMAawBlAHQAYwBhAHQALgBhAHIAaQB6AG8AbgBhAC4AZQBkAHUALwBzAHUAcABwAG8AcgB0AC8A
+YwBhAHQAYQBsAG8AZwAvAGkAdABlAG0AcwAvADcAMwAiAD4AdABoAGkAcwAgAHIAZQBxAHUAZQBz
+AHQAIABmAG8AcgBtADwALwBhAD4ALgAgAEkAZgAgAHkAbwB1ACAAZQBuAGMAbwB1AG4AdABlAHIA
+IABpAHMAcwB1AGUAcwAgAGEAYwBjAGUAcwBzAGkAbgBnACAAdABoAGUAIABsAGkAbgBrACAAaQBu
+ACAAdABoAGkAcwAgAGUAbQBhAGkAbAAsACAAdgBpAHMAaQB0ACAAPABhACAAaAByAGUAZgA9ACIA
+aAB0AHQAcABzADoALwAvAHQAaQBjAGsAZQB0AGMAYQB0AC4AYQByAGkAegBvAG4AYQAuAGUAZAB1
+AC8AIgA+ACAAVABpAGMAawBlAHQAQwBhAHQAPAAvAGEAPgAgAGEAbgBkACAAcwB1AGIAbQBpAHQA
+IAB5AG8AdQByACAAZgBpAGwAZQAgAHYAaQBhACAAdABoAGUAIAAnAE8AbgBDAG8AcgBlACAAUwB1
+AG0AbQBhAHIAeQAgAEEAYwBjAHIAdQBhAGwAIABGAGkAbABlACAAVQBwAGwAbwBhAGQAJwAgAHIA
+ZQBxAHUAZQBzAHQAIABmAG8AcgBtAC4APAAvAGwAaQA+AAGBtTwAbABpAD4ASQBmACAAeQBvAHUA
 cgAgAGEAYwBjAHIAdQBhAGwAIABkAGEAdABhACAAaQBzACAAaQBuACAAYQBuAG8AdABoAGUAcgAg
-AGYAbwByAG0AYQB0ACAAKABlAC4AZwAuACAAcwBwAG8AbgBzAG8AcgAgAHAAcgBvAHYAaQBkAGUA
-ZAAgAGEAYwBjAHIAdQBhAGwAIAByAGUAcABvAHIAdABzACkALAAgAHMAaABhAHIAZQAgAHQAaABh
-AHQAIAB2AGkAYQAgADwAYQAgAGgAcgBlAGYAPQAiAGgAdAB0AHAAcwA6AC8ALwB0AGkAYwBrAGUA
-dABjAGEAdAAuAGEAcgBpAHoAbwBuAGEALgBlAGQAdQAvACIAPgAgAFQAaQBjAGsAZQB0AEMAYQB0
-ADwALwBhAD4ALgAgAEkAZgAgAHQAaABlAHIAZQAgAGEAcgBlACAAbgBvACAAdQBwAGQAYQB0AGUA
-cwAsACAAbgBvACAAbgBlAHcAIABmAGkAbABlACAAaQBzACAAbgBlAGUAZABlAGQALgAgADwALwBs
-AGkAPgAASTwAbABpAD4APABiAD4ASQBSAEIAIABlAHgAcABpAHIAYQB0AGkAbwBuACAAZABhAHQA
-ZQBzADwALwBiAD4APAAvAGwAaQA+AACAmTwAbABpAD4APABiAD4AUAByAG8AdABvAGMAbwBsACAA
-cwB0AGEAdAB1AHMAZQBzACAAKABvAHAAZQBuACAAdABvACAAYQBjAGMAcgB1AGEAbAAsACAAYwBs
-AG8AcwBlAGQAIAB0AG8AIABhAGMAYwByAHUAYQBsACwAIABlAHQAYwAuACkAPAAvAGIAPgA8AC8A
-bABpAD4AAH08AGwAaQA+ADwAYgA+AFAAcgBvAHQAbwBjAG8AbAAgAHMAdABhAGYAZgAgACgAYQBk
-AGQAIABvAHIAIAByAGUAbQBvAHYAZQAgAHMAdABhAGYAZgAgAGEAcwAgAG4AZQBlAGQAZQBkACkA
-PAAvAGIAPgA8AC8AbABpAD4AAD88AGwAaQA+ADwAYgA+AFQAYQByAGcAZQB0ACAAYQBjAGMAcgB1
-AGEAbABzADwALwBiAD4APAAvAGwAaQA+AAAfPABiAHIAPgBQAHIAbwB0AG8AYwBvAGwAIAA6ACAA
-ADM8AGIAcgA+ADwAYgA+AEgAZQBsAHAAZgB1AGwAIABsAGkAbgBrAHMAOgA8AC8AYgA+AACA4zwA
-bABpAD4APABhACAAaAByAGUAZgA9ACIAaAB0AHQAcABzADoALwAvAGMAdABhAHAAcABzAC4AdQBh
-AGgAcwAuAGEAcgBpAHoAbwBuAGEALgBlAGQAdQAvAG8AbgBjAG8AcgBlAC8AcwB1AG0AbQBhAHIA
-eQAtAGEAYwBjAHIAdQBhAGwALQByAGUAcABvAHIAdABpAG4AZwAiAD4AUwB1AG0AbQBhAHIAeQAg
-AEEAYwBjAHIAdQBhAGwAIABJAG4AZgBvACAAUABhAGcAZQA8AC8AYQA+ADwALwBsAGkAPgABgM08
-AGwAaQA+ADwAYQAgAGgAcgBlAGYAPQAiAGgAdAB0AHAAcwA6AC8ALwBhAHAAcAAuAGIAbwB4AC4A
-YwBvAG0ALwBzAC8ANABkAGUAeABlAHgAMQA0AHoAZQA1ADYAbQBtAHAAaQB4ADYAaABxADIAagBo
-AGQAaABzADgAYwA0AHQAegA3ACIAPgBTAHUAbQBtAGEAcgB5ACAAQQBjAGMAcgB1AGEAbAAgAFQA
-ZQBtAHAAbABhAHQAZQA8AC8AYQA+ADwALwBsAGkAPgAAHTwAYgByAD4AUwBpAG4AYwBlAHIAZQBs
-AHkALAAAcTwAYgByAD4AQwBvAGwAbABlAGcAZQAgAG8AZgAgAE0AZQBkAGkAYwBpAG4AZQAsACAA
-SQBuAGYAbwByAG0AYQB0AGkAbwBuACAAVABlAGMAaABuAG8AbABvAGcAeQAgAFMAZQByAHYAaQBj
-AGUAcwAAgMs8AGIAcgA+ADwAYgA+AEYAbwByACAAYQBzAHMAaQBzAHQAYQBuAGMAZQA6ADwALwBi
-AD4AIABzAHUAYgBtAGkAdAAgAGEAIAB0AGkAYwBrAGUAdAAgAGEAdAAgADwAYQAgAGgAcgBlAGYA
-PQAiAGgAdAB0AHAAcwA6AC8ALwB0AGkAYwBrAGUAdABjAGEAdAAuAGEAcgBpAHoAbwBuAGEALgBl
-AGQAdQAvACIAPgAgAFQAaQBjAGsAZQB0AEMAYQB0ADwALwBhAD4AAA88AC8AYgBvAGQAeQA+AAAP
-PAAvAGgAdABtAGwAPgAAAAAArfLELVuyHE6a/3ZTl7Cq8gAEIAEBCAMgAAEFIAEBEREEIAEBDgUg
-AQERfQUVEj0BDgQgAQECBiABARKAiQgHAhURRQEODgggABURRQETAAUVEUUBDgQgABMABSAAEoCN
-AyAAAgUgAQESSQwHAxIMFRFZARIIEggGFRJVARIICCAAFRFZARMABhURWQESCAYHAhIIEl0FIAEB
-EwADIAAOBQACDg4OCSADARJlHQgSaQMGEmUDBh0IBCABDggEIAECCAcgAgIOEYCZBSABHQgICAAB
-EoCdEYChBSAAEoClByACAQ4SgKUGBwMdDggOBSABAhMADAcEEkEVEUUBDg4dDgUgARJBDgYgAR0O
-HQMDIAAIBiACEkEICAi3elxWGTTgiQiJhF3NgIDMkQYGFRI9AQ4CBg4DBhJJAwYSTQIGCAcGFRJV
-ARIIAwYSIAMGEiQDBhJtAwYSdQMGEnkDBhIsAwYSCAcgABUSPQEOCCABARUSPQEOBSABARIIBSAB
-ARIYCSAEAQgOEmUSaQUgAQESbQQAABJ1BAAAEnkFAAEBEnkEAAASLAMAAAEFIAESMA4FIAEdDg4E
-IAASCAcoABUSPQEOAygADgMoAAgDKAACBAgAEnUECAASeQQIABIsCAEACAAAAAAAHgEAAQBUAhZX
-cmFwTm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTQ18zZGIxNThiMTU5ZjI0NTUxOGFk
-MTNiYzk4OGYzMjFhZgAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDIzAABJAQAaLk5FVEZyYW1l
-d29yayxWZXJzaW9uPXY0LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3Jr
-IDQuNwQBAAAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRl
-ciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlU
-b2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0
-AgAAAAAAAAAAAAAAUEFEUEFEULQAAADITAAAAAAAAAAAAADiTAAAACAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAA1EwAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABABAAAAAYAACA
-AAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABIAAAAWGAAAOwDAAAA
-AAAAAAAAAOwDNAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAAAAC9BO/+AAABAAAA
-AQAAAAAAAAABAAAAAAA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAAAAEAVgBhAHIARgBp
-AGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4AAAAAAAAAsARMAwAA
-AQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAAoAwAAAQAwADAAMAAwADAANABiADAAAAAa
-AAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABhAG4AeQBOAGEAbQBlAAAA
-AAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAAAFMAQwBfADMAZABi
-ADEANQA4AGIAMQA1ADkAZgAyADQANQA1ADEAOABhAGQAMQAzAGIAYwA5ADgAOABmADMAMgAxAGEA
-ZgAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAwAC4AMAAAAHAAKAAB
-AEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AMwBkAGIAMQA1ADgAYgAxADUAOQBmADIA
-NAA1ADUAMQA4AGEAZAAxADMAYgBjADkAOAA4AGYAMwAyADEAYQBmAC4AZABsAGwAAABIABIAAQBM
-AGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIA
-MAAyADMAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAAB
-AE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwAzAGQAYgAxADUAOABiADEA
-NQA5AGYAMgA0ADUANQAxADgAYQBkADEAMwBiAGMAOQA4ADgAZgAzADIAMQBhAGYALgBkAGwAbAAA
-AGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBDAF8AMwBkAGIAMQA1ADgAYgAxADUA
-OQBmADIANAA1ADUAMQA4AGEAZAAxADMAYgBjADkAOAA4AGYAMwAyADEAYQBmAAAANAAIAAEAUABy
-AG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAADgACAABAEEAcwBzAGUA
-bQBiAGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAAAAAAAAAAAAAAAAAAAAA
+AGYAbwByAG0AYQB0ACAAKABlAC4AZwAuACwAIABzAHAAbwBuAHMAbwByAC0AcAByAG8AdgBpAGQA
+ZQBkACAAYQBjAGMAcgB1AGEAbAAgAHIAZQBwAG8AcgB0AHMAKQAsACAAcABsAGUAYQBzAGUAIAB1
+AHAAbABvAGEAZAAgAHQAaABpAHMAIABpAG4AZgBvAHIAbQBhAHQAaQBvAG4AIAB1AHMAaQBuAGcA
+IAB0AGgAZQAgAGkAbgBzAHQAcgB1AGMAdABpAG8AbgBzACAAcAByAG8AdgBpAGQAZQBkACAAaQBu
+ACAAdABoAGkAcwAgAGUAbQBhAGkAbAAsACAAYQBuAGQAIAB3AGUAIAB3AGkAbABsACAAYQBzAHMA
+aQBzAHQAIABpAG4AIABjAG8AbgB2AGUAcgB0AGkAbgBnACAAaQB0ACAAZgBvAHIAIABPAG4AQwBv
+AHIAZQAuADwALwBsAGkAPgABCzwALwB1AGwAPgAACzwALwBsAGkAPgAASTwAbABpAD4APABiAD4A
+SQBSAEIAIABlAHgAcABpAHIAYQB0AGkAbwBuACAAZABhAHQAZQBzADwALwBiAD4APAAvAGwAaQA+
+AACAlTwAbABpAD4APABiAD4AUAByAG8AdABvAGMAbwBsACAAUwB0AGEAdAB1AHMAPAAvAGIAPgAg
+ACgAbwBwAGUAbgAgAHQAbwAgAGEAYwBjAHIAdQBhAGwALAAgAGMAbABvAHMAZQBkACAAdABvACAA
+YQBjAGMAcgB1AGEAbAAsACAAZQB0AGMALgApADwALwBsAGkAPgAAfTwAbABpAD4APABiAD4AUABy
+AG8AdABvAGMAbwBsACAAUwB0AGEAZgBmADwALwBiAD4AIAAoAGEAZABkACAAbwByACAAcgBlAG0A
+bwB2AGUAIABzAHQAYQBmAGYAIABhAHMAIABuAGUAZQBkAGUAZAApADwALwBsAGkAPgAAPTwAbABp
+AD4APABiAD4AVABhAHIAZwBlAHQAIABBAGMAYwByAHUAYQBsADwALwBiAD4APAAvAGwAaQA+AACA
+hTwAYgByAD4ASQBmACAAdABoAGUAcgBlACAAYQByAGUAIABuAG8AIAB1AHAAZABhAHQAZQBzACAA
+dABvACAAeQBvAHUAcgAgAHAAcgBvAHQAbwBjAG8AbAAsACAAbgBvACAAYQBjAHQAaQBvAG4AIABp
+AHMAIABuAGUAZQBkAGUAZAAuAAAzPABiAHIAPgA8AGIAPgBIAGUAbABwAGYAdQBsACAAbABpAG4A
+awBzADoAPAAvAGIAPgAAgOM8AGwAaQA+ADwAYQAgAGgAcgBlAGYAPQAiAGgAdAB0AHAAcwA6AC8A
+LwBjAHQAYQBwAHAAcwAuAHUAYQBoAHMALgBhAHIAaQB6AG8AbgBhAC4AZQBkAHUALwBvAG4AYwBv
+AHIAZQAvAHMAdQBtAG0AYQByAHkALQBhAGMAYwByAHUAYQBsAC0AcgBlAHAAbwByAHQAaQBuAGcA
+IgA+AFMAdQBtAG0AYQByAHkAIABBAGMAYwByAHUAYQBsACAASQBuAGYAbwAgAFAAYQBnAGUAPAAv
+AGEAPgA8AC8AbABpAD4AAYDNPABsAGkAPgA8AGEAIABoAHIAZQBmAD0AIgBoAHQAdABwAHMAOgAv
+AC8AYQBwAHAALgBiAG8AeAAuAGMAbwBtAC8AcwAvADQAZABlAHgAZQB4ADEANAB6AGUANQA2AG0A
+bQBwAGkAeAA2AGgAcQAyAGoAaABkAGgAcwA4AGMANAB0AHoANwAiAD4AUwB1AG0AbQBhAHIAeQAg
+AEEAYwBjAHIAdQBhAGwAIABUAGUAbQBwAGwAYQB0AGUAPAAvAGEAPgA8AC8AbABpAD4AAHk8AGIA
+cgA+AFQAaABhAG4AawAgAHkAbwB1ACAAZgBvAHIAIAB5AG8AdQByACAAcAByAG8AbQBwAHQAIABh
+AHQAdABlAG4AdABpAG8AbgAgAHQAbwAgAHQAaABpAHMAIABtAGEAdAB0AGUAcgAuADwALwBiAHIA
+PgAAHTwAYgByAD4AUwBpAG4AYwBlAHIAZQBsAHkALAAAcTwAYgByAD4AQwBvAGwAbABlAGcAZQAg
+AG8AZgAgAE0AZQBkAGkAYwBpAG4AZQAsACAASQBuAGYAbwByAG0AYQB0AGkAbwBuACAAVABlAGMA
+aABuAG8AbABvAGcAeQAgAFMAZQByAHYAaQBjAGUAcwAAgPs8AGIAcgA+ADwAaQA+AEYAbwByACAA
+YQBuAHkAIABpAG4AcQB1AGkAcgBpAGUAcwAgAG8AcgAgAGEAcwBzAGkAcwB0AGEAbgBjAGUALAAg
+AHAAbABlAGEAcwBlACAAcwB1AGIAbQBpAHQAIABhACAAdABpAGMAawBlAHQAIABpAG4APAAvAGkA
+PgAgADwAYQAgAGgAcgBlAGYAPQAiAGgAdAB0AHAAcwA6AC8ALwB0AGkAYwBrAGUAdABjAGEAdAAu
+AGEAcgBpAHoAbwBuAGEALgBlAGQAdQAvACIAPgAgAFQAaQBjAGsAZQB0AEMAYQB0ADwALwBhAD4A
+AA88AC8AYgBvAGQAeQA+AAAPPAAvAGgAdABtAGwAPgAAAABI8FNsm1FDTb+yLaXWb0TCAAQgAQEI
+AyAAAQUgAQEREQQgAQEOBSABARF9BRUSPQEOBCABAQIFIAEBEkEMBwMSDBURWQESCBIIBhUSVQES
+CAggABURWQETAAYVEVkBEggEIAATAAMgAAIGBwISCBJdAyAADgUgAQETAAUAAg4ODgkgAwESZR0I
+EmkDBhJlAwYdCAQgAQ4IBCABAggHIAICDhGAkQUgAR0ICAUgABKAlQYgARKAmRwFAAASgJ0GIAEc
+EoChCAABEoClEYCpBSAAEoCtByACAQ4SgK0GBwMdDggOBSABAhMABiABARKAsQwHBR0OCA4VEUUB
+Dg4IIAAVEUUBEwAFFRFFAQ4FIAASgLUEAAECDgYAAw4ODg4EBwESSQUgARJJDgYgAR0OHQMIt3pc
+Vhk04IkIiYRdzYCAzJEGBhUSPQEOAwYSQQMGEk0CBg4CBggHBhUSVQESCAMGEiADBhIkAwYSbQMG
+EnUDBhJ5AwYSLAMGEggHIAAVEj0BDgggAQEVEj0BDgQgABJBAyAACAUgAQESGAkgBAEIDhJlEmkF
+IAEBEm0EAAASdQQAABJ5BQABARJ5BAAAEiwDAAABBSABEjAOBSABHQ4OBCAAEggHKAAVEj0BDgQo
+ABJBAygADgMoAAgDKAACBAgAEnUECAASeQQIABIsCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhj
+ZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTQ18zZGIxNThiMTU5ZjI0NTUxOGFkMTNiYzk4OGYz
+MjFhZgAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDIzAABJAQAaLk5FVEZyYW1ld29yayxWZXJz
+aW9uPXY0LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuNwQBAAAA
+AAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29y
+bGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3
+YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAA
+AAAAAFBBRFBBRFC0AAAAGFIAAAAAAAAAAAAAMlIAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAACRS
+AAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1514,7 +1385,34 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAwAAAD0PAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABABAAAAAYAACAAAAA
+AAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABIAAAAWGAAAOwDAAAAAAAA
+AAAAAOwDNAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAAAAC9BO/+AAABAAAAAQAA
+AAAAAAABAAAAAAA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAAAAEAVgBhAHIARgBpAGwA
+ZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4AAAAAAAAAsARMAwAAAQBT
+AHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAAoAwAAAQAwADAAMAAwADAANABiADAAAAAaAAEA
+AQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABhAG4AeQBOAGEAbQBlAAAAAAAA
+AAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAAAFMAQwBfADMAZABiADEA
+NQA4AGIAMQA1ADkAZgAyADQANQA1ADEAOABhAGQAMQAzAGIAYwA5ADgAOABmADMAMgAxAGEAZgAA
+ADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAwAC4AMAAAAHAAKAABAEkA
+bgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AOQBCADIANgAyAEEAMQAxADEAQQBBADQANABC
+ADQAMABBAEMANgBFAEEARQA5ADgAOQA1ADcAQgBGADcANgA0AC4AZABsAGwAAABIABIAAQBMAGUA
+ZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAy
+ADMAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8A
+cgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwA5AEIAMgA2ADIAQQAxADEAMQBB
+AEEANAA0AEIANAAwAEEAQwA2AEUAQQBFADkAOAA5ADUANwBCAEYANwA2ADQALgBkAGwAbAAAAGgA
+JAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBDAF8AMwBkAGIAMQA1ADgAYgAxADUAOQBm
+ADIANAA1ADUAMQA4AGEAZAAxADMAYgBjADkAOAA4AGYAMwAyADEAYQBmAAAANAAIAAEAUAByAG8A
+ZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAADgACAABAEEAcwBzAGUAbQBi
+AGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAwAAABEMgAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1523,14 +1421,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   </arrayElements>
                 </property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
                   name="VSTAProjectName"
-                  typeConverter="NOTBROWSABLE">SC_3db158b159f245518ad13bc988f321af</property>
+                  typeConverter="NOTBROWSABLE">SC_9b262a111aa44b40ac6eae98957bf764</property>
                 <property
                   dataType="System.String"
                   description="Specifies the programming language used by the script."
@@ -1540,7 +1438,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   dataType="System.String"
                   description="Specifies a comma-separated list of read-only variables."
                   name="ReadOnlyVariables"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg">$Package::SMTPClientFromURL</property>
                 <property
                   dataType="System.String"
                   description="Specifies a comma-separated list of read/write variables."
@@ -1567,12 +1465,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   dataType="System.String"
                   description="Checksum to match component metedata against compiled codes."
                   name="MetadataShaChecksum"
-                  typeConverter="NOTBROWSABLE">94d796472fe75ef72d32330a1b9a2f68adcc3974</property>
+                  typeConverter="NOTBROWSABLE">fac1f4399bca47a01aa10ab7ab0b29c42d9bf49b</property>
                 <property
                   dataType="System.String"
                   description="Checksum to match component metedata against compiled codes."
                   name="MetadataChecksum"
-                  typeConverter="NOTBROWSABLE">67c9e073015014bbef9d78b00270327a</property>
+                  typeConverter="NOTBROWSABLE">1c48b78d58e3117b670f1d1a86bc5d02</property>
               </properties>
               <inputs>
                 <input
@@ -1581,41 +1479,33 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   name="Input 0">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0].Columns[subject]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="76"
-                      cachedName="subject"
-                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[subject]" />
-                    <inputColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0].Columns[Protocol_No]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
+                      cachedDataType="wstr"
+                      cachedLength="35"
                       cachedName="Protocol_No"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_No]" />
                     <inputColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0].Columns[PI_Email]"
                       cachedDataType="wstr"
-                      cachedLength="22"
+                      cachedLength="50"
                       cachedName="PI_Email"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]" />
                     <inputColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0].Columns[MembersEmails]"
                       cachedDataType="wstr"
-                      cachedLength="62"
+                      cachedLength="600"
                       cachedName="MembersEmails"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersEmails]" />
                     <inputColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0].Columns[MembersNames]"
                       cachedDataType="wstr"
-                      cachedLength="46"
+                      cachedLength="600"
                       cachedName="MembersNames"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersNames]" />
                     <inputColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component.Inputs[Input 0].Columns[MembersRoles]"
                       cachedDataType="wstr"
-                      cachedLength="35"
+                      cachedLength="600"
                       cachedName="MembersRoles"
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersRoles]" />
                   </inputColumns>
@@ -1642,6 +1532,1508 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{cfdcdce9-f96e-470c-8438-9164c089a00d}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT StaffMonthlyEmailReminderByProtocol Testing"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select 
+
+'1909985869' Protocol_No,
+N'' PI_Email,
+-- N'gendy@arizona.edu;gendy@arizona.edu;shelbylegendre@arizona.edu' MembersEmails,
+N'gendy@arizona.edu;gendy@arizona.edu' MembersEmails,
+N'Algendy, Ahmed;Algendy, Ahmed' MembersNames,
+N'Primary CRC;Primary IRB Coordinator' MembersRoles</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[com-dtrust-prod.bluecat.arizona.edu]"
+                  connectionManagerRefId="Package.ConnectionManagers[com-dtrust-prod.bluecat.arizona.edu]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_No]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Protocol_No]"
+                      length="10"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_No]"
+                      name="Protocol_No"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PI_Email]"
+                      length="22"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]"
+                      name="PI_Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersEmails]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersEmails]"
+                      length="62"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersEmails]"
+                      name="MembersEmails"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersNames]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersNames]"
+                      length="46"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersNames]"
+                      name="MembersNames"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersRoles]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersRoles]"
+                      length="35"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersRoles]"
+                      name="MembersRoles"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Protocol_No]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Protocol_No" />
+                    <externalMetadataColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PI_Email]"
+                      dataType="wstr"
+                      length="1"
+                      name="PI_Email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersEmails]"
+                      dataType="wstr"
+                      length="35"
+                      name="MembersEmails" />
+                    <externalMetadataColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersNames]"
+                      dataType="wstr"
+                      length="29"
+                      name="MembersNames" />
+                    <externalMetadataColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MembersRoles]"
+                      dataType="wstr"
+                      length="35"
+                      name="MembersRoles" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Protocol_No]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Protocol_No]"
+                      name="Protocol_No" />
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PI_Email]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PI_Email]"
+                      name="PI_Email" />
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersEmails]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersEmails]"
+                      name="MembersEmails" />
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersNames]"
+                      dataType="wstr"
+                      length="29"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersNames]"
+                      name="MembersNames" />
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersRoles]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MembersRoles]"
+                      name="MembersRoles" />
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\Script Component"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;12"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="Script Component"
+              version="10">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="39">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[EmailRecord.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System;
+using System.Collections.Generic;
+using System.Net.Mail;
+using System.Text;
+
+internal class EmailRecord
+{
+    public HashSet<string> RecipientName { get; private set; }
+    public HashSet<string> EmailTo { get; private set; }
+    public MailMessage mailMessage { get; private set; }
+    private EmailRecord()
+    {
+        RecipientName = new HashSet<string>();
+        EmailTo = new HashSet<string>();
+        mailMessage = new MailMessage();
+        mailMessage.IsBodyHtml = true;
+    }
+
+
+    public class Builder
+    {
+
+        private EmailRecord emailRecord;
+        public Builder()
+        {
+            emailRecord = new EmailRecord();
+            //emailRecord.Subject = "Monthly Reminder to Update OnCore for Quarterly Report";
+        }
+        public Builder WithRecipientName(string name)
+        {
+            foreach (var item in ExtractList(name))
+            {
+                emailRecord.RecipientName.Add(item);
+            }
+            
+            return this;
+        }
+        public Builder WithEmailFrom(string emailFrom)
+        {
+            emailRecord.mailMessage.From = new MailAddress(emailFrom);
+            return this;
+        }
+        public Builder WithEmailTo(string emailTo)
+        {
+
+            foreach (var item in ExtractList(emailTo))
+            {
+                emailRecord.EmailTo.Add(item);
+            }
+            foreach (var item in emailRecord.EmailTo)
+            {
+                emailRecord.mailMessage.To.Add(item);
+            }
+            return this;
+        }
+
+        public Builder WithCC(string emailCC)
+        {
+            if (!string.IsNullOrEmpty(emailCC))
+            {
+                emailRecord.mailMessage.CC.Add(emailCC);
+            }
+            return this;
+        }
+
+        public Builder WithSubject(string protocolNo)
+        {
+            emailRecord.mailMessage.Subject = $"URGENT: Protocol No. {protocolNo} Action Needed for Summary Accrual Upload";
+            return this;
+        }
+
+        public Builder WithBody(string protocolNo)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<html>");
+            sb.Append("<head>");
+            sb.Append("<meta http-equiv=Content-Type content=\"text/html; charset=windows-1252\">");
+            sb.Append("</head>");
+            sb.Append("<body lang=EN-US link=\"#0563C1\" vlink=\"#954F72\">");
+            sb.Append($"<br>Dear Clinical Trial Team of Protocol No. <b>{protocolNo}</b>,");
+            sb.Append("<br>");
+
+            //foreach (var item in emailRecord.RecipientName)
+            //{
+            //    string[] firstLastNames = item.Split(',');
+            //    if (firstLastNames.Length > 1)
+            //    {
+            //        sb.Append($"{firstLastNames[1].Trim()}, ");
+            //    }
+            //    else
+            //    {
+            //        sb.Append($"{item}, ");
+            //    }
+
+            //}
+            //sb.Remove(sb.Length - 2, 2);
+
+            sb.Append("<br>Please update the following information in OnCore for <a href = \"https://ctapps.uahs.arizona.edu/oncore/summary-accrual-reporting#:~:text=Summary%20Accrual%20refers%20to%20an,updates%20to%20track%20research%20visits.\">compliance requirements</a> and leadership reports:");
+            sb.Append("<ul>");
+            sb.Append("<li><b>Subject Accruals</b>");
+            sb.Append("<ul>");
+            sb.Append("<li>Submit your summary accrual file using <a href= \"https://ticketcat.arizona.edu/support/catalog/items/73\">this request form</a>. If you encounter issues accessing the link in this email, visit <a href=\"https://ticketcat.arizona.edu/\"> TicketCat</a> and submit your file via the 'OnCore Summary Accrual File Upload' request form.</li>");
+            sb.Append("<li>If your accrual data is in another format (e.g., sponsor-provided accrual reports), please upload this information using the instructions provided in this email, and we will assist in converting it for OnCore.</li>");
+            sb.Append("</ul>");
+            sb.Append("</li>");
+            sb.Append("<li><b>IRB expiration dates</b></li>");
+            sb.Append("<li><b>Protocol Status</b> (open to accrual, closed to accrual, etc.)</li>");
+            sb.Append("<li><b>Protocol Staff</b> (add or remove staff as needed)</li>");
+            sb.Append("<li><b>Target Accrual</b></li>");
+            sb.Append("</ul>");
+            //sb.Append($"<br>Protocol : {protocolNo}");
+            //sb.Append("<br>");
+            //sb.Append("<br>*For those that use the summary accrual method, <a href=\"https://arizona.app.box.com/f/4cf24bef6c0a4e0cb1688f7886385ee0\">please upload</a> an updated accrual file. If there are no updates, no new file is needed. These protocols are identified with (Y) after the protocol number.");
+            //sb.Append("<br>If your accrual data is in another format (e.g. sponsor provided accrual reports), <a href=\"https://arizona.app.box.com/f/4cf24bef6c0a4e0cb1688f7886385ee0\">please upload</a> this information, and we will assist with converting this information to upload into OnCore.");
+            //sb.Append("<br>If you have any questions about this process, please submit a ticket in <a href=\"https://ticketcat.arizona.edu\">TicketCat</a>.");
+            sb.Append("<br>If there are no updates to your protocol, no action is needed.");
+            sb.Append("<br>");
+            sb.Append("<br><b>Helpful links:</b>");
+            sb.Append("<li><a href=\"https://ctapps.uahs.arizona.edu/oncore/summary-accrual-reporting\">Summary Accrual Info Page</a></li>");
+            sb.Append("<li><a href=\"https://app.box.com/s/4dexex14ze56mmpix6hq2jhdhs8c4tz7\">Summary Accrual Template</a></li>");
+            //sb.Append("<li><a href=\"https://arizona.app.box.com/f/4cf24bef6c0a4e0cb1688f7886385ee0\">Summary Accrual Upload Link</a></li>");
+            sb.Append("<br>");
+            sb.Append("<br>Thank you for your prompt attention to this matter.</br>");
+            sb.Append("<br>");
+            sb.Append("<br>Sincerely,");
+            sb.Append("<br>College of Medicine, Information Technology Services");
+            sb.Append("<br>");
+            sb.Append("<br><i>For any inquiries or assistance, please submit a ticket in</i> <a href=\"https://ticketcat.arizona.edu/\"> TicketCat</a>");
+            sb.Append("</body>");
+            sb.Append("</html>");
+
+            emailRecord.mailMessage.Body = sb.ToString();
+            return this;
+        }
+
+        private string[] ExtractList(string emailTo)
+        {
+            return emailTo.Split(';');
+        }
+
+        public EmailRecord Build()
+        {
+            return emailRecord;
+        }
+    }
+}]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Namespaces
+using System;
+using System.Collections.Generic;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+
+
+    List<EmailRecord> emailRecords = new List<EmailRecord>();
+
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+       
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+        EmailService emailService = new EmailService();
+
+        foreach (var email in emailRecords)
+        {
+            emailService.send(email.mailMessage);
+        }
+    }
+
+    /// <summary>
+    /// This method is called once for every row that passes through the component from Input0.
+    ///
+    /// Example of reading a value from a column in the the row:
+    ///  string zipCode = Row.ZipCode
+    ///
+    /// Example of writing a value to a column in the row:
+    ///  Row.ZipCode = zipCode
+    /// </summary>
+    /// <param name="Row">The row that is currently passing through the component</param>
+    public override void Input0_ProcessInputRow(Input0Buffer row)
+    {
+        /*
+         * Add your code here
+         */
+
+        try
+        {
+            EmailRecord email = new EmailRecord.Builder()
+                .WithRecipientName(row.MembersNames)
+                .WithEmailFrom(Variables.SMTPClientFromURL.ToString())
+                        .WithEmailTo(row.MembersEmails)
+                        .WithCC(row.PIEmail)
+                        .WithSubject(row.ProtocolNo)
+                        .WithBody(row.ProtocolNo)
+                        .Build();
+            emailRecords.Add(email);
+        }
+        catch (Exception e)
+        {
+
+            throw new Exception($"Error while building email => {e.Message}");
+        }
+        
+    }
+
+}]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>SC_3db158b159f245518ad13bc988f321af</msb:CodeName>
+		<msb:DisplayName>SC_3db158b159f245518ad13bc988f321af</msb:DisplayName>
+		<msb:ProjectId>{51E3908C-5B4A-4E6B-B34C-8C0CCB32A091}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="SC_3db158b159f245518ad13bc988f321af.csproj"/>
+		<msb:File Include="InputQueryRow.cs"/>
+		<msb:File Include="EmailRecord.cs"/>
+		<msb:File Include="EmailService.cs"/>
+		<msb:File Include="main.cs"/>
+		<msb:File Include="BufferWrapper.cs"/>
+		<msb:File Include="ComponentWrapper.cs"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_3db158b159f245518ad13bc988f321af")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_3db158b159f245518ad13bc988f321af")]
+[assembly: AssemblyCopyright("Copyright @  2023")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
+    {
+
+        if (InputName.Equals(@"Input 0", StringComparison.Ordinal))
+        {
+            Input0_ProcessInput(new Input0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
+        }
+
+    }
+
+    public virtual void Input0_ProcessInput(Input0Buffer Buffer)
+    {
+        while (Buffer.NextRow())
+        {
+            Input0_ProcessInputRow(Buffer);
+        }
+    }
+
+    public virtual void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+    public String SMTPClientFromURL
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["SMTPClientFromURL"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[InputQueryRow.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[internal class InputQueryRow
+{
+    public string Subject { get; internal set; }
+    public string PIEmail { get; internal set; }
+    public string StaffName { get; internal set; }
+    public string StaffRoles { get; internal set; }
+    public int NumberOfProtocols { get; internal set; }
+}
+
+#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_3db158b159f245518ad13bc988f321af.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{0CE56D03-05FB-4326-A4ED-89A53FFD72EB}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>SC_3db158b159f245518ad13bc988f321af</RootNamespace><AssemblyName>SC_3FBD7E88D38E44DF9179DA0871E52AF7</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.PipelineHost, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Compile Include="EmailRecord.cs" /><Compile Include="EmailService.cs" /><Compile Include="InputQueryRow.cs" /><Compile Include="main.cs" /><Compile Include="BufferWrapper.cs" /><Compile Include="ComponentWrapper.cs" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><!-- This section defines VSTA properties that describe the host-changable project properties. --><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" /><Host Name="ScriptComponent" IconIndex="0" /><ProjectClient><HostIdentifier>SSIS_SC130</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3db158b159f245518ad13bc988f321af.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3db158b159f245518ad13bc988f321af.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3db158b159f245518ad13bc988f321af.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_3db158b159f245518ad13bc988f321af.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_3db158b159f245518ad13bc988f321af.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Input0Buffer: ScriptBuffer
+
+{
+    public Input0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public String ProtocolNo
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[0]);
+        }
+    }
+    public bool ProtocolNo_IsNull
+    {
+        get
+        {
+            return IsNull(0);
+        }
+    }
+
+    public String PIEmail
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[1]);
+        }
+    }
+    public bool PIEmail_IsNull
+    {
+        get
+        {
+            return IsNull(1);
+        }
+    }
+
+    public String MembersEmails
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[2]);
+        }
+    }
+    public bool MembersEmails_IsNull
+    {
+        get
+        {
+            return IsNull(2);
+        }
+    }
+
+    public String MembersNames
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[3]);
+        }
+    }
+    public bool MembersNames_IsNull
+    {
+        get
+        {
+            return IsNull(3);
+        }
+    }
+
+    public String MembersRoles
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[4]);
+        }
+    }
+    public bool MembersRoles_IsNull
+    {
+        get
+        {
+            return IsNull(4);
+        }
+    }
+
+    new public bool NextRow()
+    {
+        return base.NextRow();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3db158b159f245518ad13bc988f321af.Properties.Settings.get_Default():SC_3db158b159f245518ad13bc988f321af.Properties.Sett" +
+    "ings")]
+
+namespace SC_3db158b159f245518ad13bc988f321af.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[EmailService.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Mail;
+using System.Text;
+using System.Threading.Tasks;
+
+
+internal class EmailService
+{
+    private MailMessage mailMessage;
+    private readonly SmtpClient smtpClient;
+
+    public EmailService()
+    {
+        //string SMTPClient = ["User::MyVariable"].Value = "New Value";
+        
+
+
+        smtpClient = new SmtpClient("ob1.hc4604-54.iphmx.com");
+        smtpClient.EnableSsl = true;
+        
+    }
+
+    public void send(MailMessage mailMessage)
+    {
+        smtpClient.Send(mailMessage);
+    }
+}
+
+
+
+#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_3FBD7E88D38E44DF9179DA0871E52AF7.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAM3WZGUAAAAAAAAAAOAAIiALATAAADQAAAAIAAAAAAAAQlIA
+AAAgAAAAYAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACgAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAPBRAABPAAAAAGAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAIAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAASDIAAAAgAAAANAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAYAAAAAYAAAA2AAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAIAAAAACAAAAPAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAk
+UgAAAAAAAEgAAAACAAUANCcAAAQqAAABAAAAAAAAADhRAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CewEAAAQqIgIDfQEAAAQqHgJ7AgAABCoiAgN9AgAABCoe
+AnsDAAAEKiICA30DAAAEKtICKBAAAAoCcxEAAAooAgAABgJzEQAACigEAAAGAnMSAAAKKAYAAAYC
+KAUAAAYXbxMAAAoqjgIoEAAACgJyAQAAcHMUAAAKfQUAAAQCewUAAAQXbxUAAAoqNgJ7BQAABANv
+FgAACioeAnsGAAAEKiICA30GAAAEKh4CewcAAAQqIgIDfQcAAAQqHgJ7CAAABCoiAgN9CAAABCoe
+AnsJAAAEKiICA30JAAAEKh4CewoAAAQqIgIDfQoAAAQqHgIoEAAACioeAigXAAAKKgAbMAIASAAA
+AAEAABECKBgAAApzCAAABgoCewsAAARvGQAACgsrFBIBKBoAAAoMBghvBQAABm8JAAAGEgEoGwAA
+Ci3j3g4SAf4WAwAAG28cAAAK3CoBEAAAAgAYACE5AA4AAAAAGzACAH0AAAACAAARczQAAAYDbyAA
+AAYoNQAABgJ7DQAABG8sAAAGbx0AAApvNgAABgNvHgAABm83AAAGA28cAAAGbzgAAAYDbxoAAAZv
+OQAABgNvGgAABm86AAAGbzwAAAYKAnsLAAAEBm8eAAAK3hcLcjEAAHAHbx8AAAooIAAACnMhAAAK
+eioAAAABEAAAAAAAAGVlABcXAAABSgJzIgAACn0LAAAEAigmAAAGKioCAwQFKCMAAAoqUgJ7JAAA
+CgJ7JQAAChaUbyYAAAoqIgIWKCcAAAoqUgJ7JAAACgJ7JQAACheUbyYAAAoqIgIXKCcAAAoqUgJ7
+JAAACgJ7JQAAChiUbyYAAAoqIgIYKCcAAAoqUgJ7JAAACgJ7JQAAChmUbyYAAAoqIgIZKCcAAAoq
+UgJ7JAAACgJ7JQAAChqUbyYAAAoqIgIaKCcAAAoqHgIoKAAACioeAigpAAAKKn4CKCoAAAoCAnMq
+AAAGfQwAAAQCAnMrAAAGfQ0AAAQqkgRybwAAcBpvKwAACiwVAgUCAygsAAAKDgRzGQAABm8oAAAG
+KkorBwIDbykAAAYDbyQAAAYt8SoGKjoCKBAAAAoCA30OAAAEKjoCKBAAAAoCA30PAAAEKpYCew8A
+AARvLQAACnJ/AABwby4AAAooLwAACm8wAAAKdCMAAAEqrn4QAAAELR5yowAAcNAKAAACKDEAAApv
+MgAACnMzAAAKgBAAAAR+EAAABCoafhEAAAQqHgKAEQAABCoafhIAAAQqHgIoNAAACiouczIAAAaA
+EgAABCpKAigQAAAKAnMHAAAGfRMAAAQqABMwAgAuAAAAAwAAEQIDKDsAAAYKFgsrGgYHmgwCexMA
+AARvAQAABghvNQAACiYHF1gLBwaOaTLgAipiAnsTAAAEbwUAAAYDczYAAApvNwAACgIqABswAgB6
+AAAABAAAEQIDKDsAAAYKFgsrGgYHmgwCexMAAARvAwAABghvNQAACiYHF1gLBwaOaTLgAnsTAAAE
+bwMAAAZvOAAACg0rIBIDKDkAAAoTBAJ7EwAABG8FAAAGbzoAAAoRBG87AAAKEgMoPAAACi3X3g4S
+A/4WBAAAG28cAAAK3AIqAAABEAAAAgA9AC1qAA4AAAAAggMoPQAACi0WAnsTAAAEbwUAAAZvPgAA
+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
+CwDsAS4AEwD1AS4AGwAUAi4AIwAdAi4AKwBGAi4AMwBGAi4AOwBGAi4AQwAdAi4ASwBMAi4AUwBG
+Ai4AWwBjAkAAYwCtAkEAYwCtAmAAYwCtAmEAYwCtAoAAYwCtAqAAYwCtAqMAawCtAsAAYwCtAsEA
+YwCtAuEAYwCtAgEBYwCtAiEBYwCtAkABYwCtAkEBYwCtAkMBcwCtAmABYwCtAoABYwCtAqABYwCt
+AsABYwCtAuABYwCtAgACYwCtAiACYwCtAkACYwCtAkECYwCtAmACYwCtAokCewAUAqkCewAUAiwA
+WQDLAN8ADQECAAEABAAEAAYACQAJABMACgAUAAsAFgAAAK0CxAEAACgHxAEAAC0CzAEAAO8J0QEA
+AHcF0QEAAHsC0QEAAA0J0QEAAJsJ1QEAAO8G0QEAAL4F2QEAAHcF0QEAAKsF2QEAAHMJ0QEAAAQG
+2QEAAC0J0QEAAOwF2QEAABwJ0QEAANQF2QEAAJoA0QEAAL8H3QEAABwD4gEAAA0K5wECAAEAAwAB
+AAIAAwACAAMABQABAAQABQACAAUABwABAAYABwACAAoACQABAAsACQACAAwACwABAA0ACwACAA4A
+DQABAA8ADQACABAADwABABEADwACABIAEQABABMAEQACABoAEwACABsAFQACABwAFwACAB0AGQAC
+AB4AGwACAB8AHQACACAAHwACACEAIQACACIAIwACACMAJQACACwAJwACAC4AKQACAC8AKwABADAA
+KwACADEALQAbADkASQD1AASAAAABAAAAAAAAAAAAAAAAAEsAAAAEAAAAAAAAAAAAAAAfAawAAAAA
+AAQAAAAAAAAAAAAAAB8B8AIAAAAABAAAAAAAAAAAAAAAHwE/BgAAAAANAAAAAAAAAAAAAAAoAWUK
+AAAAAA0AAAAAAAAAAAAAACgBjgoAAAAADQAAAAAAAAAAAAAAKAFcBwAAAAAAAAAAAQAAAGMIAAAM
+AAIAAAAAAABJRFRTVmFyaWFibGUxMDAASURUU1ZhcmlhYmxlczEwMABJRFRTRXZhbHVhdG9yQ29u
+dGV4dDEwMABIYXNoU2V0YDEATGlzdGAxAFNDXzNGQkQ3RTg4RDM4RTQ0REY5MTc5REEwODcxRTUy
+QUY3ADxNb2R1bGU+AGdldF9DQwBXaXRoQ0MAZW1haWxDQwBJbnB1dElEAGdldF9TTVRQQ2xpZW50
+RnJvbVVSTABtc2NvcmxpYgBTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYwBBZGQAPG1haWxNZXNz
+YWdlPmtfX0JhY2tpbmdGaWVsZAA8U3RhZmZOYW1lPmtfX0JhY2tpbmdGaWVsZAA8UmVjaXBpZW50
+TmFtZT5rX19CYWNraW5nRmllbGQAPFBJRW1haWw+a19fQmFja2luZ0ZpZWxkADxFbWFpbFRvPmtf
+X0JhY2tpbmdGaWVsZAA8U3RhZmZSb2xlcz5rX19CYWNraW5nRmllbGQAPE51bWJlck9mUHJvdG9j
+b2xzPmtfX0JhY2tpbmdGaWVsZAA8U3ViamVjdD5rX19CYWNraW5nRmllbGQAQnVpbGQAU2VuZABB
+cHBlbmQAc2VuZABFbWFpbFJlY29yZABlbWFpbFJlY29yZABFbWFpbFNlcnZpY2UAZGVmYXVsdElu
+c3RhbmNlAGdldF9NZXNzYWdlAE1haWxNZXNzYWdlAGdldF9tYWlsTWVzc2FnZQBzZXRfbWFpbE1l
+c3NhZ2UASURpc3Bvc2FibGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAZ2V0
+X1N0YWZmTmFtZQBzZXRfU3RhZmZOYW1lAGdldF9SZWNpcGllbnROYW1lAHNldF9SZWNpcGllbnRO
+YW1lAFdpdGhSZWNpcGllbnROYW1lAElucHV0TmFtZQBuYW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIu
+RHRzLlBpcGVsaW5lAFR5cGUAU3lzdGVtLkNvcmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVz
+b3VyY2VDdWx0dXJlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAERpc3Bvc2UARWRpdG9yQnJvd3Nh
+YmxlU3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0
+dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3Nl
+bWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1l
+d29ya0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNj
+cmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5
+UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0Q29t
+cG9uZW50RW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGlt
+ZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAUHJlRXhlY3V0ZQBQb3N0RXhlY3V0ZQB2YWx1ZQBTeXN0
+ZW0uUnVudGltZS5WZXJzaW9uaW5nAFRvU3RyaW5nAEdldFN0cmluZwBTeXN0ZW0uQ29tcG9uZW50
+TW9kZWwAU3lzdGVtLk5ldC5NYWlsAGdldF9QSUVtYWlsAHNldF9QSUVtYWlsAFNDXzNGQkQ3RTg4
+RDM4RTQ0REY5MTc5REEwODcxRTUyQUY3LmRsbABnZXRfUElFbWFpbF9Jc051bGwAZ2V0X1Byb3Rv
+Y29sTm9fSXNOdWxsAGdldF9NZW1iZXJzUm9sZXNfSXNOdWxsAGdldF9NZW1iZXJzTmFtZXNfSXNO
+dWxsAGdldF9NZW1iZXJzRW1haWxzX0lzTnVsbABzZXRfSXNCb2R5SHRtbABzZXRfRW5hYmxlU3Ns
+AGdldF9JdGVtAFN5c3RlbQBzZXRfRnJvbQBXaXRoRW1haWxGcm9tAGVtYWlsRnJvbQByZXNvdXJj
+ZU1hbgBTY3JpcHRNYWluAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9u
+AFN5c3RlbS5SZWZsZWN0aW9uAE1haWxBZGRyZXNzQ29sbGVjdGlvbgBFeGNlcHRpb24AU3RyaW5n
+Q29tcGFyaXNvbgBnZXRfUHJvdG9jb2xObwBwcm90b2NvbE5vAGdldF9UbwBnZXRfRW1haWxUbwBz
+ZXRfRW1haWxUbwBXaXRoRW1haWxUbwBlbWFpbFRvAEN1bHR1cmVJbmZvAE91dHB1dE5hbWVNYXAA
+T3V0cHV0TWFwAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRFRTUnVudGltZVdyYXAAQ2hhcgBTdHJpbmdC
+dWlsZGVyAElucHV0MEJ1ZmZlcgBQaXBlbGluZUJ1ZmZlcgBTY3JpcHRCdWZmZXIAZ2V0X1Jlc291
+cmNlTWFuYWdlcgBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lLldyYXBwZXIAR2V0RW51
+bWVyYXRvcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAGVtYWlsUmVjb3JkcwBTeXN0
+ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMAU0NfM2RiMTU4YjE1
+OWYyNDU1MThhZDEzYmM5ODhmMzIxYWYuUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2VzAERl
+YnVnZ2luZ01vZGVzAFNDXzNkYjE1OGIxNTlmMjQ1NTE4YWQxM2JjOTg4ZjMyMWFmLlByb3BlcnRp
+ZXMAZ2V0X1JlYWRPbmx5VmFyaWFibGVzAGdldF9TdGFmZlJvbGVzAHNldF9TdGFmZlJvbGVzAGdl
+dF9NZW1iZXJzUm9sZXMAZ2V0X01lbWJlcnNOYW1lcwBCdWZmZXJDb2x1bW5JbmRleGVzAEdldENv
+bHVtbkluZGV4ZXMAU2V0dGluZ3MARXF1YWxzAGdldF9NZW1iZXJzRW1haWxzAGdldF9OdW1iZXJP
+ZlByb3RvY29scwBzZXRfTnVtYmVyT2ZQcm90b2NvbHMAQ29ubmVjdGlvbnMATWFpbEFkZHJlc3MA
+Q29uY2F0AE9iamVjdABnZXRfU3ViamVjdABzZXRfU3ViamVjdABXaXRoU3ViamVjdABFbmRPZlJv
+d3NldABTcGxpdABnZXRfRGVmYXVsdABTbXRwQ2xpZW50AHNtdHBDbGllbnQAVXNlckNvbXBvbmVu
+dABQYXJlbnRDb21wb25lbnQAU2NyaXB0Q29tcG9uZW50AGdldF9DdXJyZW50AE1pY3Jvc29mdC5T
+cWxTZXJ2ZXIuVHhTY3JpcHQARXh0cmFjdExpc3QATWljcm9zb2Z0LlNxbFNlcnZlci5QaXBlbGlu
+ZUhvc3QASW5wdXQwX1Byb2Nlc3NJbnB1dABNb3ZlTmV4dABTeXN0ZW0uVGV4dABHZXRWYWx1ZVdp
+dGhDb250ZXh0AFNjcmlwdENvbXBvbmVudEV2YWxDb250ZXh0AGdldF9FdmFsdWF0b3JDb250ZXh0
+AElucHV0MF9Qcm9jZXNzSW5wdXRSb3cATmV4dFJvdwBJbnB1dFF1ZXJ5Um93AHJvdwBzZXRfQm9k
+eQBXaXRoQm9keQBnZXRfQXNzZW1ibHkASXNOdWxsT3JFbXB0eQAAAAAvbwBiADEALgBoAGMANAA2
+ADAANAAtADUANAAuAGkAcABoAG0AeAAuAGMAbwBtAAE9RQByAHIAbwByACAAdwBoAGkAbABlACAA
+YgB1AGkAbABkAGkAbgBnACAAZQBtAGEAaQBsACAAPQA+ACAAAA9JAG4AcAB1AHQAIAAwAAAjUwBN
+AFQAUABDAGwAaQBlAG4AdABGAHIAbwBtAFUAUgBMAABxUwBDAF8AMwBkAGIAMQA1ADgAYgAxADUA
+OQBmADIANAA1ADUAMQA4AGEAZAAxADMAYgBjADkAOAA4AGYAMwAyADEAYQBmAC4AUAByAG8AcABl
+AHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAArVQBSAEcARQBOAFQAOgAgAFAAcgBvAHQA
+bwBjAG8AbAAgAE4AbwAuACAAAFMgAEEAYwB0AGkAbwBuACAATgBlAGUAZABlAGQAIABmAG8AcgAg
+AFMAdQBtAG0AYQByAHkAIABBAGMAYwByAHUAYQBsACAAVQBwAGwAbwBhAGQAAA08AGgAdABtAGwA
+PgAADTwAaABlAGEAZAA+AACAkTwAbQBlAHQAYQAgAGgAdAB0AHAALQBlAHEAdQBpAHYAPQBDAG8A
+bgB0AGUAbgB0AC0AVAB5AHAAZQAgAGMAbwBuAHQAZQBuAHQAPQAiAHQAZQB4AHQALwBoAHQAbQBs
+ADsAIABjAGgAYQByAHMAZQB0AD0AdwBpAG4AZABvAHcAcwAtADEAMgA1ADIAIgA+AAEPPAAvAGgA
+ZQBhAGQAPgAAYTwAYgBvAGQAeQAgAGwAYQBuAGcAPQBFAE4ALQBVAFMAIABsAGkAbgBrAD0AIgAj
+ADAANQA2ADMAQwAxACIAIAB2AGwAaQBuAGsAPQAiACMAOQA1ADQARgA3ADIAIgA+AAFhPABiAHIA
+PgBEAGUAYQByACAAQwBsAGkAbgBpAGMAYQBsACAAVAByAGkAYQBsACAAVABlAGEAbQAgAG8AZgAg
+AFAAcgBvAHQAbwBjAG8AbAAgAE4AbwAuACAAPABiAD4AAAs8AC8AYgA+ACwAAAk8AGIAcgA+AACC
+IzwAYgByAD4AUABsAGUAYQBzAGUAIAB1AHAAZABhAHQAZQAgAHQAaABlACAAZgBvAGwAbABvAHcA
+aQBuAGcAIABpAG4AZgBvAHIAbQBhAHQAaQBvAG4AIABpAG4AIABPAG4AQwBvAHIAZQAgAGYAbwBy
+ACAAPABhACAAaAByAGUAZgAgAD0AIAAiAGgAdAB0AHAAcwA6AC8ALwBjAHQAYQBwAHAAcwAuAHUA
+YQBoAHMALgBhAHIAaQB6AG8AbgBhAC4AZQBkAHUALwBvAG4AYwBvAHIAZQAvAHMAdQBtAG0AYQBy
+AHkALQBhAGMAYwByAHUAYQBsAC0AcgBlAHAAbwByAHQAaQBuAGcAIwA6AH4AOgB0AGUAeAB0AD0A
+UwB1AG0AbQBhAHIAeQAlADIAMABBAGMAYwByAHUAYQBsACUAMgAwAHIAZQBmAGUAcgBzACUAMgAw
+AHQAbwAlADIAMABhAG4ALAB1AHAAZABhAHQAZQBzACUAMgAwAHQAbwAlADIAMAB0AHIAYQBjAGsA
+JQAyADAAcgBlAHMAZQBhAHIAYwBoACUAMgAwAHYAaQBzAGkAdABzAC4AIgA+AGMAbwBtAHAAbABp
+AGEAbgBjAGUAIAByAGUAcQB1AGkAcgBlAG0AZQBuAHQAcwA8AC8AYQA+ACAAYQBuAGQAIABsAGUA
+YQBkAGUAcgBzAGgAaQBwACAAcgBlAHAAbwByAHQAcwA6AAEJPAB1AGwAPgAANzwAbABpAD4APABi
+AD4AUwB1AGIAagBlAGMAdAAgAEEAYwBjAHIAdQBhAGwAcwA8AC8AYgA+AACCoTwAbABpAD4AUwB1
+AGIAbQBpAHQAIAB5AG8AdQByACAAcwB1AG0AbQBhAHIAeQAgAGEAYwBjAHIAdQBhAGwAIABmAGkA
+bABlACAAdQBzAGkAbgBnACAAPABhACAAaAByAGUAZgA9ACAAIgBoAHQAdABwAHMAOgAvAC8AdABp
+AGMAawBlAHQAYwBhAHQALgBhAHIAaQB6AG8AbgBhAC4AZQBkAHUALwBzAHUAcABwAG8AcgB0AC8A
+YwBhAHQAYQBsAG8AZwAvAGkAdABlAG0AcwAvADcAMwAiAD4AdABoAGkAcwAgAHIAZQBxAHUAZQBz
+AHQAIABmAG8AcgBtADwALwBhAD4ALgAgAEkAZgAgAHkAbwB1ACAAZQBuAGMAbwB1AG4AdABlAHIA
+IABpAHMAcwB1AGUAcwAgAGEAYwBjAGUAcwBzAGkAbgBnACAAdABoAGUAIABsAGkAbgBrACAAaQBu
+ACAAdABoAGkAcwAgAGUAbQBhAGkAbAAsACAAdgBpAHMAaQB0ACAAPABhACAAaAByAGUAZgA9ACIA
+aAB0AHQAcABzADoALwAvAHQAaQBjAGsAZQB0AGMAYQB0AC4AYQByAGkAegBvAG4AYQAuAGUAZAB1
+AC8AIgA+ACAAVABpAGMAawBlAHQAQwBhAHQAPAAvAGEAPgAgAGEAbgBkACAAcwB1AGIAbQBpAHQA
+IAB5AG8AdQByACAAZgBpAGwAZQAgAHYAaQBhACAAdABoAGUAIAAnAE8AbgBDAG8AcgBlACAAUwB1
+AG0AbQBhAHIAeQAgAEEAYwBjAHIAdQBhAGwAIABGAGkAbABlACAAVQBwAGwAbwBhAGQAJwAgAHIA
+ZQBxAHUAZQBzAHQAIABmAG8AcgBtAC4APAAvAGwAaQA+AAGBtTwAbABpAD4ASQBmACAAeQBvAHUA
+cgAgAGEAYwBjAHIAdQBhAGwAIABkAGEAdABhACAAaQBzACAAaQBuACAAYQBuAG8AdABoAGUAcgAg
+AGYAbwByAG0AYQB0ACAAKABlAC4AZwAuACwAIABzAHAAbwBuAHMAbwByAC0AcAByAG8AdgBpAGQA
+ZQBkACAAYQBjAGMAcgB1AGEAbAAgAHIAZQBwAG8AcgB0AHMAKQAsACAAcABsAGUAYQBzAGUAIAB1
+AHAAbABvAGEAZAAgAHQAaABpAHMAIABpAG4AZgBvAHIAbQBhAHQAaQBvAG4AIAB1AHMAaQBuAGcA
+IAB0AGgAZQAgAGkAbgBzAHQAcgB1AGMAdABpAG8AbgBzACAAcAByAG8AdgBpAGQAZQBkACAAaQBu
+ACAAdABoAGkAcwAgAGUAbQBhAGkAbAAsACAAYQBuAGQAIAB3AGUAIAB3AGkAbABsACAAYQBzAHMA
+aQBzAHQAIABpAG4AIABjAG8AbgB2AGUAcgB0AGkAbgBnACAAaQB0ACAAZgBvAHIAIABPAG4AQwBv
+AHIAZQAuADwALwBsAGkAPgABCzwALwB1AGwAPgAACzwALwBsAGkAPgAASTwAbABpAD4APABiAD4A
+SQBSAEIAIABlAHgAcABpAHIAYQB0AGkAbwBuACAAZABhAHQAZQBzADwALwBiAD4APAAvAGwAaQA+
+AACAlTwAbABpAD4APABiAD4AUAByAG8AdABvAGMAbwBsACAAUwB0AGEAdAB1AHMAPAAvAGIAPgAg
+ACgAbwBwAGUAbgAgAHQAbwAgAGEAYwBjAHIAdQBhAGwALAAgAGMAbABvAHMAZQBkACAAdABvACAA
+YQBjAGMAcgB1AGEAbAAsACAAZQB0AGMALgApADwALwBsAGkAPgAAfTwAbABpAD4APABiAD4AUABy
+AG8AdABvAGMAbwBsACAAUwB0AGEAZgBmADwALwBiAD4AIAAoAGEAZABkACAAbwByACAAcgBlAG0A
+bwB2AGUAIABzAHQAYQBmAGYAIABhAHMAIABuAGUAZQBkAGUAZAApADwALwBsAGkAPgAAPTwAbABp
+AD4APABiAD4AVABhAHIAZwBlAHQAIABBAGMAYwByAHUAYQBsADwALwBiAD4APAAvAGwAaQA+AACA
+hTwAYgByAD4ASQBmACAAdABoAGUAcgBlACAAYQByAGUAIABuAG8AIAB1AHAAZABhAHQAZQBzACAA
+dABvACAAeQBvAHUAcgAgAHAAcgBvAHQAbwBjAG8AbAAsACAAbgBvACAAYQBjAHQAaQBvAG4AIABp
+AHMAIABuAGUAZQBkAGUAZAAuAAAzPABiAHIAPgA8AGIAPgBIAGUAbABwAGYAdQBsACAAbABpAG4A
+awBzADoAPAAvAGIAPgAAgOM8AGwAaQA+ADwAYQAgAGgAcgBlAGYAPQAiAGgAdAB0AHAAcwA6AC8A
+LwBjAHQAYQBwAHAAcwAuAHUAYQBoAHMALgBhAHIAaQB6AG8AbgBhAC4AZQBkAHUALwBvAG4AYwBv
+AHIAZQAvAHMAdQBtAG0AYQByAHkALQBhAGMAYwByAHUAYQBsAC0AcgBlAHAAbwByAHQAaQBuAGcA
+IgA+AFMAdQBtAG0AYQByAHkAIABBAGMAYwByAHUAYQBsACAASQBuAGYAbwAgAFAAYQBnAGUAPAAv
+AGEAPgA8AC8AbABpAD4AAYDNPABsAGkAPgA8AGEAIABoAHIAZQBmAD0AIgBoAHQAdABwAHMAOgAv
+AC8AYQBwAHAALgBiAG8AeAAuAGMAbwBtAC8AcwAvADQAZABlAHgAZQB4ADEANAB6AGUANQA2AG0A
+bQBwAGkAeAA2AGgAcQAyAGoAaABkAGgAcwA4AGMANAB0AHoANwAiAD4AUwB1AG0AbQBhAHIAeQAg
+AEEAYwBjAHIAdQBhAGwAIABUAGUAbQBwAGwAYQB0AGUAPAAvAGEAPgA8AC8AbABpAD4AAHk8AGIA
+cgA+AFQAaABhAG4AawAgAHkAbwB1ACAAZgBvAHIAIAB5AG8AdQByACAAcAByAG8AbQBwAHQAIABh
+AHQAdABlAG4AdABpAG8AbgAgAHQAbwAgAHQAaABpAHMAIABtAGEAdAB0AGUAcgAuADwALwBiAHIA
+PgAAHTwAYgByAD4AUwBpAG4AYwBlAHIAZQBsAHkALAAAcTwAYgByAD4AQwBvAGwAbABlAGcAZQAg
+AG8AZgAgAE0AZQBkAGkAYwBpAG4AZQAsACAASQBuAGYAbwByAG0AYQB0AGkAbwBuACAAVABlAGMA
+aABuAG8AbABvAGcAeQAgAFMAZQByAHYAaQBjAGUAcwAAgPs8AGIAcgA+ADwAaQA+AEYAbwByACAA
+YQBuAHkAIABpAG4AcQB1AGkAcgBpAGUAcwAgAG8AcgAgAGEAcwBzAGkAcwB0AGEAbgBjAGUALAAg
+AHAAbABlAGEAcwBlACAAcwB1AGIAbQBpAHQAIABhACAAdABpAGMAawBlAHQAIABpAG4APAAvAGkA
+PgAgADwAYQAgAGgAcgBlAGYAPQAiAGgAdAB0AHAAcwA6AC8ALwB0AGkAYwBrAGUAdABjAGEAdAAu
+AGEAcgBpAHoAbwBuAGEALgBlAGQAdQAvACIAPgAgAFQAaQBjAGsAZQB0AEMAYQB0ADwALwBhAD4A
+AA88AC8AYgBvAGQAeQA+AAAPPAAvAGgAdABtAGwAPgAAAAAK7s8+VdNNR60/8Y+gFehmAAQgAQEI
+AyAAAQUgAQEREQQgAQEOBSABARF9BRUSPQEOBCABAQIFIAEBEkEMBwMSDBURWQESCBIIBhUSVQES
+CAggABURWQETAAYVEVkBEggEIAATAAMgAAIGBwISCBJdAyAADgUgAQETAAUAAg4ODgkgAwESZR0I
+EmkDBhJlAwYdCAQgAQ4IBCABAggHIAICDhGAkQUgAR0ICAUgABKAlQYgARKAmRwFAAASgJ0GIAEc
+EoChCAABEoClEYCpBSAAEoCtByACAQ4SgK0GBwMdDggOBSABAhMABiABARKAsQwHBR0OCA4VEUUB
+Dg4IIAAVEUUBEwAFFRFFAQ4FIAASgLUEAAECDgYAAw4ODg4EBwESSQUgARJJDgYgAR0OHQMIt3pc
+Vhk04IkIiYRdzYCAzJEGBhUSPQEOAwYSQQMGEk0CBg4CBggHBhUSVQESCAMGEiADBhIkAwYSbQMG
+EnUDBhJ5AwYSLAMGEggHIAAVEj0BDgggAQEVEj0BDgQgABJBAyAACAUgAQESGAkgBAEIDhJlEmkF
+IAEBEm0EAAASdQQAABJ5BQABARJ5BAAAEiwDAAABBSABEjAOBSABHQ4OBCAAEggHKAAVEj0BDgQo
+ABJBAygADgMoAAgDKAACBAgAEnUECAASeQQIABIsCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhj
+ZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTQ18zZGIxNThiMTU5ZjI0NTUxOGFkMTNiYzk4OGYz
+MjFhZgAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDIzAABJAQAaLk5FVEZyYW1ld29yayxWZXJz
+aW9uPXY0LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuNwQBAAAA
+AAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29y
+bGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3
+YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAA
+AAAAAFBBRFBBRFC0AAAAGFIAAAAAAAAAAAAAMlIAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAACRS
+AAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABABAAAAAYAACAAAAA
+AAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABIAAAAWGAAAOwDAAAAAAAA
+AAAAAOwDNAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAAAAC9BO/+AAABAAAAAQAA
+AAAAAAABAAAAAAA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAAAAEAVgBhAHIARgBpAGwA
+ZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4AAAAAAAAAsARMAwAAAQBT
+AHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAAoAwAAAQAwADAAMAAwADAANABiADAAAAAaAAEA
+AQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABhAG4AeQBOAGEAbQBlAAAAAAAA
+AAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAAAFMAQwBfADMAZABiADEA
+NQA4AGIAMQA1ADkAZgAyADQANQA1ADEAOABhAGQAMQAzAGIAYwA5ADgAOABmADMAMgAxAGEAZgAA
+ADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAwAC4AMAAAAHAAKAABAEkA
+bgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AMwBGAEIARAA3AEUAOAA4AEQAMwA4AEUANAA0
+AEQARgA5ADEANwA5AEQAQQAwADgANwAxAEUANQAyAEEARgA3AC4AZABsAGwAAABIABIAAQBMAGUA
+ZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAy
+ADMAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8A
+cgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwAzAEYAQgBEADcARQA4ADgARAAz
+ADgARQA0ADQARABGADkAMQA3ADkARABBADAAOAA3ADEARQA1ADIAQQBGADcALgBkAGwAbAAAAGgA
+JAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBDAF8AMwBkAGIAMQA1ADgAYgAxADUAOQBm
+ADIANAA1ADUAMQA4AGEAZAAxADMAYgBjADkAOAA4AGYAMwAyADEAYQBmAAAANAAIAAEAUAByAG8A
+ZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAADgACAABAEEAcwBzAGUAbQBi
+AGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAwAAABEMgAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_3fbd7e88d38e44df9179da0871e52af7</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg">$Package::SMTPClientFromURL</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum140"
+                  typeConverter="NOTBROWSABLE">3C</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataShaChecksum"
+                  typeConverter="NOTBROWSABLE">fac1f4399bca47a01aa10ab7ab0b29c42d9bf49b</property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum"
+                  typeConverter="NOTBROWSABLE">1c48b78d58e3117b670f1d1a86bc5d02</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\Script Component.Inputs[Input 0]"
+                  hasSideEffects="true"
+                  name="Input 0">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\Script Component.Inputs[Input 0].Columns[Protocol_No]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Protocol_No"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_No]" />
+                    <inputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\Script Component.Inputs[Input 0].Columns[PI_Email]"
+                      cachedDataType="wstr"
+                      cachedLength="22"
+                      cachedName="PI_Email"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]" />
+                    <inputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\Script Component.Inputs[Input 0].Columns[MembersEmails]"
+                      cachedDataType="wstr"
+                      cachedLength="62"
+                      cachedName="MembersEmails"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersEmails]" />
+                    <inputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\Script Component.Inputs[Input 0].Columns[MembersNames]"
+                      cachedDataType="wstr"
+                      cachedLength="46"
+                      cachedName="MembersNames"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersNames]" />
+                    <inputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\Script Component.Inputs[Input 0].Columns[MembersRoles]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="MembersRoles"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output].Columns[MembersRoles]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\Script Component.Outputs[Output 0]"
+                  name="Output 0"
+                  synchronousInputId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\Script Component.Inputs[Input 0]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing.Paths[OLE DB Source Output]"
+              endId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\Script Component.Inputs[Input 0]"
+              name="OLE DB Source Output"
+              startId="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1658,7 +3050,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         <NodeLayout
           Size="293,42"
           Id="Package\DFT StaffMonthlyEmailReminderByProtocol"
-          TopLeft="198.333331611421,96.8666669834985" />
+          TopLeft="199.333331611421,176.866666983499" />
+        <NodeLayout
+          Size="332,42"
+          Id="Package\DFT StaffMonthlyEmailReminderByProtocol Testing"
+          TopLeft="555,177" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1668,27 +3064,27 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="167,42"
-          Id="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component"
-          TopLeft="181,134" />
-        <NodeLayout
           Size="157,42"
           Id="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source"
-          TopLeft="191,38" />
+          TopLeft="180,67" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component"
+          TopLeft="175,185" />
         <EdgeLayout
           Id="Package\DFT StaffMonthlyEmailReminderByProtocol.Paths[OLE DB Source Output]"
-          TopLeft="267,80">
+          TopLeft="258.5,109">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,54"
+              EndConnector="0,76"
               Start="0,0"
-              End="0,46.5">
+              End="0,68.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,46.5" />
+                    End="0,68.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1702,6 +3098,64 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT StaffMonthlyEmailReminderByProtocol Testing">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source"
+          TopLeft="164,49" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\Script Component"
+          TopLeft="167,157" />
+        <EdgeLayout
+          Id="Package\DFT StaffMonthlyEmailReminderByProtocol Testing.Paths[OLE DB Source Output]"
+          TopLeft="242.5,91">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8,66"
+              Start="0,0"
+              End="8,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29"
+                    Point2="0,33"
+                    Point3="4,33" />
+                  <mssgle:LineSegment
+                    End="4,33" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4,33"
+                    Point2="8,33"
+                    Point3="8,37" />
+                  <mssgle:LineSegment
+                    End="8,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT StaffMonthlyEmailReminderByProtocol Testing\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
