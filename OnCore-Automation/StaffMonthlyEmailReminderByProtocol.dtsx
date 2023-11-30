@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="StaffMonthlyEmailReminderByProtocol"
   DTS:PackageType="5"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{5DC745CB-C5EF-47AB-B655-C2EF3C2072B5}">
+  DTS:VersionBuild="42"
+  DTS:VersionGUID="{5405E365-8C65-4A96-9C8A-FDEEE2C83149}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -390,7 +390,7 @@ internal class EmailRecord
             sb.Append("<br><b>Helpful links:</b>");
             sb.Append("<li><a href=\"https://ctapps.uahs.arizona.edu/oncore/summary-accrual-reporting\">Summary Accrual Info Page</a></li>");
             sb.Append("<li><a href=\"https://app.box.com/s/4dexex14ze56mmpix6hq2jhdhs8c4tz7\">Summary Accrual Template</a></li>");
-            //sb.Append("<li><a href=\"https://arizona.app.box.com/f/4cf24bef6c0a4e0cb1688f7886385ee0\">Summary Accrual Upload Link</a></li>");
+            //sb.Append("<li><a href=\"https://arizona.box.com/s/yrv09c0zxwe2bp4wvti3ldhu5jif5gln">Summary Accrual Upload Link</a></li>");
             sb.Append("<br>");
             sb.Append("<br>Thank you for your prompt attention to this matter.</br>");
             sb.Append("<br>");
@@ -574,8 +574,8 @@ public class ScriptMain : UserComponent
                       dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
 	<msb:PropertyGroup>
-		<msb:CodeName>SC_3db158b159f245518ad13bc988f321af</msb:CodeName>
 		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>SC_3db158b159f245518ad13bc988f321af</msb:CodeName>
 		<msb:DisplayName>SC_3db158b159f245518ad13bc988f321af</msb:DisplayName>
 		<msb:ProjectId>{51E3908C-5B4A-4E6B-B34C-8C0CCB32A091}</msb:ProjectId>
 	</msb:PropertyGroup>
@@ -1145,7 +1145,7 @@ internal class EmailService
                     <arrayElement
                       dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAHPXZGUAAAAAAAAAAOAAIiALATAAADQAAAAIAAAAAAAAQlIA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDACuzaGUAAAAAAAAAAOAAIiALATAAADQAAAAIAAAAAAAAQlIA
 AAAgAAAAYAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACgAAAAAgAAAAAAAAMAYIUAABAA
 ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAPBRAABPAAAAAGAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAIAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1360,7 +1360,7 @@ YQBuAHkAIABpAG4AcQB1AGkAcgBpAGUAcwAgAG8AcgAgAGEAcwBzAGkAcwB0AGEAbgBjAGUALAAg
 AHAAbABlAGEAcwBlACAAcwB1AGIAbQBpAHQAIABhACAAdABpAGMAawBlAHQAIABpAG4APAAvAGkA
 PgAgADwAYQAgAGgAcgBlAGYAPQAiAGgAdAB0AHAAcwA6AC8ALwB0AGkAYwBrAGUAdABjAGEAdAAu
 AGEAcgBpAHoAbwBuAGEALgBlAGQAdQAvACIAPgAgAFQAaQBjAGsAZQB0AEMAYQB0ADwALwBhAD4A
-AA88AC8AYgBvAGQAeQA+AAAPPAAvAGgAdABtAGwAPgAAAABI8FNsm1FDTb+yLaXWb0TCAAQgAQEI
+AA88AC8AYgBvAGQAeQA+AAAPPAAvAGgAdABtAGwAPgAAAADFQVUcclo7Sb+7+IkkGAYOAAQgAQEI
 AyAAAQUgAQEREQQgAQEOBSABARF9BRUSPQEOBCABAQIFIAEBEkEMBwMSDBURWQESCBIIBhUSVQES
 CAggABURWQETAAYVEVkBEggEIAATAAMgAAIGBwISCBJdAyAADgUgAQETAAUAAg4ODgkgAwESZR0I
 EmkDBhJlAwYdCAQgAQ4IBCABAggHIAICDhGAkQUgAR0ICAUgABKAlQYgARKAmRwFAAASgJ0GIAEc
@@ -3064,13 +3064,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="157,42"
-          Id="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source"
-          TopLeft="180,67" />
-        <NodeLayout
           Size="167,42"
           Id="Package\DFT StaffMonthlyEmailReminderByProtocol\Script Component"
           TopLeft="175,185" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\DFT StaffMonthlyEmailReminderByProtocol\OLE DB Source"
+          TopLeft="180,67" />
         <EdgeLayout
           Id="Package\DFT StaffMonthlyEmailReminderByProtocol.Paths[OLE DB Source Output]"
           TopLeft="258.5,109">

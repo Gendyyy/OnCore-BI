@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="02-04-FactEnrollments-Transform-Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="60"
-  DTS:VersionGUID="{25D71E22-E4CE-4206-BF0B-E3891E623D70}">
+  DTS:VersionBuild="61"
+  DTS:VersionGUID="{CD2F9D4D-6416-4BB7-835E-EE7223D2A7B1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1401,23 +1401,6 @@ WHERE        (ACTIVE_FLAG = 1)</property>
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\SQL Truncate FactEnrollments"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{36044172-35E1-45F6-A01B-0716EA529F58}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="SQL Truncate FactEnrollments"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{E190B8E8-B10A-46B9-B012-C6B7F3A402C4}"
-          SQLTask:SqlStatementSource="truncate table dw.factenrollments" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -1431,11 +1414,11 @@ WHERE        (ACTIVE_FLAG = 1)</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{9046A56D-455C-4B2B-AAB3-B4C697756DFA}"
+      DTS:DTSID="{9C52F1C2-BA9A-4F77-8D69-FFF0A4F2ADCB}"
       DTS:From="Package\SQL Audit Begin"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\SQL Truncate FactEnrollments" />
+      DTS:To="Package\DFT Transform-Load" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -1452,14 +1435,6 @@ WHERE        (ACTIVE_FLAG = 1)</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\SQL Audit End" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
-      DTS:CreationName=""
-      DTS:DTSID="{6707FFC1-8517-4FDB-B533-15591E412405}"
-      DTS:From="Package\SQL Truncate FactEnrollments"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 4"
-      DTS:To="Package\DFT Transform-Load" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1476,7 +1451,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
         <NodeLayout
           Size="182,42"
           Id="Package\DFT Transform-Load"
-          TopLeft="119,324" />
+          TopLeft="117,233" />
         <NodeLayout
           Size="160,42"
           Id="Package\SQL Audit Begin"
@@ -1484,7 +1459,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
         <NodeLayout
           Size="152,42"
           Id="Package\SQL Audit End"
-          TopLeft="127,491" />
+          TopLeft="139,390" />
         <NodeLayout
           Size="203,42"
           Id="Package\SQL Count Current Rows"
@@ -1492,11 +1467,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
         <NodeLayout
           Size="164,42"
           Id="Package\SQL Count Rows"
-          TopLeft="135,410" />
-        <NodeLayout
-          Size="230,42"
-          Id="Package\SQL Truncate FactEnrollments"
-          TopLeft="97.5,231.5" />
+          TopLeft="133,319" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="209.75,97">
@@ -1520,30 +1491,8 @@ WHERE        (ACTIVE_FLAG = 1)</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="211.25,189">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42.5"
-              Start="0,0"
-              End="0,35">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="213.5,366">
+          TopLeft="211.5,275">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1565,30 +1514,18 @@ WHERE        (ACTIVE_FLAG = 1)</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="217,452">
+          TopLeft="215,361">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-14,39"
+              EndConnector="0,29"
               Start="0,0"
-              End="-14,31.5">
+              End="0,21.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.5"
-                    Point2="0,19.5"
-                    Point3="-4,19.5" />
-                  <mssgle:LineSegment
-                    End="-10,19.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-10,19.5"
-                    Point2="-14,19.5"
-                    Point3="-14,23.5" />
-                  <mssgle:LineSegment
-                    End="-14,31.5" />
+                    End="0,21.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1598,19 +1535,19 @@ WHERE        (ACTIVE_FLAG = 1)</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="211.25,273.5">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="209,189">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50.5"
+              EndConnector="0,44"
               Start="0,0"
-              End="0,43">
+              End="0,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43" />
+                    End="0,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

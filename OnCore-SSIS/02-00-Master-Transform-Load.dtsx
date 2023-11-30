@@ -7,12 +7,12 @@
   DTS:CreatorName="BLUECAT\gendy"
   DTS:DTSID="{CCE27948-E2AF-4C21-A61D-7220C0130568}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="02-00-Master-Transform-Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{49266088-E4E8-40BC-8ACE-4F918A776778}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{07019E46-08C7-49A2-8965-A7C69783E74C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -300,27 +300,27 @@
           Id="Package\Load Dims"
           TopLeft="194,142" />
         <NodeLayout
-          Size="158,42"
-          Id="Package\Load Facts\EP FactProtocol"
-          TopLeft="9,7" />
-        <NodeLayout
           Size="176,42"
           Id="Package\Load Facts\EP FactEnrollments"
-          TopLeft="200,9" />
+          TopLeft="197,48" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Load Facts\EP FactProtocol"
+          TopLeft="16,51" />
         <EdgeLayout
           Id="Package\Load Facts.PrecedenceConstraints[Constraint]"
-          TopLeft="167,29">
+          TopLeft="174,70.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="33,0"
+              EndConnector="23,0"
               Start="0,0"
-              End="25.5,0">
+              End="15.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="25.5,0" />
+                    End="15.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -332,8 +332,8 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="410,73"
-          Size="410,116"
+          PanelSize="410,148"
+          Size="410,191"
           Id="Package\Load Facts"
           TopLeft="194,310" />
         <NodeLayout
@@ -343,7 +343,7 @@
         <NodeLayout
           Size="152,42"
           Id="Package\SQL Audit End"
-          TopLeft="319,472" />
+          TopLeft="321,535" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="397.5,82">
@@ -390,18 +390,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="397,426">
+          TopLeft="398,501">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,46"
+              EndConnector="0,34"
               Start="0,0"
-              End="0,38.5">
+              End="0,26.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.5" />
+                    End="0,26.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
