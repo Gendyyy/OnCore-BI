@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-02-Protocols-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{4B5219D7-5EC3-4535-BAE8-B19DE1EB88D4}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{59BCD5CD-F98D-451B-B9D1-A05D2415A652}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -578,7 +578,9 @@ Initial_Open_Date,
 Closed_Date,
 Study_Closure_Date,
 primary_crc,
-primary_irb_coord
+primary_irb_coord,
+sponsor,
+sponsor_number
 
 from ONCOREPROD..UACC_ONCORE_RW_UTILS.PROTOCOLS
 where protocol_no is not null</property>
@@ -824,6 +826,26 @@ where protocol_no is not null</property>
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[primary_irb_coord]"
                       name="primary_irb_coord"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[sponsor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[sponsor]"
+                      length="250"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[sponsor]"
+                      name="sponsor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[sponsor_number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[sponsor_number]"
+                      length="150"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[sponsor_number]"
+                      name="sponsor_number"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -929,6 +951,16 @@ where protocol_no is not null</property>
                       dataType="wstr"
                       length="150"
                       name="primary_irb_coord" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[sponsor]"
+                      dataType="wstr"
+                      length="250"
+                      name="sponsor" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[sponsor_number]"
+                      dataType="wstr"
+                      length="150"
+                      name="sponsor_number" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1059,6 +1091,18 @@ where protocol_no is not null</property>
                       length="150"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[primary_irb_coord]"
                       name="primary_irb_coord" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[sponsor]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[sponsor]"
+                      name="sponsor" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[sponsor_number]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[sponsor_number]"
+                      name="sponsor_number" />
                     <outputColumn
                       refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -1292,6 +1336,20 @@ where protocol_no is not null</property>
                       cachedName="primary_irb_coord"
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Primary_IRB_Coord]"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[primary_irb_coord]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[sponsor]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="sponsor"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Sponsor]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[sponsor]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[sponsor_number]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="sponsor_number"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[SponsorNo]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[sponsor_number]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1392,6 +1450,16 @@ where protocol_no is not null</property>
                       dataType="wstr"
                       length="35"
                       name="Primary_IRB_Coord" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Sponsor]"
+                      dataType="wstr"
+                      length="150"
+                      name="Sponsor" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[SponsorNo]"
+                      dataType="wstr"
+                      length="100"
+                      name="SponsorNo" />
                   </externalMetadataColumns>
                 </input>
               </inputs>

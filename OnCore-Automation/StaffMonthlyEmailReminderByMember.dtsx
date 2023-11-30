@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{A98A99D0-A5CD-4EDA-9BAC-0744AF6DD342}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{A03BEE4E-CEB3-48AD-AAEC-602C2B92AFED}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=com-dtrust-prod.bluecat.arizona.edu;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{5DC15BBF-1F74-45E0-B443-6C6901C84B41}com-dtrust-prod.bluecat.arizona.edu;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=com-dtrust-prod.bluecat.arizona.edu;Initial Catalog=ClinicalTrialData;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{5DC15BBF-1F74-45E0-B443-6C6901C84B41}com-dtrust-prod.bluecat.arizona.edu;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
