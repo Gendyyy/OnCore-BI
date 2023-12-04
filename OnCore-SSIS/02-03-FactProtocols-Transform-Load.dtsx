@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="02-03-FactProtocols-Transform-Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="58"
-  DTS:VersionGUID="{AC668976-77DF-44E2-97E8-B746A11EF010}">
+  DTS:VersionBuild="60"
+  DTS:VersionGUID="{A7620C9E-240D-49C1-A2BF-507820B7A780}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2240,6 +2240,56 @@ where [refTable].[Date] = ?</property>
                       cachedName="StudyClosureDateKey"
                       externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Study_Closure_Date_key]"
                       lineageId="Package\DFT Transform-Load\Lookup StudyClosureDate_Key.Outputs[Lookup Match Output].Columns[StudyClosureDateKey]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Institutions]"
+                      cachedDataType="wstr"
+                      cachedLength="700"
+                      cachedName="Institutions"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Institutions]"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Institutions]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StudySites]"
+                      cachedDataType="wstr"
+                      cachedLength="700"
+                      cachedName="StudySites"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudySites]"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[StudySites]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NumberOfInstitutions]"
+                      cachedDataType="numeric"
+                      cachedName="NumberOfInstitutions"
+                      cachedPrecision="2"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberOfInstitutions]"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[NumberOfInstitutions]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalAccrualTarget]"
+                      cachedDataType="numeric"
+                      cachedName="TotalAccrualTarget"
+                      cachedPrecision="6"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalAccrualTarget]"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[TotalAccrualTarget]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TreatmentType]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="TreatmentType"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TreatmentType]"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[TreatmentType]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InvestigationalProduct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="InvestigationalProduct"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InvestigationalProduct]"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[InvestigationalProduct]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsSummaryAccrual]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="IsSummaryAccrual"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsSummaryAccrual]"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[IsSummaryAccrual]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2326,6 +2376,42 @@ where [refTable].[Date] = ?</property>
                       refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Study_Closure_Date_key]"
                       dataType="i4"
                       name="Study_Closure_Date_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Institutions]"
+                      dataType="wstr"
+                      length="700"
+                      name="Institutions" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudySites]"
+                      dataType="wstr"
+                      length="700"
+                      name="StudySites" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberOfInstitutions]"
+                      dataType="numeric"
+                      name="NumberOfInstitutions"
+                      precision="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalAccrualTarget]"
+                      dataType="numeric"
+                      name="TotalAccrualTarget"
+                      precision="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TreatmentType]"
+                      dataType="wstr"
+                      length="35"
+                      name="TreatmentType" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InvestigationalProduct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="InvestigationalProduct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsSummaryAccrual]"
+                      dataType="wstr"
+                      length="1"
+                      name="IsSummaryAccrual" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2619,6 +2705,97 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Primary_IRB_Coord]"
                       name="Primary_IRB_Coord"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sponsor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sponsor]"
+                      length="150"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sponsor]"
+                      name="Sponsor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[SponsorNo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SponsorNo]"
+                      length="100"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[SponsorNo]"
+                      name="SponsorNo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Institutions]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Institutions]"
+                      length="700"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Institutions]"
+                      name="Institutions"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudySites]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StudySites]"
+                      length="700"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudySites]"
+                      name="StudySites"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfInstitutions]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumberOfInstitutions]"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfInstitutions]"
+                      name="NumberOfInstitutions"
+                      precision="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalAccrualTarget]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalAccrualTarget]"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalAccrualTarget]"
+                      name="TotalAccrualTarget"
+                      precision="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TreatmentType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TreatmentType]"
+                      length="35"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TreatmentType]"
+                      name="TreatmentType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvestigationalProduct]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvestigationalProduct]"
+                      length="15"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvestigationalProduct]"
+                      name="InvestigationalProduct"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsSummaryAccrual]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsSummaryAccrual]"
+                      length="1"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsSummaryAccrual]"
+                      name="IsSummaryAccrual"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2719,6 +2896,52 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       dataType="wstr"
                       length="35"
                       name="Primary_IRB_Coord" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sponsor]"
+                      dataType="wstr"
+                      length="150"
+                      name="Sponsor" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SponsorNo]"
+                      dataType="wstr"
+                      length="100"
+                      name="SponsorNo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Institutions]"
+                      dataType="wstr"
+                      length="700"
+                      name="Institutions" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StudySites]"
+                      dataType="wstr"
+                      length="700"
+                      name="StudySites" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumberOfInstitutions]"
+                      dataType="numeric"
+                      name="NumberOfInstitutions"
+                      precision="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalAccrualTarget]"
+                      dataType="numeric"
+                      name="TotalAccrualTarget"
+                      precision="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TreatmentType]"
+                      dataType="wstr"
+                      length="35"
+                      name="TreatmentType" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InvestigationalProduct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="InvestigationalProduct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsSummaryAccrual]"
+                      dataType="wstr"
+                      length="1"
+                      name="IsSummaryAccrual" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2844,6 +3067,61 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       length="35"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Primary_IRB_Coord]"
                       name="Primary_IRB_Coord" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sponsor]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sponsor]"
+                      name="Sponsor" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SponsorNo]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SponsorNo]"
+                      name="SponsorNo" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Institutions]"
+                      dataType="wstr"
+                      length="700"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Institutions]"
+                      name="Institutions" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StudySites]"
+                      dataType="wstr"
+                      length="700"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StudySites]"
+                      name="StudySites" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NumberOfInstitutions]"
+                      dataType="numeric"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NumberOfInstitutions]"
+                      name="NumberOfInstitutions"
+                      precision="2" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalAccrualTarget]"
+                      dataType="numeric"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalAccrualTarget]"
+                      name="TotalAccrualTarget"
+                      precision="6" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TreatmentType]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TreatmentType]"
+                      name="TreatmentType" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvestigationalProduct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InvestigationalProduct]"
+                      name="InvestigationalProduct" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsSummaryAccrual]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsSummaryAccrual]"
+                      name="IsSummaryAccrual" />
                     <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -3243,6 +3521,161 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                           name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[MGMNTGRPKey]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[Institutions]"
+                      cachedDataType="wstr"
+                      cachedLength="700"
+                      cachedName="Institutions"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Institutions]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Institutions]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[StudySites]"
+                      cachedDataType="wstr"
+                      cachedLength="700"
+                      cachedName="StudySites"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudySites]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[StudySites]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[IsSummaryAccrual]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="IsSummaryAccrual"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsSummaryAccrual]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[IsSummaryAccrual]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[InvestigationalProduct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="InvestigationalProduct"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvestigationalProduct]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[InvestigationalProduct]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[TotalAccrualTarget]"
+                      cachedDataType="numeric"
+                      cachedName="TotalAccrualTarget"
+                      cachedPrecision="6"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalAccrualTarget]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[TotalAccrualTarget]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[TreatmentType]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="TreatmentType"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TreatmentType]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[TreatmentType]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[NumberOfInstitutions]"
+                      cachedDataType="numeric"
+                      cachedName="NumberOfInstitutions"
+                      cachedPrecision="2"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfInstitutions]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[NumberOfInstitutions]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[Sponsor]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="Sponsor"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sponsor]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Sponsor]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[SponsorNo]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="SponsorNo"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[SponsorNo]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[SponsorNo]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[Primary_crc]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="Primary_crc"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Primary_crc]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Primary_crc]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[Primary_IRB_Coord]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="Primary_IRB_Coord"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Primary_IRB_Coord]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Primary_IRB_Coord]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -3534,6 +3967,161 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                           name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[MGMNTGRPKey]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[Institutions]"
+                      cachedDataType="wstr"
+                      cachedLength="700"
+                      cachedName="Institutions"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Institutions]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Institutions]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[StudySites]"
+                      cachedDataType="wstr"
+                      cachedLength="700"
+                      cachedName="StudySites"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudySites]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[StudySites]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[IsSummaryAccrual]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="IsSummaryAccrual"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsSummaryAccrual]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[IsSummaryAccrual]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[InvestigationalProduct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="InvestigationalProduct"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvestigationalProduct]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[InvestigationalProduct]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[TotalAccrualTarget]"
+                      cachedDataType="numeric"
+                      cachedName="TotalAccrualTarget"
+                      cachedPrecision="6"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalAccrualTarget]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[TotalAccrualTarget]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[TreatmentType]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="TreatmentType"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TreatmentType]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[TreatmentType]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[NumberOfInstitutions]"
+                      cachedDataType="numeric"
+                      cachedName="NumberOfInstitutions"
+                      cachedPrecision="2"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfInstitutions]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[NumberOfInstitutions]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[Sponsor]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="Sponsor"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sponsor]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Sponsor]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[SponsorNo]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="SponsorNo"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[SponsorNo]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[SponsorNo]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[Primary_crc]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="Primary_crc"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Primary_crc]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Primary_crc]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[Primary_IRB_Coord]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="Primary_IRB_Coord"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Primary_IRB_Coord]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Primary_IRB_Coord]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -3665,6 +4253,73 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       dataType="i4"
                       lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[MGMNTGRPKey]"
                       name="MGMNTGRPKey" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Institutions]"
+                      dataType="wstr"
+                      length="700"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Institutions]"
+                      name="Institutions" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[StudySites]"
+                      dataType="wstr"
+                      length="700"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[StudySites]"
+                      name="StudySites" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[IsSummaryAccrual]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[IsSummaryAccrual]"
+                      name="IsSummaryAccrual" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[InvestigationalProduct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[InvestigationalProduct]"
+                      name="InvestigationalProduct" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[TotalAccrualTarget]"
+                      dataType="numeric"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[TotalAccrualTarget]"
+                      name="TotalAccrualTarget"
+                      precision="6" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[TreatmentType]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[TreatmentType]"
+                      name="TreatmentType" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[NumberOfInstitutions]"
+                      dataType="numeric"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[NumberOfInstitutions]"
+                      name="NumberOfInstitutions"
+                      precision="2" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Sponsor]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Sponsor]"
+                      name="Sponsor" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[SponsorNo]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[SponsorNo]"
+                      name="SponsorNo" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Primary_crc]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Primary_crc]"
+                      name="Primary_crc" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Primary_IRB_Coord]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Primary_IRB_Coord]"
+                      name="Primary_IRB_Coord" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="02-04-FactEnrollments-Transform-Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="61"
-  DTS:VersionGUID="{CD2F9D4D-6416-4BB7-835E-EE7223D2A7B1}">
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{FC1E4B21-AB3A-46B7-AD14-84B1B6E72FA1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1667,9 +1667,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,18.25,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1692,7 +1690,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-57.0600390625,11.5,114.120078125,16"
+              BoundingBox="-48.19138671875,13.6953125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
