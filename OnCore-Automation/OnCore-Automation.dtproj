@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">COM-ONCORE-SQL</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5ipusBdnU0OYCn+tZwdZ9wAAAAACAAAAAAADZgAAwAAAABAAAADxHQYPqmWYXoSIuBN4T4xzAAAAAASAAACgAAAAEAAAADtTRa76ecx0YOi3c4hSiMOIAAAApc2/cIX6WaIchaobreyLE3jnIIcBVdPVvbEcC3E5oO02skPRUel7FmHscF0PSvxo6HVlWBovFsUTEUsC+L2H5dw+NEWM8sTP9U0/TqF17U55Ig3C2jWjr1arjNE/0goSH2dTTfMK2LA19viXliCbdWM3qAORLthG+cK+Wo27vX4Y4REJ1QDTKRQAAAC1hJoMa1SFErJ6121Dp8aH6O59Sg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5ipusBdnU0OYCn+tZwdZ9wAAAAACAAAAAAADZgAAwAAAABAAAAC3ebtvU8UPQo7ydnPfR/YeAAAAAASAAACgAAAAEAAAAPfMZNlUYM32QdRa/XClpjSIAAAA33IwBt54EI0rCi4X7YXVfNWvq7wV9r0YeXkGwRHjh4C+DHThogVsASlETHSWiDakDBchHiJE55o4X3TAZ7kt9zg+mHC5WdkesL2b2/KvcheGZh5LqReUJW8bgYGvojYkAiCwpxBe5XuRZ7N50FV7ydL6MumdAg3afYpEgUy2EC6RPaKTjjhh8hQAAACGJ/pXW+5jWi2kvZXppsrBMHZOtg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -408,10 +408,10 @@
                 <SSIS:Property SSIS:Name="Name">CalendarValidationByCRCEmailReminder</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">53</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">54</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{4CDF5908-71BD-472A-A8CE-97173C6BE87D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{C48AAC61-BC8D-4C16-B0B2-838923BB3492}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -428,7 +428,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">ticketcat-noreply@arizona.edu</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">OnCoreSupport@arizona.edu</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>

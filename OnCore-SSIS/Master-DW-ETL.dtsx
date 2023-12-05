@@ -7,12 +7,12 @@
   DTS:CreatorName="BLUECAT\gendy"
   DTS:DTSID="{9B3EA355-9DE1-47EF-97F4-B23BD2BABDC0}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="Master-DW-ETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{B0A40735-B186-4730-87CB-6CD7D70C3C60}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{391CA38D-E489-473C-B76A-3AC071425251}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

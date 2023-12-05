@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="CalendarValidationByCRCEmailReminder"
   DTS:PackageType="5"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{4CDF5908-71BD-472A-A8CE-97173C6BE87D}">
+  DTS:VersionBuild="54"
+  DTS:VersionGUID="{C48AAC61-BC8D-4C16-B0B2-838923BB3492}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -37,7 +37,7 @@
       DTS:ObjectName="SMTPClientFromURL">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">ticketcat-noreply@arizona.edu</DTS:Property>
+        DTS:Name="ParameterValue">OnCoreSupport@arizona.edu</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables />
@@ -4296,11 +4296,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="308.8,41.6"
+          Size="309,42"
           Id="Package\DFT CalendarValidationByCRCEmailReminder"
           TopLeft="199.333331611421,176.866666983499" />
         <NodeLayout
-          Size="348,41.6"
+          Size="348,42"
           Id="Package\DFT CalendarValidationByCRCEmailReminder Testing"
           TopLeft="555,177" />
       </GraphLayout>
