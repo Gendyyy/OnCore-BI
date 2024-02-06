@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-02-Protocols-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{54AC97C0-693D-49AE-947C-193B37D27C95}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{B0A7A0FA-1130-4873-87B7-6DD4741597D5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -280,6 +280,81 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\DFT Extract to Staging\DC Protocol id"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="DC Protocol id"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Extract to Staging\DC Protocol id.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\DC Protocol id.Inputs[Data Conversion Input].Columns[protocol_id]"
+                      cachedDataType="r8"
+                      cachedName="protocol_id"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Extract to Staging\DC Protocol id.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT Extract to Staging\DC Protocol id.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\DC Protocol id.Outputs[Data Conversion Output].Columns[Copy of protocol_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Extract to Staging\DC Protocol id.Outputs[Data Conversion Output].Columns[Copy of protocol_id]"
+                      name="Copy of protocol_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Extract to Staging\DC Protocol id.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT Extract to Staging\DC Protocol id.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\DC Protocol id.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Extract to Staging\DC Protocol id.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\DC Protocol id.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Extract to Staging\DC Protocol id.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\DFT Extract to Staging\FF Errors"
               componentClassID="Microsoft.FlatFileDestination"
@@ -555,10 +630,13 @@
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select 
-p.protocol_id,
+p.protocol_id ,
 p.protocol_no,
 p.Title,
-p.pi_name,
+case when charindex(';',p.pi_name) != 0
+then left(p.pi_name,charindex(';',p.pi_name)-1)
+else p.pi_name end
+as pi_name,
 p.PI_Email,
 p.dmg as ManagementGroup,
 p.Protocol_Institutions,
@@ -1280,7 +1358,7 @@ where P.protocol_no is not null</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[Protocols]</property>
+                  name="OpenRowset">[dbo].[Protocols]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1453,13 +1531,6 @@ where P.protocol_no is not null</property>
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Study_Closure_Date]"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Study_Closure_Date]" />
                     <inputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[PI_Email]"
-                      cachedDataType="wstr"
-                      cachedLength="200"
-                      cachedName="PI_Email"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[PI_Email]"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]" />
-                    <inputColumn
                       refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[primary_crc]"
                       cachedDataType="wstr"
                       cachedLength="150"
@@ -1535,6 +1606,13 @@ where P.protocol_no is not null</property>
                       cachedName="IsSummaryAccrual"
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[IsSummaryAccrual]"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsSummaryAccrual]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[PI_Email]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="PI_Email"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[pi_email]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1557,11 +1635,6 @@ where P.protocol_no is not null</property>
                       dataType="wstr"
                       length="100"
                       name="pi_name" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[PI_Email]"
-                      dataType="wstr"
-                      length="50"
-                      name="PI_Email" />
                     <externalMetadataColumn
                       refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[ManagementGroup]"
                       dataType="wstr"
@@ -1681,6 +1754,11 @@ where P.protocol_no is not null</property>
                       dataType="wstr"
                       length="1"
                       name="IsSummaryAccrual" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[pi_email]"
+                      dataType="wstr"
+                      length="50"
+                      name="pi_email" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1770,6 +1848,11 @@ where P.protocol_no is not null</property>
           </components>
           <paths>
             <path
+              refId="Package\DFT Extract to Staging.Paths[Data Conversion Output]"
+              endId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DFT Extract to Staging\DC Protocol id.Outputs[Data Conversion Output]" />
+            <path
               refId="Package\DFT Extract to Staging.Paths[OLE DB Destination Error Output]"
               endId="Package\DFT Extract to Staging\RC Error.Inputs[Row Count Input 1]"
               name="OLE DB Destination Error Output"
@@ -1786,7 +1869,7 @@ where P.protocol_no is not null</property>
               startId="Package\DFT Extract to Staging\RC Error.Outputs[Row Count Output 1]" />
             <path
               refId="Package\DFT Extract to Staging.Paths[Row Count Output 11]"
-              endId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input]"
+              endId="Package\DFT Extract to Staging\DC Protocol id.Inputs[Data Conversion Input]"
               name="Row Count Output 1"
               startId="Package\DFT Extract to Staging\RC Extract.Outputs[Row Count Output 1]" />
           </paths>
@@ -2114,39 +2197,43 @@ where P.protocol_no is not null</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="157,42"
-          Id="Package\DFT Extract to Staging\OLE DB Source"
-          TopLeft="128,73" />
-        <NodeLayout
-          Size="151,42"
-          Id="Package\DFT Extract to Staging\OLE DB Stage"
-          TopLeft="127,246" />
-        <NodeLayout
           Size="132,42"
           Id="Package\DFT Extract to Staging\RC Extract"
           TopLeft="138,157" />
         <NodeLayout
-          Size="122,42"
-          Id="Package\DFT Extract to Staging\RC Error"
-          TopLeft="140,342" />
-        <NodeLayout
           Size="125,42"
           Id="Package\DFT Extract to Staging\FF Errors"
-          TopLeft="135,428" />
+          TopLeft="143,509" />
+        <NodeLayout
+          Size="122,42"
+          Id="Package\DFT Extract to Staging\RC Error"
+          TopLeft="148,423" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\DFT Extract to Staging\OLE DB Stage"
+          TopLeft="136,327" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\DFT Extract to Staging\DC Protocol id"
+          TopLeft="135,230" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\DFT Extract to Staging\OLE DB Source"
+          TopLeft="128,73" />
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[Row Count Output 11]"
-          TopLeft="203.25,199">
+          TopLeft="207,199">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,47"
+              EndConnector="0,31"
               Start="0,0"
-              End="0,39.5">
+              End="0,23.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.5" />
+                    End="0,23.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2157,7 +2244,7 @@ where P.protocol_no is not null</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[Row Count Output 1]"
-          TopLeft="199.25,384">
+          TopLeft="207.25,465">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2201,7 +2288,7 @@ where P.protocol_no is not null</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[OLE DB Destination Error Output]"
-          TopLeft="201.75,288">
+          TopLeft="210.25,369">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2221,6 +2308,28 @@ where P.protocol_no is not null</property>
             <mssgm:EdgeLabel
               BoundingBox="-73.20890625,17.533203125,146.4178125,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Extract to Staging.Paths[Data Conversion Output]"
+          TopLeft="210.75,272">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

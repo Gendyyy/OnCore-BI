@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="02-03-FactProtocols-Transform-Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="60"
-  DTS:VersionGUID="{A7620C9E-240D-49C1-A2BF-507820B7A780}">
+  DTS:VersionBuild="69"
+  DTS:VersionGUID="{20AFCB21-2DE9-43B6-B376-A6D5A8BEC288}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -685,79 +685,6 @@
                       refId="Package\DFT Transform-Load\DC Audit Key.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\DFT Transform-Load\DC Audit Key.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT Transform-Load\Derived Column"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT Transform-Load\Derived Column.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT Transform-Load\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\DFT Transform-Load\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT Transform-Load\Derived Column.Outputs[Derived Column Output].Columns[MGMNTGRPKey]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT Transform-Load\Derived Column.Outputs[Derived Column Output].Columns[MGMNTGRPKey]"
-                      name="MGMNTGRPKey"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">-1</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">-1</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT Transform-Load\Derived Column.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\DFT Transform-Load\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT Transform-Load\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT Transform-Load\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT Transform-Load\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1664,7 +1591,7 @@ where [refTable].[NAME] = ?</property>
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="ManagementGroup"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagementGroup]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[ManagementGroup]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1758,7 +1685,7 @@ where [refTable].[NAME] = ?</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dw].[DimPI]) [refTable]
-where [refTable].[EMAIL] = ?</property>
+where [refTable].[STAFF_NAME] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -1794,7 +1721,7 @@ where [refTable].[EMAIL] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]};</property>
+                  name="ParameterMap">#{Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_name]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1818,16 +1745,16 @@ where [refTable].[EMAIL] = ?</property>
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT Transform-Load\Lookup PI_Key.Inputs[Lookup Input].Columns[PI_Email]"
+                      refId="Package\DFT Transform-Load\Lookup PI_Key.Inputs[Lookup Input].Columns[pi_name]"
                       cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="PI_Email"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]">
+                      cachedLength="100"
+                      cachedName="pi_name"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_name]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">EMAIL</property>
+                          name="JoinToReferenceColumn">STAFF_NAME</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -2465,9 +2392,49 @@ where [refTable].[Date] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        ONC_MANAGEMENT_GROUP_ID, NAME, CODE, ACTIVE_FLAG
-FROM            ManagementGroup
-WHERE        (ACTIVE_FLAG = 1)</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT p.protocol_id
+      ,[protocol_no]
+      ,[Title]
+      ,case when ss.staff_name is not null
+	  then ss.staff_name else
+	  p.pi_name end as pi_name
+	  ,case when ss.EMAIL_ADDRESS is not null 
+	  then ss.EMAIL_ADDRESS 
+	  else p.pi_email end as pi_email
+      ,[ManagementGroup]
+      ,[Protocol_Institutions]
+      ,[Department_Name]
+      ,[Library]
+      ,[Data_Monitoring]
+      ,[LowerTargetAccrual]
+      ,[UpperTargetAccrual]
+      ,[Current_Status]
+      ,[Created_Date]
+      ,[Initial_Open_Date]
+      ,[Closed_Date]
+      ,[Current_Status_Date]
+      ,[Study_Closure_Date]
+      ,[Primary_crc]
+      ,[Primary_IRB_Coord]
+      ,[Sponsor]
+      ,[SponsorNo]
+      ,[Institutions]
+      ,[StudySites]
+      ,[NumberOfInstitutions]
+      ,[TotalAccrualTarget]
+      ,[TreatmentType]
+      ,[InvestigationalProduct]
+      ,[IsSummaryAccrual]
+	  from protocols p 
+outer apply( select top 1 *
+from staff s
+where
+s.PROTOCOL_ID = p.protocol_id
+and s.STAFF_ROLE = 'Principal Investigator'
+and charindex('uahs',lower(s.organization_name)) != 0
+and s.EMAIL_ADDRESS is not null 
+order by s.ACTIVE_CONTACT_FLAG DESC
+) as ss</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -2484,7 +2451,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -2541,16 +2508,6 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       length="100"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_name]"
                       name="pi_name"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PI_Email]"
-                      length="50"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]"
-                      name="PI_Email"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagementGroup]"
@@ -2676,16 +2633,6 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       name="Study_Closure_Date"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Accrual_Summary]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Accrual_Summary]"
-                      length="1"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Accrual_Summary]"
-                      name="Accrual_Summary"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Primary_crc]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
@@ -2796,6 +2743,16 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsSummaryAccrual]"
                       name="IsSummaryAccrual"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pi_email]"
+                      length="50"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_email]"
+                      name="pi_email"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2818,11 +2775,6 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       dataType="wstr"
                       length="100"
                       name="pi_name" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PI_Email]"
-                      dataType="wstr"
-                      length="50"
-                      name="PI_Email" />
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ManagementGroup]"
                       dataType="wstr"
@@ -2882,11 +2834,6 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       dataType="dbDate"
                       name="Study_Closure_Date" />
                     <externalMetadataColumn
-                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Accrual_Summary]"
-                      dataType="wstr"
-                      length="1"
-                      name="Accrual_Summary" />
-                    <externalMetadataColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Primary_crc]"
                       dataType="wstr"
                       length="35"
@@ -2942,6 +2889,11 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       dataType="wstr"
                       length="1"
                       name="IsSummaryAccrual" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pi_email]"
+                      dataType="wstr"
+                      length="50"
+                      name="pi_email" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2973,11 +2925,11 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pi_name]"
                       name="pi_name" />
                     <outputColumn
-                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PI_Email]"
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pi_email]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PI_Email]"
-                      name="PI_Email" />
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pi_email]"
+                      name="pi_email" />
                     <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ManagementGroup]"
                       dataType="wstr"
@@ -3049,12 +3001,6 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       dataType="dbDate"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Study_Closure_Date]"
                       name="Study_Closure_Date" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Accrual_Summary]"
-                      dataType="wstr"
-                      length="1"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Accrual_Summary]"
-                      name="Accrual_Summary" />
                     <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Primary_crc]"
                       dataType="wstr"
@@ -3242,7 +3188,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[protocol_id]"
                       cachedDataType="i4"
                       cachedName="protocol_id"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_id]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[protocol_id]">
                       <properties>
                         <property
                           containsID="true"
@@ -3256,7 +3202,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="35"
                       cachedName="protocol_no"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_no]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[protocol_no]">
                       <properties>
                         <property
                           containsID="true"
@@ -3270,7 +3216,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="4000"
                       cachedName="Title"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Title]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Title]">
                       <properties>
                         <property
                           containsID="true"
@@ -3284,7 +3230,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="pi_name"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_name]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[pi_name]">
                       <properties>
                         <property
                           containsID="true"
@@ -3294,25 +3240,11 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[PI_Email]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="PI_Email"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[PI_Email]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[ManagementGroup]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="ManagementGroup"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagementGroup]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[ManagementGroup]">
                       <properties>
                         <property
                           containsID="true"
@@ -3326,7 +3258,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="Protocol_Institutions"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_Institutions]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Protocol_Institutions]">
                       <properties>
                         <property
                           containsID="true"
@@ -3340,7 +3272,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Department_Name"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department_Name]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Department_Name]">
                       <properties>
                         <property
                           containsID="true"
@@ -3354,7 +3286,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Library"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Library]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Library]">
                       <properties>
                         <property
                           containsID="true"
@@ -3368,7 +3300,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="200"
                       cachedName="Data_Monitoring"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Data_Monitoring]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Data_Monitoring]">
                       <properties>
                         <property
                           containsID="true"
@@ -3381,7 +3313,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[LowerTargetAccrual]"
                       cachedDataType="i4"
                       cachedName="LowerTargetAccrual"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[LowerTargetAccrual]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[LowerTargetAccrual]">
                       <properties>
                         <property
                           containsID="true"
@@ -3394,7 +3326,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[UpperTargetAccrual]"
                       cachedDataType="i4"
                       cachedName="UpperTargetAccrual"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpperTargetAccrual]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[UpperTargetAccrual]">
                       <properties>
                         <property
                           containsID="true"
@@ -3408,7 +3340,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="30"
                       cachedName="Current_Status"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Current_Status]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Current_Status]">
                       <properties>
                         <property
                           containsID="true"
@@ -3421,7 +3353,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[Created_Date]"
                       cachedDataType="dbDate"
                       cachedName="Created_Date"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Created_Date]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Created_Date]">
                       <properties>
                         <property
                           containsID="true"
@@ -3434,7 +3366,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[Initial_Open_Date]"
                       cachedDataType="dbDate"
                       cachedName="Initial_Open_Date"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Open_Date]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Initial_Open_Date]">
                       <properties>
                         <property
                           containsID="true"
@@ -3447,7 +3379,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[Closed_Date]"
                       cachedDataType="dbDate"
                       cachedName="Closed_Date"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Closed_Date]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Closed_Date]">
                       <properties>
                         <property
                           containsID="true"
@@ -3460,7 +3392,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[Current_Status_Date]"
                       cachedDataType="dbDate"
                       cachedName="Current_Status_Date"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Current_Status_Date]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Current_Status_Date]">
                       <properties>
                         <property
                           containsID="true"
@@ -3473,7 +3405,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[Study_Closure_Date]"
                       cachedDataType="dbDate"
                       cachedName="Study_Closure_Date"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Study_Closure_Date]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Study_Closure_Date]">
                       <properties>
                         <property
                           containsID="true"
@@ -3486,7 +3418,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[AuditKey]"
                       cachedDataType="i4"
                       cachedName="AuditKey"
-                      lineageId="Package\DFT Transform-Load\DC Audit Key.Outputs[Derived Column Output].Columns[AuditKey]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[AuditKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -3499,7 +3431,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[PIKey]"
                       cachedDataType="i4"
                       cachedName="PIKey"
-                      lineageId="Package\DFT Transform-Load\Lookup PI_Key.Outputs[Lookup Match Output].Columns[PIKey]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[PIKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -3526,7 +3458,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="700"
                       cachedName="Institutions"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Institutions]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Institutions]">
                       <properties>
                         <property
                           containsID="true"
@@ -3540,7 +3472,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="700"
                       cachedName="StudySites"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudySites]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[StudySites]">
                       <properties>
                         <property
                           containsID="true"
@@ -3554,7 +3486,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="1"
                       cachedName="IsSummaryAccrual"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsSummaryAccrual]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[IsSummaryAccrual]">
                       <properties>
                         <property
                           containsID="true"
@@ -3569,7 +3501,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="str"
                       cachedLength="15"
                       cachedName="InvestigationalProduct"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvestigationalProduct]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[InvestigationalProduct]">
                       <properties>
                         <property
                           containsID="true"
@@ -3583,7 +3515,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="numeric"
                       cachedName="TotalAccrualTarget"
                       cachedPrecision="6"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalAccrualTarget]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[TotalAccrualTarget]">
                       <properties>
                         <property
                           containsID="true"
@@ -3597,7 +3529,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="35"
                       cachedName="TreatmentType"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TreatmentType]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[TreatmentType]">
                       <properties>
                         <property
                           containsID="true"
@@ -3611,7 +3543,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="numeric"
                       cachedName="NumberOfInstitutions"
                       cachedPrecision="2"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfInstitutions]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[NumberOfInstitutions]">
                       <properties>
                         <property
                           containsID="true"
@@ -3625,7 +3557,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="150"
                       cachedName="Sponsor"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sponsor]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Sponsor]">
                       <properties>
                         <property
                           containsID="true"
@@ -3639,7 +3571,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="SponsorNo"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[SponsorNo]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[SponsorNo]">
                       <properties>
                         <property
                           containsID="true"
@@ -3653,7 +3585,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="35"
                       cachedName="Primary_crc"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Primary_crc]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Primary_crc]">
                       <properties>
                         <property
                           containsID="true"
@@ -3667,13 +3599,27 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="35"
                       cachedName="Primary_IRB_Coord"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Primary_IRB_Coord]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Primary_IRB_Coord]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Primary_IRB_Coord]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[pi_email]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="pi_email"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[pi_email]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[pi_netid]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -3688,7 +3634,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[protocol_id]"
                       cachedDataType="i4"
                       cachedName="protocol_id"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_id]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[protocol_id]">
                       <properties>
                         <property
                           containsID="true"
@@ -3702,7 +3648,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="35"
                       cachedName="protocol_no"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_no]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[protocol_no]">
                       <properties>
                         <property
                           containsID="true"
@@ -3716,7 +3662,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="4000"
                       cachedName="Title"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Title]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Title]">
                       <properties>
                         <property
                           containsID="true"
@@ -3730,7 +3676,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="pi_name"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_name]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[pi_name]">
                       <properties>
                         <property
                           containsID="true"
@@ -3740,25 +3686,11 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[PI_Email]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="PI_Email"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[PI_Email]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[ManagementGroup]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="ManagementGroup"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagementGroup]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[ManagementGroup]">
                       <properties>
                         <property
                           containsID="true"
@@ -3772,7 +3704,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="Protocol_Institutions"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_Institutions]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Protocol_Institutions]">
                       <properties>
                         <property
                           containsID="true"
@@ -3786,7 +3718,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Department_Name"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department_Name]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Department_Name]">
                       <properties>
                         <property
                           containsID="true"
@@ -3800,7 +3732,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Library"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Library]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Library]">
                       <properties>
                         <property
                           containsID="true"
@@ -3814,7 +3746,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="200"
                       cachedName="Data_Monitoring"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Data_Monitoring]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Data_Monitoring]">
                       <properties>
                         <property
                           containsID="true"
@@ -3827,7 +3759,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[LowerTargetAccrual]"
                       cachedDataType="i4"
                       cachedName="LowerTargetAccrual"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[LowerTargetAccrual]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[LowerTargetAccrual]">
                       <properties>
                         <property
                           containsID="true"
@@ -3840,7 +3772,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[UpperTargetAccrual]"
                       cachedDataType="i4"
                       cachedName="UpperTargetAccrual"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpperTargetAccrual]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[UpperTargetAccrual]">
                       <properties>
                         <property
                           containsID="true"
@@ -3854,7 +3786,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="30"
                       cachedName="Current_Status"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Current_Status]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Current_Status]">
                       <properties>
                         <property
                           containsID="true"
@@ -3867,7 +3799,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[Created_Date]"
                       cachedDataType="dbDate"
                       cachedName="Created_Date"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Created_Date]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Created_Date]">
                       <properties>
                         <property
                           containsID="true"
@@ -3880,7 +3812,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[Initial_Open_Date]"
                       cachedDataType="dbDate"
                       cachedName="Initial_Open_Date"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Open_Date]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Initial_Open_Date]">
                       <properties>
                         <property
                           containsID="true"
@@ -3893,7 +3825,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[Closed_Date]"
                       cachedDataType="dbDate"
                       cachedName="Closed_Date"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Closed_Date]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Closed_Date]">
                       <properties>
                         <property
                           containsID="true"
@@ -3906,7 +3838,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[Current_Status_Date]"
                       cachedDataType="dbDate"
                       cachedName="Current_Status_Date"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Current_Status_Date]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Current_Status_Date]">
                       <properties>
                         <property
                           containsID="true"
@@ -3919,7 +3851,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[Study_Closure_Date]"
                       cachedDataType="dbDate"
                       cachedName="Study_Closure_Date"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Study_Closure_Date]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Study_Closure_Date]">
                       <properties>
                         <property
                           containsID="true"
@@ -3932,7 +3864,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[AuditKey]"
                       cachedDataType="i4"
                       cachedName="AuditKey"
-                      lineageId="Package\DFT Transform-Load\DC Audit Key.Outputs[Derived Column Output].Columns[AuditKey]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[AuditKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -3945,7 +3877,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[PIKey]"
                       cachedDataType="i4"
                       cachedName="PIKey"
-                      lineageId="Package\DFT Transform-Load\Lookup PI_Key.Outputs[Lookup Match Output].Columns[PIKey]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[PIKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -3958,7 +3890,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[MGMNTGRPKey]"
                       cachedDataType="i4"
                       cachedName="MGMNTGRPKey"
-                      lineageId="Package\DFT Transform-Load\Derived Column.Outputs[Derived Column Output].Columns[MGMNTGRPKey]">
+                      lineageId="Package\DFT Transform-Load\Unmatched ManagementGroup.Outputs[Derived Column Output].Columns[MGMNTGRPKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -3972,7 +3904,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="700"
                       cachedName="Institutions"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Institutions]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Institutions]">
                       <properties>
                         <property
                           containsID="true"
@@ -3986,7 +3918,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="700"
                       cachedName="StudySites"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudySites]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[StudySites]">
                       <properties>
                         <property
                           containsID="true"
@@ -4000,7 +3932,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="1"
                       cachedName="IsSummaryAccrual"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsSummaryAccrual]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[IsSummaryAccrual]">
                       <properties>
                         <property
                           containsID="true"
@@ -4015,7 +3947,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="str"
                       cachedLength="15"
                       cachedName="InvestigationalProduct"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvestigationalProduct]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[InvestigationalProduct]">
                       <properties>
                         <property
                           containsID="true"
@@ -4029,7 +3961,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="numeric"
                       cachedName="TotalAccrualTarget"
                       cachedPrecision="6"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalAccrualTarget]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[TotalAccrualTarget]">
                       <properties>
                         <property
                           containsID="true"
@@ -4043,7 +3975,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="35"
                       cachedName="TreatmentType"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TreatmentType]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[TreatmentType]">
                       <properties>
                         <property
                           containsID="true"
@@ -4057,7 +3989,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="numeric"
                       cachedName="NumberOfInstitutions"
                       cachedPrecision="2"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfInstitutions]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[NumberOfInstitutions]">
                       <properties>
                         <property
                           containsID="true"
@@ -4071,7 +4003,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="150"
                       cachedName="Sponsor"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sponsor]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Sponsor]">
                       <properties>
                         <property
                           containsID="true"
@@ -4085,7 +4017,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="SponsorNo"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[SponsorNo]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[SponsorNo]">
                       <properties>
                         <property
                           containsID="true"
@@ -4099,7 +4031,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="35"
                       cachedName="Primary_crc"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Primary_crc]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Primary_crc]">
                       <properties>
                         <property
                           containsID="true"
@@ -4113,13 +4045,27 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       cachedDataType="wstr"
                       cachedLength="35"
                       cachedName="Primary_IRB_Coord"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Primary_IRB_Coord]">
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Primary_IRB_Coord]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Primary_IRB_Coord]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[pi_email]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="pi_email"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[pi_email]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[pi_netid]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -4162,11 +4108,11 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[pi_name]"
                       name="pi_name" />
                     <outputColumn
-                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[PI_Email]"
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[pi_netid]"
                       dataType="wstr"
                       length="200"
-                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[PI_Email]"
-                      name="PI_Email" />
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[pi_netid]"
+                      name="pi_netid" />
                     <outputColumn
                       refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[ManagementGroup]"
                       dataType="wstr"
@@ -4325,58 +4271,1282 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\DFT Transform-Load\Union All PI"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All PI"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[protocol_id]"
+                      cachedDataType="i4"
+                      cachedName="protocol_id"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[protocol_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[protocol_no]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="protocol_no"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_no]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[protocol_no]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="Title"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Title]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Title]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[pi_name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="pi_name"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[pi_name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[ManagementGroup]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ManagementGroup"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagementGroup]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[ManagementGroup]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Protocol_Institutions]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Protocol_Institutions"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_Institutions]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Protocol_Institutions]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Department_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Department_Name"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department_Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Department_Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Library]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Library"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Library]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Library]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Data_Monitoring]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Data_Monitoring"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Data_Monitoring]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Data_Monitoring]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[LowerTargetAccrual]"
+                      cachedDataType="i4"
+                      cachedName="LowerTargetAccrual"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[LowerTargetAccrual]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[LowerTargetAccrual]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[UpperTargetAccrual]"
+                      cachedDataType="i4"
+                      cachedName="UpperTargetAccrual"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpperTargetAccrual]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[UpperTargetAccrual]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Current_Status]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Current_Status"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Current_Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Current_Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Created_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Created_Date"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Created_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Created_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Initial_Open_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Initial_Open_Date"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Open_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Initial_Open_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Closed_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Closed_Date"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Closed_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Closed_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Current_Status_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Current_Status_Date"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Current_Status_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Current_Status_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Study_Closure_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Study_Closure_Date"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Study_Closure_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Study_Closure_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Primary_crc]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="Primary_crc"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Primary_crc]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Primary_crc]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Primary_IRB_Coord]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="Primary_IRB_Coord"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Primary_IRB_Coord]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Primary_IRB_Coord]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Sponsor]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="Sponsor"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sponsor]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Sponsor]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[SponsorNo]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="SponsorNo"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[SponsorNo]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[SponsorNo]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[Institutions]"
+                      cachedDataType="wstr"
+                      cachedLength="700"
+                      cachedName="Institutions"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Institutions]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Institutions]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[StudySites]"
+                      cachedDataType="wstr"
+                      cachedLength="700"
+                      cachedName="StudySites"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudySites]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[StudySites]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[NumberOfInstitutions]"
+                      cachedDataType="numeric"
+                      cachedName="NumberOfInstitutions"
+                      cachedPrecision="2"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfInstitutions]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[NumberOfInstitutions]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[TotalAccrualTarget]"
+                      cachedDataType="numeric"
+                      cachedName="TotalAccrualTarget"
+                      cachedPrecision="6"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalAccrualTarget]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[TotalAccrualTarget]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[TreatmentType]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="TreatmentType"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TreatmentType]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[TreatmentType]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[InvestigationalProduct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="InvestigationalProduct"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvestigationalProduct]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[InvestigationalProduct]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[IsSummaryAccrual]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="IsSummaryAccrual"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsSummaryAccrual]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[IsSummaryAccrual]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[AuditKey]"
+                      cachedDataType="i4"
+                      cachedName="AuditKey"
+                      lineageId="Package\DFT Transform-Load\DC Audit Key.Outputs[Derived Column Output].Columns[AuditKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[AuditKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[PIKey]"
+                      cachedDataType="i4"
+                      cachedName="PIKey"
+                      lineageId="Package\DFT Transform-Load\Unmatched PI.Outputs[Derived Column Output].Columns[PIKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[PIKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[pi_email]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="pi_email"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_email]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[pi_email]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[protocol_id]"
+                      cachedDataType="i4"
+                      cachedName="protocol_id"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[protocol_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[protocol_no]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="protocol_no"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_no]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[protocol_no]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="Title"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Title]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Title]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[pi_name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="pi_name"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[pi_name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[ManagementGroup]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ManagementGroup"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagementGroup]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[ManagementGroup]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Protocol_Institutions]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Protocol_Institutions"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Protocol_Institutions]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Protocol_Institutions]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Department_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Department_Name"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department_Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Department_Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Library]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Library"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Library]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Library]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Data_Monitoring]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Data_Monitoring"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Data_Monitoring]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Data_Monitoring]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[LowerTargetAccrual]"
+                      cachedDataType="i4"
+                      cachedName="LowerTargetAccrual"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[LowerTargetAccrual]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[LowerTargetAccrual]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[UpperTargetAccrual]"
+                      cachedDataType="i4"
+                      cachedName="UpperTargetAccrual"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpperTargetAccrual]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[UpperTargetAccrual]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Current_Status]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Current_Status"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Current_Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Current_Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Created_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Created_Date"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Created_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Created_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Initial_Open_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Initial_Open_Date"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Open_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Initial_Open_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Closed_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Closed_Date"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Closed_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Closed_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Current_Status_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Current_Status_Date"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Current_Status_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Current_Status_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Study_Closure_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Study_Closure_Date"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Study_Closure_Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Study_Closure_Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Primary_crc]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="Primary_crc"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Primary_crc]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Primary_crc]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Primary_IRB_Coord]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="Primary_IRB_Coord"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Primary_IRB_Coord]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Primary_IRB_Coord]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Sponsor]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="Sponsor"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sponsor]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Sponsor]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[SponsorNo]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="SponsorNo"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[SponsorNo]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[SponsorNo]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[Institutions]"
+                      cachedDataType="wstr"
+                      cachedLength="700"
+                      cachedName="Institutions"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Institutions]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Institutions]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[StudySites]"
+                      cachedDataType="wstr"
+                      cachedLength="700"
+                      cachedName="StudySites"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudySites]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[StudySites]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[NumberOfInstitutions]"
+                      cachedDataType="numeric"
+                      cachedName="NumberOfInstitutions"
+                      cachedPrecision="2"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfInstitutions]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[NumberOfInstitutions]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[TotalAccrualTarget]"
+                      cachedDataType="numeric"
+                      cachedName="TotalAccrualTarget"
+                      cachedPrecision="6"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalAccrualTarget]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[TotalAccrualTarget]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[TreatmentType]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="TreatmentType"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[TreatmentType]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[TreatmentType]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[InvestigationalProduct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="InvestigationalProduct"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvestigationalProduct]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[InvestigationalProduct]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[IsSummaryAccrual]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="IsSummaryAccrual"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsSummaryAccrual]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[IsSummaryAccrual]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[AuditKey]"
+                      cachedDataType="i4"
+                      cachedName="AuditKey"
+                      lineageId="Package\DFT Transform-Load\DC Audit Key.Outputs[Derived Column Output].Columns[AuditKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[AuditKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[PIKey]"
+                      cachedDataType="i4"
+                      cachedName="PIKey"
+                      lineageId="Package\DFT Transform-Load\Lookup PI_Key.Outputs[Lookup Match Output].Columns[PIKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[PIKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[pi_email]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="pi_email"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_email]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[pi_email]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[protocol_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[protocol_id]"
+                      name="protocol_id" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[protocol_no]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[protocol_no]"
+                      name="protocol_no" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Title]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[pi_name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[pi_name]"
+                      name="pi_name" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[ManagementGroup]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[ManagementGroup]"
+                      name="ManagementGroup" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Protocol_Institutions]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Protocol_Institutions]"
+                      name="Protocol_Institutions" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Department_Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Department_Name]"
+                      name="Department_Name" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Library]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Library]"
+                      name="Library" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Data_Monitoring]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Data_Monitoring]"
+                      name="Data_Monitoring" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[LowerTargetAccrual]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[LowerTargetAccrual]"
+                      name="LowerTargetAccrual" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[UpperTargetAccrual]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[UpperTargetAccrual]"
+                      name="UpperTargetAccrual" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Current_Status]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Current_Status]"
+                      name="Current_Status" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Created_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Created_Date]"
+                      name="Created_Date" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Initial_Open_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Initial_Open_Date]"
+                      name="Initial_Open_Date" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Closed_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Closed_Date]"
+                      name="Closed_Date" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Current_Status_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Current_Status_Date]"
+                      name="Current_Status_Date" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Study_Closure_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Study_Closure_Date]"
+                      name="Study_Closure_Date" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Primary_crc]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Primary_crc]"
+                      name="Primary_crc" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Primary_IRB_Coord]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Primary_IRB_Coord]"
+                      name="Primary_IRB_Coord" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Sponsor]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Sponsor]"
+                      name="Sponsor" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[SponsorNo]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[SponsorNo]"
+                      name="SponsorNo" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Institutions]"
+                      dataType="wstr"
+                      length="700"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[Institutions]"
+                      name="Institutions" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[StudySites]"
+                      dataType="wstr"
+                      length="700"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[StudySites]"
+                      name="StudySites" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[NumberOfInstitutions]"
+                      dataType="numeric"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[NumberOfInstitutions]"
+                      name="NumberOfInstitutions"
+                      precision="2" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[TotalAccrualTarget]"
+                      dataType="numeric"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[TotalAccrualTarget]"
+                      name="TotalAccrualTarget"
+                      precision="6" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[TreatmentType]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[TreatmentType]"
+                      name="TreatmentType" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[InvestigationalProduct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[InvestigationalProduct]"
+                      name="InvestigationalProduct" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[IsSummaryAccrual]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[IsSummaryAccrual]"
+                      name="IsSummaryAccrual" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[pi_email]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[pi_email]"
+                      name="pi_email" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[AuditKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[AuditKey]"
+                      name="AuditKey" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[PIKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[PIKey]"
+                      name="PIKey" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Transform-Load\Unmatched ManagementGroup"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Unmatched ManagementGroup"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Transform-Load\Unmatched ManagementGroup.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Transform-Load\Unmatched ManagementGroup.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT Transform-Load\Unmatched ManagementGroup.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Unmatched ManagementGroup.Outputs[Derived Column Output].Columns[MGMNTGRPKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Transform-Load\Unmatched ManagementGroup.Outputs[Derived Column Output].Columns[MGMNTGRPKey]"
+                      name="MGMNTGRPKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">-1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">-1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Transform-Load\Unmatched ManagementGroup.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT Transform-Load\Unmatched ManagementGroup.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Unmatched ManagementGroup.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transform-Load\Unmatched ManagementGroup.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Unmatched ManagementGroup.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transform-Load\Unmatched ManagementGroup.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Transform-Load\Unmatched PI"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Unmatched PI"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Transform-Load\Unmatched PI.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Transform-Load\Unmatched PI.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT Transform-Load\Unmatched PI.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Unmatched PI.Outputs[Derived Column Output].Columns[PIKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Transform-Load\Unmatched PI.Outputs[Derived Column Output].Columns[PIKey]"
+                      name="PIKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">-1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">-1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Transform-Load\Unmatched PI.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT Transform-Load\Unmatched PI.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Unmatched PI.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transform-Load\Unmatched PI.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Unmatched PI.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transform-Load\Unmatched PI.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
               refId="Package\DFT Transform-Load.Paths[Derived Column Output]"
               endId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2]"
               name="Derived Column Output"
-              startId="Package\DFT Transform-Load\Derived Column.Outputs[Derived Column Output]" />
+              startId="Package\DFT Transform-Load\Unmatched ManagementGroup.Outputs[Derived Column Output]" />
             <path
               refId="Package\DFT Transform-Load.Paths[Derived Column Output1]"
               endId="Package\DFT Transform-Load\Lookup PI_Key.Inputs[Lookup Input]"
               name="Derived Column Output"
               startId="Package\DFT Transform-Load\DC Audit Key.Outputs[Derived Column Output]" />
             <path
-              refId="Package\DFT Transform-Load.Paths[Lookup Match Output]"
-              endId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1]"
-              name="Lookup Match Output"
-              startId="Package\DFT Transform-Load\Lookup ManagementGroup_Key.Outputs[Lookup Match Output]" />
+              refId="Package\DFT Transform-Load.Paths[Derived Column Output2]"
+              endId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\DFT Transform-Load\Unmatched PI.Outputs[Derived Column Output]" />
             <path
-              refId="Package\DFT Transform-Load.Paths[Lookup Match Output1]"
-              endId="Package\DFT Transform-Load\Lookup StudyClosureDate_Key.Inputs[Lookup Input]"
+              refId="Package\DFT Transform-Load.Paths[Lookup Match Output5]"
+              endId="Package\DFT Transform-Load\RC Insert.Inputs[Row Count Input 1]"
               name="Lookup Match Output"
-              startId="Package\DFT Transform-Load\Lookup CurrentStatusDate_Key.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\DFT Transform-Load.Paths[Lookup Match Output2]"
-              endId="Package\DFT Transform-Load\Lookup ClosedDate_Key.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\DFT Transform-Load\Lookup InitialOpenDate_Key.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\DFT Transform-Load.Paths[Lookup Match Output3]"
-              endId="Package\DFT Transform-Load\Lookup InitialOpenDate_Key.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\DFT Transform-Load\Lookup CreatedDate_Key.Outputs[Lookup Match Output]" />
+              startId="Package\DFT Transform-Load\Lookup StudyClosureDate_Key.Outputs[Lookup Match Output]" />
             <path
               refId="Package\DFT Transform-Load.Paths[Lookup Match Output4]"
               endId="Package\DFT Transform-Load\Lookup CurrentStatusDate_Key.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\DFT Transform-Load\Lookup ClosedDate_Key.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\DFT Transform-Load.Paths[Lookup Match Output5]"
-              endId="Package\DFT Transform-Load\Lookup ManagementGroup_Key.Inputs[Lookup Input]"
+              refId="Package\DFT Transform-Load.Paths[Lookup Match Output3]"
+              endId="Package\DFT Transform-Load\Lookup ClosedDate_Key.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT Transform-Load\Lookup InitialOpenDate_Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT Transform-Load.Paths[Lookup Match Output6]"
+              endId="Package\DFT Transform-Load\Lookup InitialOpenDate_Key.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT Transform-Load\Lookup CreatedDate_Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT Transform-Load.Paths[Lookup Match Output1]"
+              endId="Package\DFT Transform-Load\Lookup StudyClosureDate_Key.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT Transform-Load\Lookup CurrentStatusDate_Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT Transform-Load.Paths[Lookup Match Output]"
+              endId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1]"
+              name="Lookup Match Output"
+              startId="Package\DFT Transform-Load\Lookup ManagementGroup_Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT Transform-Load.Paths[Lookup Match Output2]"
+              endId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2]"
               name="Lookup Match Output"
               startId="Package\DFT Transform-Load\Lookup PI_Key.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\DFT Transform-Load.Paths[Lookup Match Output6]"
-              endId="Package\DFT Transform-Load\RC Insert.Inputs[Row Count Input 1]"
-              name="Lookup Match Output"
-              startId="Package\DFT Transform-Load\Lookup StudyClosureDate_Key.Outputs[Lookup Match Output]" />
-            <path
               refId="Package\DFT Transform-Load.Paths[Lookup No Match Output]"
-              endId="Package\DFT Transform-Load\Derived Column.Inputs[Derived Column Input]"
+              endId="Package\DFT Transform-Load\Unmatched ManagementGroup.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
               startId="Package\DFT Transform-Load\Lookup ManagementGroup_Key.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT Transform-Load.Paths[Lookup No Match Output1]"
+              endId="Package\DFT Transform-Load\Unmatched PI.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT Transform-Load\Lookup PI_Key.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\DFT Transform-Load.Paths[OLE DB Destination Error Output]"
               endId="Package\DFT Transform-Load\RC Error.Inputs[Row Count Input 1]"
@@ -4389,24 +5559,29 @@ WHERE        (ACTIVE_FLAG = 1)</property>
               startId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DFT Transform-Load.Paths[Row Count Output 1]"
+              endId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT Transform-Load\RC Insert.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\DFT Transform-Load.Paths[Row Count Output 11]"
               endId="Package\DFT Transform-Load\FF Errors.Inputs[Flat File Destination Input]"
               name="Row Count Output 1"
               startId="Package\DFT Transform-Load\RC Error.Outputs[Row Count Output 1]" />
             <path
-              refId="Package\DFT Transform-Load.Paths[Row Count Output 11]"
+              refId="Package\DFT Transform-Load.Paths[Row Count Output 12]"
               endId="Package\DFT Transform-Load\DC Audit Key.Inputs[Derived Column Input]"
               name="Row Count Output 1"
               startId="Package\DFT Transform-Load\RC Extract.Outputs[Row Count Output 1]" />
-            <path
-              refId="Package\DFT Transform-Load.Paths[Row Count Output 12]"
-              endId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="Row Count Output 1"
-              startId="Package\DFT Transform-Load\RC Insert.Outputs[Row Count Output 1]" />
             <path
               refId="Package\DFT Transform-Load.Paths[Union All Output 1]"
               endId="Package\DFT Transform-Load\Lookup CreatedDate_Key.Inputs[Lookup Input]"
               name="Union All Output 1"
               startId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1]" />
+            <path
+              refId="Package\DFT Transform-Load.Paths[Union All Output 11]"
+              endId="Package\DFT Transform-Load\Lookup ManagementGroup_Key.Inputs[Lookup Input]"
+              name="Union All Output 1"
+              startId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -4700,6 +5875,14 @@ WHERE        (ACTIVE_FLAG = 1)</property>
           Size="164,42"
           Id="Package\SQL Count Rows"
           TopLeft="133,321" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Truncate FactEnrollments"
+          TopLeft="375,176" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Truncate FactProtocols"
+          TopLeft="376,239" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="209.75,97">
@@ -4714,6 +5897,40 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="290,168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85,23.3333333333333"
+              Start="0,0"
+              End="77.5,23.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="45.1284403669725,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="45.1284403669725,0"
+                    Point2="49.1284403669725,0"
+                    Point3="49.1284403669725,4" />
+                  <mssgle:LineSegment
+                    End="49.1284403669725,19.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49.1284403669725,19.3333333333333"
+                    Point2="49.1284403669725,23.3333333333333"
+                    Point3="53.1284403669725,23.3333333333333" />
+                  <mssgle:LineSegment
+                    End="77.5,23.3333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4778,48 +5995,6 @@ WHERE        (ACTIVE_FLAG = 1)</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Truncate FactEnrollments"
-          TopLeft="375,176" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="290,168">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="85,23.3333333333333"
-              Start="0,0"
-              End="77.5,23.3333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="45.1284403669725,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="45.1284403669725,0"
-                    Point2="49.1284403669725,0"
-                    Point3="49.1284403669725,4" />
-                  <mssgle:LineSegment
-                    End="49.1284403669725,19.3333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="49.1284403669725,19.3333333333333"
-                    Point2="49.1284403669725,23.3333333333333"
-                    Point3="53.1284403669725,23.3333333333333" />
-                  <mssgle:LineSegment
-                    End="77.5,23.3333333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="193,42"
-          Id="Package\Truncate FactProtocols"
-          TopLeft="376,239" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="580,197">
@@ -4883,35 +6058,31 @@ WHERE        (ACTIVE_FLAG = 1)</property>
     design-time-name="Package\DFT Transform-Load">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="221,42"
-          Id="Package\DFT Transform-Load\Union All ManagementGroup"
-          TopLeft="187.5,617.5" />
-        <NodeLayout
-          Size="238,42"
-          Id="Package\DFT Transform-Load\Lookup ManagementGroup_Key"
-          TopLeft="179,413.5" />
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="205,42"
           Id="Package\DFT Transform-Load\Lookup CreatedDate_Key"
           TopLeft="195.5,719.5" />
         <NodeLayout
-          Size="132,42"
-          Id="Package\DFT Transform-Load\RC Extract"
-          TopLeft="232,107.5" />
+          Size="233,42"
+          Id="Package\DFT Transform-Load\Unmatched ManagementGroup"
+          TopLeft="37.0000000000001,516.5" />
         <NodeLayout
           Size="125,42"
-          Id="Package\DFT Transform-Load\FF Errors"
-          TopLeft="31.5000000000001,1425.5" />
-        <NodeLayout
-          Size="122,42"
-          Id="Package\DFT Transform-Load\RC Error"
-          TopLeft="37.0000000000001,1335.5" />
+          Id="Package\DFT Transform-Load\RC Insert"
+          TopLeft="235,1216" />
         <NodeLayout
           Size="157,42"
           Id="Package\DFT Transform-Load\OLE DB Source"
           TopLeft="219.5,5.5" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\DFT Transform-Load\RC Extract"
+          TopLeft="232,107.5" />
+        <NodeLayout
+          Size="122,42"
+          Id="Package\DFT Transform-Load\RC Error"
+          TopLeft="37.0000000000001,1335.5" />
         <NodeLayout
           Size="153,42"
           Id="Package\DFT Transform-Load\Lookup PI_Key"
@@ -4921,111 +6092,287 @@ WHERE        (ACTIVE_FLAG = 1)</property>
           Id="Package\DFT Transform-Load\Lookup CurrentStatusDate_Key"
           TopLeft="181,1025.5" />
         <NodeLayout
+          Size="177,42"
+          Id="Package\DFT Transform-Load\OLE DB Destination"
+          TopLeft="220,1309" />
+        <NodeLayout
+          Size="136,42"
+          Id="Package\DFT Transform-Load\Union All PI"
+          TopLeft="506,409" />
+        <NodeLayout
+          Size="221,42"
+          Id="Package\DFT Transform-Load\Union All ManagementGroup"
+          TopLeft="187.5,617.5" />
+        <NodeLayout
           Size="232,42"
           Id="Package\DFT Transform-Load\Lookup StudyClosureDate_Key"
           TopLeft="182,1127.5" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\DFT Transform-Load\Derived Column"
-          TopLeft="79.0000000000001,515.5" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\DFT Transform-Load\DC Audit Key"
-          TopLeft="225.5,209.5" />
         <NodeLayout
           Size="219,42"
           Id="Package\DFT Transform-Load\Lookup InitialOpenDate_Key"
           TopLeft="188.5,821.5" />
         <NodeLayout
+          Size="125,42"
+          Id="Package\DFT Transform-Load\FF Errors"
+          TopLeft="31.5000000000001,1425.5" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\DFT Transform-Load\Unmatched PI"
+          TopLeft="563,311" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\DFT Transform-Load\DC Audit Key"
+          TopLeft="225.5,209.5" />
+        <NodeLayout
           Size="201,42"
           Id="Package\DFT Transform-Load\Lookup ClosedDate_Key"
           TopLeft="197.5,923.5" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\DFT Transform-Load\Lookup ManagementGroup_Key"
+          TopLeft="179,413.5" />
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Union All Output 11]"
+          TopLeft="506,432.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-89,0"
+              Start="0,0"
+              End="-81.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-81.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Union All Output 1]"
+          TopLeft="298,659.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Row Count Output 12]"
+          TopLeft="298,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Row Count Output 11]"
+          TopLeft="96.0000000000001,1377.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Row Count Output 1]"
+          TopLeft="297.5,1258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11,51"
+              Start="0,0"
+              End="11,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.5"
+                    Point2="0,25.5"
+                    Point3="4,25.5" />
+                  <mssgle:LineSegment
+                    End="7,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7,25.5"
+                    Point2="11,25.5"
+                    Point3="11,29.5" />
+                  <mssgle:LineSegment
+                    End="11,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[OLE DB Source Output]"
+          TopLeft="298,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[OLE DB Destination Error Output]"
+          TopLeft="220,1330">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-60.9999999999999,26.5"
+              Start="0,0"
+              End="-53.4999999999999,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-26.4999999999999,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26.4999999999999,0"
+                    Point2="-30.4999999999999,0"
+                    Point3="-30.4999999999999,4" />
+                  <mssgle:LineSegment
+                    End="-30.4999999999999,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-30.4999999999999,22.5"
+                    Point2="-30.4999999999999,26.5"
+                    Point3="-34.4999999999999,26.5" />
+                  <mssgle:LineSegment
+                    End="-53.4999999999999,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-103.70890625,-17.43359375,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Lookup No Match Output1]"
+          TopLeft="374.5,332.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="188.5,0"
+              Start="0,0"
+              End="181,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="181,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="12.07826171875,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Lookup No Match Output]"
           TopLeft="259.666666666667,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-101.666666666667,60"
+              EndConnector="-106.166666666667,61"
               Start="0,0"
-              End="-101.666666666667,52.5">
+              End="-106.166666666667,53.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2404006677796" />
+                    End="0,20.644407345576" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2404006677796"
-                    Point2="0,24.2404006677796"
-                    Point3="-4,24.2404006677796" />
+                    Point1="0,20.644407345576"
+                    Point2="0,24.644407345576"
+                    Point3="-4,24.644407345576" />
                   <mssgle:LineSegment
-                    End="-97.6666666666666,24.2404006677796" />
+                    End="-102.166666666667,24.644407345576" />
                   <mssgle:CubicBezierSegment
-                    Point1="-97.6666666666666,24.2404006677796"
-                    Point2="-101.666666666667,24.2404006677796"
-                    Point3="-101.666666666667,28.2404006677796" />
+                    Point1="-102.166666666667,24.644407345576"
+                    Point2="-106.166666666667,24.644407345576"
+                    Point3="-106.166666666667,28.644407345576" />
                   <mssgle:LineSegment
-                    End="-101.666666666667,52.5" />
+                    End="-106.166666666667,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-106.639720052083,29.2404006677796,111.6127734375,11.609375"
+              BoundingBox="-108.889720052084,29.644407345576,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Lookup Match Output5]"
-          TopLeft="298,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Lookup Match Output4]"
-          TopLeft="298,965.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Lookup Match Output3]"
+          Id="Package\DFT Transform-Load.Paths[Lookup Match Output6]"
           TopLeft="298,761.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5049,7 +6396,55 @@ WHERE        (ACTIVE_FLAG = 1)</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Lookup Match Output2]"
+          Id="Package\DFT Transform-Load.Paths[Lookup Match Output5]"
+          TopLeft="297.75,1169.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.5"
+              Start="0,0"
+              End="0,39">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,13.6953125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Lookup Match Output4]"
+          TopLeft="298,965.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-73.53673828125,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Lookup Match Output3]"
           TopLeft="298,863.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5068,7 +6463,43 @@ WHERE        (ACTIVE_FLAG = 1)</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              BoundingBox="-73.53673828125,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Lookup Match Output2]"
+          TopLeft="298,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="254.666666666667,55.5"
+              Start="0,0"
+              End="254.666666666667,48">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.9127906976744" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.9127906976744"
+                    Point2="0,32.9127906976744"
+                    Point3="4,32.9127906976744" />
+                  <mssgle:LineSegment
+                    End="250.666666666667,32.9127906976744" />
+                  <mssgle:CubicBezierSegment
+                    Point1="250.666666666667,32.9127906976744"
+                    Point2="254.666666666667,32.9127906976744"
+                    Point3="254.666666666667,36.9127906976744" />
+                  <mssgle:LineSegment
+                    End="254.666666666667,48" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="79.1419466145835,37.9127906976744,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5121,6 +6552,40 @@ WHERE        (ACTIVE_FLAG = 1)</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Derived Column Output2]"
+          TopLeft="637.5,353">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-42.1666666666666,56"
+              Start="0,0"
+              End="-42.1666666666666,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.2093023255814" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.2093023255814"
+                    Point2="0,33.2093023255814"
+                    Point3="-4,33.2093023255814" />
+                  <mssgle:LineSegment
+                    End="-38.1666666666666,33.2093023255814" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-38.1666666666666,33.2093023255814"
+                    Point2="-42.1666666666666,33.2093023255814"
+                    Point3="-42.1666666666666,37.2093023255814" />
+                  <mssgle:LineSegment
+                    End="-42.1666666666666,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Derived Column Output1]"
           TopLeft="298,251.5">
           <EdgeLayout.Curve>
@@ -5144,254 +6609,41 @@ WHERE        (ACTIVE_FLAG = 1)</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Derived Column Output]"
-          TopLeft="158,557.5">
+          TopLeft="153.5,558.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="104.5,60"
+              EndConnector="109,59"
               Start="0,0"
-              End="104.5,52.5">
+              End="109,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.7412398921833" />
+                    End="0,31.1455525606469" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.7412398921833"
-                    Point2="0,35.7412398921833"
-                    Point3="4,35.7412398921833" />
+                    Point1="0,31.1455525606469"
+                    Point2="0,35.1455525606469"
+                    Point3="4,35.1455525606469" />
                   <mssgle:LineSegment
-                    End="100.5,35.7412398921833" />
+                    End="105,35.1455525606469" />
                   <mssgle:CubicBezierSegment
-                    Point1="100.5,35.7412398921833"
-                    Point2="104.5,35.7412398921833"
-                    Point3="104.5,39.7412398921833" />
+                    Point1="105,35.1455525606469"
+                    Point2="109,35.1455525606469"
+                    Point3="109,39.1455525606469" />
                   <mssgle:LineSegment
-                    End="104.5,52.5" />
+                    End="109,51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Union All Output 1]"
-          TopLeft="298,659.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Row Count Output 11]"
-          TopLeft="298,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Row Count Output 1]"
-          TopLeft="96.0000000000001,1377.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48"
-              Start="0,0"
-              End="0,40.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[OLE DB Source Output]"
-          TopLeft="298,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="177,42"
-          Id="Package\DFT Transform-Load\OLE DB Destination"
-          TopLeft="220,1309" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\DFT Transform-Load\RC Insert"
-          TopLeft="235,1216" />
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Lookup Match Output6]"
-          TopLeft="297.75,1169.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46.5"
-              Start="0,0"
-              End="0,39">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,13.6953125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Row Count Output 12]"
-          TopLeft="297.5,1258">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="11,51"
-              Start="0,0"
-              End="11,43.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21.5"
-                    Point2="0,25.5"
-                    Point3="4,25.5" />
-                  <mssgle:LineSegment
-                    End="7,25.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="7,25.5"
-                    Point2="11,25.5"
-                    Point3="11,29.5" />
-                  <mssgle:LineSegment
-                    End="11,43.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[OLE DB Destination Error Output]"
-          TopLeft="220,1330">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-60.9999999999999,26.5"
-              Start="0,0"
-              End="-53.4999999999999,26.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-26.4999999999999,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-26.4999999999999,0"
-                    Point2="-30.4999999999999,0"
-                    Point3="-30.4999999999999,4" />
-                  <mssgle:LineSegment
-                    End="-30.4999999999999,22.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-30.4999999999999,22.5"
-                    Point2="-30.4999999999999,26.5"
-                    Point3="-34.4999999999999,26.5" />
-                  <mssgle:LineSegment
-                    End="-53.4999999999999,26.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-103.70890625,-17.43359375,146.4178125,11.43359375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT Transform-Load\Lookup ManagementGroup_Key">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dw].[DimManagementGroup]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT Transform-Load\Lookup CreatedDate_Key">
     <Properties>
@@ -5475,6 +6727,19 @@ WHERE        (ACTIVE_FLAG = 1)</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\DFT Transform-Load\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\DFT Transform-Load\Lookup StudyClosureDate_Key">
     <Properties>
       <Property>
@@ -5544,15 +6809,25 @@ WHERE        (ACTIVE_FLAG = 1)</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT Transform-Load\OLE DB Destination">
+    design-time-name="Package\DFT Transform-Load\Lookup ManagementGroup_Key">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dw].[DimManagementGroup]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

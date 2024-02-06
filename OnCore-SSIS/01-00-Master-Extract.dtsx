@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-00-Master-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{6677A992-1187-42B4-8A0A-76DFDAACFEC9}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{7C9E6FD6-0B60-476C-AC3E-B1A36E6529B9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -191,6 +191,14 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\Pull to Staging\EP Protocol Status History Extract" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Pull to Staging.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{C9242CD2-FC80-47CC-A51A-F47DBB18149D}"
+          DTS:From="Package\Pull to Staging\EP Staff Extract"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Pull to Staging\EP Protocols Extract" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -321,18 +329,18 @@
         <NodeLayout
           Size="237,42"
           Id="Package\Pull to Staging\EP Protocol Status History Extract"
-          TopLeft="225,80" />
+          TopLeft="225,172" />
         <NodeLayout
           Size="180,42"
           Id="Package\Pull to Staging\EP Protocols Extract"
-          TopLeft="256,10" />
+          TopLeft="256,102" />
         <NodeLayout
           Size="152,42"
           Id="Package\Pull to Staging\EP Staff Extract"
-          TopLeft="35,85" />
+          TopLeft="268,14" />
         <EdgeLayout
           Id="Package\Pull to Staging.PrecedenceConstraints[Constraint]"
-          TopLeft="344.75,52">
+          TopLeft="344.75,144">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -352,11 +360,33 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Pull to Staging.PrecedenceConstraints[Constraint 1]"
+          TopLeft="345,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="834,200"
-          Size="834,243"
+          PanelSize="834,269"
+          Size="834,312"
           Id="Package\Pull to Staging"
           TopLeft="114,152" />
         <NodeLayout
@@ -366,7 +396,7 @@
         <NodeLayout
           Size="152,42"
           Id="Package\SQL Audit End"
-          TopLeft="374,436" />
+          TopLeft="450,497" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="452,102">
@@ -403,30 +433,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="531,395">
+          TopLeft="528.5,464">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-81,41"
+              EndConnector="0,33"
               Start="0,0"
-              End="-81,33.5">
+              End="0,25.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.5"
-                    Point2="0,20.5"
-                    Point3="-4,20.5" />
-                  <mssgle:LineSegment
-                    End="-77,20.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-77,20.5"
-                    Point2="-81,20.5"
-                    Point3="-81,24.5" />
-                  <mssgle:LineSegment
-                    End="-81,33.5" />
+                    End="0,25.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

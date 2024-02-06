@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-04-Staff-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{A0A4CF0B-B1C5-4AEB-B865-F3BEAAD3CE8A}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{C6096E3E-DA10-4B29-87A6-5E6173620F9E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -270,11 +270,11 @@
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select *
 from openquery(
         ONCOREPROD,
-        'SELECT staff_name, staff_role, email_address, protocol_id, active_user_flag, stop_date
+        'SELECT EID, staff_name, staff_role, email_address, protocol_id, active_flag, active_user_flag, stop_date,
+      STAFF_ORGANIZATION_NAME
         from UACC_ONCORE_RW_UTILS.SV_PCL_STAFF_RO
         where staff_role in (''Accrual Data Contact'', ''Primary CRC'',''Clinical Research Coordinator'', ''Primary IRB Coordinator'',''IRB Coordinator'', ''Principal Investigator'')
             and protocol_subject_id is null
-            and stop_date is null
             ')</property>
                 <property
                   dataType="System.String"
@@ -371,6 +371,36 @@ from openquery(
                       name="STOP_DATE"
                       scale="7"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_ORGANIZATION_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[STAFF_ORGANIZATION_NAME]"
+                      length="255"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_ORGANIZATION_NAME]"
+                      name="STAFF_ORGANIZATION_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTIVE_FLAG]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTIVE_FLAG]"
+                      length="1"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTIVE_FLAG]"
+                      name="ACTIVE_FLAG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[EID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EID]"
+                      length="20"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[EID]"
+                      name="EID"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -404,6 +434,21 @@ from openquery(
                       dataType="dbTimeStamp2"
                       name="STOP_DATE"
                       scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[STAFF_ORGANIZATION_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="STAFF_ORGANIZATION_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTIVE_FLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="ACTIVE_FLAG" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EID]"
+                      dataType="wstr"
+                      length="20"
+                      name="EID" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -411,6 +456,12 @@ from openquery(
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EID]"
+                      name="EID" />
                     <outputColumn
                       refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[STAFF_NAME]"
                       dataType="wstr"
@@ -436,6 +487,12 @@ from openquery(
                       name="PROTOCOL_ID"
                       precision="8" />
                     <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTIVE_FLAG]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTIVE_FLAG]"
+                      name="ACTIVE_FLAG" />
+                    <outputColumn
                       refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTIVE_USER_FLAG]"
                       dataType="wstr"
                       length="1"
@@ -447,6 +504,12 @@ from openquery(
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[STOP_DATE]"
                       name="STOP_DATE"
                       scale="7" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[STAFF_ORGANIZATION_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[STAFF_ORGANIZATION_NAME]"
+                      name="STAFF_ORGANIZATION_NAME" />
                     <outputColumn
                       refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -578,6 +641,27 @@ from openquery(
                       cachedScale="7"
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[STOP_DATE]"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[STOP_DATE]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[STAFF_ORGANIZATION_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STAFF_ORGANIZATION_NAME"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Organization_Name]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_ORGANIZATION_NAME]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[ACTIVE_FLAG]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="ACTIVE_FLAG"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[ACTIVE_CONTACT_FLAG]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTIVE_FLAG]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[EID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="EID"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[EID]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[EID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -598,9 +682,8 @@ from openquery(
                       name="EMAIL_ADDRESS" />
                     <externalMetadataColumn
                       refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[PROTOCOL_ID]"
-                      dataType="numeric"
-                      name="PROTOCOL_ID"
-                      precision="8" />
+                      dataType="i4"
+                      name="PROTOCOL_ID" />
                     <externalMetadataColumn
                       refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[ACTIVE_USER_FLAG]"
                       dataType="wstr"
@@ -610,6 +693,20 @@ from openquery(
                       refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[STOP_DATE]"
                       dataType="dbDate"
                       name="STOP_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Organization_Name]"
+                      dataType="wstr"
+                      length="100"
+                      name="Organization_Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[ACTIVE_CONTACT_FLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="ACTIVE_CONTACT_FLAG" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[EID]"
+                      dataType="i4"
+                      name="EID" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1047,14 +1144,6 @@ from openquery(
           Id="Package\DFT Extract to Staging\OLE DB Source"
           TopLeft="125,79" />
         <NodeLayout
-          Size="151,42"
-          Id="Package\DFT Extract to Staging\OLE DB Stage"
-          TopLeft="127,246" />
-        <NodeLayout
-          Size="132,42"
-          Id="Package\DFT Extract to Staging\RC Extract"
-          TopLeft="138,158" />
-        <NodeLayout
           Size="122,42"
           Id="Package\DFT Extract to Staging\RC Error"
           TopLeft="145,344" />
@@ -1062,6 +1151,38 @@ from openquery(
           Size="125,42"
           Id="Package\DFT Extract to Staging\FF Errors"
           TopLeft="142,428" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\DFT Extract to Staging\RC Extract"
+          TopLeft="138,158" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\DFT Extract to Staging\OLE DB Stage"
+          TopLeft="127,246" />
+        <EdgeLayout
+          Id="Package\DFT Extract to Staging.Paths[OLE DB Destination Error Output]"
+          TopLeft="204.25,288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-73.20890625,18.533203125,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[Row Count Output 11]"
           TopLeft="203.25,200">
@@ -1126,30 +1247,6 @@ from openquery(
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Extract to Staging.Paths[OLE DB Destination Error Output]"
-          TopLeft="204.25,288">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,56"
-              Start="0,0"
-              End="0,48.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-73.20890625,18.533203125,146.4178125,11.43359375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

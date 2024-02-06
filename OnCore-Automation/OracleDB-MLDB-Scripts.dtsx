@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="OracleDB-MLDB-Scripts"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{61DBB00E-7161-4B80-80ED-07C4B699E9DA}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{BA890382-0598-445D-8F51-7076851002B3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -35,7 +35,8 @@
       DTS:refId="Package\runspCreate_TB_Oncore_DT4"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{6e5343a4-2da2-4928-b26f-0f0224808789}"
+      DTS:Disabled="True"
+      DTS:DTSID="{630e610d-0209-4193-ad13-bbbfc8717280}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="runspCreate_TB_Oncore_DT4"
@@ -55,7 +56,7 @@
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="runspUpdate_Protocols"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -71,7 +72,7 @@
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="runspUPDATE_PROTOCOLS_UNQIUE_INFO"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -87,7 +88,7 @@
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="runspUpdate_Protocol_Subjects_Info"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -108,18 +109,10 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{AE9355E4-B845-4F4B-AF78-3967AF27FD87}"
+      DTS:DTSID="{16554F98-6B44-4600-B8DC-70E45321C2F5}"
       DTS:From="Package\runspUPDATE_PROTOCOLS_UNQIUE_INFO"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\runspCreate_TB_Oncore_DT4" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
-      DTS:CreationName=""
-      DTS:DTSID="{DF44A717-7A33-4782-B9B9-A715AF69615B}"
-      DTS:From="Package\runspCreate_TB_Oncore_DT4"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 2"
       DTS:To="Package\runspUpdate_Protocol_Subjects_Info" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -135,31 +128,35 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\runspCreate_TB_Oncore_DT4"
+          TopLeft="431,133" />
+        <NodeLayout
           Size="224,41.6"
           Id="Package\runspUpdate_Protocol_Subjects_Info"
-          TopLeft="111.135531135531,376.314285714286" />
+          TopLeft="112.135531135531,296.314285714286" />
         <NodeLayout
-          Size="170.4,41.6"
+          Size="169.6,41.6"
           Id="Package\runspUpdate_Protocols"
-          TopLeft="137.849816849817,133.340659340659" />
+          TopLeft="137.849816849817,137.673992708431" />
         <NodeLayout
           Size="260.8,41.6"
           Id="Package\runspUPDATE_PROTOCOLS_UNQIUE_INFO"
-          TopLeft="94.2857142857142,219.571428571429" />
+          TopLeft="94.2857142857142,220.438095244983" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="223.867765567766,174.940659340659">
+          TopLeft="223.667765567766,179.273992708431">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44.6307692307701"
+              EndConnector="0,41.1641025365527"
               Start="0,0"
-              End="0,37.1307692307701">
+              End="0,33.6641025365527">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.1307692307701" />
+                    End="0,33.6641025365527" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -168,46 +165,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="198.4,41.6"
-          Id="Package\runspCreate_TB_Oncore_DT4"
-          TopLeft="126.428571428571,295.914285714286" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="225.157142857143,261.171428571429">
+          TopLeft="224.410622710623,262.038095244983">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34.742857142857"
+              EndConnector="0,34.2761904693027"
               Start="0,0"
-              End="0,27.242857142857">
+              End="0,26.7761904693027">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.242857142857" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="224.382051282051,337.514285714286">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38.8000000000001"
-              Start="0,0"
-              End="0,31.3000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.3000000000001" />
+                    End="0,26.7761904693027" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

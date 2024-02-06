@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-03-Enrollments-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{3357F3C1-C4C2-47E7-B4C2-9C70DF2D5519}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{3D9903C3-5E3F-4A87-8EB9-2A2A0C9925E3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -401,14 +401,16 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select protocol_no,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select
+protocol_no,
 on_studydate,
-sum(case when institution = 'University of Arizona Health Sciences (UAHS)' then accrual end)as UAHS_Enrollments,
-sum(case when institution != 'University of Arizona Health Sciences (UAHS)' then accrual end)as Affiliates_Enrollments,
-sum(accrual) NumberOfEnrollments 
+sum(distinct case when institution = 'University of Arizona Health Sciences (UAHS)' then accrual end)as UAHS_Enrollments,
+sum(distinct case when institution != 'University of Arizona Health Sciences (UAHS)' then accrual end)as Affiliates_Enrollments,
+sum(distinct accrual) NumberOfEnrollments 
 from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
---where protocol_no = '2002421904'
-	group by protocol_no, on_studydate</property>
+--where protocol_no = '1000000478'
+--and on_studydate is not null
+	group by protocol_no, on_studydate, subject_no</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1145,10 +1147,6 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
           Id="Package\DFT Extract to Staging\Multicast"
           TopLeft="530.5,361.5" />
         <NodeLayout
-          Size="122,42"
-          Id="Package\DFT Extract to Staging\RC Error"
-          TopLeft="145,344" />
-        <NodeLayout
           Size="151,42"
           Id="Package\DFT Extract to Staging\OLE DB Stage"
           TopLeft="127,246" />
@@ -1157,43 +1155,13 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
           Id="Package\DFT Extract to Staging\RC Extract"
           TopLeft="138,158" />
         <NodeLayout
+          Size="122,42"
+          Id="Package\DFT Extract to Staging\RC Error"
+          TopLeft="145,344" />
+        <NodeLayout
           Size="240,42"
           Id="Package\DFT Extract to Staging\CS Remove Null On Study Dates"
           TopLeft="399,211" />
-        <EdgeLayout
-          Id="Package\DFT Extract to Staging.Paths[Row Count Output 11]"
-          TopLeft="270,179">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="129,47.3333333333333"
-              Start="0,0"
-              End="121.5,47.3333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="70.5596330275229,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="70.5596330275229,0"
-                    Point2="74.5596330275229,0"
-                    Point3="74.5596330275229,4" />
-                  <mssgle:LineSegment
-                    End="74.5596330275229,43.3333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="74.5596330275229,43.3333333333333"
-                    Point2="74.5596330275229,47.3333333333333"
-                    Point3="78.5596330275229,47.3333333333333" />
-                  <mssgle:LineSegment
-                    End="121.5,47.3333333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[Row Count Output 1]"
           TopLeft="206,386">
@@ -1308,6 +1276,40 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
             <mssgm:EdgeLabel
               BoundingBox="-99.5755678397363,-17.609375,97.0226953125,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Extract to Staging.Paths[Row Count Output 11]"
+          TopLeft="270,179">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="129,47.3333333333333"
+              Start="0,0"
+              End="121.5,47.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="70.5596330275229,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.5596330275229,0"
+                    Point2="74.5596330275229,0"
+                    Point3="74.5596330275229,4" />
+                  <mssgle:LineSegment
+                    End="74.5596330275229,43.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="74.5596330275229,43.3333333333333"
+                    Point2="74.5596330275229,47.3333333333333"
+                    Point3="78.5596330275229,47.3333333333333" />
+                  <mssgle:LineSegment
+                    End="121.5,47.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
