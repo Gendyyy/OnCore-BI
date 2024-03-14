@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-02-Protocols-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{B0A7A0FA-1130-4873-87B7-6DD4741597D5}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{0AC5002D-6C25-4217-B076-4EDA67314498}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -663,7 +663,11 @@ p.Study_Closure_Date,
 p.primary_crc,
 p.primary_irb_coord,
 p.sponsor,
-p.sponsor_number
+p.sponsor_number,
+p.phase,
+p.[NCT_ID],
+p.[SCOPE_DESC]
+
 
 from ONCOREPROD..UACC_ONCORE_RW_UTILS.PROTOCOLS P
 inner join ONCOREPROD..UACC_ONCORE_PROD.SMRS_PROTOCOL sp on p.protocol_id = sp.protocol_id
@@ -1004,6 +1008,36 @@ where P.protocol_no is not null</property>
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[InvestigationalProduct]"
                       name="InvestigationalProduct"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[phase]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[phase]"
+                      length="200"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[phase]"
+                      name="phase"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NCT_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NCT_ID]"
+                      length="35"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NCT_ID]"
+                      name="NCT_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[SCOPE_DESC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SCOPE_DESC]"
+                      length="200"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[SCOPE_DESC]"
+                      name="SCOPE_DESC"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1148,6 +1182,21 @@ where P.protocol_no is not null</property>
                       dataType="str"
                       length="6"
                       name="InvestigationalProduct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[phase]"
+                      dataType="wstr"
+                      length="200"
+                      name="phase" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NCT_ID]"
+                      dataType="wstr"
+                      length="35"
+                      name="NCT_ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SCOPE_DESC]"
+                      dataType="wstr"
+                      length="200"
+                      name="SCOPE_DESC" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1325,6 +1374,24 @@ where P.protocol_no is not null</property>
                       length="150"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[sponsor_number]"
                       name="sponsor_number" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[phase]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[phase]"
+                      name="phase" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NCT_ID]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NCT_ID]"
+                      name="NCT_ID" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SCOPE_DESC]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SCOPE_DESC]"
+                      name="SCOPE_DESC" />
                     <outputColumn
                       refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -1613,6 +1680,27 @@ where P.protocol_no is not null</property>
                       cachedName="PI_Email"
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[pi_email]"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[phase]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="phase"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Phase]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[phase]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[NCT_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="NCT_ID"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[NCT_ID]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NCT_ID]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[SCOPE_DESC]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="SCOPE_DESC"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Scope]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[SCOPE_DESC]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1694,11 +1782,6 @@ where P.protocol_no is not null</property>
                       dataType="dbDate"
                       name="Study_Closure_Date" />
                     <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Accrual_Summary]"
-                      dataType="wstr"
-                      length="1"
-                      name="Accrual_Summary" />
-                    <externalMetadataColumn
                       refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Primary_crc]"
                       dataType="wstr"
                       length="35"
@@ -1759,6 +1842,21 @@ where P.protocol_no is not null</property>
                       dataType="wstr"
                       length="50"
                       name="pi_email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Phase]"
+                      dataType="wstr"
+                      length="35"
+                      name="Phase" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[NCT_ID]"
+                      dataType="wstr"
+                      length="15"
+                      name="NCT_ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Scope]"
+                      dataType="wstr"
+                      length="15"
+                      name="Scope" />
                   </externalMetadataColumns>
                 </input>
               </inputs>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-03-Enrollments-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{3D9903C3-5E3F-4A87-8EB9-2A2A0C9925E3}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{420F1892-462A-49C8-A6AC-6AB36E6F5B27}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -256,6 +256,110 @@
               </outputs>
             </component>
             <component
+              refId="Package\DFT Extract to Staging\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input].Columns[RACE]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="RACE"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[RACE]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input].Columns[ETHNICITY]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="ETHNICITY"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ETHNICITY]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of RACE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="35"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of RACE]"
+                      name="Copy of RACE"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[RACE]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ETHNICITY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="35"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ETHNICITY]"
+                      name="Copy of ETHNICITY"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ETHNICITY]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\DFT Extract to Staging\FF Errors"
               componentClassID="Microsoft.FlatFileDestination"
               contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -319,7 +423,7 @@
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[on_studydate]" />
                     <inputColumn
                       refId="Package\DFT Extract to Staging\FF Errors.Inputs[Flat File Destination Input].Columns[NumberOfEnrollments]"
-                      cachedDataType="i4"
+                      cachedDataType="r8"
                       cachedName="NumberOfEnrollments"
                       externalMetadataColumnId="Package\DFT Extract to Staging\FF Errors.Inputs[Flat File Destination Input].ExternalColumns[NumberOfEnrollments]"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfEnrollments]" />
@@ -353,30 +457,6 @@
               </inputs>
             </component>
             <component
-              refId="Package\DFT Extract to Staging\Multicast"
-              componentClassID="Microsoft.Multicast"
-              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
-              name="Multicast">
-              <inputs>
-                <input
-                  refId="Package\DFT Extract to Staging\Multicast.Inputs[Multicast Input 1]"
-                  name="Multicast Input 1">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT Extract to Staging\Multicast.Outputs[Multicast Output 1]"
-                  dangling="true"
-                  deleteOutputOnPathDetached="true"
-                  name="Multicast Output 1"
-                  synchronousInputId="Package\DFT Extract to Staging\Multicast.Inputs[Multicast Input 1]">
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\DFT Extract to Staging\OLE DB Source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -403,14 +483,14 @@
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select
 protocol_no,
+CREATED_DATE,
 on_studydate,
-sum(distinct case when institution = 'University of Arizona Health Sciences (UAHS)' then accrual end)as UAHS_Enrollments,
-sum(distinct case when institution != 'University of Arizona Health Sciences (UAHS)' then accrual end)as Affiliates_Enrollments,
-sum(distinct accrual) NumberOfEnrollments 
-from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
---where protocol_no = '1000000478'
---and on_studydate is not null
-	group by protocol_no, on_studydate, subject_no</property>
+case when institution = 'University of Arizona Health Sciences (UAHS)' then accrual end as UAHS_Enrollments,
+case when institution != 'University of Arizona Health Sciences (UAHS)' then accrual end as Affiliates_Enrollments,
+accrual NumberOfEnrollments,
+RACE,
+ETHNICITY
+from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -467,15 +547,6 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
                       scale="7"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfEnrollments]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumberOfEnrollments]"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfEnrollments]"
-                      name="NumberOfEnrollments"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[UAHS_Enrollments]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
@@ -493,6 +564,45 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Affiliates_Enrollments]"
                       name="Affiliates_Enrollments"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[CREATED_DATE]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CREATED_DATE]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[CREATED_DATE]"
+                      name="CREATED_DATE"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[RACE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RACE]"
+                      length="500"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[RACE]"
+                      name="RACE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ETHNICITY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ETHNICITY]"
+                      length="500"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ETHNICITY]"
+                      name="ETHNICITY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfEnrollments]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumberOfEnrollments]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfEnrollments]"
+                      name="NumberOfEnrollments"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -507,10 +617,6 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
                       name="on_studydate"
                       scale="7" />
                     <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumberOfEnrollments]"
-                      dataType="r8"
-                      name="NumberOfEnrollments" />
-                    <externalMetadataColumn
                       refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UAHS_Enrollments]"
                       dataType="r8"
                       name="UAHS_Enrollments" />
@@ -518,6 +624,25 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
                       refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Affiliates_Enrollments]"
                       dataType="r8"
                       name="Affiliates_Enrollments" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CREATED_DATE]"
+                      dataType="dbTimeStamp2"
+                      name="CREATED_DATE"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RACE]"
+                      dataType="wstr"
+                      length="500"
+                      name="RACE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ETHNICITY]"
+                      dataType="wstr"
+                      length="500"
+                      name="ETHNICITY" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumberOfEnrollments]"
+                      dataType="r8"
+                      name="NumberOfEnrollments" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -531,6 +656,12 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
                       length="35"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[protocol_no]"
                       name="protocol_no" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CREATED_DATE]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CREATED_DATE]"
+                      name="CREATED_DATE"
+                      scale="7" />
                     <outputColumn
                       refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[on_studydate]"
                       dataType="dbTimeStamp2"
@@ -552,6 +683,18 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
                       dataType="r8"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NumberOfEnrollments]"
                       name="NumberOfEnrollments" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RACE]"
+                      dataType="wstr"
+                      length="500"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RACE]"
+                      name="RACE" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ETHNICITY]"
+                      dataType="wstr"
+                      length="500"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ETHNICITY]"
+                      name="ETHNICITY" />
                     <outputColumn
                       refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -657,7 +800,7 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[on_studydate]" />
                     <inputColumn
                       refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[NumberOfEnrollments]"
-                      cachedDataType="i4"
+                      cachedDataType="r8"
                       cachedName="NumberOfEnrollments"
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[NumberOfEnrollments]"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfEnrollments]" />
@@ -673,6 +816,27 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
                       cachedName="Affiliates_Enrollments"
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Affiliates_Enrollments]"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Affiliates_Enrollments]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[CREATED_DATE]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="CREATED_DATE"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Created_Date]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[CREATED_DATE]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[Copy of RACE]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="Copy of RACE"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Race]"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of RACE]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[Copy of ETHNICITY]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="Copy of ETHNICITY"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Ethnicity]"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ETHNICITY]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -697,6 +861,20 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
                       refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Affiliates_Enrollments]"
                       dataType="i4"
                       name="Affiliates_Enrollments" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Created_Date]"
+                      dataType="dbDate"
+                      name="Created_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Race]"
+                      dataType="wstr"
+                      length="35"
+                      name="Race" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Ethnicity]"
+                      dataType="wstr"
+                      length="35"
+                      name="Ethnicity" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -786,6 +964,11 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
           </components>
           <paths>
             <path
+              refId="Package\DFT Extract to Staging.Paths[Data Conversion Output]"
+              endId="Package\DFT Extract to Staging\RC Extract.Inputs[Row Count Input 1]"
+              name="Data Conversion Output"
+              startId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
               refId="Package\DFT Extract to Staging.Paths[NotNull_OnStudyDate]"
               endId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input]"
               name="NotNull_OnStudyDate"
@@ -797,7 +980,7 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
               startId="Package\DFT Extract to Staging\OLE DB Stage.Outputs[OLE DB Destination Error Output]" />
             <path
               refId="Package\DFT Extract to Staging.Paths[OLE DB Source Output]"
-              endId="Package\DFT Extract to Staging\RC Extract.Inputs[Row Count Input 1]"
+              endId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output]" />
             <path
@@ -1137,57 +1320,41 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
         <NodeLayout
           Size="157,42"
           Id="Package\DFT Extract to Staging\OLE DB Source"
-          TopLeft="127,71" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\DFT Extract to Staging\FF Errors"
-          TopLeft="135,428" />
-        <NodeLayout
-          Size="123,42"
-          Id="Package\DFT Extract to Staging\Multicast"
-          TopLeft="530.5,361.5" />
+          TopLeft="139,74" />
         <NodeLayout
           Size="151,42"
           Id="Package\DFT Extract to Staging\OLE DB Stage"
-          TopLeft="127,246" />
+          TopLeft="131,424" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\DFT Extract to Staging\FF Errors"
+          TopLeft="152,607" />
         <NodeLayout
           Size="132,42"
           Id="Package\DFT Extract to Staging\RC Extract"
-          TopLeft="138,158" />
+          TopLeft="144,241" />
         <NodeLayout
           Size="122,42"
           Id="Package\DFT Extract to Staging\RC Error"
-          TopLeft="145,344" />
+          TopLeft="149,522" />
         <NodeLayout
           Size="240,42"
           Id="Package\DFT Extract to Staging\CS Remove Null On Study Dates"
-          TopLeft="399,211" />
+          TopLeft="91,313" />
         <EdgeLayout
-          Id="Package\DFT Extract to Staging.Paths[Row Count Output 1]"
-          TopLeft="206,386">
+          Id="Package\DFT Extract to Staging.Paths[Row Count Output 11]"
+          TopLeft="210.5,283">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-8.5,42"
+              EndConnector="0,30"
               Start="0,0"
-              End="-8.5,34.5">
+              End="0,22.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17"
-                    Point2="0,21"
-                    Point3="-4,21" />
-                  <mssgle:LineSegment
-                    End="-4.5,21" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-4.5,21"
-                    Point2="-8.5,21"
-                    Point3="-8.5,25" />
-                  <mssgle:LineSegment
-                    End="-8.5,34.5" />
+                    End="0,22.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1197,19 +1364,19 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT Extract to Staging.Paths[OLE DB Source Output]"
-          TopLeft="204.75,113">
+          Id="Package\DFT Extract to Staging.Paths[Row Count Output 1]"
+          TopLeft="212.25,564">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,45"
+              EndConnector="0,43"
               Start="0,0"
-              End="0,37.5">
+              End="0,35.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.5" />
+                    End="0,35.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1220,7 +1387,7 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[OLE DB Destination Error Output]"
-          TopLeft="204.25,288">
+          TopLeft="208.25,466">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1244,66 +1411,68 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[NotNull_OnStudyDate]"
-          TopLeft="399,237.666666666667">
+          TopLeft="208.75,355">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-121,29.3333333333333"
+              EndConnector="0,69"
               Start="0,0"
-              End="-113.5,29.3333333333333">
+              End="0,61.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-47.0642201834863,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-47.0642201834863,0"
-                    Point2="-51.0642201834863,0"
-                    Point3="-51.0642201834863,4" />
-                  <mssgle:LineSegment
-                    End="-51.0642201834863,25.3333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-51.0642201834863,25.3333333333333"
-                    Point2="-51.0642201834863,29.3333333333333"
-                    Point3="-55.0642201834863,29.3333333333333" />
-                  <mssgle:LineSegment
-                    End="-113.5,29.3333333333333" />
+                    End="0,61.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-99.5755678397363,-17.609375,97.0226953125,11.609375"
+              BoundingBox="-48.51134765625,24.9453125,97.0226953125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DFT Extract to Staging\Data Conversion"
+          TopLeft="132,154" />
         <EdgeLayout
-          Id="Package\DFT Extract to Staging.Paths[Row Count Output 11]"
-          TopLeft="270,179">
+          Id="Package\DFT Extract to Staging.Paths[OLE DB Source Output]"
+          TopLeft="215,116">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="129,47.3333333333333"
+              EndConnector="0,38"
               Start="0,0"
-              End="121.5,47.3333333333333">
+              End="0,30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="70.5596330275229,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="70.5596330275229,0"
-                    Point2="74.5596330275229,0"
-                    Point3="74.5596330275229,4" />
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Extract to Staging.Paths[Data Conversion Output]"
+          TopLeft="211.25,196">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="74.5596330275229,43.3333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="74.5596330275229,43.3333333333333"
-                    Point2="74.5596330275229,47.3333333333333"
-                    Point3="78.5596330275229,47.3333333333333" />
-                  <mssgle:LineSegment
-                    End="121.5,47.3333333333333" />
+                    End="0,37.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

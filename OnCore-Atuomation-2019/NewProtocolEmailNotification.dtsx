@@ -1,49 +1,49 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="11/6/2023 7:44:07 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="COM-ONCORE-SQL"
   DTS:CreatorName="BLUECAT\gendy"
-  DTS:DTSID="{6B94CA67-D74F-4AF4-80C9-B3E253661F71}"
+  DTS:DTSID="{2C9204D4-2080-4E61-8EDA-D6512C26285B}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5270.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="NewProtocolEmailNotification"
   DTS:PackageType="5"
   DTS:VersionBuild="100"
-  DTS:VersionGUID="{820ABC72-B0D7-4580-B41D-5678952FB42C}">
+  DTS:VersionGUID="{B103EF7B-78AF-4043-BD15-3D7472E364E7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[com-dtrust-prod.bluecat.arizona.edu]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{F991BBA5-96C3-4EBA-AF22-2BEC57BED5E5}"
+      DTS:DTSID="{1DB6BF9D-D402-4331-A182-F428566F9154}"
       DTS:ObjectName="com-dtrust-prod.bluecat.arizona.edu">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=com-dtrust-prod.bluecat.arizona.edu;Initial Catalog=ClinicalTrialData;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{F991BBA5-96C3-4EBA-AF22-2BEC57BED5E5}com-dtrust-prod.bluecat.arizona.edu;" />
+          DTS:ConnectionString="Data Source=com-dtrust-prod.bluecat.arizona.edu;Initial Catalog=ClinicalTrialData;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{1DB6BF9D-D402-4331-A182-F428566F9154}com-dtrust-prod.bluecat.arizona.edu;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[COM-ONCORE-SQL]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{8051C764-5C02-44BA-84AD-6FACD7F31A6B}"
+      DTS:DTSID="{B932067F-9DED-4BB9-85DB-E89FB05184BD}"
       DTS:ObjectName="COM-ONCORE-SQL">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=COM-ONCORE-SQL;Initial Catalog=OnCoreStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-NewProtocolEmailNotification-{8051C764-5C02-44BA-84AD-6FACD7F31A6B}COM-ONCORE-SQL;" />
+          DTS:ConnectionString="Data Source=COM-ONCORE-SQL;Initial Catalog=OnCoreStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-NewProtocolEmailNotification-{B932067F-9DED-4BB9-85DB-E89FB05184BD}COM-ONCORE-SQL;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
       DTS:CreationName="SMTP"
-      DTS:DTSID="{78A870CF-AE6E-4DD2-8D50-09C58F42F9DC}"
+      DTS:DTSID="{39C79D69-E67E-4972-B0F9-48F44BEA5785}"
       DTS:ObjectName="SMTP Connection Manager">
       <DTS:ObjectData>
         <SmtpConnectionManager
@@ -56,7 +56,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{674DB023-A845-41E4-A849-3DCB5CC2BAA5}"
+      DTS:DTSID="{088860AC-085E-4A80-8613-277C3599A8B3}"
       DTS:ObjectName="SMTPClientFromURL">
       <DTS:Property
         DTS:DataType="8"
@@ -66,7 +66,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{80E8E143-B140-4A04-8203-61F6949EBFF1}"
+      DTS:DTSID="{F0C1A986-43EA-4F57-B7E5-13D5F0DC9776}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="ListOfEmails">
@@ -88,7 +88,7 @@
       DTS:refId="Package\Prod"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{EF2F2D86-2A96-47C9-8DA4-F47EEAE430EB}"
+      DTS:DTSID="{F579E45A-4C31-457D-8442-9D79A62857C1}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Prod"
@@ -397,7 +397,7 @@ and p.Library = 'General Medicine'</property>
               contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;12"
               description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
               name="Script Component"
-              version="10">
+              version="12">
               <properties>
                 <property
                   dataType="System.String"
@@ -740,26 +740,26 @@ public class ScriptMain : UserComponent
                     <arrayElement
                       dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
-	<msb:PropertyGroup>
-		<msb:Language>msBuild</msb:Language>
-		<msb:CodeName>SC_3db158b159f245518ad13bc988f321af</msb:CodeName>
-		<msb:DisplayName>SC_3db158b159f245518ad13bc988f321af</msb:DisplayName>
-		<msb:ProjectId>{51E3908C-5B4A-4E6B-B34C-8C0CCB32A091}</msb:ProjectId>
-	</msb:PropertyGroup>
-	<msb:ItemGroup>
-		<msb:Project Include="SC_3db158b159f245518ad13bc988f321af.csproj"/>
-		<msb:File Include="InputQueryRow.cs"/>
-		<msb:File Include="EmailRecord.cs"/>
-		<msb:File Include="EmailService.cs"/>
-		<msb:File Include="main.cs"/>
-		<msb:File Include="BufferWrapper.cs"/>
-		<msb:File Include="ComponentWrapper.cs"/>
-		<msb:File Include="Properties\AssemblyInfo.cs"/>
-		<msb:File Include="Properties\Resources.resx"/>
-		<msb:File Include="Properties\Resources.Designer.cs"/>
-		<msb:File Include="Properties\Settings.settings"/>
-		<msb:File Include="Properties\Settings.Designer.cs"/>
-	</msb:ItemGroup>
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_3db158b159f245518ad13bc988f321af</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_3db158b159f245518ad13bc988f321af</msb:DisplayName>
+    <msb:ProjectId>{B9075C2C-D1B2-4EB1-876A-DAF6FEF27FA8}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_3db158b159f245518ad13bc988f321af.csproj" />
+    <msb:File Include="InputQueryRow.cs" />
+    <msb:File Include="EmailRecord.cs" />
+    <msb:File Include="EmailService.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
 </c:Project>]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
@@ -913,7 +913,96 @@ public class Variables
                     <arrayElement
                       dataType="System.String"><![CDATA[UTF8]]></arrayElement>
                     <arrayElement
-                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{0CE56D03-05FB-4326-A4ED-89A53FFD72EB}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>SC_3db158b159f245518ad13bc988f321af</RootNamespace><AssemblyName>SC_A1EF53D20BEC47198A236CC9A11CE7AF</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.PipelineHost, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Compile Include="EmailRecord.cs" /><Compile Include="EmailService.cs" /><Compile Include="InputQueryRow.cs" /><Compile Include="main.cs" /><Compile Include="BufferWrapper.cs" /><Compile Include="ComponentWrapper.cs" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><!-- This section defines VSTA properties that describe the host-changable project properties. --><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" /><Host Name="ScriptComponent" IconIndex="0" /><ProjectClient><HostIdentifier>SSIS_SC130</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></arrayElement>
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0CE56D03-05FB-4326-A4ED-89A53FFD72EB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_3db158b159f245518ad13bc988f321af</RootNamespace>
+    <AssemblyName>SC_A1EF53D20BEC47198A236CC9A11CE7AF</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="EmailRecord.cs" />
+    <Compile Include="EmailService.cs" />
+    <Compile Include="InputQueryRow.cs" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
                     <arrayElement
@@ -1379,7 +1468,7 @@ internal class EmailService : IDisposable
                     <arrayElement
                       dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAAeU62UAAAAAAAAAAOAAIiALATAAADgAAAAIAAAAAAAArlYA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAMKV62UAAAAAAAAAAOAAIiALATAAADgAAAAIAAAAAAAArlYA
 AAAgAAAAYAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACgAAAAAgAAAAAAAAMAYIUAABAA
 ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAFxWAABPAAAAAGAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAIAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1476,8 +1565,8 @@ AAIADQALAAEADgALAAIADwANAAEAEAANAAIAGAAPAAIAGQARAAIAGgATAAIAGwAVAAIAHAAXAAIA
 HQAZAAIAHgAbAAIAHwAdAAIAIAAfAAIAIQAhAAIAIgAjAAIAIwAlAAIAJAAnAAIAJQApAAIAJgAr
 AAIAJwAtAAIAKAAvAAIAKQAxAAIAMgAzAAIANAA1AAIANQA3AAEANgA3AAIANwA5AAIAOgA7AAEA
 OwA7ABwAOgBKAP8ABIAAAAEAAAAAAAAAAAAAAAAAkgAAAAQAAAAAAAAAAAAAADIBzAAAAAAABAAA
-AAAAAAAAAAAAMgHkAgAAAAAEAAAAAAAAAAAAAAAyAcwGAAAAAA0AAAAAAAAAAAAAADsBygoAAAAA
-DQAAAAAAAAAAAAAAOwHzCgAAAAANAAAAAAAAAAAAAAA7Ad8HAAAAAAAAAAABAAAA7AgAAAwAAgAA
+AAAAAAAAAAAAMgHkAgAAAAAEAAAAAAAAAAAAAAAyAcwGAAAAAA8AAAAAAAAAAAAAADsBygoAAAAA
+DwAAAAAAAAAAAAAAOwHzCgAAAAAPAAAAAAAAAAAAAAA7Ad8HAAAAAAAAAAABAAAA7AgAAAwAAgAA
 AAAAAElEVFNWYXJpYWJsZTEwMABJRFRTVmFyaWFibGVzMTAwAElEVFNFdmFsdWF0b3JDb250ZXh0
 MTAwAEhhc2hTZXRgMQBMaXN0YDEAPE1vZHVsZT4AZ2V0X1ByaW1hcnlJUkJDAHdpdGhCQ0MAZ2V0
 X0NDAFdpdGhDQwBFbWFpbENDAGVtYWlsQ0MASW5wdXRJRABTQ19BMUVGNTNEMjBCRUM0NzE5OEEy
@@ -1614,7 +1703,7 @@ IAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAPAAvAGgAdABtAGwAPgAKAAoAPABiAHIAPgA8
 AGIAcgA+AFMAaQBuAGMAZQByAGUAbAB5ACwACgA8AGIAcgA+AEMAbwBsAGwAZQBnAGUAIABvAGYA
 IABNAGUAZABpAGMAaQBuAGUALAAgAEkAbgBmAG8AcgBtAGEAdABpAG8AbgAgAFQAZQBjAGgAbgBv
 AGwAbwBnAHkAIABTAGUAcgB2AGkAYwBlAHMAACNnAGUAbgBkAHkAQABhAHIAaQB6AG8AbgBhAC4A
-ZQBkAHUAAOtZ311/T1ZEknxGecKj3icABCABAQgDIAABBSABARERBCABAQ4GIAEBEYCBBRUSOQEO
+ZQBkAHUAAMAXOnJ8mI5OpjXzwmMnd0IABCABAQgDIAABBSABARERBCABAQ4GIAEBEYCBBRUSOQEO
 BCABAQIFIAEBEkEMBwMVEV0BEggSCBIMBhUSWQESCAggABURXQETAAYVEV0BEggEIAATAAMgAAIE
 BwESYQMgAA4FAAIODg4EBwESCAUgAQETAAkgAwESaR0IEm0DBhJpAwYdCAQgAQ4IBCABAggFIAER
 SQgHIAICDhGAkQUgAR0ICAUgABKAlQYgARKAmRwFAAASgJ0GIAEcEoChCAABEoClEYCpBSAAEoCt
@@ -1709,7 +1798,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                   dataType="System.String"
                   description="Checksum to match component metedata against compiled codes."
                   name="MetadataChecksum140"
-                  typeConverter="NOTBROWSABLE">3C</property>
+                  typeConverter="NOTBROWSABLE">51</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
@@ -1812,7 +1901,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:Disabled="True"
-      DTS:DTSID="{1d973f17-dce5-4635-b938-d4d4ba6b2bd2}"
+      DTS:DTSID="{90721C63-1E11-4698-82ED-FD56ECF06FA6}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Test"
@@ -2115,7 +2204,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
               contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;12"
               description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
               name="Script Component"
-              version="10">
+              version="12">
               <properties>
                 <property
                   dataType="System.String"
@@ -2457,26 +2546,26 @@ public class ScriptMain : UserComponent
                     <arrayElement
                       dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
-	<msb:PropertyGroup>
-		<msb:CodeName>SC_3db158b159f245518ad13bc988f321af</msb:CodeName>
-		<msb:Language>msBuild</msb:Language>
-		<msb:DisplayName>SC_3db158b159f245518ad13bc988f321af</msb:DisplayName>
-		<msb:ProjectId>{51E3908C-5B4A-4E6B-B34C-8C0CCB32A091}</msb:ProjectId>
-	</msb:PropertyGroup>
-	<msb:ItemGroup>
-		<msb:Project Include="SC_3db158b159f245518ad13bc988f321af.csproj"/>
-		<msb:File Include="InputQueryRow.cs"/>
-		<msb:File Include="EmailRecord.cs"/>
-		<msb:File Include="EmailService.cs"/>
-		<msb:File Include="main.cs"/>
-		<msb:File Include="BufferWrapper.cs"/>
-		<msb:File Include="ComponentWrapper.cs"/>
-		<msb:File Include="Properties\AssemblyInfo.cs"/>
-		<msb:File Include="Properties\Resources.resx"/>
-		<msb:File Include="Properties\Resources.Designer.cs"/>
-		<msb:File Include="Properties\Settings.settings"/>
-		<msb:File Include="Properties\Settings.Designer.cs"/>
-	</msb:ItemGroup>
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_3db158b159f245518ad13bc988f321af</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_3db158b159f245518ad13bc988f321af</msb:DisplayName>
+    <msb:ProjectId>{CB6EC45D-1835-4E6C-9AF6-F7557195A4BC}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_3db158b159f245518ad13bc988f321af.csproj" />
+    <msb:File Include="InputQueryRow.cs" />
+    <msb:File Include="EmailRecord.cs" />
+    <msb:File Include="EmailService.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
 </c:Project>]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
@@ -2630,7 +2719,96 @@ public class Variables
                     <arrayElement
                       dataType="System.String"><![CDATA[UTF8]]></arrayElement>
                     <arrayElement
-                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{0CE56D03-05FB-4326-A4ED-89A53FFD72EB}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>SC_3db158b159f245518ad13bc988f321af</RootNamespace><AssemblyName>SC_A1EF53D20BEC47198A236CC9A11CE7AF</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.PipelineHost, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Compile Include="EmailRecord.cs" /><Compile Include="EmailService.cs" /><Compile Include="InputQueryRow.cs" /><Compile Include="main.cs" /><Compile Include="BufferWrapper.cs" /><Compile Include="ComponentWrapper.cs" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><!-- This section defines VSTA properties that describe the host-changable project properties. --><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" /><Host Name="ScriptComponent" IconIndex="0" /><ProjectClient><HostIdentifier>SSIS_SC130</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></arrayElement>
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0CE56D03-05FB-4326-A4ED-89A53FFD72EB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_3db158b159f245518ad13bc988f321af</RootNamespace>
+    <AssemblyName>SC_A1EF53D20BEC47198A236CC9A11CE7AF</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="EmailRecord.cs" />
+    <Compile Include="EmailService.cs" />
+    <Compile Include="InputQueryRow.cs" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
                     <arrayElement
@@ -3095,7 +3273,7 @@ internal class EmailService : IDisposable
                     <arrayElement
                       dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAAnz5WUAAAAAAAAAAOAAIiALATAAADgAAAAIAAAAAAAAflYA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAMSV62UAAAAAAAAAAOAAIiALATAAADgAAAAIAAAAAAAAflYA
 AAAgAAAAYAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACgAAAAAgAAAAAAAAMAYIUAABAA
 ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAACxWAABPAAAAAGAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAIAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -3191,8 +3369,8 @@ BwACAAsACQABAAwACQACAA0ACwABAA4ACwACAA8ADQABABAADQACABgADwACABkAEQACABoAEwAC
 ABsAFQACABwAFwACAB0AGQACAB4AGwACAB8AHQACACAAHwACACEAIQACACIAIwACACMAJQACACQA
 JwACACUAKQACACYAKwACACcALQACACgALwACACkAMQACADIAMwACADQANQACADUANwABADYANwAC
 ADcAOQACADoAOwABADsAOwAcADoASgD/AASAAAABAAAAAAAAAAAAAAAAAJIAAAAEAAAAAAAAAAAA
-AAAtAcwAAAAAAAQAAAAAAAAAAAAAAC0B5AIAAAAABAAAAAAAAAAAAAAALQHVBgAAAAANAAAAAAAA
-AAAAAAA2AcwKAAAAAA0AAAAAAAAAAAAAADYB9QoAAAAADQAAAAAAAAAAAAAANgHoBwAAAAAAAAAA
+AAAtAcwAAAAAAAQAAAAAAAAAAAAAAC0B5AIAAAAABAAAAAAAAAAAAAAALQHVBgAAAAAPAAAAAAAA
+AAAAAAA2AcwKAAAAAA8AAAAAAAAAAAAAADYB9QoAAAAADwAAAAAAAAAAAAAANgHoBwAAAAAAAAAA
 AQAAAPUIAAAMAAIAAAAAAABJRFRTVmFyaWFibGUxMDAASURUU1ZhcmlhYmxlczEwMABJRFRTRXZh
 bHVhdG9yQ29udGV4dDEwMABIYXNoU2V0YDEATGlzdGAxADxNb2R1bGU+AGdldF9QcmltYXJ5SVJC
 QwB3aXRoQkNDAGdldF9DQwBXaXRoQ0MARW1haWxDQwBlbWFpbENDAElucHV0SUQAU0NfQTFFRjUz
@@ -3329,7 +3507,7 @@ ACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgADwALwBoAHQAbQBsAD4ACgAKADwA
 YgByAD4APABiAHIAPgBTAGkAbgBjAGUAcgBlAGwAeQAsAAoAPABiAHIAPgBDAG8AbABsAGUAZwBl
 ACAAbwBmACAATQBlAGQAaQBjAGkAbgBlACwAIABJAG4AZgBvAHIAbQBhAHQAaQBvAG4AIABUAGUA
 YwBoAG4AbwBsAG8AZwB5ACAAUwBlAHIAdgBpAGMAZQBzAAAjZwBlAG4AZAB5AEAAYQByAGkAegBv
-AG4AYQAuAGUAZAB1AAAAAPULSvB94L5Jpa0G1hMtzz4ABCABAQgDIAABBSABARERBCABAQ4GIAEB
+AG4AYQAuAGUAZAB1AAAAAPO7TYp/Ek9PnTEUWYI+/scABCABAQgDIAABBSABARERBCABAQ4GIAEB
 EYCBBRUSOQEOBCABAQIFIAEBEkEMBwMVEV0BEggSCBIMBhUSWQESCAggABURXQETAAYVEV0BEggE
 IAATAAMgAAIEBwESYQMgAA4FAAIODg4EBwESCAUgAQETAAkgAwESaR0IEm0DBhJpAwYdCAQgAQ4I
 BCABAggFIAERSQgHIAICDhGAkQUgAR0ICAUgABKAlQYgARKAmRwFAAASgJ0GIAEcEoChCAABEoCl
@@ -3425,7 +3603,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                   dataType="System.String"
                   description="Checksum to match component metedata against compiled codes."
                   name="MetadataChecksum140"
-                  typeConverter="NOTBROWSABLE">3C</property>
+                  typeConverter="NOTBROWSABLE">51</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
@@ -3528,7 +3706,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     <DTS:EventHandler
       DTS:refId="Package.EventHandlers[OnError]"
       DTS:CreationName="OnError"
-      DTS:DTSID="{2FAD530C-316E-40ED-A5C6-F0C449AFBB17}"
+      DTS:DTSID="{F93BCADB-5B5D-4A40-A4EA-243E693A4012}"
       DTS:EventID="16384"
       DTS:EventName="OnError"
       DTS:LocaleID="-1">
@@ -3536,7 +3714,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
         <DTS:Variable
           DTS:CreationName=""
           DTS:Description="The propagate property of the event"
-          DTS:DTSID="{C24A9019-68D1-4958-A3B7-02E7B48C311C}"
+          DTS:DTSID="{A56CF23D-9C8F-49BB-9C13-1574FEA5498F}"
           DTS:IncludeInDebugDump="6789"
           DTS:Namespace="System"
           DTS:ObjectName="Propagate">
@@ -3549,14 +3727,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           DTS:refId="Package.EventHandlers[OnError]\Send Mail Task"
           DTS:CreationName="Microsoft.SendMailTask"
           DTS:Description="Send Mail Task"
-          DTS:DTSID="{026DE3C3-CFA0-411A-8D96-2693C32DC9C9}"
+          DTS:DTSID="{F1E3402D-E352-47F6-AC56-8B489DF3A0EA}"
           DTS:ExecutableType="Microsoft.SendMailTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Send Mail Task">
           <DTS:Variables />
           <DTS:ObjectData>
             <SendMailTask:SendMailTaskData
-              SendMailTask:SMTPServer="{78A870CF-AE6E-4DD2-8D50-09C58F42F9DC}"
+              SendMailTask:SMTPServer="{39C79D69-E67E-4972-B0F9-48F44BEA5785}"
               SendMailTask:From="TicketCat-NoReply@arizona.edu"
               SendMailTask:To="gendy@arizona.edu"
               SendMailTask:Subject="NewProtocolEmailNotification Package Failure" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-04-Staff-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{C6096E3E-DA10-4B29-87A6-5E6173620F9E}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{B3E3F85C-9FD0-4186-8112-25FC88FBD343}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -273,7 +273,8 @@ from openquery(
         'SELECT EID, staff_name, staff_role, email_address, protocol_id, active_flag, active_user_flag, stop_date,
       STAFF_ORGANIZATION_NAME
         from UACC_ONCORE_RW_UTILS.SV_PCL_STAFF_RO
-        where staff_role in (''Accrual Data Contact'', ''Primary CRC'',''Clinical Research Coordinator'', ''Primary IRB Coordinator'',''IRB Coordinator'', ''Principal Investigator'')
+        where
+        staff_role in (''Accrual Data Contact'', ''Primary RDC'', ''Primary CRC'',''Clinical Research Coordinator'', ''Primary IRB Coordinator'',''IRB Coordinator'', ''Principal Investigator'')
             and protocol_subject_id is null
             ')</property>
                 <property
@@ -1144,45 +1145,21 @@ from openquery(
           Id="Package\DFT Extract to Staging\OLE DB Source"
           TopLeft="125,79" />
         <NodeLayout
-          Size="122,42"
-          Id="Package\DFT Extract to Staging\RC Error"
-          TopLeft="145,344" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\DFT Extract to Staging\FF Errors"
-          TopLeft="142,428" />
-        <NodeLayout
           Size="132,42"
           Id="Package\DFT Extract to Staging\RC Extract"
           TopLeft="138,158" />
         <NodeLayout
+          Size="122,42"
+          Id="Package\DFT Extract to Staging\RC Error"
+          TopLeft="145,344" />
+        <NodeLayout
           Size="151,42"
           Id="Package\DFT Extract to Staging\OLE DB Stage"
           TopLeft="127,246" />
-        <EdgeLayout
-          Id="Package\DFT Extract to Staging.Paths[OLE DB Destination Error Output]"
-          TopLeft="204.25,288">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,56"
-              Start="0,0"
-              End="0,48.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-73.20890625,18.533203125,146.4178125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="125,42"
+          Id="Package\DFT Extract to Staging\FF Errors"
+          TopLeft="142,428" />
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[Row Count Output 11]"
           TopLeft="203.25,200">
@@ -1247,6 +1224,30 @@ from openquery(
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Extract to Staging.Paths[OLE DB Destination Error Output]"
+          TopLeft="204.25,288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-73.20890625,18.533203125,146.4178125,11.43359375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

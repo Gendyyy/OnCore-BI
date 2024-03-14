@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="02-02-DimPI-Transform-Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{C0304B09-C7CD-4ECD-8E9B-F8E0E6F0EEC1}">
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{79285FCE-251D-4E26-8608-6D039EA8A687}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -603,7 +603,7 @@
                 <input
                   refId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
+                  errorRowDisposition="RedirectRow"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
@@ -674,6 +674,14 @@
                       cachedName="AuditKey"
                       externalMetadataColumnId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AuditKey]"
                       lineageId="Package\DFT Transform-Load\DC Audit Key.Outputs[Derived Column Output].Columns[AuditKey]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[IsActive]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="IsActive"
+                      externalMetadataColumnId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -728,6 +736,12 @@
                       refId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AuditKey]"
                       dataType="i4"
                       name="AuditKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IsActive" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -774,7 +788,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dw].[DimPI] SET [AuditKey] = ?,[College] = ?,[DEPT] = ?,[DEPT_ID] = ?,[EID] = ?,[EMAIL] = ?,[FIRST_NAME] = ?,[LAST_NAME] = ?,[UA_NETID] = ? WHERE [STAFF_NAME] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dw].[DimPI] SET [AuditKey] = ?,[College] = ?,[DEPT] = ?,[DEPT_ID] = ?,[EID] = ?,[EMAIL] = ?,[FIRST_NAME] = ?,[IsActive] = ?,[LAST_NAME] = ?,[UA_NETID] = ? WHERE [STAFF_NAME] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -843,25 +857,33 @@
                       externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_Name]" />
                     <inputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[IsActive]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="IsActive"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]" />
+                    <inputColumn
                       refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[Last_Name]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Last_Name"
-                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_Name]" />
                     <inputColumn
                       refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[STAFF_NAME]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="STAFF_NAME"
-                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_NAME]" />
                     <inputColumn
                       refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[UA_NETID]"
                       cachedDataType="wstr"
                       cachedLength="30"
                       cachedName="UA_NETID"
-                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[UA_NETID]" />
                   </inputColumns>
                   <externalMetadataColumns
@@ -949,8 +971,9 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                      dataType="wstr"
-                      length="50"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
                       name="Param_7">
                       <properties>
                         <property
@@ -976,6 +999,18 @@
                       dataType="wstr"
                       length="50"
                       name="Param_9">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_10">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1043,53 +1078,78 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">-- SELECT        FIRST_NAME, LAST_NAME, STAFF_NAME, EMAIL, UA_NETID, EID, DEPT_ID, College, DEPT
--- FROM            ActivePI
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">with ActivePI_Protocols_Staff_CTE as (select distinct left(s.staff_name, charindex(',', s.staff_name) - 1) as Last_Name,
+                           substring(s.staff_name, charindex(', ', s.staff_name) + 2,
+                                     len(s.staff_name))                         as First_Name,
+                           s.STAFF_NAME,
+                           s.EMAIL_ADDRESS                                      as email,
+                           dbo.GetNetID(s.EMAIL_ADDRESS)                        as UA_NETID,
+                           s.EID,
+                           null                                                 as DEPT_ID,
+                           ''                                                   as DEPT,
+                           ''                                                   as College
 
-    select distinct
-        left(s.staff_name,charindex(',',s.staff_name)-1) as Last_Name,
-        substring(s.staff_name,charindex(', ',s.staff_name)+2,len(s.staff_name)) as First_Name,
-        s.STAFF_NAME,
-        isnull(isnull(s.EMAIL_ADDRESS,MedSchoolStaff.email_addr),'N/A') as email,
-        isnull(isnull(MedSchoolStaff.netid_oprid,left(s.email_address,charindex('@',s.email_address)-1)),'N/A') as UA_NETID,
-        isnull(MedSchoolStaff.EMPLID,s.EID) EID,
-        MedSchoolStaff.deptid DEPT_ID,
-        isnull(MedSchoolStaff.college_name,'N/A') College,
-        isnull(MedSchoolStaff.deptname,'N/A') DEPT
-    from staff s
-outer apply(select *
-        from [COM-DTRUST-PROD.BLUECAT.ARIZONA.EDU].[APP].[DBO].[PS_UA_DPT_MED_ALL_FACULTY_UNION_DCC_NEW] as MedSchoolStaff
-        where (MedSchoolStaff.EMPLID = S.eid
-            or MedSchoolStaff.netid_oprid = left(s.email_address,charindex('@',s.email_address)-1)
-            and MedSchoolStaff.[priority] = 10
-        )) MedSchoolStaff
-    -- left outer join [COM-DTRUST-PROD.BLUECAT.ARIZONA.EDU].[APP].[DBO].[PS_UA_DPT_MED_ALL_FACULTY_UNION_DCC_NEW] as MedSchoolStaff on MedSchoolStaff.EMPLID = S.eid
-    --     or MedSchoolStaff.netid_oprid = left(s.email_address,charindex('@',s.email_address)-1)
-    where 
-s.STAFF_ROLE = 'Principal Investigator'
-        and charindex('uahs',lower(s.organization_name)) != 0
+           from staff s
+           where s.STAFF_ROLE = 'Principal Investigator'
+             and charindex('uahs', lower(s.organization_name)) != 0
 
-union all
+           union all
 
-    SELECT ap.LAST_NAME,
-        ap.FIRST_NAME,
-        ap.STAFF_NAME,
-        isnull(isnull(EMAIL,MedSchoolStaff.email_addr),'N/A') EMAIL,
-        isnull(isnull(MedSchoolStaff.netid_oprid,UA_NETID),'NA') as UA_NETID,
-        isnull(MedSchoolStaff.EMPLID,EID) EID,
-        isnull(MedSchoolStaff.deptid,DEPT_ID) DEPT_ID,
-        isnull(isnull(MedSchoolStaff.college_name,College),'N/A') College,
-        isnull(isnull(MedSchoolStaff.deptname,DEPT),'N/A') DEPT
-    FROM ActivePI ap
-    outer apply(select *
-        from [COM-DTRUST-PROD.BLUECAT.ARIZONA.EDU].[APP].[DBO].[PS_UA_DPT_MED_ALL_FACULTY_UNION_DCC_NEW] as MedSchoolStaff
-        where (MedSchoolStaff.EMPLID = ap.eid
-            or MedSchoolStaff.netid_oprid = ap.UA_NETID)
-            and MedSchoolStaff.[priority] = 10
-        ) MedSchoolStaff
-    where not exists (select 1
-    from Staff s
-    where s.STAFF_NAME = ap.STAFF_NAME)</property>
+           select distinct left(p.pi_name, charindex(',', p.pi_name) - 1) as Last_Name,
+                           substring(p.pi_name, charindex(', ', p.pi_name) + 2,
+                                     len(p.pi_name))                      as First_Name,
+                           p.pi_name                                      as STAFF_NAME,
+                           p.pi_email                                     as email,
+                           dbo.GetNetID(p.pi_email)                       as UA_NETID,
+                           null                                           as eid,
+                           null                                           as dept_id,
+                           ''                                             as dept,
+                           ''                                             as college
+           from protocols p
+           where not exists (select 1
+                             from staff s
+                             where s.STAFF_NAME = p.pi_name
+                               and s.STAFF_ROLE = 'Principal Investigator'
+                               and charindex('uahs', lower(s.organization_name)) != 0))
+
+select ActivePI_Protocols_Staff_CTE.Last_Name,
+       ActivePI_Protocols_Staff_CTE.First_Name,
+       ActivePI_Protocols_Staff_CTE.STAFF_NAME,
+       isnull(isnull(isnull(ActivePI_Protocols_Staff_CTE.email, MedSchoolFaculty.email_addr), ap.EMAIL),
+              'N/A')                                                as                  email,
+       isnull(isnull(isnull(MedSchoolFaculty.netid_oprid,
+                            ActivePI_Protocols_Staff_CTE.UA_NETID),
+                     iif(ap.EMAIL != 'NULL', left(ap.EMAIL, charindex('@', ap.EMAIL) - 1), null)),
+              'N/A')                                                as                  UA_NETID,
+       isnull(isnull(MedSchoolFaculty.EMPLID, ActivePI_Protocols_Staff_CTE.EID), 'N/A') EID,
+       isnull(isnull(MedSchoolFaculty.deptid, ap.DEPT_ID), 'N/A')                       DEPT_ID,
+       isnull(iif(MedSchoolFaculty.college_name is null or MedSchoolFaculty.college_name = '-',
+                  ap.College,
+                  MedSchoolFaculty.college_name), 'N/A')                                College,
+       isnull(iif(MedSchoolFaculty.deptname is null or MedSchoolFaculty.deptname = '-', ap.DEPT,
+                  MedSchoolFaculty.deptname), 'N/A')                                    DEPT,
+       iif(MedSchoolFaculty.deptname is null, 'Inactive', 'Active') as                  IsActive
+from ActivePI_Protocols_Staff_CTE
+         outer apply(select top 1 *
+                     from [COM-DTRUST-PROD.BLUECAT.ARIZONA.EDU].[APP].[DBO].[PS_UA_DPT_MED_ALL_FACULTY_UNION_DCC_NEW] as MedSchoolFaculty
+                     where (
+                               MedSchoolFaculty.netid_oprid =
+                               ActivePI_Protocols_Staff_CTE.UA_NETID
+                         or MedSchoolFaculty.name = ActivePI_Protocols_Staff_CTE.STAFF_NAME
+                               )
+                     order by MedSchoolFaculty.priority) MedSchoolFaculty
+
+         outer apply(SELECT ap.LAST_NAME,
+                            ap.FIRST_NAME,
+                            ap.STAFF_NAME,
+                            EMAIL       EMAIL,
+                            UA_NETID as UA_NETID,
+                            EID         EID,
+                            DEPT_ID     DEPT_ID,
+                            College     College,
+                            DEPT        DEPT
+                     FROM ActivePI ap
+                     where ap.STAFF_NAME = ActivePI_Protocols_Staff_CTE.STAFF_NAME) ap</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1215,23 +1275,34 @@ union all
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[UA_NETID]"
                       name="UA_NETID"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                      length="8"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]"
+                      name="IsActive"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Last_Name]"
                       dataType="wstr"
-                      length="50"
+                      length="100"
                       name="Last_Name" />
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[First_Name]"
                       dataType="wstr"
-                      length="50"
+                      length="100"
                       name="First_Name" />
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[STAFF_NAME]"
                       dataType="wstr"
-                      length="50"
+                      length="100"
                       name="STAFF_NAME" />
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[email]"
@@ -1251,18 +1322,24 @@ union all
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[College]"
                       dataType="wstr"
-                      length="30"
+                      length="50"
                       name="College" />
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEPT]"
                       dataType="wstr"
-                      length="30"
+                      length="50"
                       name="DEPT" />
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UA_NETID]"
                       dataType="wstr"
                       length="30"
                       name="UA_NETID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="IsActive" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1273,19 +1350,19 @@ union all
                     <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Last_Name]"
                       dataType="wstr"
-                      length="50"
+                      length="100"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Last_Name]"
                       name="Last_Name" />
                     <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[First_Name]"
                       dataType="wstr"
-                      length="50"
+                      length="100"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[First_Name]"
                       name="First_Name" />
                     <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[STAFF_NAME]"
                       dataType="wstr"
-                      length="50"
+                      length="100"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[STAFF_NAME]"
                       name="STAFF_NAME" />
                     <outputColumn
@@ -1315,15 +1392,22 @@ union all
                     <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[College]"
                       dataType="wstr"
-                      length="30"
+                      length="50"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[College]"
                       name="College" />
                     <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEPT]"
                       dataType="wstr"
-                      length="30"
+                      length="50"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEPT]"
                       name="DEPT" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                      name="IsActive" />
                     <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -1469,7 +1553,7 @@ union all
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [AuditKey], [College], [DEPT], [DEPT_ID], [EID], [EMAIL], [FIRST_NAME], [LAST_NAME], [STAFF_NAME], [UA_NETID] FROM [dw].[DimPI]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [AuditKey], [College], [DEPT], [DEPT_ID], [EID], [EMAIL], [FIRST_NAME], [IsActive], [LAST_NAME], [STAFF_NAME], [UA_NETID] FROM [dw].[DimPI]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -1613,6 +1697,21 @@ union all
                       </properties>
                     </inputColumn>
                     <inputColumn
+                      refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[IsActive]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="IsActive"
+                      externalMetadataColumnId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[IsActive]"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
                       refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Last_Name]"
                       cachedDataType="wstr"
                       cachedLength="50"
@@ -1689,6 +1788,12 @@ union all
                       dataType="wstr"
                       length="50"
                       name="FIRST_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[IsActive]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IsActive" />
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[LAST_NAME]"
                       dataType="wstr"
@@ -2164,29 +2269,37 @@ union all
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="122,42"
-          Id="Package\DFT Transform-Load\RC Error"
-          TopLeft="582,610.5" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\DFT Transform-Load\FF Errors"
-          TopLeft="580.5,712.5" />
-        <NodeLayout
           Size="216,42"
           Id="Package\DFT Transform-Load\Slowly Changing Dimension"
           TopLeft="546,413.5" />
         <NodeLayout
-          Size="125,42"
-          Id="Package\DFT Transform-Load\RC Insert"
-          TopLeft="337.5,506.5" />
+          Size="122,42"
+          Id="Package\DFT Transform-Load\RC Error"
+          TopLeft="593,607.5" />
         <NodeLayout
           Size="133,42"
           Id="Package\DFT Transform-Load\RC Update"
-          TopLeft="967.5,469.5" />
+          TopLeft="839.5,420.5" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\DFT Transform-Load\FF Errors"
+          TopLeft="591.5,709.5" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\DFT Transform-Load\RC Insert"
+          TopLeft="382.5,505.5" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\DFT Transform-Load\OLE DB Source"
+          TopLeft="575.5,5.5" />
         <NodeLayout
           Size="132,42"
           Id="Package\DFT Transform-Load\RC Extract"
           TopLeft="588,209.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DFT Transform-Load\Data Conversion"
+          TopLeft="573.5,107.5" />
         <NodeLayout
           Size="145,42"
           Id="Package\DFT Transform-Load\DC Audit Key"
@@ -2194,80 +2307,6 @@ union all
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Derived Column Output]"
           TopLeft="654,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Row Count Output 11]"
-          TopLeft="643,652.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Row Count Output 1]"
-          TopLeft="654,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="157,42"
-          Id="Package\DFT Transform-Load\OLE DB Source"
-          TopLeft="575.5,5.5" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\DFT Transform-Load\Data Conversion"
-          TopLeft="573.5,107.5" />
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[OLE DB Source Output]"
-          TopLeft="654,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2309,6 +2348,72 @@ union all
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Row Count Output 11]"
+          TopLeft="654,649.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Row Count Output 1]"
+          TopLeft="654,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[OLE DB Source Output]"
+          TopLeft="654,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <NodeLayout
           Size="165,42"
           Id="Package\DFT Transform-Load\Insert Destination"
@@ -2316,105 +2421,69 @@ union all
         <NodeLayout
           Size="173,42"
           Id="Package\DFT Transform-Load\OLE DB Command"
-          TopLeft="803.5,578.5" />
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[OLE DB Destination Error Output]"
-          TopLeft="654,557.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-11,53.0000000000001"
-              Start="0,0"
-              End="-11,45.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.5000000000001" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22.5000000000001"
-                    Point2="0,26.5000000000001"
-                    Point3="-4,26.5000000000001" />
-                  <mssgle:LineSegment
-                    End="-7,26.5000000000001" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-7,26.5000000000001"
-                    Point2="-11,26.5000000000001"
-                    Point3="-11,30.5000000000001" />
-                  <mssgle:LineSegment
-                    End="-11,45.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-78.70890625,31.5000000000001,146.4178125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="819.5,517.5" />
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[New Output]"
-          TopLeft="619.333333333333,455.5">
+          TopLeft="654,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-219.333333333333,51.0000000000001"
+              EndConnector="-209,50"
               Start="0,0"
-              End="-219.333333333333,43.5000000000001">
+              End="-209,42.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.6250000000001" />
+                    End="0,21" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.6250000000001"
-                    Point2="0,20.6250000000001"
-                    Point3="-4,20.6250000000001" />
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="-4,25" />
                   <mssgle:LineSegment
-                    End="-215.333333333333,20.6250000000001" />
+                    End="-205,25" />
                   <mssgle:CubicBezierSegment
-                    Point1="-215.333333333333,20.6250000000001"
-                    Point2="-219.333333333333,20.6250000000001"
-                    Point3="-219.333333333333,24.6250000000001" />
+                    Point1="-205,25"
+                    Point2="-209,25"
+                    Point3="-209,29" />
                   <mssgle:LineSegment
-                    End="-219.333333333333,43.5000000000001" />
+                    End="-209,42.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-136.758053385417,25.6250000000001,54.1827734375,11.43359375"
+              BoundingBox="-131.59138671875,30,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Row Count Output 12]"
-          TopLeft="462.5,527.5">
+          TopLeft="507.5,526.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="109,8.99999999999989"
+              EndConnector="64,10"
               Start="0,0"
-              End="101.5,8.99999999999989">
+              End="56.5,10">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="50.5,0" />
+                    End="28,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="50.5,0"
-                    Point2="54.5,0"
-                    Point3="54.5,4" />
+                    Point1="28,0"
+                    Point2="32,0"
+                    Point3="32,4" />
                   <mssgle:LineSegment
-                    End="54.5,4.99999999999989" />
+                    End="32,6" />
                   <mssgle:CubicBezierSegment
-                    Point1="54.5,4.99999999999989"
-                    Point2="54.5,8.99999999999989"
-                    Point3="58.5,8.99999999999989" />
+                    Point1="32,6"
+                    Point2="32,10"
+                    Point3="36,10" />
                   <mssgle:LineSegment
-                    End="101.5,8.99999999999989" />
+                    End="56.5,10" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2425,72 +2494,72 @@ union all
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Changing Attribute Updates Output]"
-          TopLeft="762,434.5">
+          TopLeft="762,438">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="205.5,56"
+              EndConnector="77.5,0"
               Start="0,0"
-              End="198,56">
+              End="70,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="98.75,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="98.75,0"
-                    Point2="102.75,0"
-                    Point3="102.75,4" />
-                  <mssgle:LineSegment
-                    End="102.75,52" />
-                  <mssgle:CubicBezierSegment
-                    Point1="102.75,52"
-                    Point2="102.75,56"
-                    Point3="106.75,56" />
-                  <mssgle:LineSegment
-                    End="198,56" />
+                    End="70,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="24.21609375,-17.6630859375,157.0678125,11.6630859375"
+              BoundingBox="-43.53390625,5,157.0678125,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Row Count Output 13]"
-          TopLeft="1034,511.5">
+          TopLeft="906,462.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-144,67"
+              EndConnector="0,54.9999999999999"
               Start="0,0"
-              End="-144,59.5">
+              End="0,47.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.5"
-                    Point2="0,33.5"
-                    Point3="-4,33.5" />
-                  <mssgle:LineSegment
-                    End="-140,33.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-140,33.5"
-                    Point2="-144,33.5"
-                    Point3="-144,37.5" />
-                  <mssgle:LineSegment
-                    End="-144,59.5" />
+                    End="0,47.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[OLE DB Destination Error Output]"
+          TopLeft="654,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.0000000000001"
+              Start="0,0"
+              End="0,42.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-73.20890625,15.5332031250001,146.4178125,11.43359375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2550,6 +2619,12 @@ union all
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;IsActive&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_Name]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;LAST_NAME&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
@@ -2562,7 +2637,7 @@ union all
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[ua_netid]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[UA_NETID]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;UA_NETID&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;

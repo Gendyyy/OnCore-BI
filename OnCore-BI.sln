@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32510.428
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "OnCore-SSIS", "OnCore-SSIS\OnCore-SSIS.dtproj", "{1524DBD7-7021-4E97-B1EC-650D207AF9C3}"
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "OnCore-SSIS", "OnCore-SSIS\OnCore-SSIS.dtproj", "{1524DBD7-7021-4E97-B1EC-650D207AF9C3}"
 EndProject
-Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "OnCore-Automation", "OnCore-Automation\OnCore-Automation.dtproj", "{4A114487-0D8F-4F89-A106-1EBB11AC6510}"
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "OnCore-Automation", "OnCore-Automation\OnCore-Automation.dtproj", "{4A114487-0D8F-4F89-A106-1EBB11AC6510}"
+EndProject
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "OnCore-Atuomation-2019", "OnCore-Atuomation-2019\OnCore-Atuomation-2019.dtproj", "{BC9D83A1-30FC-4282-A771-5BAAA82D0BAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,6 +18,8 @@ Global
 		{1524DBD7-7021-4E97-B1EC-650D207AF9C3}.Development|Default.Build.0 = Development
 		{4A114487-0D8F-4F89-A106-1EBB11AC6510}.Development|Default.ActiveCfg = Development
 		{4A114487-0D8F-4F89-A106-1EBB11AC6510}.Development|Default.Build.0 = Development
+		{BC9D83A1-30FC-4282-A771-5BAAA82D0BAB}.Development|Default.ActiveCfg = Development
+		{BC9D83A1-30FC-4282-A771-5BAAA82D0BAB}.Development|Default.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
