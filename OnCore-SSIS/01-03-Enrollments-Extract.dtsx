@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-03-Enrollments-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{420F1892-462A-49C8-A6AC-6AB36E6F5B27}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{887BAEA3-31E0-4138-B7C4-A75F0BEAF6CC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -485,6 +485,10 @@
 protocol_no,
 CREATED_DATE,
 on_studydate,
+[OFF_STUDYDATE],
+[ON_TREATMENTDATE],
+[OFF_TREATMENTDATE],
+[FOLLOWUP_START_DATE],
 case when institution = 'University of Arizona Health Sciences (UAHS)' then accrual end as UAHS_Enrollments,
 case when institution != 'University of Arizona Health Sciences (UAHS)' then accrual end as Affiliates_Enrollments,
 accrual NumberOfEnrollments,
@@ -603,6 +607,46 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2</property>
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberOfEnrollments]"
                       name="NumberOfEnrollments"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFF_STUDYDATE]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OFF_STUDYDATE]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFF_STUDYDATE]"
+                      name="OFF_STUDYDATE"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ON_TREATMENTDATE]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ON_TREATMENTDATE]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ON_TREATMENTDATE]"
+                      name="ON_TREATMENTDATE"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFF_TREATMENTDATE]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OFF_TREATMENTDATE]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFF_TREATMENTDATE]"
+                      name="OFF_TREATMENTDATE"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FOLLOWUP_START_DATE]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FOLLOWUP_START_DATE]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FOLLOWUP_START_DATE]"
+                      name="FOLLOWUP_START_DATE"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -643,6 +687,26 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2</property>
                       refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumberOfEnrollments]"
                       dataType="r8"
                       name="NumberOfEnrollments" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OFF_STUDYDATE]"
+                      dataType="dbTimeStamp2"
+                      name="OFF_STUDYDATE"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ON_TREATMENTDATE]"
+                      dataType="dbTimeStamp2"
+                      name="ON_TREATMENTDATE"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OFF_TREATMENTDATE]"
+                      dataType="dbTimeStamp2"
+                      name="OFF_TREATMENTDATE"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FOLLOWUP_START_DATE]"
+                      dataType="dbTimeStamp2"
+                      name="FOLLOWUP_START_DATE"
+                      scale="7" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -667,6 +731,30 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2</property>
                       dataType="dbTimeStamp2"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[on_studydate]"
                       name="on_studydate"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OFF_STUDYDATE]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OFF_STUDYDATE]"
+                      name="OFF_STUDYDATE"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ON_TREATMENTDATE]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ON_TREATMENTDATE]"
+                      name="ON_TREATMENTDATE"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OFF_TREATMENTDATE]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OFF_TREATMENTDATE]"
+                      name="OFF_TREATMENTDATE"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FOLLOWUP_START_DATE]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FOLLOWUP_START_DATE]"
+                      name="FOLLOWUP_START_DATE"
                       scale="7" />
                     <outputColumn
                       refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UAHS_Enrollments]"
@@ -837,6 +925,34 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2</property>
                       cachedName="Copy of ETHNICITY"
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Ethnicity]"
                       lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ETHNICITY]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[OFF_STUDYDATE]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="OFF_STUDYDATE"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Off_StudyDate]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFF_STUDYDATE]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[ON_TREATMENTDATE]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="ON_TREATMENTDATE"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[On_TreatmentDate]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ON_TREATMENTDATE]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[OFF_TREATMENTDATE]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="OFF_TREATMENTDATE"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Off_TreatmentDate]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFF_TREATMENTDATE]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[FOLLOWUP_START_DATE]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="FOLLOWUP_START_DATE"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Followup_Start_Date]"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FOLLOWUP_START_DATE]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -875,6 +991,28 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2</property>
                       dataType="wstr"
                       length="35"
                       name="Ethnicity" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Off_StudyDate]"
+                      dataType="dbDate"
+                      name="Off_StudyDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[On_TreatmentDate]"
+                      dataType="dbDate"
+                      name="On_TreatmentDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Off_TreatmentDate]"
+                      dataType="dbDate"
+                      name="Off_TreatmentDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Followup_Start_Date]"
+                      dataType="dbDate"
+                      name="Followup_Start_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[OnStudy?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="OnStudy?" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1318,21 +1456,21 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="157,42"
-          Id="Package\DFT Extract to Staging\OLE DB Source"
-          TopLeft="139,74" />
-        <NodeLayout
           Size="151,42"
           Id="Package\DFT Extract to Staging\OLE DB Stage"
           TopLeft="131,424" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DFT Extract to Staging\Data Conversion"
+          TopLeft="132,154" />
         <NodeLayout
           Size="125,42"
           Id="Package\DFT Extract to Staging\FF Errors"
           TopLeft="152,607" />
         <NodeLayout
-          Size="132,42"
-          Id="Package\DFT Extract to Staging\RC Extract"
-          TopLeft="144,241" />
+          Size="157,42"
+          Id="Package\DFT Extract to Staging\OLE DB Source"
+          TopLeft="139,74" />
         <NodeLayout
           Size="122,42"
           Id="Package\DFT Extract to Staging\RC Error"
@@ -1341,6 +1479,10 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2</property>
           Size="240,42"
           Id="Package\DFT Extract to Staging\CS Remove Null On Study Dates"
           TopLeft="91,313" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\DFT Extract to Staging\RC Extract"
+          TopLeft="144,241" />
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[Row Count Output 11]"
           TopLeft="210.5,283">
@@ -1377,6 +1519,28 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Extract to Staging.Paths[OLE DB Source Output]"
+          TopLeft="215,116">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1433,32 +1597,6 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="161,42"
-          Id="Package\DFT Extract to Staging\Data Conversion"
-          TopLeft="132,154" />
-        <EdgeLayout
-          Id="Package\DFT Extract to Staging.Paths[OLE DB Source Output]"
-          TopLeft="215,116">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38"
-              Start="0,0"
-              End="0,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[Data Conversion Output]"
           TopLeft="211.25,196">
@@ -1485,14 +1623,6 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT Extract to Staging\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DFT Extract to Staging\OLE DB Stage">
     <Properties>
       <Property>
@@ -1502,6 +1632,14 @@ from ONCOREPROD..UACC_ONCORE_RW_UTILS.MYPSV2</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Extract to Staging\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
