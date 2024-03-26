@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Master-DW-ETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{213F2B3F-CCEE-442A-A23C-27BBA93FCC79}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{601E5F99-DE18-492D-8154-9CD459C090A6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -100,6 +100,7 @@
           DTS:refId="Package.EventHandlers[OnError]\Send Mail Task"
           DTS:CreationName="Microsoft.SendMailTask"
           DTS:Description="Send Mail Task"
+          DTS:Disabled="True"
           DTS:DTSID="{0AF5FDBC-6AB4-46A5-A21D-4A3707DB19E7}"
           DTS:ExecutableType="Microsoft.SendMailTask"
           DTS:LocaleID="-1"
@@ -169,7 +170,7 @@
         <NodeLayout
           Size="150,42"
           Id="Package.EventHandlers[OnError]\Send Mail Task"
-          TopLeft="307,159" />
+          TopLeft="394.5,112.5" />
       </GraphLayout>
     </LayoutInfo>
   </DtsEventHandler>

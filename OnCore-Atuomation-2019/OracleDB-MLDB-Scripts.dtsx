@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="OracleDB-MLDB-Scripts"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{52E0B297-8763-40C6-A85D-CA798DFD1C25}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{D4EBC388-D9B3-44E5-B271-72B3E4AADB22}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>

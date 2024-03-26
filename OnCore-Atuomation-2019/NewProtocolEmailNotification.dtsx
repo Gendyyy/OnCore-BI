@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="11/6/2023 7:44:07 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="NewProtocolEmailNotification"
   DTS:PackageType="5"
-  DTS:VersionBuild="100"
-  DTS:VersionGUID="{B103EF7B-78AF-4043-BD15-3D7472E364E7}">
+  DTS:VersionBuild="103"
+  DTS:VersionGUID="{734DD9F9-524E-422B-B3DC-8030403FBB24}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -141,7 +141,7 @@ from protocols p
         and (s.STOP_DATE &gt; GETDATE() or s.STOP_DATE is null)
         -- order by p.Created_Date desc
 where
-p.Created_Date = cast(GETDATE() -1 as date)
+p.Created_Date  = cast(GETDATE() -1 as date)
 and p.Library = 'General Medicine'</property>
                 <property
                   dataType="System.String"
