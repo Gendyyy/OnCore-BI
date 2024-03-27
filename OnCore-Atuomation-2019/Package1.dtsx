@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/26/2024 1:18:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="COM-05361"
+  DTS:CreatorName="BLUECAT\gendy"
+  DTS:DTSID="{133192E3-CA90-44A8-B7C6-EA0698B5B855}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionGUID="{D07FB24F-0A95-4EE4-97D8-320A6267C8AD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables />
+</DTS:Executable>

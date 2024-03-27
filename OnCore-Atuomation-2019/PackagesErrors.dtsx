@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="PackagesErrors"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{19B8417B-9361-4FC0-BD76-0BCE3332A25C}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{652740AD-D9B1-403B-867C-E2D396B2DA8C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -72,7 +72,7 @@
       DTS:refId="Package\ErrorPackage"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{73F1033B-7B09-4632-8920-26FD8F91B33F}"
+      DTS:DTSID="{cd2b4293-4172-44a1-a750-b3c9c2aad65d}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="ErrorPackage"
@@ -83,11 +83,11 @@
           version="1">
           <components>
             <component
-              refId="Package\ErrorPackage\OLE DB Source"
+              refId="Package\ErrorPackage\COM-ONCORE-SQL"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="OLE DB Source"
+              name="COM-ONCORE-SQL"
               usesDispositions="true"
               version="7">
               <properties>
@@ -147,7 +147,7 @@ ORDER BY O.start_time DESC;</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\ErrorPackage\OLE DB Source.Connections[OleDbConnection]"
+                  refId="Package\ErrorPackage\COM-ONCORE-SQL.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[COM-ONCORE-SQL]"
                   connectionManagerRefId="Package.ConnectionManagers[COM-ONCORE-SQL]"
                   description="The OLE DB runtime connection used to access the database."
@@ -155,167 +155,409 @@ ORDER BY O.start_time DESC;</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output]"
+                  refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExecutionID]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[ExecutionID]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExecutionID]"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExecutionID]"
+                      externalMetadataColumnId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].ExternalColumns[ExecutionID]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[ExecutionID]"
                       name="ExecutionID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExecutionTime]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[ExecutionTime]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExecutionTime]"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExecutionTime]"
+                      externalMetadataColumnId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].ExternalColumns[ExecutionTime]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[ExecutionTime]"
                       name="ExecutionTime"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[Subject]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
+                      externalMetadataColumnId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
                       length="422"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[Subject]"
                       name="Subject"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[Body]"
                       dataType="nText"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Body]"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]"
+                      externalMetadataColumnId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].ExternalColumns[Body]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[Body]"
                       name="Body"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[To]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[To]"
+                      externalMetadataColumnId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].ExternalColumns[To]"
                       length="17"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[To]"
                       name="To"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[CC]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CC]"
+                      externalMetadataColumnId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].ExternalColumns[CC]"
                       length="1"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[CC]"
                       name="CC"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[BCC]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
+                      externalMetadataColumnId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
                       length="1"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[BCC]"
                       name="BCC"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExecutionID]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].ExternalColumns[ExecutionID]"
                       dataType="i8"
                       name="ExecutionID" />
                     <externalMetadataColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExecutionTime]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].ExternalColumns[ExecutionTime]"
                       dataType="dbTimeStamp"
                       name="ExecutionTime" />
                     <externalMetadataColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
                       dataType="wstr"
                       length="409"
                       name="Subject" />
                     <externalMetadataColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Body]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].ExternalColumns[Body]"
                       dataType="nText"
                       name="Body" />
                     <externalMetadataColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[To]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].ExternalColumns[To]"
                       dataType="wstr"
                       length="17"
                       name="To" />
                     <externalMetadataColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CC]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].ExternalColumns[CC]"
                       dataType="wstr"
                       length="1"
                       name="CC" />
                     <externalMetadataColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
                       dataType="wstr"
                       length="1"
                       name="BCC" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExecutionID]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[ExecutionID]"
                       dataType="i8"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExecutionID]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[ExecutionID]"
                       name="ExecutionID" />
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExecutionTime]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[ExecutionTime]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExecutionTime]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[ExecutionTime]"
                       name="ExecutionTime" />
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subject]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[Subject]"
                       dataType="wstr"
                       length="409"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subject]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[Subject]"
                       name="Subject" />
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Body]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[Body]"
                       dataType="nText"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Body]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[Body]"
                       name="Body" />
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[To]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[To]"
                       dataType="wstr"
                       length="17"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[To]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[To]"
                       name="To" />
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CC]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[CC]"
                       dataType="wstr"
                       length="1"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CC]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[CC]"
                       name="CC" />
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BCC]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[BCC]"
                       dataType="wstr"
                       length="1"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BCC]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[BCC]"
                       name="BCC" />
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ErrorPackage\DTrust"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DTrust"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT O.Operation_Id                  AS ExecutionID,
+       CONVERT(DATETIME, O.start_time) AS ExecutionTime,
+       N'Package Error : ' + e.Folder_Name + ' --&gt; ' + p.name                  AS Subject,
+       OM.message                      AS Body,
+       N'gendy@arizona.edu' as [To],
+       N'' as CC,
+       N'' as BCC
+FROM [COM-DTRUST-PROD.BLUECAT.ARIZONA.EDU].[SSISDB].[catalog].[operations] O
+         INNER JOIN [COM-DTRUST-PROD.BLUECAT.ARIZONA.EDU].[SSISDB].[catalog].[executions] E ON O.operation_id = E.execution_id
+         INNER JOIN [COM-DTRUST-PROD.BLUECAT.ARIZONA.EDU].[SSISDB].[catalog].[packages] P ON E.package_name = P.name -- Corrected alias
+         INNER JOIN [COM-DTRUST-PROD.BLUECAT.ARIZONA.EDU].[SSISDB].[catalog].[operation_messages] OM ON O.operation_id = OM.operation_id
+WHERE 
+e.folder_name = 'COMHELP'
+  and O.status = 4
+  AND OM.message_type = 120
+and cast(E.start_time as date)  = cast(getdate() as date)
+ORDER BY O.start_time DESC;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ErrorPackage\DTrust.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[COM-ONCORE-SQL]"
+                  connectionManagerRefId="Package.ConnectionManagers[COM-ONCORE-SQL]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[ExecutionID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].ExternalColumns[ExecutionID]"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[ExecutionID]"
+                      name="ExecutionID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[ExecutionTime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].ExternalColumns[ExecutionTime]"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[ExecutionTime]"
+                      name="ExecutionTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[Subject]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
+                      length="409"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[Subject]"
+                      name="Subject"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[Body]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].ExternalColumns[Body]"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[Body]"
+                      name="Body"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[To]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].ExternalColumns[To]"
+                      length="17"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[To]"
+                      name="To"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[CC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].ExternalColumns[CC]"
+                      length="1"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[CC]"
+                      name="CC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[BCC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
+                      length="1"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[BCC]"
+                      name="BCC"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].ExternalColumns[ExecutionID]"
+                      dataType="i8"
+                      name="ExecutionID" />
+                    <externalMetadataColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].ExternalColumns[ExecutionTime]"
+                      dataType="dbTimeStamp"
+                      name="ExecutionTime" />
+                    <externalMetadataColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
+                      dataType="wstr"
+                      length="409"
+                      name="Subject" />
+                    <externalMetadataColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].ExternalColumns[Body]"
+                      dataType="nText"
+                      name="Body" />
+                    <externalMetadataColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].ExternalColumns[To]"
+                      dataType="wstr"
+                      length="17"
+                      name="To" />
+                    <externalMetadataColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].ExternalColumns[CC]"
+                      dataType="wstr"
+                      length="1"
+                      name="CC" />
+                    <externalMetadataColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
+                      dataType="wstr"
+                      length="1"
+                      name="BCC" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[ExecutionID]"
+                      dataType="i8"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[ExecutionID]"
+                      name="ExecutionID" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[ExecutionTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[ExecutionTime]"
+                      name="ExecutionTime" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[Subject]"
+                      dataType="wstr"
+                      length="409"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[Subject]"
+                      name="Subject" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[Body]"
+                      dataType="nText"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[Body]"
+                      name="Body" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[To]"
+                      dataType="wstr"
+                      length="17"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[To]"
+                      name="To" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[CC]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[CC]"
+                      name="CC" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[BCC]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[BCC]"
+                      name="BCC" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -345,53 +587,333 @@ ORDER BY O.start_time DESC;</property>
                       refId="Package\ErrorPackage\Recordset Destination.Inputs[Recordset Destination Input].Columns[ExecutionID]"
                       cachedDataType="i8"
                       cachedName="ExecutionID"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExecutionID]" />
+                      lineageId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[ExecutionID]" />
                     <inputColumn
                       refId="Package\ErrorPackage\Recordset Destination.Inputs[Recordset Destination Input].Columns[ExecutionTime]"
                       cachedDataType="dbTimeStamp"
                       cachedName="ExecutionTime"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExecutionTime]" />
+                      lineageId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[ExecutionTime]" />
                     <inputColumn
                       refId="Package\ErrorPackage\Recordset Destination.Inputs[Recordset Destination Input].Columns[Subject]"
                       cachedDataType="wstr"
                       cachedLength="422"
                       cachedName="Subject"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]" />
+                      lineageId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[Subject]" />
                     <inputColumn
                       refId="Package\ErrorPackage\Recordset Destination.Inputs[Recordset Destination Input].Columns[Body]"
                       cachedDataType="nText"
                       cachedName="Body"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]" />
+                      lineageId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[Body]" />
                     <inputColumn
                       refId="Package\ErrorPackage\Recordset Destination.Inputs[Recordset Destination Input].Columns[To]"
                       cachedDataType="wstr"
                       cachedLength="17"
                       cachedName="To"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]" />
+                      lineageId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[To]" />
                     <inputColumn
                       refId="Package\ErrorPackage\Recordset Destination.Inputs[Recordset Destination Input].Columns[CC]"
                       cachedDataType="wstr"
                       cachedLength="1"
                       cachedName="CC"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]" />
+                      lineageId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[CC]" />
                     <inputColumn
                       refId="Package\ErrorPackage\Recordset Destination.Inputs[Recordset Destination Input].Columns[BCC]"
                       cachedDataType="wstr"
                       cachedLength="1"
                       cachedName="BCC"
-                      lineageId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]" />
+                      lineageId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[BCC]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
             </component>
+            <component
+              refId="Package\ErrorPackage\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\ErrorPackage\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ErrorPackage\Union All.Inputs[Union All Input 1].Columns[ExecutionID]"
+                      cachedDataType="i8"
+                      cachedName="ExecutionID"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[ExecutionID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[ExecutionID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ErrorPackage\Union All.Inputs[Union All Input 1].Columns[ExecutionTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ExecutionTime"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[ExecutionTime]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[ExecutionTime]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ErrorPackage\Union All.Inputs[Union All Input 1].Columns[Subject]"
+                      cachedDataType="wstr"
+                      cachedLength="422"
+                      cachedName="Subject"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[Subject]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[Subject]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ErrorPackage\Union All.Inputs[Union All Input 1].Columns[Body]"
+                      cachedDataType="nText"
+                      cachedName="Body"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[Body]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[Body]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ErrorPackage\Union All.Inputs[Union All Input 1].Columns[To]"
+                      cachedDataType="wstr"
+                      cachedLength="17"
+                      cachedName="To"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[To]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[To]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ErrorPackage\Union All.Inputs[Union All Input 1].Columns[CC]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="CC"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[CC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[CC]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ErrorPackage\Union All.Inputs[Union All Input 1].Columns[BCC]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="BCC"
+                      lineageId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output].Columns[BCC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[BCC]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\ErrorPackage\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ErrorPackage\Union All.Inputs[Union All Input 2].Columns[ExecutionID]"
+                      cachedDataType="i8"
+                      cachedName="ExecutionID"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[ExecutionID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[ExecutionID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ErrorPackage\Union All.Inputs[Union All Input 2].Columns[ExecutionTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ExecutionTime"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[ExecutionTime]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[ExecutionTime]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ErrorPackage\Union All.Inputs[Union All Input 2].Columns[Subject]"
+                      cachedDataType="wstr"
+                      cachedLength="409"
+                      cachedName="Subject"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[Subject]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[Subject]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ErrorPackage\Union All.Inputs[Union All Input 2].Columns[Body]"
+                      cachedDataType="nText"
+                      cachedName="Body"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[Body]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[Body]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ErrorPackage\Union All.Inputs[Union All Input 2].Columns[To]"
+                      cachedDataType="wstr"
+                      cachedLength="17"
+                      cachedName="To"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[To]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[To]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ErrorPackage\Union All.Inputs[Union All Input 2].Columns[CC]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="CC"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[CC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[CC]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ErrorPackage\Union All.Inputs[Union All Input 2].Columns[BCC]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="BCC"
+                      lineageId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output].Columns[BCC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[BCC]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\ErrorPackage\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ErrorPackage\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[ExecutionID]"
+                      dataType="i8"
+                      lineageId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[ExecutionID]"
+                      name="ExecutionID" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[ExecutionTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[ExecutionTime]"
+                      name="ExecutionTime" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[Subject]"
+                      dataType="wstr"
+                      length="422"
+                      lineageId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[Subject]"
+                      name="Subject" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[Body]"
+                      dataType="nText"
+                      lineageId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[Body]"
+                      name="Body" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[To]"
+                      dataType="wstr"
+                      length="17"
+                      lineageId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[To]"
+                      name="To" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[CC]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[CC]"
+                      name="CC" />
+                    <outputColumn
+                      refId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[BCC]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\ErrorPackage\Union All.Outputs[Union All Output 1].Columns[BCC]"
+                      name="BCC" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
               refId="Package\ErrorPackage.Paths[OLE DB Source Output]"
-              endId="Package\ErrorPackage\Recordset Destination.Inputs[Recordset Destination Input]"
+              endId="Package\ErrorPackage\Union All.Inputs[Union All Input 1]"
               name="OLE DB Source Output"
-              startId="Package\ErrorPackage\OLE DB Source.Outputs[OLE DB Source Output]" />
+              startId="Package\ErrorPackage\COM-ONCORE-SQL.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\ErrorPackage.Paths[OLE DB Source Output1]"
+              endId="Package\ErrorPackage\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Source Output"
+              startId="Package\ErrorPackage\DTrust.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\ErrorPackage.Paths[Union All Output 1]"
+              endId="Package\ErrorPackage\Recordset Destination.Inputs[Recordset Destination Input]"
+              name="Union All Output 1"
+              startId="Package\ErrorPackage\Union All.Outputs[Union All Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -413,15 +935,6 @@ ORDER BY O.start_time DESC;</property>
           VSTAMinorVersion="0"
           Language="CSharp"
           ReadOnlyVariables="User::ConnectionString,User::MailFrom,User::PackagesErrors">
-          <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -541,6 +1054,35 @@ ORDER BY O.start_time DESC;</property>
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 </root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties.Settings.get_Default():ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties.Sett" +
+    "ings")]
+
+namespace ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
           <ProjectItem
             Name="ST_ca20811b7d0e4c0db3d85a030362ff0b.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -731,7 +1273,7 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
             var dt =  getDataTable(Dts.Variables["User::PackagesErrors"].Value);
 
 
-
+            if (dt.Rows.Count == 0) return;
             foreach (DataRow row in dt.Rows)
             {
                 var toList = row["To"].ToString()
@@ -759,11 +1301,11 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
                     MailMessage message = new MailMessage();
                     for (int i = 0; i < Math.Max(Math.Max(toList.Count, ccList.Count), bccList.Count); i++)
                     {
-                        if (i <= toList.Count)
+                        if (i < toList.Count)
                             message.To.Add(toList[i]);
-                        if (i <= ccList.Count)
+                        if (i < ccList.Count)
                             message.CC.Add(ccList[i]);
-                        if (i <= bccList.Count)
+                        if (i < bccList.Count)
                             message.Bcc.Add(bccList[i]);
 
                     }
@@ -817,7 +1359,7 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
     <msb:CodeName>ST_ca20811b7d0e4c0db3d85a030362ff0b</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>ST_ca20811b7d0e4c0db3d85a030362ff0b</msb:DisplayName>
-    <msb:ProjectId>{B593B377-0D5E-4DEA-A5D8-52D2A33146B2}</msb:ProjectId>
+    <msb:ProjectId>{4782F8A2-00D4-4AEF-BE2A-4A04A4D28C2C}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="ST_ca20811b7d0e4c0db3d85a030362ff0b.csproj" />
@@ -827,37 +1369,20 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
     <msb:File Include="Properties\Resources.Designer.cs" />
     <msb:File Include="Properties\Settings.Designer.cs" />
     <msb:File Include="ScriptMain.cs" />
+    <msb:Breakpoint Include="fe5e09cbfbad4c8eb29a735b9ea31ea8">
+      <msb:FileName>ScriptMain.cs</msb:FileName>
+      <msb:LineNumber>100</msb:LineNumber>
+      <msb:ColumnNumber>13</msb:ColumnNumber>
+      <msb:Enabled>True</msb:Enabled>
+      <msb:ConditionType>1</msb:ConditionType>
+      <msb:Condition>
+      </msb:Condition>
+      <msb:Language>C#</msb:Language>
+      <msb:HitCountType>1</msb:HitCountType>
+      <msb:HitCountTarget>1</msb:HitCountTarget>
+    </msb:Breakpoint>
   </msb:ItemGroup>
 </c:Project>]]></ProjectItem>
-          <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties.Settings.get_Default():ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties.Sett" +
-    "ings")]
-
-namespace ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
           <ProjectItem
             Name="Properties\AssemblyInfo.cs"
             Encoding="UTF8"><![CDATA[using System.Reflection;
@@ -888,6 +1413,15 @@ using System.Runtime.CompilerServices;
 // by using the '*' as shown below:
 
 [assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -959,122 +1493,122 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties {
           <BinaryItem
             Name="ST_ca20811b7d0e4c0db3d85a030362ff0b.dll">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
-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
+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
-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
+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
-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
+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
-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
-BRAAmQDjBMMAmQAFBxAAmQBvBxAAkQAQAcoAoQA4AgYAeQBaB9AAAQEjBwEAqQDPBQYAYQHPBQYA
-YQHOBNoAcQDPBQYAsQDPBQYAaQFwAeEAaQF4B+oA2QDPBfAA+QDPBQYAMQGFB/gACAAUAA8BCAAY
-ABQBKQB7AJMBLgALAGsBLgATAHQBLgAbAJMBLgAjAJwBLgArAMUBLgAzAMUBLgA7AMUBLgBDAJwB
-LgBLAMsBLgBTAMUBLgBbAOIBQwBjABQBSQB7AJMBYQBrABQBYwBzABQBwwBrABQBGwDUAAMAAQAE
-AAMAAACUBVwBAADhAWEBAAAbB2YBAgAFAAMAAgAGAAUAAQAHAAUAAgAIAAcAbACnAASAAAABAAAA
-kiKvmwAAAAAAAKYAAAAEAAAAAAAAAAAAAAD9ANwAAAAAAA8AAAAAAAAAAAAAAAYBJgQAAAAABAAA
-AAAAAAAAAAAA/QCaAAAAAAAEAAAAAAAAAAAAAAD9ANwEAAAAAA8AAAAAAAAAAAAAAAYBcwAAAAAA
-BAAAAAAAAAAAAAAA/QCtAQAAAAAAAAAAAQAAACAGAAAFAAIABgACADcAkgA5AJIAAAAAAAA8Pjlf
-XzBfMAA8TWFpbj5iX18wXzAAPD45X18wXzEAPE1haW4+Yl9fMF8xAElFbnVtZXJhYmxlYDEATGlz
-dGAxADw+OV9fMF8yADxNYWluPmJfXzBfMgBGdW5jYDIAPD45ADxNb2R1bGU+AGdldF9DQwBNaWNy
-b3NvZnQuU3FsU2VydmVyLk1hbmFnZWREVFMAdmFsdWVfXwBTeXN0ZW0uRGF0YQBTVF9jYTIwODEx
-YjdkMGU0YzBkYjNkODVhMDMwMzYyZmYwYgBTeXN0ZW0uRGF0YS5PbGVEYgBtc2NvcmxpYgA8PmMA
-Z2V0X0JjYwBTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYwBBZGQAU2VuZABkZWZhdWx0SW5zdGFu
-Y2UATWFpbE1lc3NhZ2UAZ2V0RGF0YVRhYmxlAFZhcmlhYmxlAEVudW1lcmFibGUASURpc3Bvc2Fi
-bGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUATWljcm9zb2Z0LlNxbFNlcnZl
-ci5EdHMuUnVudGltZQBUeXBlAFdoZXJlAFN5c3RlbS5Db3JlAEZhaWx1cmUAZ2V0X0N1bHR1cmUA
-c2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAFZTVEFSVFNjcmlwdE9iamVjdE1vZGVsQmFzZQBJ
-bnRlcm5hbERhdGFDb2xsZWN0aW9uQmFzZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBEaXNwb3Nl
-AEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2Vy
-Tm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVB
-dHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0
-ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRl
-AEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJp
-YnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUA
-U1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0
-ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBnZXRfVmFsdWUAdmFsdWUAU3lzdGVtLlJ1
-bnRpbWUuVmVyc2lvbmluZwBUb1N0cmluZwBNYXRoAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2NyaXB0
-VGFzawBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5TY3JpcHRUYXNrAFNjcmlwdE9iamVj
-dE1vZGVsAFN5c3RlbS5Db21wb25lbnRNb2RlbABTeXN0ZW0uTmV0Lk1haWwAU1RfY2EyMDgxMWI3
-ZDBlNGMwZGIzZDg1YTAzMDM2MmZmMGIuZGxsAEZpbGwAZ2V0X0l0ZW0AU3lzdGVtAHNldF9Gcm9t
-AEVudW0AcmVzb3VyY2VNYW4AU2NyaXB0TWFpbgBTeXN0ZW0uQ29uZmlndXJhdGlvbgBTeXN0ZW0u
-R2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBNYWlsQWRkcmVzc0NvbGxlY3Rpb24ARGF0
-YVJvd0NvbGxlY3Rpb24AZ2V0X1RvAEN1bHR1cmVJbmZvAFN5c3RlbS5MaW5xAENoYXIAZ2V0X1Jl
-c291cmNlTWFuYWdlcgBPbGVEYkRhdGFBZGFwdGVyAElFbnVtZXJhdG9yAEdldEVudW1lcmF0b3IA
-LmN0b3IALmNjdG9yAFN5c3RlbS5EaWFnbm9zdGljcwBTeXN0ZW0uUnVudGltZS5Db21waWxlclNl
-cnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMAU1RfY2EyMDgxMWI3ZDBlNGMwZGIzZDg1YTAzMDM2MmZm
-MGIuUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2VzAERlYnVnZ2luZ01vZGVzAFNUX2NhMjA4
-MTFiN2QwZTRjMGRiM2Q4NWEwMzAzNjJmZjBiLlByb3BlcnRpZXMAZ2V0X1ZhcmlhYmxlcwBTZXR0
-aW5ncwBTeXN0ZW0uQ29sbGVjdGlvbnMAU3VjY2VzcwBNYWlsQWRkcmVzcwBnZXRfRHRzAFNjcmlw
-dFJlc3VsdHMAZ2V0X1Jvd3MAT2JqZWN0AHNldF9TdWJqZWN0AFNwbGl0AGdldF9EZWZhdWx0AHNl
-dF9UYXNrUmVzdWx0AFNtdHBDbGllbnQAZ2V0X0N1cnJlbnQAZ2V0X0NvdW50AFRvTGlzdABNb3Zl
-TmV4dABEYXRhUm93AE1heABzZXRfQm9keQBnZXRfQXNzZW1ibHkASXNOdWxsT3JFbXB0eQAAAClV
-AHMAZQByADoAOgBQAGEAYwBrAGEAZwBlAHMARQByAHIAbwByAHMAAAVUAG8AAAVDAEMAAAdCAEMA
-QwAAD1MAdQBiAGoAZQBjAHQAAAlCAG8AZAB5AAAtVQBzAGUAcgA6ADoAQwBvAG4AbgBlAGMAdABp
-AG8AbgBTAHQAcgBpAG4AZwAAHVUAcwBlAHIAOgA6AE0AYQBpAGwARgByAG8AbQAAcVMAVABfAGMA
-YQAyADAAOAAxADEAYgA3AGQAMABlADQAYwAwAGQAYgAzAGQAOAA1AGEAMAAzADAAMwA2ADIAZgBm
-ADAAYgAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAAFu1TDxMFiRE
-qK6dH68S+sYABCABAQgDIAABBSABARERBCABAQ4FIAEBEXUeBwsSPRJBFRJFAQ4VEkUBDhUSRQEO
-Dg4SSRJNCBJRBSAAEoCBBSAAEoCFBiABEoCJHAMgABwFIAASgI0EIAASPQQgARwOAyAADgYgAR0O
-HQMGFRJlAg4CBSACARwYGBABAhUSgKEBHgAVEoChAR4AFRJlAh4AAgMKAQ4QEAEBFRJFAR4AFRKA
-oQEeAAUVEkUBDgMgAAgFIAASgKUFIAETAAgFAAIICAgGIAEBEoCtBSABARJNAyAAAgUHAhwSVQYg
-AggSVRwIAAESgLURgLkFIAASgL0HIAIBDhKAvQQAAQIOCLd6XFYZNOCJCImEXc2AgMyRBAAAAAAE
-AQAAAAMGEm0DBhJxAwYSEAIGCAMGERQDBhIYBwYVEmUCDgIFIAESVRwEAAASbQQAABJxBQABARJx
-BAAAEhADAAABBCABAg4ECAASbQQIABJxBAgAEhAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNl
-cHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NUX2NhMjA4MTFiN2QwZTRjMGRiM2Q4NWEwMzAzNjJm
-ZjBiAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMjQAAEkBABouTkVURnJhbWV3b3JrLFZlcnNp
-b249djQuNwEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC43tAAAAM7K
-774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVy
-c2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkz
-NGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQ
-QURQtAAAAJA1AAAAAAAAAAAAAKo1AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcNQAAAAAAAAAA
-AAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAC4
+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
+AAEA+AMAAAEA/AMAAAEA/AMAAAEA/AMJAM8FAQARAM8FBgAZAM8FCgApAM8FEAAxAM8FEAA5AM8F
+EABBAM8FEABJAM8FEABRAM8FEABZAM8FEABhAM8FEABpAM8FBgDBAM8FBgDRAM8FBgDxAM8FFQBx
+AN8GPAABAaEGQgAJAdMESAARAe4DTwB5APUGUwAhAUkHWQAhAcEFXQCBAD0HTwCJANMEYgCxABgE
+ZwAxAREHawAMAM8FeQA5AacBfwA5AVMHnACZAM8FEAChAM8FBgAUAEkHWQChAGwFswAUANMEuQBJ
+AQwBEAChAGwAswChAOkAswBRAWsHvwBZAc8FEAChAOMExQChAAUHEAChAG8HEACZABABzACpADgC
+BgCBAFoH0gABASMHAQB5AM8FBgBhAc8FBgBhAc4E3ABxAM8FBgCxAM8FBgBpAXAB4wBpAXgH7ADZ
+AM8F8gD5AM8FBgAxAYUH+gAIABQAEQEIABgAFgEpAHsAlQEuAAsAbQEuABMAdgEuABsAlQEuACMA
+ngEuACsAxwEuADMAxwEuADsAxwEuAEMAngEuAEsAzQEuAFMAxwEuAFsA5AFDAGMAFgFJAHsAlQFh
+AGsAFgFjAHMAFgHDAGsAFgEbANYAAwABAAQAAwAAAJQFXgEAAOEBYwEAABsHaAECAAUAAwACAAYA
+BQABAAcABQACAAgABwByAK0ABIAAAAEAAACTIvKTAAAAAAAApgAAAAQAAAAAAAAAAAAAAP8A3AAA
+AAAADwAAAAAAAAAAAAAACAEmBAAAAAAEAAAAAAAAAAAAAAD/AJoAAAAAAAQAAAAAAAAAAAAAAP8A
+3AQAAAAADwAAAAAAAAAAAAAACAFzAAAAAAAEAAAAAAAAAAAAAAD/AK0BAAAAAAAAAAABAAAAIAYA
+AAUAAgAGAAIAOQCYADsAmAAAAAA8PjlfXzBfMAA8TWFpbj5iX18wXzAAPD45X18wXzEAPE1haW4+
+Yl9fMF8xAElFbnVtZXJhYmxlYDEATGlzdGAxADw+OV9fMF8yADxNYWluPmJfXzBfMgBGdW5jYDIA
+PD45ADxNb2R1bGU+AGdldF9DQwBNaWNyb3NvZnQuU3FsU2VydmVyLk1hbmFnZWREVFMAdmFsdWVf
+XwBTeXN0ZW0uRGF0YQBTVF9jYTIwODExYjdkMGU0YzBkYjNkODVhMDMwMzYyZmYwYgBTeXN0ZW0u
+RGF0YS5PbGVEYgBtc2NvcmxpYgA8PmMAZ2V0X0JjYwBTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJp
+YwBBZGQAU2VuZABkZWZhdWx0SW5zdGFuY2UATWFpbE1lc3NhZ2UAZ2V0RGF0YVRhYmxlAFZhcmlh
+YmxlAEVudW1lcmFibGUASURpc3Bvc2FibGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21I
+YW5kbGUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVudGltZQBUeXBlAFdoZXJlAFN5c3RlbS5D
+b3JlAEZhaWx1cmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAFZTVEFS
+VFNjcmlwdE9iamVjdE1vZGVsQmFzZQBJbnRlcm5hbERhdGFDb2xsZWN0aW9uQmFzZQBBcHBsaWNh
+dGlvblNldHRpbmdzQmFzZQBEaXNwb3NlAEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2Vu
+ZXJhdGVkQXR0cmlidXRlAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0
+dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBB
+c3NlbWJseVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1i
+bHlDb25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29t
+cGlsYXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNz
+ZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAU1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRl
+AEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBn
+ZXRfVmFsdWUAdmFsdWUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBUb1N0cmluZwBNYXRoAE1p
+Y3Jvc29mdC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5UYXNr
+cy5TY3JpcHRUYXNrAFNjcmlwdE9iamVjdE1vZGVsAFN5c3RlbS5Db21wb25lbnRNb2RlbABTeXN0
+ZW0uTmV0Lk1haWwAU1RfY2EyMDgxMWI3ZDBlNGMwZGIzZDg1YTAzMDM2MmZmMGIuZGxsAEZpbGwA
+Z2V0X0l0ZW0AU3lzdGVtAHNldF9Gcm9tAEVudW0AcmVzb3VyY2VNYW4AU2NyaXB0TWFpbgBTeXN0
+ZW0uQ29uZmlndXJhdGlvbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBN
+YWlsQWRkcmVzc0NvbGxlY3Rpb24ARGF0YVJvd0NvbGxlY3Rpb24AZ2V0X1RvAEN1bHR1cmVJbmZv
+AFN5c3RlbS5MaW5xAENoYXIAZ2V0X1Jlc291cmNlTWFuYWdlcgBPbGVEYkRhdGFBZGFwdGVyAElF
+bnVtZXJhdG9yAEdldEVudW1lcmF0b3IALmN0b3IALmNjdG9yAFN5c3RlbS5EaWFnbm9zdGljcwBT
+eXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMAU1RfY2EyMDgx
+MWI3ZDBlNGMwZGIzZDg1YTAzMDM2MmZmMGIuUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2Vz
+AERlYnVnZ2luZ01vZGVzAFNUX2NhMjA4MTFiN2QwZTRjMGRiM2Q4NWEwMzAzNjJmZjBiLlByb3Bl
+cnRpZXMAZ2V0X1ZhcmlhYmxlcwBTZXR0aW5ncwBTeXN0ZW0uQ29sbGVjdGlvbnMAU3VjY2VzcwBN
+YWlsQWRkcmVzcwBnZXRfRHRzAFNjcmlwdFJlc3VsdHMAZ2V0X1Jvd3MAT2JqZWN0AHNldF9TdWJq
+ZWN0AFNwbGl0AGdldF9EZWZhdWx0AHNldF9UYXNrUmVzdWx0AFNtdHBDbGllbnQAZ2V0X0N1cnJl
+bnQAZ2V0X0NvdW50AFRvTGlzdABNb3ZlTmV4dABEYXRhUm93AE1heABzZXRfQm9keQBnZXRfQXNz
+ZW1ibHkASXNOdWxsT3JFbXB0eQAAAClVAHMAZQByADoAOgBQAGEAYwBrAGEAZwBlAHMARQByAHIA
+bwByAHMAAAVUAG8AAAVDAEMAAAdCAEMAQwAAD1MAdQBiAGoAZQBjAHQAAAlCAG8AZAB5AAAtVQBz
+AGUAcgA6ADoAQwBvAG4AbgBlAGMAdABpAG8AbgBTAHQAcgBpAG4AZwAAHVUAcwBlAHIAOgA6AE0A
+YQBpAGwARgByAG8AbQAAcVMAVABfAGMAYQAyADAAOAAxADEAYgA3AGQAMABlADQAYwAwAGQAYgAz
+AGQAOAA1AGEAMAAzADAAMwA2ADIAZgBmADAAYgAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUA
+cwBvAHUAcgBjAGUAcwAAAM0lbJZLQKdBgYML6uQuLxQABCABAQgDIAABBSABARERBCABAQ4FIAEB
+EXUgBwwSPRJBEkUVEkkBDhUSSQEOFRJJAQ4ODhJNElEIElUFIAASgIEFIAASgIUGIAESgIkcAyAA
+HAUgABKAjQMgAAgEIAASQQQgARwOAyAADgYgAR0OHQMGFRJlAg4CBSACARwYGBABAhUSgKEBHgAV
+EoChAR4AFRJlAh4AAgMKAQ4QEAEBFRJJAR4AFRKAoQEeAAUVEkkBDgUgABKApQUgARMACAUAAggI
+CAYgAQESgK0FIAEBElEDIAACBQcCHBI9BiACCBI9HAgAARKAtRGAuQUgABKAvQcgAgEOEoC9BAAB
+Ag4It3pcVhk04IkIiYRdzYCAzJEEAAAAAAQBAAAAAwYSbQMGEnEDBhIQAgYIAwYRFAMGEhgHBhUS
+ZQIOAgUgARI9HAQAABJtBAAAEnEFAAEBEnEEAAASEAMAAAEEIAECDgQIABJtBAgAEnEECAASEAgB
+AAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU1RfY2Ey
+MDgxMWI3ZDBlNGMwZGIzZDg1YTAzMDM2MmZmMGIAAAUBAAAAABYBABFDb3B5cmlnaHQgQCAgMjAy
+NAAASQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC43AQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFt
+ZRIuTkVUIEZyYW1ld29yayA0LjcAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5S
+ZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFs
+LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGlt
+ZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAACsNQAAAAAAAAAAAADGNQAAACAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAuDUAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAA
+AAAA/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABI
 AAAAWEAAABoEAAAAAAAAAAAAABoENAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAA
-AAC9BO/+AAABAAAAAQCvm5IiAAABAK+bkiI/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAA
+AAC9BO/+AAABAAAAAQDyk5MiAAABAPKTkyI/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAA
 AAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4A
 AAAAAAAAsAR6AwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAABWAwAAAQAwADAAMAAw
 ADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABhAG4A
 eQBOAGEAbQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAA
 AFMAVABfAGMAYQAyADAAOAAxADEAYgA3AGQAMABlADQAYwAwAGQAYgAzAGQAOAA1AGEAMAAzADAA
 MwA2ADIAZgBmADAAYgAAAD4ADwABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgA4
-ADgANQAwAC4AMwA5ADgANQA1AAAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMA
+ADgANQAxAC4AMwA3ADgANwA0AAAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMA
 VABfAGMAYQAyADAAOAAxADEAYgA3AGQAMABlADQAYwAwAGQAYgAzAGQAOAA1AGEAMAAzADAAMwA2
 ADIAZgBmADAAYgAuAGQAbABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAA
 QwBvAHAAeQByAGkAZwBoAHQAIABAACAAIAAyADAAMgA0AAAAKgABAAEATABlAGcAYQBsAFQAcgBh
@@ -1083,15 +1617,15 @@ bQBlAAAAUwBUAF8AYwBhADIAMAA4ADEAMQBiADcAZAAwAGUANABjADAAZABiADMAZAA4ADUAYQAw
 ADMAMAAzADYAMgBmAGYAMABiAC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUA
 AAAAAFMAVABfAGMAYQAyADAAOAAxADEAYgA3AGQAMABlADQAYwAwAGQAYgAzAGQAOAA1AGEAMAAz
 ADAAMwA2ADIAZgBmADAAYgAAAEIADwABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEA
-LgAwAC4AOAA4ADUAMAAuADMAOQA4ADUANQAAAAAARgAPAAEAQQBzAHMAZQBtAGIAbAB5ACAAVgBl
-AHIAcwBpAG8AbgAAADEALgAwAC4AOAA4ADUAMAAuADMAOQA4ADUANQAAAAAAAAAAAAAAAAAAAAAA
+LgAwAC4AOAA4ADUAMQAuADMANwA4ADcANAAAAAAARgAPAAEAQQBzAHMAZQBtAGIAbAB5ACAAVgBl
+AHIAcwBpAG8AbgAAADEALgAwAC4AOAA4ADUAMQAuADMANwA4ADcANAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAwAAAC8NQAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAwAAADYNQAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1101,6 +1635,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+          <Breakpoint
+            Enabled="True"
+            File="ScriptMain.cs"
+            Line="100"
+            Column="13" />
         </ScriptProject>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1109,7 +1648,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{10EDA3AE-3DE3-454F-BF7E-693DC63B5226}"
+      DTS:DTSID="{A535DF05-966B-4B7E-8B62-3FFF2A38E767}"
       DTS:From="Package\ErrorPackage"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -1128,27 +1667,27 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="146,42"
-          Id="Package\ErrorPackage"
-          TopLeft="86,118" />
-        <NodeLayout
           Size="134,42"
           Id="Package\Script Task"
-          TopLeft="96,345" />
+          TopLeft="93,266" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\ErrorPackage"
+          TopLeft="85,166" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="161,160">
+          TopLeft="159,208">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,185"
+              EndConnector="0,58"
               Start="0,0"
-              End="0,177.5">
+              End="0,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,177.5" />
+                    End="0,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1164,29 +1703,105 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     design-time-name="Package\ErrorPackage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="157,42"
-          Id="Package\ErrorPackage\OLE DB Source"
-          TopLeft="215,159" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="187,42"
           Id="Package\ErrorPackage\Recordset Destination"
-          TopLeft="204,276" />
+          TopLeft="189,264" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\ErrorPackage\COM-ONCORE-SQL"
+          TopLeft="76,82" />
+        <NodeLayout
+          Size="123,42"
+          Id="Package\ErrorPackage\Union All"
+          TopLeft="228,171" />
+        <NodeLayout
+          Size="112,42"
+          Id="Package\ErrorPackage\DTrust"
+          TopLeft="372,80" />
         <EdgeLayout
-          Id="Package\ErrorPackage.Paths[OLE DB Source Output]"
-          TopLeft="295.5,201">
+          Id="Package\ErrorPackage.Paths[OLE DB Source Output1]"
+          TopLeft="428,122">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,75"
+              EndConnector="-119.333333333333,49"
               Start="0,0"
-              End="0,67.5">
+              End="-119.333333333333,41.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,67.5" />
+                    End="0,25.0224719101123" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.0224719101123"
+                    Point2="0,29.0224719101123"
+                    Point3="-4,29.0224719101123" />
+                  <mssgle:LineSegment
+                    End="-115.333333333333,29.0224719101123" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-115.333333333333,29.0224719101123"
+                    Point2="-119.333333333333,29.0224719101123"
+                    Point3="-119.333333333333,33.0224719101123" />
+                  <mssgle:LineSegment
+                    End="-119.333333333333,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ErrorPackage.Paths[OLE DB Source Output]"
+          TopLeft="167,124">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103.333333333333,47"
+              Start="0,0"
+              End="103.333333333333,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.8378812199037" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.8378812199037"
+                    Point2="0,27.8378812199037"
+                    Point3="4,27.8378812199037" />
+                  <mssgle:LineSegment
+                    End="99.3333333333333,27.8378812199037" />
+                  <mssgle:CubicBezierSegment
+                    Point1="99.3333333333333,27.8378812199037"
+                    Point2="103.333333333333,27.8378812199037"
+                    Point3="103.333333333333,31.8378812199037" />
+                  <mssgle:LineSegment
+                    End="103.333333333333,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ErrorPackage.Paths[Union All Output 1]"
+          TopLeft="286,213">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1199,7 +1814,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\ErrorPackage\OLE DB Source">
+    design-time-name="Package\ErrorPackage\COM-ONCORE-SQL">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ErrorPackage\DTrust">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
