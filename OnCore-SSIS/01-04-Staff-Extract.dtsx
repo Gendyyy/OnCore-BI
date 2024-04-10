@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-04-Staff-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{B3E3F85C-9FD0-4186-8112-25FC88FBD343}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{54C62E86-0BA6-4CA9-9D9D-0C52ECC0BA02}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -166,6 +166,164 @@
           version="1">
           <components>
             <component
+              refId="Package\DFT Extract to Staging\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input].Columns[STAFF_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="512"
+                      cachedName="STAFF_NAME"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_NAME]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input].Columns[STAFF_ROLE]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="STAFF_ROLE"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_ROLE]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input].Columns[EMAIL_ADDRESS]"
+                      cachedDataType="wstr"
+                      cachedLength="254"
+                      cachedName="EMAIL_ADDRESS"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[EMAIL_ADDRESS]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input].Columns[STAFF_ORGANIZATION_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STAFF_ORGANIZATION_NAME"
+                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_ORGANIZATION_NAME]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_NAME]"
+                      name="Copy of STAFF_NAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_NAME]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_ROLE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_ROLE]"
+                      name="Copy of STAFF_ROLE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_ROLE]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of EMAIL_ADDRESS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of EMAIL_ADDRESS]"
+                      name="Copy of EMAIL_ADDRESS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[EMAIL_ADDRESS]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_ORGANIZATION_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_ORGANIZATION_NAME]"
+                      name="Copy of STAFF_ORGANIZATION_NAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_ORGANIZATION_NAME]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\DFT Extract to Staging\FF Errors"
               componentClassID="Microsoft.FlatFileDestination"
               contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -258,7 +416,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
+                  name="OpenRowset">[etl_extract].[Staff]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -267,16 +425,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select *
-from openquery(
-        ONCOREPROD,
-        'SELECT EID, staff_name, staff_role, email_address, protocol_id, active_flag, active_user_flag, stop_date,
-      STAFF_ORGANIZATION_NAME
-        from UACC_ONCORE_RW_UTILS.SV_PCL_STAFF_RO
-        where
-        staff_role in (''Accrual Data Contact'', ''Primary RDC'', ''Primary CRC'',''Clinical Research Coordinator'', ''Primary IRB Coordinator'',''IRB Coordinator'', ''Principal Investigator'')
-            and protocol_subject_id is null
-            ')</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from etl_extract.Staff</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -293,7 +442,7 @@ from openquery(
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">2</property>
+                  typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -596,31 +745,10 @@ from openquery(
                 <input
                   refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
-                  errorRowDisposition="RedirectRow"
+                  errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[STAFF_NAME]"
-                      cachedDataType="wstr"
-                      cachedLength="512"
-                      cachedName="STAFF_NAME"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[STAFF_NAME]"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_NAME]" />
-                    <inputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[STAFF_ROLE]"
-                      cachedDataType="wstr"
-                      cachedLength="500"
-                      cachedName="STAFF_ROLE"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[STAFF_ROLE]"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_ROLE]" />
-                    <inputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[EMAIL_ADDRESS]"
-                      cachedDataType="wstr"
-                      cachedLength="254"
-                      cachedName="EMAIL_ADDRESS"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[EMAIL_ADDRESS]"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[EMAIL_ADDRESS]" />
                     <inputColumn
                       refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[PROTOCOL_ID]"
                       cachedDataType="numeric"
@@ -643,13 +771,6 @@ from openquery(
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[STOP_DATE]"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[STOP_DATE]" />
                     <inputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[STAFF_ORGANIZATION_NAME]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="STAFF_ORGANIZATION_NAME"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Organization_Name]"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_ORGANIZATION_NAME]" />
-                    <inputColumn
                       refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[ACTIVE_FLAG]"
                       cachedDataType="wstr"
                       cachedLength="1"
@@ -663,6 +784,34 @@ from openquery(
                       cachedName="EID"
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[EID]"
                       lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[EID]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[Copy of STAFF_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of STAFF_NAME"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[STAFF_NAME]"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_NAME]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[Copy of STAFF_ROLE]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of STAFF_ROLE"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[STAFF_ROLE]"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_ROLE]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[Copy of EMAIL_ADDRESS]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of EMAIL_ADDRESS"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[EMAIL_ADDRESS]"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of EMAIL_ADDRESS]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[Copy of STAFF_ORGANIZATION_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Copy of STAFF_ORGANIZATION_NAME"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Organization_Name]"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_ORGANIZATION_NAME]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -797,6 +946,11 @@ from openquery(
           </components>
           <paths>
             <path
+              refId="Package\DFT Extract to Staging.Paths[Data Conversion Output]"
+              endId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
               refId="Package\DFT Extract to Staging.Paths[OLE DB Destination Error Output]"
               endId="Package\DFT Extract to Staging\RC Error.Inputs[Row Count Input 1]"
               name="OLE DB Destination Error Output"
@@ -813,7 +967,7 @@ from openquery(
               startId="Package\DFT Extract to Staging\RC Error.Outputs[Row Count Output 1]" />
             <path
               refId="Package\DFT Extract to Staging.Paths[Row Count Output 11]"
-              endId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input]"
+              endId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input]"
               name="Row Count Output 1"
               startId="Package\DFT Extract to Staging\RC Extract.Outputs[Row Count Output 1]" />
           </paths>
@@ -1141,13 +1295,9 @@ from openquery(
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="157,42"
-          Id="Package\DFT Extract to Staging\OLE DB Source"
-          TopLeft="125,79" />
-        <NodeLayout
           Size="132,42"
           Id="Package\DFT Extract to Staging\RC Extract"
-          TopLeft="138,158" />
+          TopLeft="139,100" />
         <NodeLayout
           Size="122,42"
           Id="Package\DFT Extract to Staging\RC Error"
@@ -1160,20 +1310,40 @@ from openquery(
           Size="125,42"
           Id="Package\DFT Extract to Staging\FF Errors"
           TopLeft="142,428" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\DFT Extract to Staging\OLE DB Source"
+          TopLeft="126,21" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DFT Extract to Staging\Data Conversion"
+          TopLeft="322,172" />
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[Row Count Output 11]"
-          TopLeft="203.25,200">
+          TopLeft="205,142">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,46"
+              EndConnector="197.5,30"
               Start="0,0"
-              End="0,38.5">
+              End="197.5,22.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.5" />
+                    End="0,11" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11"
+                    Point2="0,15"
+                    Point3="4,15" />
+                  <mssgle:LineSegment
+                    End="193.5,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="193.5,15"
+                    Point2="197.5,15"
+                    Point3="197.5,19" />
+                  <mssgle:LineSegment
+                    End="197.5,22.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1206,7 +1376,7 @@ from openquery(
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[OLE DB Source Output]"
-          TopLeft="203.75,121">
+          TopLeft="204.75,63">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1250,6 +1420,40 @@ from openquery(
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Extract to Staging.Paths[Data Conversion Output]"
+          TopLeft="402.5,214">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-200,32"
+              Start="0,0"
+              End="-200,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12"
+                    Point2="0,16"
+                    Point3="-4,16" />
+                  <mssgle:LineSegment
+                    End="-196,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-196,16"
+                    Point2="-200,16"
+                    Point3="-200,20" />
+                  <mssgle:LineSegment
+                    End="-200,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -1271,6 +1475,11 @@ from openquery(
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

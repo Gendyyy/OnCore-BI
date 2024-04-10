@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="02-03-FactProtocols-Transform-Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="69"
-  DTS:VersionGUID="{20AFCB21-2DE9-43B6-B376-A6D5A8BEC288}">
+  DTS:VersionBuild="75"
+  DTS:VersionGUID="{D32C4362-C93E-4A12-9927-D8BE9CA20071}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2383,7 +2383,7 @@ where [refTable].[Date] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[Protocols]</property>
+                  name="OpenRowset">[etl_transform_load].[FactProtocols]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -2392,49 +2392,7 @@ where [refTable].[Date] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT p.protocol_id
-      ,[protocol_no]
-      ,[Title]
-      ,case when ss.staff_name is not null
-	  then ss.staff_name else
-	  p.pi_name end as pi_name
-	  ,case when ss.EMAIL_ADDRESS is not null 
-	  then ss.EMAIL_ADDRESS 
-	  else p.pi_email end as pi_email
-      ,[ManagementGroup]
-      ,[Protocol_Institutions]
-      ,[Department_Name]
-      ,[Library]
-      ,[Data_Monitoring]
-      ,[LowerTargetAccrual]
-      ,[UpperTargetAccrual]
-      ,[Current_Status]
-      ,[Created_Date]
-      ,[Initial_Open_Date]
-      ,[Closed_Date]
-      ,[Current_Status_Date]
-      ,[Study_Closure_Date]
-      ,[Primary_crc]
-      ,[Primary_IRB_Coord]
-      ,[Sponsor]
-      ,[SponsorNo]
-      ,[Institutions]
-      ,[StudySites]
-      ,[NumberOfInstitutions]
-      ,[TotalAccrualTarget]
-      ,[TreatmentType]
-      ,[InvestigationalProduct]
-      ,[IsSummaryAccrual]
-	  from protocols p 
-outer apply( select top 1 *
-from staff s
-where
-s.PROTOCOL_ID = p.protocol_id
-and s.STAFF_ROLE = 'Principal Investigator'
-and charindex('uahs',lower(s.organization_name)) != 0
-and s.EMAIL_ADDRESS is not null 
-order by s.ACTIVE_CONTACT_FLAG DESC
-) as ss</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from etl_transform_load.FactProtocols</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -2451,7 +2409,7 @@ order by s.ACTIVE_CONTACT_FLAG DESC
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">2</property>
+                  typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -5514,14 +5472,14 @@ order by s.ACTIVE_CONTACT_FLAG DESC
               startId="Package\DFT Transform-Load\Lookup ClosedDate_Key.Outputs[Lookup Match Output]" />
             <path
               refId="Package\DFT Transform-Load.Paths[Lookup Match Output3]"
+              endId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2]"
+              name="Lookup Match Output"
+              startId="Package\DFT Transform-Load\Lookup PI_Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT Transform-Load.Paths[Lookup Match Output6]"
               endId="Package\DFT Transform-Load\Lookup ClosedDate_Key.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\DFT Transform-Load\Lookup InitialOpenDate_Key.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\DFT Transform-Load.Paths[Lookup Match Output6]"
-              endId="Package\DFT Transform-Load\Lookup InitialOpenDate_Key.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\DFT Transform-Load\Lookup CreatedDate_Key.Outputs[Lookup Match Output]" />
             <path
               refId="Package\DFT Transform-Load.Paths[Lookup Match Output1]"
               endId="Package\DFT Transform-Load\Lookup StudyClosureDate_Key.Inputs[Lookup Input]"
@@ -5534,9 +5492,9 @@ order by s.ACTIVE_CONTACT_FLAG DESC
               startId="Package\DFT Transform-Load\Lookup ManagementGroup_Key.Outputs[Lookup Match Output]" />
             <path
               refId="Package\DFT Transform-Load.Paths[Lookup Match Output2]"
-              endId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2]"
+              endId="Package\DFT Transform-Load\Lookup InitialOpenDate_Key.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\DFT Transform-Load\Lookup PI_Key.Outputs[Lookup Match Output]" />
+              startId="Package\DFT Transform-Load\Lookup CreatedDate_Key.Outputs[Lookup Match Output]" />
             <path
               refId="Package\DFT Transform-Load.Paths[Lookup No Match Output]"
               endId="Package\DFT Transform-Load\Unmatched ManagementGroup.Inputs[Derived Column Input]"
@@ -6064,25 +6022,25 @@ order by s.ACTIVE_CONTACT_FLAG DESC
           Id="Package\DFT Transform-Load\Lookup CreatedDate_Key"
           TopLeft="195.5,719.5" />
         <NodeLayout
-          Size="233,42"
-          Id="Package\DFT Transform-Load\Unmatched ManagementGroup"
-          TopLeft="37.0000000000001,516.5" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\DFT Transform-Load\RC Insert"
-          TopLeft="235,1216" />
+          Size="221,42"
+          Id="Package\DFT Transform-Load\Union All ManagementGroup"
+          TopLeft="187.5,617.5" />
         <NodeLayout
           Size="157,42"
           Id="Package\DFT Transform-Load\OLE DB Source"
           TopLeft="219.5,5.5" />
         <NodeLayout
+          Size="125,42"
+          Id="Package\DFT Transform-Load\RC Insert"
+          TopLeft="235,1216" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\DFT Transform-Load\Unmatched ManagementGroup"
+          TopLeft="37.0000000000001,516.5" />
+        <NodeLayout
           Size="132,42"
           Id="Package\DFT Transform-Load\RC Extract"
           TopLeft="232,107.5" />
-        <NodeLayout
-          Size="122,42"
-          Id="Package\DFT Transform-Load\RC Error"
-          TopLeft="37.0000000000001,1335.5" />
         <NodeLayout
           Size="153,42"
           Id="Package\DFT Transform-Load\Lookup PI_Key"
@@ -6092,17 +6050,17 @@ order by s.ACTIVE_CONTACT_FLAG DESC
           Id="Package\DFT Transform-Load\Lookup CurrentStatusDate_Key"
           TopLeft="181,1025.5" />
         <NodeLayout
-          Size="177,42"
-          Id="Package\DFT Transform-Load\OLE DB Destination"
-          TopLeft="220,1309" />
+          Size="122,42"
+          Id="Package\DFT Transform-Load\RC Error"
+          TopLeft="37.0000000000001,1335.5" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\DFT Transform-Load\Unmatched PI"
+          TopLeft="563,311" />
         <NodeLayout
           Size="136,42"
           Id="Package\DFT Transform-Load\Union All PI"
           TopLeft="506,409" />
-        <NodeLayout
-          Size="221,42"
-          Id="Package\DFT Transform-Load\Union All ManagementGroup"
-          TopLeft="187.5,617.5" />
         <NodeLayout
           Size="232,42"
           Id="Package\DFT Transform-Load\Lookup StudyClosureDate_Key"
@@ -6116,9 +6074,9 @@ order by s.ACTIVE_CONTACT_FLAG DESC
           Id="Package\DFT Transform-Load\FF Errors"
           TopLeft="31.5000000000001,1425.5" />
         <NodeLayout
-          Size="149,42"
-          Id="Package\DFT Transform-Load\Unmatched PI"
-          TopLeft="563,311" />
+          Size="177,42"
+          Id="Package\DFT Transform-Load\OLE DB Destination"
+          TopLeft="220,1309" />
         <NodeLayout
           Size="145,42"
           Id="Package\DFT Transform-Load\DC Audit Key"
@@ -6331,7 +6289,7 @@ order by s.ACTIVE_CONTACT_FLAG DESC
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="12.07826171875,5,111.6127734375,11.609375"
+              BoundingBox="34.69361328125,5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6373,7 +6331,7 @@ order by s.ACTIVE_CONTACT_FLAG DESC
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Lookup Match Output6]"
-          TopLeft="298,761.5">
+          TopLeft="298,863.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6439,36 +6397,12 @@ order by s.ACTIVE_CONTACT_FLAG DESC
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-73.53673828125,20.4453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Lookup Match Output3]"
-          TopLeft="298,863.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-73.53673828125,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Lookup Match Output2]"
           TopLeft="298,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6500,6 +6434,30 @@ order by s.ACTIVE_CONTACT_FLAG DESC
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="79.1419466145835,37.9127906976744,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Lookup Match Output2]"
+          TopLeft="298,761.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6676,7 +6634,7 @@ order by s.ACTIVE_CONTACT_FLAG DESC
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q2:string">View</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -6727,19 +6685,6 @@ order by s.ACTIVE_CONTACT_FLAG DESC
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT Transform-Load\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DFT Transform-Load\Lookup StudyClosureDate_Key">
     <Properties>
       <Property>
@@ -6782,6 +6727,19 @@ order by s.ACTIVE_CONTACT_FLAG DESC
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Transform-Load\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

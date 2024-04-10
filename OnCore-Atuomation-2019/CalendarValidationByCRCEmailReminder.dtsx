@@ -5,33 +5,33 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="COM-ONCORE-SQL"
   DTS:CreatorName="BLUECAT\gendy"
-  DTS:DTSID="{08354C80-81AC-4596-9B91-E63473A25143}"
+  DTS:DTSID="{60990975-5350-4787-8E67-F7BBA754639D}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5270.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="CalendarValidationByCRCEmailReminder"
   DTS:PackageType="5"
-  DTS:VersionBuild="72"
-  DTS:VersionGUID="{CDEF942D-506B-4C85-B16D-A8F2C2B61F3E}">
+  DTS:VersionBuild="75"
+  DTS:VersionGUID="{74A1062B-4B80-463D-BFCA-FCA4167C22DC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[com-dtrust-prod.bluecat.arizona.edu]"
+      DTS:refId="Package.ConnectionManagers[COM-ONCORE-SQL]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{522F36DE-217B-42EA-B611-26930A61DFCD}"
-      DTS:ObjectName="com-dtrust-prod.bluecat.arizona.edu">
+      DTS:DTSID="{BCF085A9-1548-48B3-864B-601551AB7E15}"
+      DTS:ObjectName="COM-ONCORE-SQL">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=com-dtrust-prod.bluecat.arizona.edu;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{522F36DE-217B-42EA-B611-26930A61DFCD}com-dtrust-prod.bluecat.arizona.edu;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=COM-ONCORE-SQL;Initial Catalog=OnCoreStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-CalendarValidationByCRCEmailReminder-{BCF085A9-1548-48B3-864B-601551AB7E15}COM-ONCORE-SQL;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
       DTS:CreationName="SMTP"
-      DTS:DTSID="{50329916-CE5D-4836-9751-17C869BDC086}"
+      DTS:DTSID="{4F1744BA-AC89-4080-9AD4-F87486C843CF}"
       DTS:ObjectName="SMTP Connection Manager">
       <DTS:ObjectData>
         <SmtpConnectionManager
@@ -44,7 +44,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{F181CE9D-3781-4F11-B092-0F1155DAE633}"
+      DTS:DTSID="{DFD18646-C064-4A97-9C10-F2450BE1A916}"
       DTS:ObjectName="SMTPClientFromURL">
       <DTS:Property
         DTS:DataType="8"
@@ -57,7 +57,7 @@
       DTS:refId="Package\DFT CalendarValidationByCRCEmailReminder"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{AD188EED-6BFF-41D2-B93D-22C14CAA7E47}"
+      DTS:DTSID="{E88D2871-33A5-49DB-BF76-CDC8AABA86A7}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="DFT CalendarValidationByCRCEmailReminder"
@@ -83,7 +83,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
+                  name="OpenRowset">[automation].[EmailNotification_CalendarValidationByCRC]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -92,8 +92,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from
-[ClinicalTrialData].[dbo].[CalendarValidationEmailReminder]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from automation.EmailNotification_CalendarValidationByCRC</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -110,7 +109,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">2</property>
+                  typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -119,8 +118,8 @@
               <connections>
                 <connection
                   refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[com-dtrust-prod.bluecat.arizona.edu]"
-                  connectionManagerRefId="Package.ConnectionManagers[com-dtrust-prod.bluecat.arizona.edu]"
+                  connectionManagerID="Package.ConnectionManagers[COM-ONCORE-SQL]"
+                  connectionManagerRefId="Package.ConnectionManagers[COM-ONCORE-SQL]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -195,7 +194,7 @@
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PI_Email]"
-                      length="50"
+                      length="4000"
                       lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]"
                       name="PI_Email"
                       truncationRowDisposition="FailComponent" />
@@ -210,14 +209,34 @@
                       name="PrimaryCRCEmails"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
+                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrimaryCRCNames]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrimaryCRCNames]"
+                      length="4000"
+                      lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrimaryCRCNames]"
+                      name="PrimaryCRCNames"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrimaryIRBCEmail]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrimaryIRBCEmail]"
-                      length="50"
+                      length="4000"
                       lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrimaryIRBCEmail]"
                       name="PrimaryIRBCEmail"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrimaryIRBCName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrimaryIRBCName]"
+                      length="4000"
+                      lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrimaryIRBCName]"
+                      name="PrimaryIRBCName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[SentForValidation]"
@@ -228,6 +247,15 @@
                       length="50"
                       lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[SentForValidation]"
                       name="SentForValidation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[SentForValidationDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SentForValidationDate]"
+                      lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[SentForValidationDate]"
+                      name="SentForValidationDate"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsSigned]"
@@ -258,35 +286,6 @@
                       length="16"
                       lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmailType]"
                       name="EmailType"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[SentForValidationDate]"
-                      dataType="dbDate"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SentForValidationDate]"
-                      lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[SentForValidationDate]"
-                      name="SentForValidationDate"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrimaryCRCNames]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrimaryCRCNames]"
-                      length="150"
-                      lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrimaryCRCNames]"
-                      name="PrimaryCRCNames"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrimaryIRBCName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrimaryIRBCName]"
-                      length="50"
-                      lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrimaryIRBCName]"
-                      name="PrimaryIRBCName"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -324,7 +323,7 @@
                     <externalMetadataColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PI_Email]"
                       dataType="wstr"
-                      length="50"
+                      length="4000"
                       name="PI_Email" />
                     <externalMetadataColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrimaryCRCEmails]"
@@ -332,15 +331,29 @@
                       length="4000"
                       name="PrimaryCRCEmails" />
                     <externalMetadataColumn
+                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrimaryCRCNames]"
+                      dataType="wstr"
+                      length="4000"
+                      name="PrimaryCRCNames" />
+                    <externalMetadataColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrimaryIRBCEmail]"
                       dataType="wstr"
-                      length="50"
+                      length="4000"
                       name="PrimaryIRBCEmail" />
+                    <externalMetadataColumn
+                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrimaryIRBCName]"
+                      dataType="wstr"
+                      length="4000"
+                      name="PrimaryIRBCName" />
                     <externalMetadataColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SentForValidation]"
                       dataType="wstr"
                       length="50"
                       name="SentForValidation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SentForValidationDate]"
+                      dataType="dbDate"
+                      name="SentForValidationDate" />
                     <externalMetadataColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsSigned]"
                       dataType="wstr"
@@ -356,20 +369,6 @@
                       dataType="str"
                       length="16"
                       name="EmailType" />
-                    <externalMetadataColumn
-                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SentForValidationDate]"
-                      dataType="dbDate"
-                      name="SentForValidationDate" />
-                    <externalMetadataColumn
-                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrimaryCRCNames]"
-                      dataType="wstr"
-                      length="150"
-                      name="PrimaryCRCNames" />
-                    <externalMetadataColumn
-                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrimaryIRBCName]"
-                      dataType="wstr"
-                      length="50"
-                      name="PrimaryIRBCName" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -416,7 +415,7 @@
                     <outputColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PI_Email]"
                       dataType="wstr"
-                      length="50"
+                      length="4000"
                       lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PI_Email]"
                       name="PI_Email" />
                     <outputColumn
@@ -426,17 +425,34 @@
                       lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrimaryCRCEmails]"
                       name="PrimaryCRCEmails" />
                     <outputColumn
+                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrimaryCRCNames]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrimaryCRCNames]"
+                      name="PrimaryCRCNames" />
+                    <outputColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrimaryIRBCEmail]"
                       dataType="wstr"
-                      length="50"
+                      length="4000"
                       lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrimaryIRBCEmail]"
                       name="PrimaryIRBCEmail" />
+                    <outputColumn
+                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrimaryIRBCName]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrimaryIRBCName]"
+                      name="PrimaryIRBCName" />
                     <outputColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SentForValidation]"
                       dataType="wstr"
                       length="50"
                       lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SentForValidation]"
                       name="SentForValidation" />
+                    <outputColumn
+                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SentForValidationDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SentForValidationDate]"
+                      name="SentForValidationDate" />
                     <outputColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsSigned]"
                       dataType="wstr"
@@ -455,23 +471,6 @@
                       length="16"
                       lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EmailType]"
                       name="EmailType" />
-                    <outputColumn
-                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SentForValidationDate]"
-                      dataType="dbDate"
-                      lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SentForValidationDate]"
-                      name="SentForValidationDate" />
-                    <outputColumn
-                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrimaryCRCNames]"
-                      dataType="wstr"
-                      length="150"
-                      lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrimaryCRCNames]"
-                      name="PrimaryCRCNames" />
-                    <outputColumn
-                      refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrimaryIRBCName]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrimaryIRBCName]"
-                      name="PrimaryIRBCName" />
                     <outputColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -495,7 +494,7 @@
               contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;12"
               description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
               name="Script Component"
-              version="10">
+              version="12">
               <properties>
                 <property
                   dataType="System.String"
@@ -919,26 +918,26 @@ public class ScriptMain : UserComponent
                     <arrayElement
                       dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
-	<msb:PropertyGroup>
-		<msb:CodeName>SC_3db158b159f245518ad13bc988f321af</msb:CodeName>
-		<msb:Language>msBuild</msb:Language>
-		<msb:DisplayName>SC_3db158b159f245518ad13bc988f321af</msb:DisplayName>
-		<msb:ProjectId>{51E3908C-5B4A-4E6B-B34C-8C0CCB32A091}</msb:ProjectId>
-	</msb:PropertyGroup>
-	<msb:ItemGroup>
-		<msb:Project Include="SC_3db158b159f245518ad13bc988f321af.csproj"/>
-		<msb:File Include="InputQueryRow.cs"/>
-		<msb:File Include="EmailRecord.cs"/>
-		<msb:File Include="EmailService.cs"/>
-		<msb:File Include="main.cs"/>
-		<msb:File Include="BufferWrapper.cs"/>
-		<msb:File Include="ComponentWrapper.cs"/>
-		<msb:File Include="Properties\AssemblyInfo.cs"/>
-		<msb:File Include="Properties\Resources.resx"/>
-		<msb:File Include="Properties\Resources.Designer.cs"/>
-		<msb:File Include="Properties\Settings.settings"/>
-		<msb:File Include="Properties\Settings.Designer.cs"/>
-	</msb:ItemGroup>
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_3db158b159f245518ad13bc988f321af</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_3db158b159f245518ad13bc988f321af</msb:DisplayName>
+    <msb:ProjectId>{EBA1A8F8-346F-4D60-B238-111A645B2E97}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_3db158b159f245518ad13bc988f321af.csproj" />
+    <msb:File Include="InputQueryRow.cs" />
+    <msb:File Include="EmailRecord.cs" />
+    <msb:File Include="EmailService.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
 </c:Project>]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
@@ -1092,7 +1091,96 @@ public class Variables
                     <arrayElement
                       dataType="System.String"><![CDATA[UTF8]]></arrayElement>
                     <arrayElement
-                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{0CE56D03-05FB-4326-A4ED-89A53FFD72EB}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>SC_3db158b159f245518ad13bc988f321af</RootNamespace><AssemblyName>SC_A1EF53D20BEC47198A236CC9A11CE7AF</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.PipelineHost, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Compile Include="EmailRecord.cs" /><Compile Include="EmailService.cs" /><Compile Include="InputQueryRow.cs" /><Compile Include="main.cs" /><Compile Include="BufferWrapper.cs" /><Compile Include="ComponentWrapper.cs" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><!-- This section defines VSTA properties that describe the host-changable project properties. --><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" /><Host Name="ScriptComponent" IconIndex="0" /><ProjectClient><HostIdentifier>SSIS_SC130</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></arrayElement>
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0CE56D03-05FB-4326-A4ED-89A53FFD72EB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_3db158b159f245518ad13bc988f321af</RootNamespace>
+    <AssemblyName>SC_A1EF53D20BEC47198A236CC9A11CE7AF</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="EmailRecord.cs" />
+    <Compile Include="EmailService.cs" />
+    <Compile Include="InputQueryRow.cs" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
                     <arrayElement
@@ -1657,7 +1745,7 @@ internal class EmailService
                     <arrayElement
                       dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDALh0DWYAAAAAAAAAAOAAIiALATAAAEAAAAAIAAAAAAAAdl4A
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAI52FWYAAAAAAAAAAOAAIiALATAAAEAAAAAIAAAAAAAAdl4A
 AAAgAAAAYAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACgAAAAAgAAAAAAAAMAYIUAABAA
 ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAACReAABPAAAAAGAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAIAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1772,8 +1860,8 @@ ACQAJwACACUAKQACACYAKwACACcALQACACgALwACACkAMQACACoAMwACACsANQACACwANwACAC0A
 OQACAC4AOwACAC8APQACADAAPwACADEAQQACADIAQwACADMARQACADQARwACADUASQACADYASwAC
 ADcATQACAEAATwACAEIAUQACAEMAUwABAEQAUwACAEUAVQACAEgAVwABAEkAVwAcADgASAA2AXxe
 AAAUAASAAAABAAAAAAAAAAAAAAAAABYBAAAEAAAAAAAAAAAAAABvAVABAAAAAAQAAAAAAAAAAAAA
-AG8B9AMAAAAABAAAAAAAAAAAAAAAbwG4CAAAAAANAAAAAAAAAAAAAAB4ASINAAAAAA0AAAAAAAAA
-AAAAAHgBSw0AAAAADQAAAAAAAAAAAAAAeAHhCQAAAAAAAAAAAQAAAPoKAAANAAIADgAMAEkAkgAA
+AG8B9AMAAAAABAAAAAAAAAAAAAAAbwG4CAAAAAAPAAAAAAAAAAAAAAB4ASINAAAAAA8AAAAAAAAA
+AAAAAHgBSw0AAAAADwAAAAAAAAAAAAAAeAHhCQAAAAAAAAAAAQAAAPoKAAANAAIADgAMAEkAkgAA
 AABJRFRTVmFyaWFibGUxMDAASURUU1ZhcmlhYmxlczEwMABJRFRTRXZhbHVhdG9yQ29udGV4dDEw
 MABJRW51bWVyYWJsZWAxAEhhc2hTZXRgMQBMaXN0YDEAX19TdGF0aWNBcnJheUluaXRUeXBlU2l6
 ZT0xMgA3QjAwRjU1NjE3MTc1QjZEQkM5NDk1MDExRTIwMzNERjFEQkM3Q0I1ODg4NjU3Njc1NjNG
@@ -1925,8 +2013,8 @@ AG4AIABhAHUAdABvAG0AYQB0AGUAZAAgAG0AZQBzAHMAYQBnAGUALgAgAAoAPABiAHIAPgAKADwA
 YgByAD4AUwBpAG4AYwBlAHIAZQBsAHkALAAKADwAYgByAD4AQwBvAGwAbABlAGcAZQAgAG8AZgAg
 AE0AZQBkAGkAYwBpAG4AZQAsACAASQBuAGYAbwByAG0AYQB0AGkAbwBuACAAVABlAGMAaABuAG8A
 bABvAGcAeQAgAFMAZQByAHYAaQBjAGUAcwAKADwALwBiAG8AZAB5AD4ACgA8AC8AaAB0AG0AbAA+
-AAoAAQEAAzsAACNnAGUAbgBkAHkAQABhAHIAaQB6AG8AbgBhAC4AZQBkAHUAAFJKlMauwjlNqnp8
-edpJ2A0ABCABAQgDIAABBSABARERBCABAQ4GIAEBEYCBBRUSOQEOBCABAQIFIAEBEkEKBwIVEVkB
+AAoAAQEAAzsAACNnAGUAbgBkAHkAQABhAHIAaQB6AG8AbgBhAC4AZQBkAHUAADRfKaT+o/9MnHLD
+7OGqbDIABCABAQgDIAABBSABARERBCABAQ4GIAEBEYCBBRUSOQEOBCABAQIFIAEBEkEKBwIVEVkB
 EggSCAYVElUBEggIIAAVEVkBEwAGFRFZARIIBCAAEwADIAACBAcBEl0DIAAOBQACDg4OBAcBEggF
 IAEBEwAHBwMIEUkRYQkAAgESgKERgKUNEAECAhUSgK0BHgAeAAMKAQgEAAARSQQgABFhBQACAg4O
 CSADARJpHQgSbQMGEmkDBh0IBCABDggEIAECCAQgAQgIBSABEUkIByACAg4RgLEFIAEdCAgFIAAS
@@ -2023,7 +2111,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   dataType="System.String"
                   description="Checksum to match component metedata against compiled codes."
                   name="MetadataChecksum140"
-                  typeConverter="NOTBROWSABLE">3C</property>
+                  typeConverter="NOTBROWSABLE">D7</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
@@ -2053,7 +2141,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                     <inputColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\Script Component.Inputs[Input 0].Columns[PI_Email]"
                       cachedDataType="wstr"
-                      cachedLength="50"
+                      cachedLength="4000"
                       cachedName="PI_Email"
                       lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PI_Email]" />
                     <inputColumn
@@ -2095,7 +2183,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                     <inputColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\Script Component.Inputs[Input 0].Columns[PrimaryIRBCEmail]"
                       cachedDataType="wstr"
-                      cachedLength="50"
+                      cachedLength="4000"
                       cachedName="PrimaryIRBCEmail"
                       lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrimaryIRBCEmail]" />
                     <inputColumn
@@ -2130,13 +2218,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                     <inputColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\Script Component.Inputs[Input 0].Columns[PrimaryCRCNames]"
                       cachedDataType="wstr"
-                      cachedLength="150"
+                      cachedLength="4000"
                       cachedName="PrimaryCRCNames"
                       lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrimaryCRCNames]" />
                     <inputColumn
                       refId="Package\DFT CalendarValidationByCRCEmailReminder\Script Component.Inputs[Input 0].Columns[PrimaryIRBCName]"
                       cachedDataType="wstr"
-                      cachedLength="50"
+                      cachedLength="4000"
                       cachedName="PrimaryIRBCName"
                       lineageId="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrimaryIRBCName]" />
                   </inputColumns>
@@ -2168,7 +2256,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:Disabled="True"
-      DTS:DTSID="{74897450-41DD-443B-8C3E-B218E9D7AD3E}"
+      DTS:DTSID="{D83A2BC8-42D9-4240-B529-70E44724A435}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="DFT CalendarValidationByCRCEmailReminder Testing"
@@ -2244,8 +2332,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               <connections>
                 <connection
                   refId="Package\DFT CalendarValidationByCRCEmailReminder Testing\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[com-dtrust-prod.bluecat.arizona.edu]"
-                  connectionManagerRefId="Package.ConnectionManagers[com-dtrust-prod.bluecat.arizona.edu]"
+                  connectionManagerID="{7C1B97F3-7CE8-48F2-BA29-D63F295A39B6}:invalid"
+                  connectionManagerRefId="{7C1B97F3-7CE8-48F2-BA29-D63F295A39B6}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2665,7 +2753,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;12"
               description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
               name="Script Component 1"
-              version="10">
+              version="12">
               <properties>
                 <property
                   dataType="System.String"
@@ -3087,48 +3175,50 @@ public class ScriptMain : UserComponent
                     <arrayElement
                       dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
-	<msb:PropertyGroup>
-		<msb:Language>msBuild</msb:Language>
-		<msb:CodeName>SC_3db158b159f245518ad13bc988f321af</msb:CodeName>
-		<msb:DisplayName>SC_3db158b159f245518ad13bc988f321af</msb:DisplayName>
-		<msb:ProjectId>{51E3908C-5B4A-4E6B-B34C-8C0CCB32A091}</msb:ProjectId>
-	</msb:PropertyGroup>
-	<msb:ItemGroup>
-		<msb:Project Include="SC_3db158b159f245518ad13bc988f321af.csproj"/>
-		<msb:File Include="InputQueryRow.cs"/>
-		<msb:File Include="EmailRecord.cs"/>
-		<msb:File Include="EmailService.cs"/>
-		<msb:File Include="main.cs"/>
-		<msb:File Include="BufferWrapper.cs"/>
-		<msb:File Include="ComponentWrapper.cs"/>
-		<msb:File Include="Properties\AssemblyInfo.cs"/>
-		<msb:File Include="Properties\Resources.resx"/>
-		<msb:File Include="Properties\Resources.Designer.cs"/>
-		<msb:File Include="Properties\Settings.settings"/>
-		<msb:File Include="Properties\Settings.Designer.cs"/>
-		<msb:Breakpoint Include="9a15dcaf9d8841eabc0767b3c58a595d">
-			<msb:FileName>EmailRecord.cs</msb:FileName>
-			<msb:ColumnNumber>17</msb:ColumnNumber>
-			<msb:Enabled>True</msb:Enabled>
-			<msb:LineNumber>202</msb:LineNumber>
-			<msb:Condition></msb:Condition>
-			<msb:ConditionType>1</msb:ConditionType>
-			<msb:Language>C#</msb:Language>
-			<msb:HitCountType>1</msb:HitCountType>
-			<msb:HitCountTarget>1</msb:HitCountTarget>
-		</msb:Breakpoint>
-		<msb:Breakpoint Include="a1498109fca842c8b3648557f7323f3b">
-			<msb:FileName>main.cs</msb:FileName>
-			<msb:LineNumber>128</msb:LineNumber>
-			<msb:ColumnNumber>13</msb:ColumnNumber>
-			<msb:Enabled>True</msb:Enabled>
-			<msb:ConditionType>1</msb:ConditionType>
-			<msb:Condition></msb:Condition>
-			<msb:Language>C#</msb:Language>
-			<msb:HitCountType>1</msb:HitCountType>
-			<msb:HitCountTarget>1</msb:HitCountTarget>
-		</msb:Breakpoint>
-	</msb:ItemGroup>
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_3db158b159f245518ad13bc988f321af</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_3db158b159f245518ad13bc988f321af</msb:DisplayName>
+    <msb:ProjectId>{51223E88-53F0-4A82-8BD1-4E2334CA7F93}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_3db158b159f245518ad13bc988f321af.csproj" />
+    <msb:File Include="InputQueryRow.cs" />
+    <msb:File Include="EmailRecord.cs" />
+    <msb:File Include="EmailService.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:Breakpoint Include="a1498109fca842c8b3648557f7323f3b">
+      <msb:FileName>main.cs</msb:FileName>
+      <msb:ColumnNumber>13</msb:ColumnNumber>
+      <msb:Enabled>True</msb:Enabled>
+      <msb:LineNumber>128</msb:LineNumber>
+      <msb:Condition>
+      </msb:Condition>
+      <msb:ConditionType>1</msb:ConditionType>
+      <msb:Language>C#</msb:Language>
+      <msb:HitCountType>1</msb:HitCountType>
+      <msb:HitCountTarget>1</msb:HitCountTarget>
+    </msb:Breakpoint>
+    <msb:Breakpoint Include="9a15dcaf9d8841eabc0767b3c58a595d">
+      <msb:FileName>EmailRecord.cs</msb:FileName>
+      <msb:LineNumber>202</msb:LineNumber>
+      <msb:ColumnNumber>17</msb:ColumnNumber>
+      <msb:Enabled>True</msb:Enabled>
+      <msb:ConditionType>1</msb:ConditionType>
+      <msb:Condition>
+      </msb:Condition>
+      <msb:Language>C#</msb:Language>
+      <msb:HitCountType>1</msb:HitCountType>
+      <msb:HitCountTarget>1</msb:HitCountTarget>
+    </msb:Breakpoint>
+  </msb:ItemGroup>
 </c:Project>]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
@@ -3282,7 +3372,96 @@ public class Variables
                     <arrayElement
                       dataType="System.String"><![CDATA[UTF8]]></arrayElement>
                     <arrayElement
-                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{0CE56D03-05FB-4326-A4ED-89A53FFD72EB}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>SC_3db158b159f245518ad13bc988f321af</RootNamespace><AssemblyName>SC_505B521B8EBF4B97A2B0EBC1D9790D0A</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.PipelineHost, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Compile Include="EmailRecord.cs" /><Compile Include="EmailService.cs" /><Compile Include="InputQueryRow.cs" /><Compile Include="main.cs" /><Compile Include="BufferWrapper.cs" /><Compile Include="ComponentWrapper.cs" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><!-- This section defines VSTA properties that describe the host-changable project properties. --><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" /><Host Name="ScriptComponent" IconIndex="0" /><ProjectClient><HostIdentifier>SSIS_SC130</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></arrayElement>
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0CE56D03-05FB-4326-A4ED-89A53FFD72EB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_3db158b159f245518ad13bc988f321af</RootNamespace>
+    <AssemblyName>SC_505B521B8EBF4B97A2B0EBC1D9790D0A</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="EmailRecord.cs" />
+    <Compile Include="EmailService.cs" />
+    <Compile Include="InputQueryRow.cs" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
                     <arrayElement
@@ -3847,7 +4026,7 @@ internal class EmailService
                     <arrayElement
                       dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAMmesmUAAAAAAAAAAOAAIiALATAAAD4AAAAIAAAAAAAAyl0A
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAJF2FWYAAAAAAAAAAOAAIiALATAAAD4AAAAIAAAAAAAAyl0A
 AAAgAAAAYAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACgAAAAAgAAAAAAAAMAYIUAABAA
 ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAHhdAABPAAAAAGAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAIAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -3961,8 +4140,8 @@ JAAnAAIAJQApAAIAJgArAAIAJwAtAAIAKAAvAAIAKQAxAAIAKgAzAAIAKwA1AAIALAA3AAIALQA5
 AAIALgA7AAIALwA9AAIAMAA/AAIAMQBBAAIAMgBDAAIAMwBFAAIANABHAAIANQBJAAIANgBLAAIA
 NwBNAAIAQABPAAIAQgBRAAIAQwBTAAEARABTAAIARQBVAAIASABXAAEASQBXABwAOgBKADIB0F0A
 ABQABIAAAAEAAAAAAAAAAAAAAAAA6AAAAAQAAAAAAAAAAAAAAGABUAEAAAAABAAAAAAAAAAAAAAA
-YAH0AwAAAAAEAAAAAAAAAAAAAABgAa0IAAAAAA0AAAAAAAAAAAAAAGkBFw0AAAAADQAAAAAAAAAA
-AAAAaQFADQAAAAANAAAAAAAAAAAAAABpAdYJAAAAAAAAAAABAAAA7woAAA0AAgAOAAwASQCUAAAA
+YAH0AwAAAAAEAAAAAAAAAAAAAABgAa0IAAAAAA8AAAAAAAAAAAAAAGkBFw0AAAAADwAAAAAAAAAA
+AAAAaQFADQAAAAAPAAAAAAAAAAAAAABpAdYJAAAAAAAAAAABAAAA7woAAA0AAgAOAAwASQCUAAAA
 AAAASURUU1ZhcmlhYmxlMTAwAElEVFNWYXJpYWJsZXMxMDAASURUU0V2YWx1YXRvckNvbnRleHQx
 MDAASUVudW1lcmFibGVgMQBIYXNoU2V0YDEATGlzdGAxAF9fU3RhdGljQXJyYXlJbml0VHlwZVNp
 emU9MTIAN0IwMEY1NTYxNzE3NUI2REJDOTQ5NTAxMUUyMDMzREYxREJDN0NCNTg4ODY1NzY3NTYz
@@ -4113,7 +4292,7 @@ ACAAYQB1AHQAbwBtAGEAdABlAGQAIABtAGUAcwBzAGEAZwBlAC4AIAAKADwAYgByAD4ACgA8AGIA
 cgA+AFMAaQBuAGMAZQByAGUAbAB5ACwACgA8AGIAcgA+AEMAbwBsAGwAZQBnAGUAIABvAGYAIABN
 AGUAZABpAGMAaQBuAGUALAAgAEkAbgBmAG8AcgBtAGEAdABpAG8AbgAgAFQAZQBjAGgAbgBvAGwA
 bwBnAHkAIABTAGUAcgB2AGkAYwBlAHMACgA8AC8AYgBvAGQAeQA+AAoAPAAvAGgAdABtAGwAPgAK
-AAEBAAM7AADaBJjZU+k7RZdaDtLfR6+/AAQgAQEIAyAAAQUgAQEREQQgAQEOBiABARGAgQUVEjkB
+AAEBAAM7AAC6jvOzrTkPRKCZHGZrK1X7AAQgAQEIAyAAAQUgAQEREQQgAQEOBiABARGAgQUVEjkB
 DgQgAQECBSABARJBDAcDEgwVEVUBEggSCAYVElEBEggIIAAVEVUBEwAGFRFVARIIBCAAEwADIAAC
 BAcBElkDIAAOBQACDg4OBAcBEggFIAEBEwAHBwMIEV0RYQkAAgESgKERgKUNEAECAhUSgK0BHgAe
 AAMKAQgEAAARXQQgABFhBQACAg4OCSADARJpHQgSbQMGEmkDBh0IBCABDggEIAECCAQgAQgIByAC
@@ -4202,7 +4381,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                     <arrayElement
                       dataType="System.String">&lt;SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"&gt;
 &lt;SOAP-ENV:Body&gt;
-&lt;a1:ScriptBreakpointInfo id="ref-1" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/Microsoft.SqlServer.VSTAHosting/Microsoft.SqlServer.VSTAScriptingLib%2C%20Version%3D13.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D89845dcd8080cc91"&gt;
+&lt;a1:ScriptBreakpointInfo id="ref-1" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/Microsoft.SqlServer.VSTAHosting/Microsoft.SqlServer.VSTAScriptingLib%2C%20Version%3D15.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D89845dcd8080cc91"&gt;
 &lt;Enabled&gt;true&lt;/Enabled&gt;
 &lt;File id="ref-3"&gt;EmailRecord.cs&lt;/File&gt;
 &lt;FileLine&gt;202&lt;/FileLine&gt;
@@ -4214,7 +4393,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                     <arrayElement
                       dataType="System.String">&lt;SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"&gt;
 &lt;SOAP-ENV:Body&gt;
-&lt;a1:ScriptBreakpointInfo id="ref-1" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/Microsoft.SqlServer.VSTAHosting/Microsoft.SqlServer.VSTAScriptingLib%2C%20Version%3D13.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D89845dcd8080cc91"&gt;
+&lt;a1:ScriptBreakpointInfo id="ref-1" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/Microsoft.SqlServer.VSTAHosting/Microsoft.SqlServer.VSTAScriptingLib%2C%20Version%3D15.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D89845dcd8080cc91"&gt;
 &lt;Enabled&gt;true&lt;/Enabled&gt;
 &lt;File id="ref-3"&gt;main.cs&lt;/File&gt;
 &lt;FileLine&gt;128&lt;/FileLine&gt;
@@ -4229,7 +4408,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                   dataType="System.String"
                   description="Checksum to match component metedata against compiled codes."
                   name="MetadataChecksum140"
-                  typeConverter="NOTBROWSABLE">3C</property>
+                  typeConverter="NOTBROWSABLE">D8</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
@@ -4389,7 +4568,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     <DTS:EventHandler
       DTS:refId="Package.EventHandlers[OnError]"
       DTS:CreationName="OnError"
-      DTS:DTSID="{2C442DFD-DA05-4C92-9F7B-CEBF8C0664B9}"
+      DTS:DTSID="{39566AC7-E3F4-40AA-835D-0F62D48D58BA}"
       DTS:EventID="16384"
       DTS:EventName="OnError"
       DTS:LocaleID="-1">
@@ -4397,7 +4576,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
         <DTS:Variable
           DTS:CreationName=""
           DTS:Description="The propagate property of the event"
-          DTS:DTSID="{9C2CB146-E247-4375-9BD5-16CF90C53FAB}"
+          DTS:DTSID="{B67B43C6-8668-498E-BC0E-551AF3CED24A}"
           DTS:IncludeInDebugDump="6789"
           DTS:Namespace="System"
           DTS:ObjectName="Propagate">
@@ -4410,14 +4589,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           DTS:refId="Package.EventHandlers[OnError]\Send Mail Task"
           DTS:CreationName="Microsoft.SendMailTask"
           DTS:Description="Send Mail Task"
-          DTS:DTSID="{B194DDBB-427A-4A6D-B40B-0A48EA8FC8C4}"
+          DTS:DTSID="{A0351165-635D-4E5B-9B69-18185ED8A70D}"
           DTS:ExecutableType="Microsoft.SendMailTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Send Mail Task">
           <DTS:Variables />
           <DTS:ObjectData>
             <SendMailTask:SendMailTaskData
-              SendMailTask:SMTPServer="{50329916-CE5D-4836-9751-17C869BDC086}"
+              SendMailTask:SMTPServer="{4F1744BA-AC89-4080-9AD4-F87486C843CF}"
               SendMailTask:From="TicketCat-NoReply@arizona.edu"
               SendMailTask:To="gendy@arizona.edu"
               SendMailTask:Subject="CRC Signoff Package Failure" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -4469,25 +4648,25 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
         <NodeLayout
           Size="167,42"
           Id="Package\DFT CalendarValidationByCRCEmailReminder\Script Component"
-          TopLeft="83.666666600439,200.133333326446" />
+          TopLeft="125.666666600439,200.133333326446" />
         <NodeLayout
           Size="157,42"
           Id="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source"
-          TopLeft="96,84" />
+          TopLeft="130,86" />
         <EdgeLayout
           Id="Package\DFT CalendarValidationByCRCEmailReminder.Paths[OLE DB Source Output]"
-          TopLeft="170.833333300219,126">
+          TopLeft="208.833333300219,128">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,74.133333326446"
+              EndConnector="0,72.133333326446"
               Start="0,0"
-              End="0,66.633333326446">
+              End="0,64.633333326446">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,66.633333326446" />
+                    End="0,64.633333326446" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4499,14 +4678,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\DFT CalendarValidationByCRCEmailReminder Testing">
     <LayoutInfo>
@@ -4552,6 +4723,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT CalendarValidationByCRCEmailReminder\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

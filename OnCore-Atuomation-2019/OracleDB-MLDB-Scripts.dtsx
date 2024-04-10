@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="OracleDB-MLDB-Scripts"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{D4EBC388-D9B3-44E5-B271-72B3E4AADB22}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{B737A443-E478-4DE0-9526-D39139995BE3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -129,47 +129,35 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="198,42"
+          Size="198.4,41.6"
           Id="Package\runspCreate_TB_Oncore_DT4"
           TopLeft="431,133" />
         <NodeLayout
-          Size="261,42"
+          Size="260.8,41.6"
           Id="Package\runspUpdate_Protocol_Subjects_Info"
           TopLeft="112.135531135531,296.314285714286" />
         <NodeLayout
-          Size="194,42"
+          Size="193.6,41.6"
           Id="Package\runspUpdate_Protocols"
-          TopLeft="137.849816849817,136.673992708431" />
+          TopLeft="143.849816849817,133.673992708431" />
         <NodeLayout
-          Size="307,42"
+          Size="307.2,41.6"
           Id="Package\runspUPDATE_PROTOCOLS_UNQIUE_INFO"
           TopLeft="94.2857142857142,220.438095244983" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="234.849816849817,178.673992708431">
+          TopLeft="244.267765567766,175.273992708431">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="12.9358974358972,41.764102536552"
+              EndConnector="0,45.164102536552"
               Start="0,0"
-              End="12.9358974358972,34.264102536552">
+              End="0,37.664102536552">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.882051268276" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.882051268276"
-                    Point2="0,20.882051268276"
-                    Point3="4,20.882051268276" />
-                  <mssgle:LineSegment
-                    End="8.93589743589723,20.882051268276" />
-                  <mssgle:CubicBezierSegment
-                    Point1="8.93589743589723,20.882051268276"
-                    Point2="12.9358974358972,20.882051268276"
-                    Point3="12.9358974358972,24.882051268276" />
-                  <mssgle:LineSegment
-                    End="12.9358974358972,34.264102536552" />
+                    End="0,37.664102536552" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

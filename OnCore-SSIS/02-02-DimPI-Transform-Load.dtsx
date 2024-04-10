@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="02-02-DimPI-Transform-Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{79285FCE-251D-4E26-8608-6D039EA8A687}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{6ED1F1B6-2EB0-4EA5-BCAC-B802BE96258C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -268,6 +268,36 @@
                       cachedLength="11"
                       cachedName="EID"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[EID]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Data Conversion.Inputs[Data Conversion Input].Columns[Last_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Last_Name"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_Name]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Data Conversion.Inputs[Data Conversion Input].Columns[First_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="First_Name"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_Name]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Data Conversion.Inputs[Data Conversion Input].Columns[STAFF_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="STAFF_NAME"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_NAME]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Data Conversion.Inputs[Data Conversion Input].Columns[DEPT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DEPT"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEPT]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Data Conversion.Inputs[Data Conversion Input].Columns[College]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="College"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[College]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -313,6 +343,111 @@
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
                           name="SourceInputColumnLineageID">#{Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[EID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Last_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Last_Name]"
+                      name="Copy of Last_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_Name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of First_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of First_Name]"
+                      name="Copy of First_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_Name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_NAME]"
+                      name="Copy of STAFF_NAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_NAME]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DEPT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DEPT]"
+                      name="Copy of DEPT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEPT]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of College]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of College]"
+                      name="Copy of College"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[College]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -608,26 +743,26 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[Last_Name]"
+                      refId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[Copy of Last_Name]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="Last_Name"
+                      cachedName="Copy of Last_Name"
                       externalMetadataColumnId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[LAST_NAME]"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_Name]" />
+                      lineageId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Last_Name]" />
                     <inputColumn
-                      refId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[First_Name]"
+                      refId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[Copy of First_Name]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="First_Name"
+                      cachedName="Copy of First_Name"
                       externalMetadataColumnId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FIRST_NAME]"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_Name]" />
+                      lineageId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of First_Name]" />
                     <inputColumn
-                      refId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[STAFF_NAME]"
+                      refId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[Copy of STAFF_NAME]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="STAFF_NAME"
+                      cachedName="Copy of STAFF_NAME"
                       externalMetadataColumnId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[STAFF_NAME]"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_NAME]" />
+                      lineageId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_NAME]" />
                     <inputColumn
                       refId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[email]"
                       cachedDataType="wstr"
@@ -657,14 +792,14 @@
                     <inputColumn
                       refId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[College]"
                       cachedDataType="wstr"
-                      cachedLength="30"
+                      cachedLength="50"
                       cachedName="College"
                       externalMetadataColumnId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[College]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[College]" />
                     <inputColumn
                       refId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[DEPT]"
                       cachedDataType="wstr"
-                      cachedLength="30"
+                      cachedLength="50"
                       cachedName="DEPT"
                       externalMetadataColumnId="Package\DFT Transform-Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DEPT]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEPT]" />
@@ -788,7 +923,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dw].[DimPI] SET [AuditKey] = ?,[College] = ?,[DEPT] = ?,[DEPT_ID] = ?,[EID] = ?,[EMAIL] = ?,[FIRST_NAME] = ?,[IsActive] = ?,[LAST_NAME] = ?,[UA_NETID] = ? WHERE [STAFF_NAME] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dw].[DimPI] SET [AuditKey] = ?,[College] = ?,[DEPT] = ?,[DEPT_ID] = ?,[EID] = ?,[EMAIL] = ?,[IsActive] = ?,[UA_NETID] = ? WHERE [STAFF_NAME] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -819,14 +954,14 @@
                     <inputColumn
                       refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[College]"
                       cachedDataType="wstr"
-                      cachedLength="30"
+                      cachedLength="50"
                       cachedName="College"
                       externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[College]" />
                     <inputColumn
                       refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[DEPT]"
                       cachedDataType="wstr"
-                      cachedLength="30"
+                      cachedLength="50"
                       cachedName="DEPT"
                       externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEPT]" />
@@ -850,40 +985,26 @@
                       externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[email]" />
                     <inputColumn
-                      refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[First_Name]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="First_Name"
-                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_Name]" />
-                    <inputColumn
                       refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[IsActive]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="8"
                       cachedName="IsActive"
-                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]" />
                     <inputColumn
-                      refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[Last_Name]"
+                      refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[Copy of STAFF_NAME]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="Last_Name"
+                      cachedName="Copy of STAFF_NAME"
                       externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_Name]" />
-                    <inputColumn
-                      refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[STAFF_NAME]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="STAFF_NAME"
-                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_NAME]" />
+                      lineageId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_NAME]" />
                     <inputColumn
                       refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[UA_NETID]"
                       cachedDataType="wstr"
                       cachedLength="30"
                       cachedName="UA_NETID"
-                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[UA_NETID]" />
                   </inputColumns>
                   <externalMetadataColumns
@@ -959,8 +1080,9 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
-                      dataType="wstr"
-                      length="50"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
                       name="Param_6">
                       <properties>
                         <property
@@ -971,9 +1093,8 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
+                      dataType="wstr"
+                      length="50"
                       name="Param_7">
                       <properties>
                         <property
@@ -987,30 +1108,6 @@
                       dataType="wstr"
                       length="50"
                       name="Param_8">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
-                      dataType="wstr"
-                      length="50"
-                      name="Param_9">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
-                      dataType="wstr"
-                      length="50"
-                      name="Param_10">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1069,7 +1166,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
+                  name="OpenRowset">[etl_transform_load].[DimPI]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1078,78 +1175,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">with ActivePI_Protocols_Staff_CTE as (select distinct left(s.staff_name, charindex(',', s.staff_name) - 1) as Last_Name,
-                           substring(s.staff_name, charindex(', ', s.staff_name) + 2,
-                                     len(s.staff_name))                         as First_Name,
-                           s.STAFF_NAME,
-                           s.EMAIL_ADDRESS                                      as email,
-                           dbo.GetNetID(s.EMAIL_ADDRESS)                        as UA_NETID,
-                           s.EID,
-                           null                                                 as DEPT_ID,
-                           ''                                                   as DEPT,
-                           ''                                                   as College
-
-           from staff s
-           where s.STAFF_ROLE = 'Principal Investigator'
-             and charindex('uahs', lower(s.organization_name)) != 0
-
-           union all
-
-           select distinct left(p.pi_name, charindex(',', p.pi_name) - 1) as Last_Name,
-                           substring(p.pi_name, charindex(', ', p.pi_name) + 2,
-                                     len(p.pi_name))                      as First_Name,
-                           p.pi_name                                      as STAFF_NAME,
-                           p.pi_email                                     as email,
-                           dbo.GetNetID(p.pi_email)                       as UA_NETID,
-                           null                                           as eid,
-                           null                                           as dept_id,
-                           ''                                             as dept,
-                           ''                                             as college
-           from protocols p
-           where not exists (select 1
-                             from staff s
-                             where s.STAFF_NAME = p.pi_name
-                               and s.STAFF_ROLE = 'Principal Investigator'
-                               and charindex('uahs', lower(s.organization_name)) != 0))
-
-select ActivePI_Protocols_Staff_CTE.Last_Name,
-       ActivePI_Protocols_Staff_CTE.First_Name,
-       ActivePI_Protocols_Staff_CTE.STAFF_NAME,
-       isnull(isnull(isnull(ActivePI_Protocols_Staff_CTE.email, MedSchoolFaculty.email_addr), ap.EMAIL),
-              'N/A')                                                as                  email,
-       isnull(isnull(isnull(MedSchoolFaculty.netid_oprid,
-                            ActivePI_Protocols_Staff_CTE.UA_NETID),
-                     iif(ap.EMAIL != 'NULL', left(ap.EMAIL, charindex('@', ap.EMAIL) - 1), null)),
-              'N/A')                                                as                  UA_NETID,
-       isnull(isnull(MedSchoolFaculty.EMPLID, ActivePI_Protocols_Staff_CTE.EID), 'N/A') EID,
-       isnull(isnull(MedSchoolFaculty.deptid, ap.DEPT_ID), 'N/A')                       DEPT_ID,
-       isnull(iif(MedSchoolFaculty.college_name is null or MedSchoolFaculty.college_name = '-',
-                  ap.College,
-                  MedSchoolFaculty.college_name), 'N/A')                                College,
-       isnull(iif(MedSchoolFaculty.deptname is null or MedSchoolFaculty.deptname = '-', ap.DEPT,
-                  MedSchoolFaculty.deptname), 'N/A')                                    DEPT,
-       iif(MedSchoolFaculty.deptname is null, 'Inactive', 'Active') as                  IsActive
-from ActivePI_Protocols_Staff_CTE
-         outer apply(select top 1 *
-                     from [COM-DTRUST-PROD.BLUECAT.ARIZONA.EDU].[APP].[DBO].[PS_UA_DPT_MED_ALL_FACULTY_UNION_DCC_NEW] as MedSchoolFaculty
-                     where (
-                               MedSchoolFaculty.netid_oprid =
-                               ActivePI_Protocols_Staff_CTE.UA_NETID
-                         or MedSchoolFaculty.name = ActivePI_Protocols_Staff_CTE.STAFF_NAME
-                               )
-                     order by MedSchoolFaculty.priority) MedSchoolFaculty
-
-         outer apply(SELECT ap.LAST_NAME,
-                            ap.FIRST_NAME,
-                            ap.STAFF_NAME,
-                            EMAIL       EMAIL,
-                            UA_NETID as UA_NETID,
-                            EID         EID,
-                            DEPT_ID     DEPT_ID,
-                            College     College,
-                            DEPT        DEPT
-                     FROM ActivePI ap
-                     where ap.STAFF_NAME = ActivePI_Protocols_Staff_CTE.STAFF_NAME) ap</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from etl_transform_load.DimPI</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1166,7 +1192,7 @@ from ActivePI_Protocols_Staff_CTE
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">2</property>
+                  typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -1191,7 +1217,7 @@ from ActivePI_Protocols_Staff_CTE
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Last_Name]"
-                      length="50"
+                      length="100"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_Name]"
                       name="Last_Name"
                       truncationRowDisposition="FailComponent" />
@@ -1201,7 +1227,7 @@ from ActivePI_Protocols_Staff_CTE
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[First_Name]"
-                      length="50"
+                      length="100"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_Name]"
                       name="First_Name"
                       truncationRowDisposition="FailComponent" />
@@ -1211,7 +1237,7 @@ from ActivePI_Protocols_Staff_CTE
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[STAFF_NAME]"
-                      length="50"
+                      length="100"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_NAME]"
                       name="STAFF_NAME"
                       truncationRowDisposition="FailComponent" />
@@ -1251,7 +1277,7 @@ from ActivePI_Protocols_Staff_CTE
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[College]"
-                      length="30"
+                      length="50"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[College]"
                       name="College"
                       truncationRowDisposition="FailComponent" />
@@ -1261,7 +1287,7 @@ from ActivePI_Protocols_Staff_CTE
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEPT]"
-                      length="30"
+                      length="50"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEPT]"
                       name="DEPT"
                       truncationRowDisposition="FailComponent" />
@@ -1348,6 +1374,18 @@ from ActivePI_Protocols_Staff_CTE
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Last_Name]"
                       dataType="wstr"
                       length="100"
@@ -1371,12 +1409,6 @@ from ActivePI_Protocols_Staff_CTE
                       length="50"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[email]"
                       name="email" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UA_NETID]"
-                      dataType="wstr"
-                      length="30"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UA_NETID]"
-                      name="UA_NETID" />
                     <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EID]"
                       dataType="wstr"
@@ -1402,24 +1434,18 @@ from ActivePI_Protocols_Staff_CTE
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEPT]"
                       name="DEPT" />
                     <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UA_NETID]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UA_NETID]"
+                      name="UA_NETID" />
+                    <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsActive]"
                       codePage="1252"
                       dataType="str"
                       length="8"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsActive]"
                       name="IsActive" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1553,7 +1579,7 @@ from ActivePI_Protocols_Staff_CTE
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [AuditKey], [College], [DEPT], [DEPT_ID], [EID], [EMAIL], [FIRST_NAME], [IsActive], [LAST_NAME], [STAFF_NAME], [UA_NETID] FROM [dw].[DimPI]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [AuditKey], [College], [DEPT], [DEPT_ID], [EID], [EMAIL], [IsActive], [STAFF_NAME], [UA_NETID] FROM [dw].[DimPI]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -1617,7 +1643,7 @@ from ActivePI_Protocols_Staff_CTE
                     <inputColumn
                       refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[College]"
                       cachedDataType="wstr"
-                      cachedLength="30"
+                      cachedLength="50"
                       cachedName="College"
                       externalMetadataColumnId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[College]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[College]">
@@ -1631,7 +1657,7 @@ from ActivePI_Protocols_Staff_CTE
                     <inputColumn
                       refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[DEPT]"
                       cachedDataType="wstr"
-                      cachedLength="30"
+                      cachedLength="50"
                       cachedName="DEPT"
                       externalMetadataColumnId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DEPT]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEPT]">
@@ -1683,20 +1709,6 @@ from ActivePI_Protocols_Staff_CTE
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[First_Name]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="First_Name"
-                      externalMetadataColumnId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[FIRST_NAME]"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_Name]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          name="ColumnType"
-                          typeConverter="ColumnType">2</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[IsActive]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -1712,26 +1724,12 @@ from ActivePI_Protocols_Staff_CTE
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Last_Name]"
+                      refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Copy of STAFF_NAME]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="Last_Name"
-                      externalMetadataColumnId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[LAST_NAME]"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_Name]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          name="ColumnType"
-                          typeConverter="ColumnType">2</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[STAFF_NAME]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="STAFF_NAME"
+                      cachedName="Copy of STAFF_NAME"
                       externalMetadataColumnId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[STAFF_NAME]"
-                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_NAME]">
+                      lineageId="Package\DFT Transform-Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_NAME]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1784,21 +1782,11 @@ from ActivePI_Protocols_Staff_CTE
                       length="50"
                       name="EMAIL" />
                     <externalMetadataColumn
-                      refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[FIRST_NAME]"
-                      dataType="wstr"
-                      length="50"
-                      name="FIRST_NAME" />
-                    <externalMetadataColumn
                       refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[IsActive]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="IsActive" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[LAST_NAME]"
-                      dataType="wstr"
-                      length="50"
-                      name="LAST_NAME" />
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[STAFF_NAME]"
                       dataType="wstr"
@@ -2269,88 +2257,44 @@ from ActivePI_Protocols_Staff_CTE
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="216,42"
-          Id="Package\DFT Transform-Load\Slowly Changing Dimension"
-          TopLeft="546,413.5" />
-        <NodeLayout
-          Size="122,42"
-          Id="Package\DFT Transform-Load\RC Error"
-          TopLeft="593,607.5" />
-        <NodeLayout
-          Size="133,42"
-          Id="Package\DFT Transform-Load\RC Update"
-          TopLeft="839.5,420.5" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\DFT Transform-Load\FF Errors"
-          TopLeft="591.5,709.5" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\DFT Transform-Load\RC Insert"
-          TopLeft="382.5,505.5" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\DFT Transform-Load\OLE DB Source"
-          TopLeft="575.5,5.5" />
+          Size="145,42"
+          Id="Package\DFT Transform-Load\DC Audit Key"
+          TopLeft="327.5,311.5" />
         <NodeLayout
           Size="132,42"
           Id="Package\DFT Transform-Load\RC Extract"
-          TopLeft="588,209.5" />
+          TopLeft="334,209.5" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\DFT Transform-Load\OLE DB Source"
+          TopLeft="321.5,5.5" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\DFT Transform-Load\FF Errors"
+          TopLeft="15.5,707.5" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\DFT Transform-Load\RC Insert"
+          TopLeft="120.5,449.5" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\DFT Transform-Load\RC Update"
+          TopLeft="527.5,476.5" />
+        <NodeLayout
+          Size="122,42"
+          Id="Package\DFT Transform-Load\RC Error"
+          TopLeft="17,605.5" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\DFT Transform-Load\Slowly Changing Dimension"
+          TopLeft="292,413.5" />
         <NodeLayout
           Size="161,42"
           Id="Package\DFT Transform-Load\Data Conversion"
-          TopLeft="573.5,107.5" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\DFT Transform-Load\DC Audit Key"
-          TopLeft="581.5,311.5" />
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Derived Column Output]"
-          TopLeft="654,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Data Conversion Output]"
-          TopLeft="654,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="319.5,107.5" />
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Row Count Output 11]"
-          TopLeft="654,649.5">
+          TopLeft="78,647.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2372,7 +2316,7 @@ from ActivePI_Protocols_Staff_CTE
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Row Count Output 1]"
-          TopLeft="654,251.5">
+          TopLeft="400,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2394,7 +2338,51 @@ from ActivePI_Protocols_Staff_CTE
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[OLE DB Source Output]"
-          TopLeft="654,47.5">
+          TopLeft="400,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Derived Column Output]"
+          TopLeft="400,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Data Conversion Output]"
+          TopLeft="400,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2417,119 +2405,73 @@ from ActivePI_Protocols_Staff_CTE
         <NodeLayout
           Size="165,42"
           Id="Package\DFT Transform-Load\Insert Destination"
-          TopLeft="571.5,515.5" />
+          TopLeft="87.5,515.5" />
         <NodeLayout
           Size="173,42"
           Id="Package\DFT Transform-Load\OLE DB Command"
-          TopLeft="819.5,517.5" />
+          TopLeft="312.5,552.5" />
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[New Output]"
-          TopLeft="654,455.5">
+          TopLeft="292,434.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-209,50"
+              EndConnector="-46.5,35.9999999999999"
               Start="0,0"
-              End="-209,42.5">
+              End="-39,35.9999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21" />
+                    End="-19.25,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21"
-                    Point2="0,25"
-                    Point3="-4,25" />
+                    Point1="-19.25,0"
+                    Point2="-23.25,0"
+                    Point3="-23.25,4" />
                   <mssgle:LineSegment
-                    End="-205,25" />
+                    End="-23.25,31.9999999999999" />
                   <mssgle:CubicBezierSegment
-                    Point1="-205,25"
-                    Point2="-209,25"
-                    Point3="-209,29" />
+                    Point1="-23.25,31.9999999999999"
+                    Point2="-23.25,35.9999999999999"
+                    Point3="-27.25,35.9999999999999" />
                   <mssgle:LineSegment
-                    End="-209,42.5" />
+                    End="-39,35.9999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-131.59138671875,30,54.1827734375,11.43359375"
+              BoundingBox="-50.34138671875,-17.43359375,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Row Count Output 12]"
-          TopLeft="507.5,526.5">
+          TopLeft="183,491.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="64,10"
+              EndConnector="-13,24.0000000000001"
               Start="0,0"
-              End="56.5,10">
+              End="-13,16.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="28,0" />
+                    End="0,8.00000000000006" />
                   <mssgle:CubicBezierSegment
-                    Point1="28,0"
-                    Point2="32,0"
-                    Point3="32,4" />
+                    Point1="0,8.00000000000006"
+                    Point2="0,12.0000000000001"
+                    Point3="-4,12.0000000000001" />
                   <mssgle:LineSegment
-                    End="32,6" />
+                    End="-9,12.0000000000001" />
                   <mssgle:CubicBezierSegment
-                    Point1="32,6"
-                    Point2="32,10"
-                    Point3="36,10" />
+                    Point1="-9,12.0000000000001"
+                    Point2="-13,12.0000000000001"
+                    Point3="-13,16.0000000000001" />
                   <mssgle:LineSegment
-                    End="56.5,10" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Changing Attribute Updates Output]"
-          TopLeft="762,438">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="77.5,0"
-              Start="0,0"
-              End="70,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="70,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-43.53390625,5,157.0678125,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Row Count Output 13]"
-          TopLeft="906,462.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,54.9999999999999"
-              Start="0,0"
-              End="0,47.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.4999999999999" />
+                    End="-13,16.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2540,31 +2482,120 @@ from ActivePI_Protocols_Staff_CTE
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[OLE DB Destination Error Output]"
-          TopLeft="654,557.5">
+          TopLeft="170,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50.0000000000001"
+              EndConnector="-92,47.9999999999999"
               Start="0,0"
-              End="0,42.5000000000001">
+              End="-92,40.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.5000000000001" />
+                    End="0,19.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.9999999999999"
+                    Point2="0,23.9999999999999"
+                    Point3="-4,23.9999999999999" />
+                  <mssgle:LineSegment
+                    End="-88,23.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-88,23.9999999999999"
+                    Point2="-92,23.9999999999999"
+                    Point3="-92,27.9999999999999" />
+                  <mssgle:LineSegment
+                    End="-92,40.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-73.20890625,15.5332031250001,146.4178125,11.43359375"
+              BoundingBox="-119.20890625,28.9999999999999,146.4178125,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Changing Attribute Updates Output]"
+          TopLeft="508,434.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="86,41.9999999999999"
+              Start="0,0"
+              End="86,34.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="82,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="82,0"
+                    Point2="86,0"
+                    Point3="86,4" />
+                  <mssgle:LineSegment
+                    End="86,34.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="7.46609374999997,-17.6630859375,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Row Count Output 13]"
+          TopLeft="594,518.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-195,34.0000000000001"
+              Start="0,0"
+              End="-195,26.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.0000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.0000000000001"
+                    Point2="0,17.0000000000001"
+                    Point3="-4,17.0000000000001" />
+                  <mssgle:LineSegment
+                    End="-191,17.0000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-191,17.0000000000001"
+                    Point2="-195,17.0000000000001"
+                    Point3="-195,21.0000000000001" />
+                  <mssgle:LineSegment
+                    End="-195,26.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Transform-Load\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT Transform-Load\Slowly Changing Dimension">
     <Properties>
@@ -2613,10 +2644,10 @@ from ActivePI_Protocols_Staff_CTE
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[First_Name]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;Data Conversion.Outputs[Data Conversion Output].Columns[Copy of First_Name]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;FIRST_NAME&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActive]&lt;/IdentificationString&gt;
@@ -2625,13 +2656,13 @@ from ActivePI_Protocols_Staff_CTE
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_Name]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Last_Name]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;LAST_NAME&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[STAFF_NAME]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;Data Conversion.Outputs[Data Conversion Output].Columns[Copy of STAFF_NAME]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;STAFF_NAME&lt;/ColumnName&gt;
       &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
@@ -2659,14 +2690,6 @@ from ActivePI_Protocols_Staff_CTE
   &lt;DateVariable /&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT Transform-Load\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

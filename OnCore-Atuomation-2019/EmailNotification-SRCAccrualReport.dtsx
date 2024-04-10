@@ -5,34 +5,34 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="COM-05361"
   DTS:CreatorName="BLUECAT\gendy"
-  DTS:DTSID="{1BCC510D-3CBC-44F5-9B22-C2C11F7EA6A8}"
+  DTS:DTSID="{68073147-A43A-4672-B58E-2D9993026B61}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5270.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="MLDB-EmailNotifications"
+  DTS:ObjectName="EmailNotification-SRCAccrualReport"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{08693DA9-715A-43FC-9D2B-60385875EAF0}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{564A74FC-E34B-461A-BA67-20A382FD933B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[COM-ONCORE-SQL]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{E81AE254-C8F4-4C68-B874-85976E236502}"
+      DTS:DTSID="{E9B788C4-BB03-4FF0-B3EE-527913BA9F01}"
       DTS:ObjectName="COM-ONCORE-SQL">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=COM-ONCORE-SQL;Initial Catalog=OnCoreStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package1-{E81AE254-C8F4-4C68-B874-85976E236502}COM-ONCORE-SQL;" />
+          DTS:ConnectionString="Data Source=COM-ONCORE-SQL;Initial Catalog=OnCoreStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package1-{E9B788C4-BB03-4FF0-B3EE-527913BA9F01}COM-ONCORE-SQL;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{B1B3B5F5-0337-48F0-B21D-EF9B5A336641}"
+      DTS:DTSID="{CB14494D-535C-4A30-9926-CF74A427648D}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ConnectionString">
@@ -41,7 +41,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{8BD85656-133D-470C-850B-B9DD3278AE06}"
+      DTS:DTSID="{BE43D24F-E7CF-4C3C-8D55-12C43CBEA1D2}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="MailFrom">
@@ -50,7 +50,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{3EC57C11-B98C-4DA7-B023-C27D4B61DAF4}"
+      DTS:DTSID="{A388C09A-EBF7-4863-988D-12E2357DE473}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="MailObject">
@@ -69,13 +69,13 @@
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\runCALENDAR_NEEDS_RELEASED"
+      DTS:refId="Package\runExecuteSpoolSRCAccrualRpt"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{305B53D7-F362-4FDC-B8C1-E7319C87DCAD}"
+      DTS:DTSID="{7F4D45DE-1D67-4686-8D3F-A8BF907143F7}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="runCALENDAR_NEEDS_RELEASED"
+      DTS:ObjectName="runExecuteSpoolSRCAccrualRpt"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -83,7 +83,7 @@
           version="1">
           <components>
             <component
-              refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source"
+              refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -98,7 +98,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
+                  name="OpenRowset">[automation].[EmailNotification-SRCAccrualReport]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -107,90 +107,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">WITH crcemail AS (SELECT        PROTOCOL_ID, string_agg(EMAIL_ADDRESS, ',') AS crcemail
-                                         FROM            Staff AS s
-                                         WHERE        (STOP_DATE IS NULL) AND (Organization_Name = 'University of Arizona Health Sciences (UAHS)') AND (ACTIVE_CONTACT_FLAG = 'Y') AND (STAFF_ROLE = 'Clinical Research Coordinator')
-                                         GROUP BY PROTOCOL_ID)
-    SELECT        'gendy@arizona.edu' AS [To], 'OnCoreSupport@arizona.edu' AS [From], '' AS CC, '' AS BCC, A.PROTOCOL_NO + ': Calendar ' + A.CAL_STATUS AS Subject, 
-                              '&lt;html&gt;
-         &lt;head&gt;
-           &lt;title&gt;crcsignoff&lt;/title&gt;
-           &lt;style&gt;
-             table {border-collapse: collapse;}
-             td {border: thin solid black; padding: 4px;}
-           &lt;/style&gt;
-         &lt;/head&gt;
-         &lt;body&gt;
-           &lt;p&gt;This is an autogenerated message from OnCore.&lt;/p&gt;
-           &lt;p&gt;
-             @OnCoreSupport -- The study referenced above needs to have the calendar released.  The calendar was last modified on '
-                               + CONVERT(VARCHAR(10), DATEADD([day], 0, DATEDIFF([day], 0, A.MODIFIED_DATE)), 120) + '.
-      &lt;/p&gt;
-      &lt;p&gt;
-        Please review the calendar as soon as possible.  It has been ' + CONVERT(VARCHAR(10), DATEDIFF([day], 0, 
-                              A.MODIFIED_DATE), 109) 
-                              + ' days since this calendar has been reviewed.
-      &lt;/p&gt;
-      &lt;p&gt;The status of the calendar is ' + A.CAL_STATUS + '.&lt;/p&gt;
-      &lt;table&gt;
-        &lt;tr&gt;
-          &lt;td bgcolor="#D3D3D3" colspan="2"&gt;&lt;b&gt;Protocol Info&lt;/b&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;Protocol Number&lt;/td&gt;
-          &lt;td&gt;'
-                               + A.PROTOCOL_NO + '&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;PI Name&lt;/td&gt;
-          &lt;td&gt;' + A.PI_NAME + '&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;Title&lt;/td&gt;
-          &lt;td&gt;' + REPLACE(REPLACE(p.Title, '[^a-zA-Z0-9^#&amp;)*|%$@!/(){}~ ]', ''), '&amp;', 
-                              '&amp;#38;') + '&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;Sponsor&lt;/td&gt;
-          &lt;td&gt;' + REPLACE(A.SPONSOR, '&amp;', '&amp;#38;') 
-                              + '&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;Sponsor Number&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;Primary CRC&lt;/td&gt;
-          &lt;td&gt;' + COALESCE (A.PRIMARY_CRC, 'None Assigned') 
-                              + '&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;Primary IRB Coordinator&lt;/td&gt;
-          &lt;td&gt;' + COALESCE (A.PRIMARY_IRB_COORD, 'None Assigned') + '&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/table&gt;
-    &lt;/body&gt;
-  &lt;/html&gt;' AS Body, A.PROTOCOL_NO, 
-                              A.CAL_STATUS, GETDATE() AS CurrentDate, CONVERT(VARCHAR(10), GETDATE(), 120) AS formatted_date, A.DEPARTMENT_NAME
-     FROM            (SELECT        PROTOCOL_ID, PROTOCOL_NO, CAL_STATUS, PI_NAME, MODIFIED_DATE, PRIMARY_CRC, DEPARTMENT_NAME, ORGANIZATION_UNIT, PRIMARY_IRB_COORD, SPONSOR, SPONSOR_NUMBER
-                               FROM            OPENQUERY(ONCOREPROD, 
-                                                         '
-select protocol_id,
-       protocol_no,
-       cal_status,
-       pi_name,
-       modified_date,
-       primary_crc,
-       department_name,
-       organization_unit,
-       primary_irb_coord,
-       sponsor,
-       sponsor_number
-from UACC_ONCORE_RW_UTILS.EN_PROTOCOL_CALENDAR_STATUS_RO pcs
-')
-                                                          AS derivedtbl_1) AS A INNER JOIN
-                              Protocols AS p ON p.protocol_id = A.PROTOCOL_ID LEFT OUTER JOIN
-                              crcemail AS c ON A.PROTOCOL_ID = c.PROTOCOL_ID
-     WHERE        (DATEADD([day], 0, DATEDIFF([day], 0, GETDATE())) - DATEADD([day], 0, DATEDIFF([day], 0, A.MODIFIED_DATE)) &gt;= 7) AND (A.CAL_STATUS LIKE 'Needs Release%')</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -207,7 +124,7 @@ from UACC_ONCORE_RW_UTILS.EN_PROTOCOL_CALENDAR_STATUS_RO pcs
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">2</property>
+                  typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -215,7 +132,7 @@ from UACC_ONCORE_RW_UTILS.EN_PROTOCOL_CALENDAR_STATUS_RO pcs
               </properties>
               <connections>
                 <connection
-                  refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Connections[OleDbConnection]"
+                  refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[COM-ONCORE-SQL]"
                   connectionManagerRefId="Package.ConnectionManagers[COM-ONCORE-SQL]"
                   description="The OLE DB runtime connection used to access the database."
@@ -223,272 +140,140 @@ from UACC_ONCORE_RW_UTILS.EN_PROTOCOL_CALENDAR_STATUS_RO pcs
               </connections>
               <outputs>
                 <output
-                  refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output]"
+                  refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CC]"
-                      length="1"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]"
-                      name="CC"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
-                      length="31"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]"
-                      name="BCC"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Body]"
-                      length="4000"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]"
-                      name="Body"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[PROTOCOL_NO]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PROTOCOL_NO]"
-                      length="35"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[PROTOCOL_NO]"
-                      name="PROTOCOL_NO"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrentDate]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CurrentDate]"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrentDate]"
-                      name="CurrentDate"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[formatted_date]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[formatted_date]"
-                      length="10"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[formatted_date]"
-                      name="formatted_date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEPARTMENT_NAME]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEPARTMENT_NAME]"
-                      length="50"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEPARTMENT_NAME]"
-                      name="DEPARTMENT_NAME"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[To]"
-                      length="25"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]"
+                      externalMetadataColumnId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[To]"
+                      length="17"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]"
                       name="To"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[From]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[From]"
-                      length="25"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[From]"
-                      name="From"
+                      externalMetadataColumnId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CC]"
+                      length="1"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]"
+                      name="CC"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
+                      length="1"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]"
+                      name="BCC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
-                      length="78"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]"
+                      externalMetadataColumnId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
+                      length="18"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]"
                       name="Subject"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CAL_STATUS]"
-                      dataType="wstr"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]"
+                      dataType="nText"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CAL_STATUS]"
-                      length="32"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CAL_STATUS]"
-                      name="CAL_STATUS"
+                      externalMetadataColumnId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Body]"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]"
+                      name="Body"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CC]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      name="CC" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      name="BCC" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Body]"
-                      dataType="wstr"
-                      length="4000"
-                      name="Body" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PROTOCOL_NO]"
-                      dataType="wstr"
-                      length="35"
-                      name="PROTOCOL_NO" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CurrentDate]"
-                      dataType="dbTimeStamp"
-                      name="CurrentDate" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[formatted_date]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="formatted_date" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEPARTMENT_NAME]"
-                      dataType="wstr"
-                      length="50"
-                      name="DEPARTMENT_NAME" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[To]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[To]"
                       codePage="1252"
                       dataType="str"
                       length="17"
                       name="To" />
                     <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[From]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CC]"
                       codePage="1252"
                       dataType="str"
-                      length="25"
-                      name="From" />
+                      length="1"
+                      name="CC" />
                     <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="BCC" />
+                    <externalMetadataColumn
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
                       dataType="wstr"
-                      length="78"
+                      length="18"
                       name="Subject" />
                     <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CAL_STATUS]"
-                      dataType="wstr"
-                      length="32"
-                      name="CAL_STATUS" />
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Body]"
+                      dataType="nText"
+                      name="Body" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[To]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[To]"
                       codePage="1252"
                       dataType="str"
                       length="17"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[To]"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[To]"
                       name="To" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[From]"
-                      codePage="1252"
-                      dataType="str"
-                      length="25"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[From]"
-                      name="From" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CC]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CC]"
                       codePage="1252"
                       dataType="str"
                       length="1"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CC]"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CC]"
                       name="CC" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BCC]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BCC]"
                       codePage="1252"
                       dataType="str"
                       length="1"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BCC]"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BCC]"
                       name="BCC" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subject]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subject]"
                       dataType="wstr"
-                      length="78"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subject]"
+                      length="18"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subject]"
                       name="Subject" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Body]"
-                      dataType="wstr"
-                      length="4000"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Body]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Body]"
+                      dataType="nText"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Body]"
                       name="Body" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PROTOCOL_NO]"
-                      dataType="wstr"
-                      length="35"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PROTOCOL_NO]"
-                      name="PROTOCOL_NO" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CAL_STATUS]"
-                      dataType="wstr"
-                      length="32"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CAL_STATUS]"
-                      name="CAL_STATUS" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CurrentDate]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CurrentDate]"
-                      name="CurrentDate" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[formatted_date]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[formatted_date]"
-                      name="formatted_date" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEPARTMENT_NAME]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEPARTMENT_NAME]"
-                      name="DEPARTMENT_NAME" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -497,7 +282,7 @@ from UACC_ONCORE_RW_UTILS.EN_PROTOCOL_CALENDAR_STATUS_RO pcs
               </outputs>
             </component>
             <component
-              refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination"
+              refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination"
               componentClassID="Microsoft.RecordsetDestination"
               contactInfo="Recordset Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates and populates an in-memory ADO recordset that is available outside of the data flow. Scripts and other package elements can use the recordset. For example, use a recordset to store the names of files that will be loaded into the data warehouse."
@@ -510,43 +295,42 @@ from UACC_ONCORE_RW_UTILS.EN_PROTOCOL_CALENDAR_STATUS_RO pcs
               </properties>
               <inputs>
                 <input
-                  refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input]"
+                  refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input]"
                   hasSideEffects="true"
                   name="Recordset Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[Subject]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input].Columns[Subject]"
                       cachedDataType="wstr"
-                      cachedLength="78"
+                      cachedLength="18"
                       cachedName="Subject"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]" />
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]" />
                     <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[Body]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input].Columns[Body]"
+                      cachedDataType="nText"
                       cachedName="Body"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]" />
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]" />
                     <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[To]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input].Columns[To]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="25"
+                      cachedLength="17"
                       cachedName="To"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]" />
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]" />
                     <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[CC]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input].Columns[CC]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="CC"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]" />
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]" />
                     <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[BCC]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input].Columns[BCC]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="31"
+                      cachedLength="1"
                       cachedName="BCC"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]" />
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -555,22 +339,22 @@ from UACC_ONCORE_RW_UTILS.EN_PROTOCOL_CALENDAR_STATUS_RO pcs
           </components>
           <paths>
             <path
-              refId="Package\runCALENDAR_NEEDS_RELEASED.Paths[OLE DB Source Output]"
-              endId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input]"
+              refId="Package\runExecuteSpoolSRCAccrualRpt.Paths[OLE DB Source Output]"
+              endId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input]"
               name="OLE DB Source Output"
-              startId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output]" />
+              startId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Script Task"
+      DTS:refId="Package\Send Email"
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
-      DTS:DTSID="{0A9F4283-8075-4B61-A080-89EC5677D139}"
+      DTS:DTSID="{E2957C9F-6433-4F19-A8BD-99EBCBD5401F}"
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Script Task"
+      DTS:ObjectName="Send Email"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -1008,7 +792,7 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
     <msb:CodeName>ST_ca20811b7d0e4c0db3d85a030362ff0b</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>ST_ca20811b7d0e4c0db3d85a030362ff0b</msb:DisplayName>
-    <msb:ProjectId>{DB48C038-A0CD-4895-9399-0240254B5EB6}</msb:ProjectId>
+    <msb:ProjectId>{9364167B-5290-4A3E-A3FB-5542A433B969}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="ST_ca20811b7d0e4c0db3d85a030362ff0b.csproj" />
@@ -1130,7 +914,7 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties {
           <BinaryItem
             Name="ST_ca20811b7d0e4c0db3d85a030362ff0b.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDACW5A2YAAAAAAAAAAOAAIiALATAAABgAAAAIAAAAAAAAGjYA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAOCiFWYAAAAAAAAAAOAAIiALATAAABgAAAAIAAAAAAAAGjYA
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
 ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAMg1AABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1178,7 +962,7 @@ EACRABMF2QCRADUHEACRAKMHEAB5AP8FBgBhAf8FBgBhAe8E5gBxAP8FBgCxAP8FBgBpAZEB7QBp
 AawH9gDZAP8F/AD5AP8FBgAxAbkHBAEIABQAGwEIABgAIAEpAHsApgEuAAsAfgEuABMAhwEuABsA
 pgEuACMArwEuACsA2AEuADMA2AEuADsA2AEuAEMArwEuAEsA3gEuAFMA2AEuAFsA9QFDAGMAIAFJ
 AHsApgFhAGsAIAFjAHMAIAHDAGsAIAEbAF4A4AADAAEABAADAAAAxAVvAQAAAgJ0AQAASwd5AQIA
-BgADAAIABwAFAAEACAAFAAIACQAHAIYAwQAEgAAAAQAAAJMiWqMAAAAAAADEAAAABAAAAAAAAAAA
+BgADAAIABwAFAAEACAAFAAIACQAHAIYAwQAEgAAAAQAAAKEiuF0AAAAAAADEAAAABAAAAAAAAAAA
 AAAACQH6AAAAAAAPAAAAAAAAAAAAAAASAUcEAAAAAAQAAAAAAAAAAAAAAAkBuAAAAAAABAAAAAAA
 AAAAAAAACQEMBQAAAAAPAAAAAAAAAAAAAAASAZEAAAAAAAQAAAAAAAAAAAAAAAkBzgEAAAAAAAAA
 AAEAAABQBgAABQACAAYAAgBHAKwASQCsAAAAADw+OV9fMV8wADxOZXdNYWlsTWVzc2FnZT5iX18x
@@ -1221,7 +1005,7 @@ AAAtVQBzAGUAcgA6ADoAQwBvAG4AbgBlAGMAdABpAG8AbgBTAHQAcgBpAG4AZwAABVQAbwAABUMA
 QwAAB0IAQwBDAAAPUwB1AGIAagBlAGMAdAAACUIAbwBkAHkAAB1VAHMAZQByADoAOgBNAGEAaQBs
 AEYAcgBvAG0AAHFTAFQAXwBjAGEAMgAwADgAMQAxAGIANwBkADAAZQA0AGMAMABkAGIAMwBkADgA
 NQBhADAAMwAwADMANgAyAGYAZgAwAGIALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1
-AHIAYwBlAHMAAAAj3VsxfjxNT7vliuX0GWVtAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARF1DgcG
+AHIAYwBlAHMAAABYgulPx0cATKV9dEJ8gdDjAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARF1DgcG
 Ej0SQRJFEkkSTRJRBSAAEoCBBSAAEoCFBiABEoCJHAMgABwFIAASgI0DIAAIBCAAEkEDIAAOBSAB
 ARJJAyAAAhYHBxJJFRJVAQ4VElUBDhUSVQEODg4IBCABAQIEIAEcDgYgAR0OHQMGFRJlAg4CBSAC
 ARwYGBABAhUSgKEBHgAVEoChAR4AFRJlAh4AAgMKAQ4QEAEBFRJVAR4AFRKAoQEeAAUVElUBDgUg
@@ -1247,14 +1031,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAEgA
 AABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8AAAAA
-AL0E7/4AAAEAAAABAFqjkyIAAAEAWqOTIj8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAA
+AL0E7/4AAAEAAAABALhdoSIAAAEAuF2hIj8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAA
 AQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8AbgAA
 AAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAwADAA
 MAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEAbgB5
 AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAA
 UwBUAF8AYwBhADIAMAA4ADEAMQBiADcAZAAwAGUANABjADAAZABiADMAZAA4ADUAYQAwADMAMAAz
 ADYAMgBmAGYAMABiAAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADgA
-OAA1ADEALgA0ADEAOAAxADgAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBU
+OAA2ADUALgAyADMAOQA5ADIAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBU
 AF8AYwBhADIAMAA4ADEAMQBiADcAZAAwAGUANABjADAAZABiADMAZAA4ADUAYQAwADMAMAAzADYA
 MgBmAGYAMABiAC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABD
 AG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADQAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEA
@@ -1263,8 +1047,8 @@ AGUAAABTAFQAXwBjAGEAMgAwADgAMQAxAGIANwBkADAAZQA0AGMAMABkAGIAMwBkADgANQBhADAA
 MwAwADMANgAyAGYAZgAwAGIALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAA
 AAAAUwBUAF8AYwBhADIAMAA4ADEAMQBiADcAZAAwAGUANABjADAAZABiADMAZAA4ADUAYQAwADMA
 MAAzADYAMgBmAGYAMABiAAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAu
-ADAALgA4ADgANQAxAC4ANAAxADgAMQA4AAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUA
-cgBzAGkAbwBuAAAAMQAuADAALgA4ADgANQAxAC4ANAAxADgAMQA4AAAAAAAAAAAAAAAAAAAAAAAA
+ADAALgA4ADgANgA1AC4AMgAzADkAOQAyAAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUA
+cgBzAGkAbwBuAAAAMQAuADAALgA4ADgANgA1AC4AMgAzADkAOQAyAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1289,11 +1073,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{61FF5CCA-16A1-4C5E-B0BF-1CAB13C98103}"
-      DTS:From="Package\runCALENDAR_NEEDS_RELEASED"
+      DTS:DTSID="{5CFE2438-1758-4482-8F5C-9D7E4D7F072E}"
+      DTS:From="Package\runExecuteSpoolSRCAccrualRpt"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Script Task" />
+      DTS:To="Package\Send Email" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1308,27 +1092,39 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="264,42"
-          Id="Package\runCALENDAR_NEEDS_RELEASED"
+          Size="240,42"
+          Id="Package\runExecuteSpoolSRCAccrualRpt"
           TopLeft="85,166" />
         <NodeLayout
-          Size="134,42"
-          Id="Package\Script Task"
+          Size="135,42"
+          Id="Package\Send Email"
           TopLeft="151,276" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="217.5,208">
+          TopLeft="205,208">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,68"
+              EndConnector="13.5,68"
               Start="0,0"
-              End="0,60.5">
+              End="13.5,60.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,60.5" />
+                    End="0,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30"
+                    Point2="0,34"
+                    Point3="4,34" />
+                  <mssgle:LineSegment
+                    End="9.5,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.5,34"
+                    Point2="13.5,34"
+                    Point3="13.5,38" />
+                  <mssgle:LineSegment
+                    End="13.5,60.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1341,44 +1137,32 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\runCALENDAR_NEEDS_RELEASED">
+    design-time-name="Package\runExecuteSpoolSRCAccrualRpt">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="187,42"
-          Id="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination"
+          Id="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination"
           TopLeft="160,224" />
         <NodeLayout
           Size="157,42"
-          Id="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source"
-          TopLeft="166,64" />
+          Id="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source"
+          TopLeft="180,83" />
         <EdgeLayout
-          Id="Package\runCALENDAR_NEEDS_RELEASED.Paths[OLE DB Source Output]"
-          TopLeft="244.5,106">
+          Id="Package\runExecuteSpoolSRCAccrualRpt.Paths[OLE DB Source Output]"
+          TopLeft="256,125">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="9,118"
+              EndConnector="0,99"
               Start="0,0"
-              End="9,110.5">
+              End="0,91.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,55"
-                    Point2="0,59"
-                    Point3="4,59" />
-                  <mssgle:LineSegment
-                    End="5,59" />
-                  <mssgle:CubicBezierSegment
-                    Point1="5,59"
-                    Point2="9,59"
-                    Point3="9,63" />
-                  <mssgle:LineSegment
-                    End="9,110.5" />
+                    End="0,91.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1391,10 +1175,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source">
+    design-time-name="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

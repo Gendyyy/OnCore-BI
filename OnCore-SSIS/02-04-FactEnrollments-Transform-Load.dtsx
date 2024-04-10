@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="02-04-FactEnrollments-Transform-Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="63"
-  DTS:VersionGUID="{66A0AE47-FB58-482B-B10C-2C780798FC95}">
+  DTS:VersionBuild="65"
+  DTS:VersionGUID="{4A95103A-1914-434E-8CC2-99AFFBF8BA34}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1022,7 +1022,7 @@ where [refTable].[protocol_no] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[Enrollments]</property>
+                  name="OpenRowset">[etl_transform_load].[FactEnrollments]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1031,9 +1031,7 @@ where [refTable].[protocol_no] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        ONC_MANAGEMENT_GROUP_ID, NAME, CODE, ACTIVE_FLAG
-FROM            ManagementGroup
-WHERE        (ACTIVE_FLAG = 1)</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from etl_transform_load.FactEnrollments</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1115,6 +1113,82 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Affiliates_Enrollments]"
                       name="Affiliates_Enrollments"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Created_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Created_Date]"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Created_Date]"
+                      name="Created_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Off_StudyDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Off_StudyDate]"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Off_StudyDate]"
+                      name="Off_StudyDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[On_TreatmentDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[On_TreatmentDate]"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[On_TreatmentDate]"
+                      name="On_TreatmentDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Off_TreatmentDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Off_TreatmentDate]"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Off_TreatmentDate]"
+                      name="Off_TreatmentDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Followup_Start_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Followup_Start_Date]"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Followup_Start_Date]"
+                      name="Followup_Start_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Race]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Race]"
+                      length="35"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Race]"
+                      name="Race"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ethnicity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ethnicity]"
+                      length="35"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ethnicity]"
+                      name="Ethnicity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[OnStudy?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OnStudy?]"
+                      length="1"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[OnStudy?]"
+                      name="OnStudy?"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1139,6 +1213,42 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Affiliates_Enrollments]"
                       dataType="i4"
                       name="Affiliates_Enrollments" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Created_Date]"
+                      dataType="dbDate"
+                      name="Created_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Off_StudyDate]"
+                      dataType="dbDate"
+                      name="Off_StudyDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[On_TreatmentDate]"
+                      dataType="dbDate"
+                      name="On_TreatmentDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Off_TreatmentDate]"
+                      dataType="dbDate"
+                      name="Off_TreatmentDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Followup_Start_Date]"
+                      dataType="dbDate"
+                      name="Followup_Start_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Race]"
+                      dataType="wstr"
+                      length="35"
+                      name="Race" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ethnicity]"
+                      dataType="wstr"
+                      length="35"
+                      name="Ethnicity" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OnStudy?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="OnStudy?" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1153,10 +1263,35 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Protocol_No]"
                       name="Protocol_No" />
                     <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Created_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Created_Date]"
+                      name="Created_Date" />
+                    <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[On_StudyDate]"
                       dataType="dbDate"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[On_StudyDate]"
                       name="On_StudyDate" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Off_StudyDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Off_StudyDate]"
+                      name="Off_StudyDate" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[On_TreatmentDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[On_TreatmentDate]"
+                      name="On_TreatmentDate" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Off_TreatmentDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Off_TreatmentDate]"
+                      name="Off_TreatmentDate" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Followup_Start_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Followup_Start_Date]"
+                      name="Followup_Start_Date" />
                     <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NumberOfEnrollments]"
                       dataType="i4"
@@ -1172,6 +1307,25 @@ WHERE        (ACTIVE_FLAG = 1)</property>
                       dataType="i4"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Affiliates_Enrollments]"
                       name="Affiliates_Enrollments" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Race]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Race]"
+                      name="Race" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ethnicity]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ethnicity]"
+                      name="Ethnicity" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OnStudy?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OnStudy?]"
+                      name="OnStudy?" />
                     <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -1621,13 +1775,13 @@ WHERE        (ACTIVE_FLAG = 1)</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="145,42"
-          Id="Package\DFT Transform-Load\DC Audit Key"
-          TopLeft="233.5,209.5" />
-        <NodeLayout
           Size="125,42"
           Id="Package\DFT Transform-Load\RC Insert"
           TopLeft="235,506" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\DFT Transform-Load\DC Audit Key"
+          TopLeft="233.5,209.5" />
         <NodeLayout
           Size="209,42"
           Id="Package\DFT Transform-Load\Lookup OnStudyDate_Key"
@@ -1844,7 +1998,7 @@ WHERE        (ACTIVE_FLAG = 1)</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q2:string">View</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
