@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">COM-05361</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhRy3JMwO90mrz2BA2auC+wAAAAACAAAAAAADZgAAwAAAABAAAACg/FNX2TFkAao0FRO50enMAAAAAASAAACgAAAAEAAAABPicLLc5e7WA0u+FBTHzf2IAAAA3G1ZlA3J5hfYiOUtks2iGUrjHfAOyyRNqD6WqNl95ay2lYFvvYV9AQAP9Pb3IqRliYh8jQg9w1GvGzXbkNAzlqSnFyar26RjRhvsm2wJcoxVM6OC5r1YYft0PxHRDQw42zIo2HBivQeekLUzNOGdUBnjVGtlb8R1bjFCFMzVNhecNEeQ1QMFexQAAADjHzTgZQS5wGgp/cNSsBMGuwn7JQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhRy3JMwO90mrz2BA2auC+wAAAAACAAAAAAADZgAAwAAAABAAAAD52O0ujLH9+JHLsziVUPhyAAAAAASAAACgAAAAEAAAABY0ai2pFpjz6GrcAKHEEUqIAAAA7/PKJr9GRsEJ67eZ+8gzNAIpaiYf+v7g/FfbTvIfWnPNo+Dzva3LlHaBMu/d2peZpY5ShVRKkg6NiTDJG2FIqSk72Z82fCXqD7BKYsK7CvBtwsnNuff8F3B8zNcGinm6YI0e4gKkQG2lLYK2OeW3Sfcy3CFFCHLHDGutszre4HSrOcLmAEq20xQAAABiJmjkaDkWo5htTNFCz1WtclznYQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -256,10 +256,10 @@
                 <SSIS:Property SSIS:Name="Name">OracleDB-MLDB-Scripts</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">12</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">15</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C5CD996E-8995-4259-B715-40F3DEE8ACAC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F42A45E5-3C2C-4170-8D8B-00797116E2EC}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -319,10 +319,10 @@
                 <SSIS:Property SSIS:Name="Name">PackagesErrors</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">21</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">22</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{BEE37A84-6125-4D08-8316-FAAFC39C0E2E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{91FCD3E8-3722-4BD3-A62D-10BD45218F90}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -353,10 +353,10 @@
                 <SSIS:Property SSIS:Name="Name">EmailNotification-CalendarNeedsReleased</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">32</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">33</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6679230E-1693-4E44-85C8-65F622165EE8}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{EEE7A835-B585-4B63-ACF0-EC6AE6601895}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -370,10 +370,10 @@
                 <SSIS:Property SSIS:Name="Name">CalendarValidationByCRCEmailReminder</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">77</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">78</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{EE8D7992-D737-4019-AFBC-17B6387FD878}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{5AB6DE8B-83CE-4916-A5E5-A3D3AF49DF5B}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -402,10 +402,10 @@
                 <SSIS:Property SSIS:Name="Name">EmailNotification-SRCAccrualReport</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">38</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">40</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{15A63617-7055-4D6F-9B45-AD8006F58DDB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{03613615-E191-4E79-87CE-052E055389FB}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -419,10 +419,10 @@
                 <SSIS:Property SSIS:Name="Name">EmailNotification-IITStatusUpdate</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">29</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">30</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{7D79BCF2-03ED-44F3-A0A9-706E812C8584}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D4F00982-47C2-4B93-AB1F-69B41AFB5BDA}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -436,10 +436,10 @@
                 <SSIS:Property SSIS:Name="Name">EmailNotification-Username_NetID_Discrepancy</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">34</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">35</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{9F414918-2475-4CD2-B39F-26B60216E965}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F5C4E90C-BC47-420B-9A11-256C051D235D}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -453,10 +453,10 @@
                 <SSIS:Property SSIS:Name="Name">EmailNotification-Studies_IRB_Expiring_Soon</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">35</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">36</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{227DB611-D054-49AE-923A-023728482DB2}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{39D7F0B7-5612-4249-8CEB-08EA99A4AFDC}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -470,10 +470,10 @@
                 <SSIS:Property SSIS:Name="Name">EmailNotification-Studies_UAHS_RA_SIGNOFF</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">33</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">34</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{490FC2B2-0EC1-461E-A969-B1A35E162AD7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{0F631C69-F9CA-4025-8C10-77DA485FA94B}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -487,10 +487,10 @@
                 <SSIS:Property SSIS:Name="Name">EmailNotification-CRF_SRC_Approval</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">31</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">32</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{61064183-851A-4949-80FE-E127C9570E82}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{5F729ABF-4E34-472A-8D30-09E42D8C31D4}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -521,12 +521,7 @@
     </Manifest>
   </DeploymentModelSpecificContent>
   <ControlFlowParts />
-  <Miscellaneous>
-    <ProjectItem>
-      <Name>Readme.md</Name>
-      <FullPath>Readme.md</FullPath>
-    </ProjectItem>
-  </Miscellaneous>
+  <Miscellaneous />
   <Configurations>
     <Configuration>
       <Name>Development</Name>
