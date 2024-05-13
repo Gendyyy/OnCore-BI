@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+<<<<<<< HEAD
 1. [StaffMonthlyEmailReminderByProtocol](#StaffMonthlyEmailReminderByProtocol)
 2. [ReportsAutomation](#ReportsAutomation)
 3. [PackagesErrors](#PackagesErrors)
@@ -18,6 +19,25 @@
 
 ## StaffMonthlyEmailReminderByProtocol
 
+=======
+1. [StaffMonthlyEmailReminderByProtocol](#staffmonthlyemailreminderbyprotocol)
+2. [ReportsAutomation](#reportsautomation)
+3. [PackagesErrors](#packageserrors)
+4. [OracleDB-MLDB-Scripts](#oracledb-mldb-scripts)
+5. [NewProtocolEmailNotification](#newprotocolemailnotification)
+6. [EmailNotification-Username_NetID_Discrepancy](#emailnotification-username_netid_discrepancy)
+7. [EmailNotification-Studies_UAHS_RA_SIGNOFF](#emailnotification-studies_uahs_ra_signoff)
+8. [EmailNotification-Studies_IRB_Expiring_Soon](#emailnotification-studies_irb_expiring_soon)
+9. [EmailNotification-SRCAccrualReport](#emailnotification-srcaccrualreport)
+10. [EmailNotification-IITStatusUpdate](#emailnotification-iitstatusupdate)
+11. [EmailNotification-CRF_SRC_Approval](#emailnotification-crf_src_approval)
+12. [EmailNotification-CalendarNeedsReleased](#emailnotification-calendarneedsreleased)
+13. [CalendarValidationByCRCEmailReminder](#calendarvalidationbycrcemailreminder)
+
+
+## StaffMonthlyEmailReminderByProtocol
+[UP⬆️](#table-of-contents)
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
 ### Basic Information
 - **Package Name:** `StaffMonthlyEmailReminderByProtocol`
 - **Author:** `BLUECAT\gendy`
@@ -71,7 +91,11 @@ The `StaffMonthlyEmailReminderByProtocol` SSIS package generates and sends month
 
 
 ## ReportsAutomation
+<<<<<<< HEAD
 
+=======
+[UP⬆️](#table-of-contents)
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
 ### Basic Information
 - **Package Name:** `ReportsAutomation`
 - **Author:** `BLUECAT\gendy`
@@ -123,7 +147,11 @@ The `ReportsAutomation` package is designed to automate the data extraction proc
 
 
 ## PackagesErrors
+<<<<<<< HEAD
 
+=======
+[UP⬆️](#table-of-contents)
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
 ### Basic Information
 - **Package Name:** `PackagesErrors`
 - **Author:** `BLUECAT\gendy`
@@ -177,7 +205,11 @@ This SSIS package sends email notifications to staff members regarding errors th
 
 
 ## OracleDB-MLDB-Scripts
+<<<<<<< HEAD
 
+=======
+[UP⬆️](#table-of-contents)
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
 ### Basic Information
 - **Package Name:** `OracleDB-MLDB-Scripts`
 - **Author:** `BLUECAT\gendy`
@@ -219,7 +251,11 @@ This SSIS package executes several stored procedures that update custom tables, 
 
 
 ## NewProtocolEmailNotification
+<<<<<<< HEAD
 
+=======
+[UP⬆️](#table-of-contents)
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
 ### Basic Information
 - **Package Name:** `NewProtocolEmailNotification`
 - **Author:** `BLUECAT\gendy`
@@ -273,7 +309,11 @@ This SSIS package sends email notifications to the relevant staff members when a
 
 
 ## EmailNotification-Username_NetID_Discrepancy
+<<<<<<< HEAD
 
+=======
+[UP⬆️](#table-of-contents)
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
 ### Basic Information
 - **Package Name:** `EmailNotification-Username_NetID_Discrepancy`
 - **Author:** `BLUECAT\gendy`
@@ -327,7 +367,11 @@ This SSIS package sends email notifications to staff members to notify them of d
 
 
 ## EmailNotification-Studies_UAHS_RA_SIGNOFF
+<<<<<<< HEAD
 
+=======
+[UP⬆️](#table-of-contents)
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
 ### Basic Information
 - **Package Name:** `EmailNotification-Studies_UAHS_RA_SIGNOFF`
 - **Author:** `BLUECAT\gendy`
@@ -381,7 +425,11 @@ This SSIS package sends email notifications to relevant staff reminding them to 
 
 
 ## EmailNotification-Studies_IRB_Expiring_Soon
+<<<<<<< HEAD
 
+=======
+[UP⬆️](#table-of-contents)
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
 ### Basic Information
 - **Package Name:** `EmailNotification-Studies_IRB_Expiring_Soon`
 - **Author:** `BLUECAT\gendy`
@@ -436,7 +484,11 @@ This SSIS package sends email notifications to staff members when studies are ap
 
 
 ## EmailNotification-SRCAccrualReport
+<<<<<<< HEAD
 
+=======
+[UP⬆️](#table-of-contents)
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
 ### Basic Information
 - **Package Name:** `EmailNotification-SRCAccrualReport`
 - **Author:** `BLUECAT\gendy`
@@ -467,7 +519,11 @@ This SSIS package sends email notifications containing accrual reports from the 
 1. **Package Parameters:**
    - **`MailFrom`:** `TicketCat-NoReply@arizona.edu`
    - **`MailObject`:** Variable for the recordset containing email data
+<<<<<<< HEAD
 2. **Project Parameters:** (if applicable)
+=======
+2. **Project Parameters:** 
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
    - **`ConnectionString`:** usb-smtp-outbound-1.mimecast.com
    - **`Login`:** Sensetive
    - **`PW`:** Sensetive
@@ -490,7 +546,11 @@ This SSIS package sends email notifications containing accrual reports from the 
 
 
 ## EmailNotification-IITStatusUpdate
+<<<<<<< HEAD
 
+=======
+[UP⬆️](#table-of-contents)
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
 ### Basic Information
 - **Package Name:** `EmailNotification-IITStatusUpdate`
 - **Author:** `BLUECAT\gendy`
@@ -520,7 +580,11 @@ This SSIS package sends email notifications containing status updates for Invest
 ### Parameters and Configurations
 1. **Package Parameters:**
    - **`MailFrom`:** `TicketCat-NoReply@arizona.edu`
+<<<<<<< HEAD
 2. **Project Parameters:** (if applicable)
+=======
+2. **Project Parameters:** 
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
    - **`ConnectionString`:** usb-smtp-outbound-1.mimecast.com
    - **`Login`:** Sensetive
    - **`PW`:** Sensetive
@@ -543,7 +607,11 @@ This SSIS package sends email notifications containing status updates for Invest
 
 
 ## EmailNotification-CRF_SRC_Approval
+<<<<<<< HEAD
 
+=======
+[UP⬆️](#table-of-contents)
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
 ### Basic Information
 - **Package Name:** `EmailNotification-CRF_SRC_Approval`
 - **Author:** `BLUECAT\gendy`
@@ -574,7 +642,11 @@ This SSIS package sends email notifications to relevant staff members when a cas
 ### Parameters and Configurations
 1. **Package Parameters:**
    - **`MailFrom`:** `TicketCat-NoReply@arizona.edu`
+<<<<<<< HEAD
 2. **Project Parameters:** (if applicable)
+=======
+2. **Project Parameters:** 
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
    - **`ConnectionString`:** usb-smtp-outbound-1.mimecast.com
    - **`Login`:** Sensetive
    - **`PW`:** Sensetive
@@ -597,6 +669,10 @@ This SSIS package sends email notifications to relevant staff members when a cas
 
 
 ## EmailNotification-CalendarNeedsReleased
+<<<<<<< HEAD
+=======
+[UP⬆️](#table-of-contents)
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
 ### Basic Information
 - **Package Name:** `EmailNotification-CalendarNeedsReleased`
 - **Author:** `BLUECAT\gendy`
@@ -625,7 +701,11 @@ This package is designed to notify study staff members via email when a study ca
 ### Parameters and Configurations
 1. **Package Parameters:**
    - **`MailFrom`:** `TicketCat-NoReply@arizona.edu`
+<<<<<<< HEAD
 2. **Project Parameters:** (if applicable)
+=======
+2. **Project Parameters:** 
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
    - **`ConnectionString`:** usb-smtp-outbound-1.mimecast.com
    - **`Login`:** Sensetive
    - **`PW`:** Sensetive
@@ -647,6 +727,10 @@ This package is designed to notify study staff members via email when a study ca
 - `9:45AM, Every Tuesday`
 
 ## CalendarValidationByCRCEmailReminder
+<<<<<<< HEAD
+=======
+[UP⬆️](#table-of-contents)
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
 ### Basic Information
 - **Package Name:** `CalendarValidationByCRCEmailReminder`
 - **Author:** `BLUECAT\gendy`
@@ -676,7 +760,11 @@ This package sends email reminders to study staff members to inform them that th
 ### Parameters and Configurations
 1. **Package Parameters:**
    - **`MailFrom`:** `TicketCat-NoReply@arizona.edu`
+<<<<<<< HEAD
 2. **Project Parameters:** (if applicable)
+=======
+2. **Project Parameters:** 
+>>>>>>> 72fbbe6 (Bulk Modifications. Updating Readme)
    - **`ConnectionString`:** usb-smtp-outbound-1.mimecast.com
    - **`Login`:** Sensetive
    - **`PW`:** Sensetive
