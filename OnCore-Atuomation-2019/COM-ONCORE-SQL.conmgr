@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="COM-ONCORE-SQL"
+  DTS:DTSID="{E81AE254-C8F4-4C68-B874-85976E236502}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=COM-ONCORE-SQL;Initial Catalog=OnCoreStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package1-{E81AE254-C8F4-4C68-B874-85976E236502}COM-ONCORE-SQL;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

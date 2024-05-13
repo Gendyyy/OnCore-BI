@@ -5,20 +5,29 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="COM-05361"
   DTS:CreatorName="BLUECAT\gendy"
-  DTS:DTSID="{1BCC510D-3CBC-44F5-9B22-C2C11F7EA6A8}"
+  DTS:DTSID="{BD714EDE-9609-4339-9493-81492D30CF06}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5270.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="EmailNotification-CalendarNeedsReleased"
+  DTS:ObjectName="EmailNotification-Test"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{EEE7A835-B585-4B63-ACF0-EC6AE6601895}">
+  DTS:VersionBuild="47"
+  DTS:VersionGUID="{97A490FF-D2B9-4B1F-BA26-C5075842B6DA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{8BD85656-133D-470C-850B-B9DD3278AE06}"
+      DTS:DTSID="{7EBD7866-86AD-4CB1-8DBB-28593C461CBF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ConnectionString">
+      <DTS:VariableValue
+        DTS:DataType="8">ob1.hc4604-54.iphmx.com</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1365494E-D4C1-4802-B721-BD6175F578A6}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="MailFrom">
@@ -27,7 +36,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{3EC57C11-B98C-4DA7-B023-C27D4B61DAF4}"
+      DTS:DTSID="{BF1AF7C8-547F-4DEF-B2A3-E0C19F5FCB41}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="MailObject">
@@ -46,13 +55,13 @@
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\runCALENDAR_NEEDS_RELEASED"
+      DTS:refId="Package\runExecuteSpoolSRCAccrualRpt"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{305B53D7-F362-4FDC-B8C1-E7319C87DCAD}"
+      DTS:DTSID="{63E7F055-6448-49D0-8B02-A36D24CEF2CB}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="runCALENDAR_NEEDS_RELEASED"
+      DTS:ObjectName="runExecuteSpoolSRCAccrualRpt"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -60,7 +69,7 @@
           version="1">
           <components>
             <component
-              refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source"
+              refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -75,7 +84,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[automation].[EmailNotification_CalendarNeedsReleased]</property>
+                  name="OpenRowset"></property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -84,7 +93,13 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from automation.EmailNotification_CalendarNeedsReleased</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select 
+'' as [From],
+'gendy@arizona.edu' as [To],
+'asd' as Body,
+'test' as Subject,
+'' as CC,
+'' as BCC</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -101,7 +116,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -109,7 +124,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Connections[OleDbConnection]"
+                  refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Connections[OleDbConnection]"
                   connectionManagerID="{E81AE254-C8F4-4C68-B874-85976E236502}:external"
                   connectionManagerRefId="Project.ConnectionManagers[COM-ONCORE-SQL]"
                   description="The OLE DB runtime connection used to access the database."
@@ -117,272 +132,173 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output]"
+                  refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[From]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CC]"
+                      externalMetadataColumnId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[From]"
                       length="1"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]"
-                      name="CC"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
-                      length="31"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]"
-                      name="BCC"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Body]"
-                      length="4000"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]"
-                      name="Body"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[PROTOCOL_NO]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PROTOCOL_NO]"
-                      length="35"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[PROTOCOL_NO]"
-                      name="PROTOCOL_NO"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrentDate]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CurrentDate]"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrentDate]"
-                      name="CurrentDate"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[formatted_date]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[formatted_date]"
-                      length="10"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[formatted_date]"
-                      name="formatted_date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEPARTMENT_NAME]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEPARTMENT_NAME]"
-                      length="50"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEPARTMENT_NAME]"
-                      name="DEPARTMENT_NAME"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[To]"
-                      length="25"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]"
-                      name="To"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[From]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[From]"
-                      length="25"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[From]"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[From]"
                       name="From"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]"
-                      dataType="wstr"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
-                      length="78"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]"
+                      externalMetadataColumnId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[To]"
+                      length="17"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]"
+                      name="To"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
+                      length="4"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]"
                       name="Subject"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CAL_STATUS]"
-                      dataType="wstr"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CAL_STATUS]"
-                      length="32"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CAL_STATUS]"
-                      name="CAL_STATUS"
+                      externalMetadataColumnId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Body]"
+                      length="3"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]"
+                      name="Body"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CC]"
+                      length="1"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]"
+                      name="CC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
+                      length="1"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]"
+                      name="BCC"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CC]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[From]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="From" />
+                    <externalMetadataColumn
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[To]"
+                      codePage="1252"
+                      dataType="str"
+                      length="17"
+                      name="To" />
+                    <externalMetadataColumn
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="Subject" />
+                    <externalMetadataColumn
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Body]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Body" />
+                    <externalMetadataColumn
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CC]"
                       codePage="1252"
                       dataType="str"
                       length="1"
                       name="CC" />
                     <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
                       codePage="1252"
                       dataType="str"
                       length="1"
                       name="BCC" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Body]"
-                      dataType="wstr"
-                      length="4000"
-                      name="Body" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PROTOCOL_NO]"
-                      dataType="wstr"
-                      length="35"
-                      name="PROTOCOL_NO" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CurrentDate]"
-                      dataType="dbTimeStamp"
-                      name="CurrentDate" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[formatted_date]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="formatted_date" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEPARTMENT_NAME]"
-                      dataType="wstr"
-                      length="50"
-                      name="DEPARTMENT_NAME" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[To]"
-                      codePage="1252"
-                      dataType="str"
-                      length="25"
-                      name="To" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[From]"
-                      codePage="1252"
-                      dataType="str"
-                      length="25"
-                      name="From" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
-                      dataType="wstr"
-                      length="78"
-                      name="Subject" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CAL_STATUS]"
-                      dataType="wstr"
-                      length="32"
-                      name="CAL_STATUS" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[To]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[From]"
                       codePage="1252"
                       dataType="str"
-                      length="25"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[To]"
-                      name="To" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[From]"
-                      codePage="1252"
-                      dataType="str"
-                      length="25"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[From]"
+                      length="1"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[From]"
                       name="From" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CC]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[To]"
                       codePage="1252"
                       dataType="str"
-                      length="1"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CC]"
-                      name="CC" />
+                      length="17"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[To]"
+                      name="To" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BCC]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subject]"
                       codePage="1252"
                       dataType="str"
-                      length="1"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BCC]"
-                      name="BCC" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subject]"
-                      dataType="wstr"
-                      length="78"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subject]"
+                      length="4"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subject]"
                       name="Subject" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Body]"
-                      dataType="wstr"
-                      length="4000"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Body]"
-                      name="Body" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PROTOCOL_NO]"
-                      dataType="wstr"
-                      length="35"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PROTOCOL_NO]"
-                      name="PROTOCOL_NO" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CAL_STATUS]"
-                      dataType="wstr"
-                      length="32"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CAL_STATUS]"
-                      name="CAL_STATUS" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CurrentDate]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CurrentDate]"
-                      name="CurrentDate" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[formatted_date]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Body]"
                       codePage="1252"
                       dataType="str"
-                      length="10"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[formatted_date]"
-                      name="formatted_date" />
+                      length="3"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Body]"
+                      name="Body" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEPARTMENT_NAME]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEPARTMENT_NAME]"
-                      name="DEPARTMENT_NAME" />
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CC]"
+                      name="CC" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BCC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BCC]"
+                      name="BCC" />
+                    <outputColumn
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -391,7 +307,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination"
+              refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination"
               componentClassID="Microsoft.RecordsetDestination"
               contactInfo="Recordset Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates and populates an in-memory ADO recordset that is available outside of the data flow. Scripts and other package elements can use the recordset. For example, use a recordset to store the names of files that will be loaded into the data warehouse."
@@ -404,43 +320,52 @@
               </properties>
               <inputs>
                 <input
-                  refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input]"
+                  refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input]"
                   hasSideEffects="true"
                   name="Recordset Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[Subject]"
-                      cachedDataType="wstr"
-                      cachedLength="78"
-                      cachedName="Subject"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]" />
-                    <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[Body]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="Body"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]" />
-                    <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[To]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input].Columns[From]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="25"
-                      cachedName="To"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]" />
+                      cachedLength="1"
+                      cachedName="From"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[From]" />
                     <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[CC]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input].Columns[To]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="17"
+                      cachedName="To"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]" />
+                    <inputColumn
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input].Columns[Subject]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="Subject"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]" />
+                    <inputColumn
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input].Columns[Body]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="Body"
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]" />
+                    <inputColumn
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input].Columns[CC]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="CC"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]" />
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]" />
                     <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[BCC]"
+                      refId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input].Columns[BCC]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="31"
+                      cachedLength="1"
                       cachedName="BCC"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]" />
+                      lineageId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -449,10 +374,10 @@
           </components>
           <paths>
             <path
-              refId="Package\runCALENDAR_NEEDS_RELEASED.Paths[OLE DB Source Output]"
-              endId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input]"
+              refId="Package\runExecuteSpoolSRCAccrualRpt.Paths[OLE DB Source Output]"
+              endId="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination.Inputs[Recordset Destination Input]"
               name="OLE DB Source Output"
-              startId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output]" />
+              startId="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -462,11 +387,11 @@
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
       DTS:Disabled="True"
-      DTS:DTSID="{0A9F4283-8075-4B61-A080-89EC5677D139}"
+      DTS:DTSID="{99A31712-734E-45F7-B42F-675E8BE49D89}"
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Send Email"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
@@ -474,16 +399,37 @@
           VSTAMajorVersion="15"
           VSTAMinorVersion="0"
           Language="CSharp"
-          ReadOnlyVariables="User::ConnectionString,User::MailFrom,User::MailObject">
+          ReadOnlyVariables="User::MailFrom,User::MailObject,$Project::ConnectionString,$Project::Login,$Project::PW">
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
+[assembly: AssemblyCopyright("Copyright @  2024")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -708,6 +654,7 @@ using System.Windows.Forms;
 using System.Net.Mail;
 using System.Linq;
 using System.Data.OleDb;
+using System.Net;
 #endregion
 
 namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
@@ -797,9 +744,20 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
             foreach (DataRow row in dt.Rows)
             {
                 MailMessage message = NewMailMessage(row);
+                string connectionString = Dts.Variables["$Project::ConnectionString"].
+                    Value.
+                    ToString();
+                string login = Dts.Variables["$Project::Login"].
+                    Value.
+                    ToString();
+                string pw = Dts.Variables["$Project::PW"].
+                    Value.
+                    ToString();
                 // Create and send email
-                using (SmtpClient client = new SmtpClient(Dts.Variables["User::ConnectionString"].Value.ToString()))
+                using (SmtpClient client = new SmtpClient(connectionString,587))
                 {
+                    client.EnableSsl = true;
+                    client.Credentials = new NetworkCredential(login,pw);
                     client.Send(message);
                 }
             }
@@ -883,7 +841,7 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
     <msb:CodeName>ST_ca20811b7d0e4c0db3d85a030362ff0b</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>ST_ca20811b7d0e4c0db3d85a030362ff0b</msb:DisplayName>
-    <msb:ProjectId>{06446233-4572-4EF0-8181-B6D87542040B}</msb:ProjectId>
+    <msb:ProjectId>{26D8C160-B8A9-4F4A-906B-004305D295DC}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="ST_ca20811b7d0e4c0db3d85a030362ff0b.csproj" />
@@ -893,6 +851,30 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
     <msb:File Include="Properties\Resources.Designer.cs" />
     <msb:File Include="Properties\Settings.Designer.cs" />
     <msb:File Include="ScriptMain.cs" />
+    <msb:Breakpoint Include="3049c169e48441eeb1342d92e2b3b726">
+      <msb:FileName>ScriptMain.cs</msb:FileName>
+      <msb:LineNumber>108</msb:LineNumber>
+      <msb:ColumnNumber>17</msb:ColumnNumber>
+      <msb:Enabled>True</msb:Enabled>
+      <msb:ConditionType>1</msb:ConditionType>
+      <msb:Condition>
+      </msb:Condition>
+      <msb:Language>C#</msb:Language>
+      <msb:HitCountType>1</msb:HitCountType>
+      <msb:HitCountTarget>1</msb:HitCountTarget>
+    </msb:Breakpoint>
+    <msb:Breakpoint Include="44bc296fd4674bdc9297d8ae46e2dff2">
+      <msb:FileName>ScriptMain.cs</msb:FileName>
+      <msb:ColumnNumber>13</msb:ColumnNumber>
+      <msb:Enabled>True</msb:Enabled>
+      <msb:LineNumber>178</msb:LineNumber>
+      <msb:Condition>
+      </msb:Condition>
+      <msb:ConditionType>1</msb:ConditionType>
+      <msb:Language>C#</msb:Language>
+      <msb:HitCountType>1</msb:HitCountType>
+      <msb:HitCountTarget>1</msb:HitCountTarget>
+    </msb:Breakpoint>
   </msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
@@ -925,35 +907,14 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
-[assembly: AssemblyCopyright("Copyright @  2024")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -1025,131 +986,131 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties {
           <BinaryItem
             Name="ST_ca20811b7d0e4c0db3d85a030362ff0b.dll">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
-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
+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
-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
+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
-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
+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
-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
-AAAAAgAAAAIAAAAAAMcEAQAAAAAABgBiAx8GBgDxAx8GBgCuAgwGDwCTBgAABgDbAmIFBgBFA2IF
-BgAmA2IFBgDYA2IFBgCCA2IFBgCbA2IFBgDyAmIFBgANAx8ECgC2A2YECgAKAmYEDgBVAbgABgDl
-BegGDgCTB7gAEgBGAbcEEgBiB7cEBgBzAQwFBgBPAA8BBgAuBwwFBgAcBQwFBgB2Ah8GBgB2AAwF
-BgCRAgwGBgDEBT8GBgCjBU0FEgBhAqEEEgDCAqEEEgBBAjgFCgCPBGYEFgDVBqMBFgBfAaMBDgCK
-BbgADgAmArgABgC7BQwFBgA7BAwFGgBoAa8FBgBBAA8BEgB0BbcEBgBCBAwFEgADB7cEDgDUBegA
-BgDDAQwFBgB/AQwFBgCwB2IFAAAAAIEAAAAAAAEAAQABABAALQXEADkAAQABAAAAEABGBqIGWQAB
-AAUAAAEQAN8GogZ9AAMACQADAQAAFwcAAF0ABAAMAAMhEAADAQAAWQAHAAwAEQAhBSUBEQD6ASkB
-EQAzAS0BBgawADEBVoD7BjQBVoDaATQBNgB9ADgBFgABADwBFgAhADwBFgBWADwBUCAAAAAAhgAz
-BQYAAQAwIQAAAACBAEMBRAEBAAwjAAAAAIEAUgFLAQIAMiMAAAAAhhj/BQYAAwA6IwAAAACDGP8F
-BgADAEIjAAAAAJMIwAVRAQMAbiMAAAAAkwjiAVYBAwB1IwAAAACTCO4BWwEDAH0jAAAAAJYIRwdh
-AQQAhCMAAAAAhhj/BQYABACMIwAAAACRGAUGZgEEAJgjAAAAAJEYBQZmAQQAOiMAAAAAhhj/BQYA
-BACkIwAAAACDAAoAagEEAKQjAAAAAIMAKgBqAQUApCMAAAAAgwBfAGoBBgAAAAEAmwcAAAEArQUA
-AAEAGQQAAAEAHQQAAAEAHQQAAAEAHQQJAP8FAQARAP8FBgAZAP8FCgApAP8FEAAxAP8FEAA5AP8F
-EABBAP8FEABJAP8FEABRAP8FEABZAP8FEABhAP8FEABpAP8FBgDBAP8FBgDRAP8FBgDxAP8FFQBx
-AA8HKgABAdEGMAAJAQMFNgARAQ8EPQB5ACUHQQAhAXkHRwAhAfEFSwCBAG0HPQCxADkEUACZAP8F
-EACZAC4BVAChAFkCBgCBAIoHWgABAVMHAQCRAP8FBgCRAPQEdQCJAAMFegAxAUEHfwAMAP8FjQA5
-AcgBkwA5AYMHsAAUAHkHRwCRAJwFxwAUAAMFzQBJASoBEACRAIoAxwCRAAcBxwBRAZ8H0wBZAf8F
-EACRABMF2QCRADUHEACRAKMHEAB5AP8FBgBhAf8FBgBhAe8E5gBxAP8FBgCxAP8FBgBpAZEB7QBp
-AawH9gDZAP8F/AD5AP8FBgAxAbkHBAEIABQAGwEIABgAIAEpAHsApgEuAAsAfgEuABMAhwEuABsA
-pgEuACMArwEuACsA2AEuADMA2AEuADsA2AEuAEMArwEuAEsA3gEuAFMA2AEuAFsA9QFDAGMAIAFJ
-AHsApgFhAGsAIAFjAHMAIAHDAGsAIAEbAF4A4AADAAEABAADAAAAxAVvAQAAAgJ0AQAASwd5AQIA
-BgADAAIABwAFAAEACAAFAAIACQAHAIYAwQAEgAAAAQAAAJ0iploAAAAAAADEAAAABAAAAAAAAAAA
-AAAACQH6AAAAAAAPAAAAAAAAAAAAAAASAUcEAAAAAAQAAAAAAAAAAAAAAAkBuAAAAAAABAAAAAAA
-AAAAAAAACQEMBQAAAAAPAAAAAAAAAAAAAAASAZEAAAAAAAQAAAAAAAAAAAAAAAkBzgEAAAAAAAAA
-AAEAAABQBgAABQACAAYAAgBHAKwASQCsAAAAADw+OV9fMV8wADxOZXdNYWlsTWVzc2FnZT5iX18x
-XzAAPD45X18xXzEAPE5ld01haWxNZXNzYWdlPmJfXzFfMQBJRW51bWVyYWJsZWAxAExpc3RgMQA8
-PjlfXzFfMgA8TmV3TWFpbE1lc3NhZ2U+Yl9fMV8yAEZ1bmNgMgA8PjkAPE1vZHVsZT4AZ2V0X0ND
-AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuTWFuYWdlZERUUwB2YWx1ZV9fAFN5c3RlbS5EYXRhAFNUX2Nh
-MjA4MTFiN2QwZTRjMGRiM2Q4NWEwMzAzNjJmZjBiAFN5c3RlbS5EYXRhLk9sZURiAG1zY29ybGli
-ADw+YwBnZXRfQmNjAFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljAEFkZABTZW5kAGRlZmF1bHRJ
-bnN0YW5jZQBOZXdNYWlsTWVzc2FnZQBnZXREYXRhVGFibGUAVmFyaWFibGUARW51bWVyYWJsZQBJ
-RGlzcG9zYWJsZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBNaWNyb3NvZnQu
-U3FsU2VydmVyLkR0cy5SdW50aW1lAFR5cGUAV2hlcmUAU3lzdGVtLkNvcmUARmFpbHVyZQBnZXRf
-Q3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1bHR1cmUAVlNUQVJUU2NyaXB0T2JqZWN0TW9k
-ZWxCYXNlAEludGVybmFsRGF0YUNvbGxlY3Rpb25CYXNlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNl
-AERpc3Bvc2UARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUA
-RGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJy
-b3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJr
-QXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25B
-dHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4YXRp
-b25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0
-dHJpYnV0ZQBTU0lTU2NyaXB0VGFza0VudHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1ibHlDb21wYW55
-QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAGdldF9WYWx1ZQB2YWx1ZQBT
-eXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAFRvU3RyaW5nAE1hdGgATWljcm9zb2Z0LlNxbFNlcnZl
-ci5TY3JpcHRUYXNrAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlRhc2tzLlNjcmlwdFRhc2sAU2Ny
-aXB0T2JqZWN0TW9kZWwAU3lzdGVtLkNvbXBvbmVudE1vZGVsAFN5c3RlbS5OZXQuTWFpbABTVF9j
-YTIwODExYjdkMGU0YzBkYjNkODVhMDMwMzYyZmYwYi5kbGwARmlsbABzZXRfSXNCb2R5SHRtbABn
-ZXRfSXRlbQBTeXN0ZW0Ac2V0X0Zyb20ARW51bQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAFN5c3Rl
-bS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAE1h
-aWxBZGRyZXNzQ29sbGVjdGlvbgBEYXRhUm93Q29sbGVjdGlvbgBnZXRfVG8AQ3VsdHVyZUluZm8A
-U3lzdGVtLkxpbnEAQ2hhcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAE9sZURiRGF0YUFkYXB0ZXIASUVu
-dW1lcmF0b3IAR2V0RW51bWVyYXRvcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAFN5
-c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTVF9jYTIwODEx
-YjdkMGU0YzBkYjNkODVhMDMwMzYyZmYwYi5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMA
-RGVidWdnaW5nTW9kZXMAU1RfY2EyMDgxMWI3ZDBlNGMwZGIzZDg1YTAzMDM2MmZmMGIuUHJvcGVy
-dGllcwBnZXRfVmFyaWFibGVzAFNldHRpbmdzAFN5c3RlbS5Db2xsZWN0aW9ucwBTdWNjZXNzAE1h
-aWxBZGRyZXNzAGdldF9EdHMAU2NyaXB0UmVzdWx0cwBnZXRfUm93cwBPYmplY3QAc2V0X1N1Ympl
-Y3QAU3BsaXQAZ2V0X0RlZmF1bHQAc2V0X1Rhc2tSZXN1bHQAU210cENsaWVudABnZXRfQ3VycmVu
-dABnZXRfQ291bnQAVG9MaXN0AE1vdmVOZXh0AERhdGFSb3cAcm93AE1heABzZXRfQm9keQBnZXRf
-QXNzZW1ibHkASXNOdWxsT3JFbXB0eQAAACFVAHMAZQByADoAOgBNAGEAaQBsAE8AYgBqAGUAYwB0
-AAAtVQBzAGUAcgA6ADoAQwBvAG4AbgBlAGMAdABpAG8AbgBTAHQAcgBpAG4AZwAABVQAbwAABUMA
-QwAAB0IAQwBDAAAPUwB1AGIAagBlAGMAdAAACUIAbwBkAHkAAB1VAHMAZQByADoAOgBNAGEAaQBs
-AEYAcgBvAG0AAHFTAFQAXwBjAGEAMgAwADgAMQAxAGIANwBkADAAZQA0AGMAMABkAGIAMwBkADgA
-NQBhADAAMwAwADMANgAyAGYAZgAwAGIALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1
-AHIAYwBlAHMAAADnE+6VcBA+T65wIHQ4w/5YAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARF1DgcG
-Ej0SQRJFEkkSTRJRBSAAEoCBBSAAEoCFBiABEoCJHAMgABwFIAASgI0DIAAIBCAAEkEDIAAOBSAB
-ARJJAyAAAhYHBxJJFRJVAQ4VElUBDhUSVQEODg4IBCABAQIEIAEcDgYgAR0OHQMGFRJlAg4CBSAC
-ARwYGBABAhUSgKEBHgAVEoChAR4AFRJlAh4AAgMKAQ4QEAEBFRJVAR4AFRKAoQEeAAUVElUBDgUg
-ABKApQUgARMACAUAAggICAYgAQESgK0FBwIcEj0GIAIIEj0cCAABEoC1EYC5BSAAEoC9ByACAQ4S
-gL0EAAECDgi3elxWGTTgiQiJhF3NgIDMkQQAAAAABAEAAAADBhJtAwYScQMGEhACBggDBhEUAwYS
-GAcGFRJlAg4CBiABEkkSRQUgARI9HAQAABJtBAAAEnEFAAEBEnEEAAASEAMAAAEEIAECDgQIABJt
-BAgAEnEECAASEAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAA
-AAAoAQAjU1RfY2EyMDgxMWI3ZDBlNGMwZGIzZDg1YTAzMDM2MmZmMGIAAAUBAAAAABYBABFDb3B5
-cmlnaHQgQCAgMjAyNAAASQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC43AQBUDhRGcmFtZXdv
-cmtEaXNwbGF5TmFtZRIuTkVUIEZyYW1ld29yayA0LjcAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0u
-UmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0
-dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291
-cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAAPA1AAAAAAAAAAAA
-AAo2AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8NQAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1z
-Y29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-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
+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
+AI8EcQcSAMUHcQcGANsFLAUGADsELAUaAGgBzwUGAEEADwESAJQFyQQGAEIELAUSADMHyQQOAPQF
+6AAGAMMBLAUGAH8BLAUGAP4HggUAAAAAgQAAAAAAAQABAAEAEABNBcQAOQABAAEAAAAQAGYGwgZZ
+AAEABQAAARAA/wbCBn0AAwAJAAMBAABHBwAAXQAEAAwAAyEQAAMBAABZAAcADAARAEEFOgERAPoB
+PgERADMBQgEGBrAARgFWgCsHSQFWgNoBSQE2AH0ATQEWAAEAUQEWACEAUQEWAFYAUQFQIAAAAACG
+AFMFBgABAJghAAAAAIEAQwFZAQEAdCMAAAAAgQBSAWABAgCaIwAAAACGGB8GBgADAKIjAAAAAIMY
+HwYGAAMAqiMAAAAAkwjgBWYBAwDWIwAAAACTCOIBawEDAN0jAAAAAJMI7gFwAQMA5SMAAAAAlgiC
+B3YBBADsIwAAAACGGB8GBgAEAPQjAAAAAJEYJQZ7AQQAACQAAAAAkRglBnsBBACiIwAAAACGGB8G
+BgAEAAwkAAAAAIMACgB/AQQADCQAAAAAgwAqAH8BBQAMJAAAAACDAF8AfwEGAAAAAQDpBwAAAQDN
+BQAAAQAZBAAAAQAdBAAAAQAdBAAAAQAdBAkAHwYBABEAHwYGABkAHwYKACkAHwYQADEAHwYQADkA
+HwYQAEEAHwYQAEkAHwYQAFEAHwYQAFkAHwYQAGEAHwYQAGkAHwYGAMEAHwYGANEAHwYGAPEAHwYV
+AHEAPwcsAAEB8QYyAAkBIwU4ABEBDwQ/AHkAVQdDACEBtAdJACEBEQZNAIEAqAc/ALEAOQRSAJkA
+HwZWAJkAFQVcACkBHwZhAJkACAdnAJkALgFuAKEAWQIGAIEA2Ad0AAEBjgcBAJEAHwYGAJEABgVc
+AIkAIwWPAEEBfAeUAAwAHwaiAEkByAGoAEkBvgfFABQAtAdJAJEAvAXcABQAIwXiAFkBKgEQAJEA
+igDcAJEABwHcAGEB7QfoAGkBHwYQAJEAMwXuAJEAZQcQAJEA8QcQAHkAHwYGAHEBHwYGAHEBAQX7
+AHEAHwYGALEAHwYGAHkBkQECAXkB+gcLAdkAHwYRAfkAHwYGAEEBBwgZAQgAFAAwAQgAGAA1ASkA
+ewC7AS4ACwCTAS4AEwCcAS4AGwC7AS4AIwDEAS4AKwDtAS4AMwDtAS4AOwDtAS4AQwDEAS4ASwDz
+AS4AUwDtAS4AWwAKAkMAYwA1AUkAewC7AWEAawA1AWMAcwA1AcMAawA1ARsAeAD1AAMAAQAEAAMA
+AADkBYQBAAACAokBAACGB44BAgAGAAMAAgAHAAUAAQAIAAUAAgAJAAcAmwDWAASAAAABAAAAtiI8
+agAAAAAAAMQAAAAEAAAAAAAAAAAAAAAeAfoAAAAAAA8AAAAAAAAAAAAAACcBRwQAAAAABAAAAAAA
+AAAAAAAAHgG4AAAAAAAEAAAAAAAAAAAAAAAeASwFAAAAAA8AAAAAAAAAAAAAACcBkQAAAAAABAAA
+AAAAAAAAAAAAHgHOAQAAAAAAAAAAAQAAAHAGAAAFAAIABgACAE0AwQBPAMEAAAAAAAA8PjlfXzFf
+MAA8TmV3TWFpbE1lc3NhZ2U+Yl9fMV8wADw+OV9fMV8xADxOZXdNYWlsTWVzc2FnZT5iX18xXzEA
+SUVudW1lcmFibGVgMQBMaXN0YDEAPD45X18xXzIAPE5ld01haWxNZXNzYWdlPmJfXzFfMgBGdW5j
+YDIAPD45ADxNb2R1bGU+AGdldF9DQwBNaWNyb3NvZnQuU3FsU2VydmVyLk1hbmFnZWREVFMAdmFs
+dWVfXwBTeXN0ZW0uRGF0YQBTVF9jYTIwODExYjdkMGU0YzBkYjNkODVhMDMwMzYyZmYwYgBTeXN0
+ZW0uRGF0YS5PbGVEYgBtc2NvcmxpYgA8PmMAZ2V0X0JjYwBTeXN0ZW0uQ29sbGVjdGlvbnMuR2Vu
+ZXJpYwBBZGQAU2VuZABkZWZhdWx0SW5zdGFuY2UATmV3TWFpbE1lc3NhZ2UAZ2V0RGF0YVRhYmxl
+AFZhcmlhYmxlAEVudW1lcmFibGUASURpc3Bvc2FibGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlw
+ZUZyb21IYW5kbGUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVudGltZQBUeXBlAFdoZXJlAFN5
+c3RlbS5Db3JlAEZhaWx1cmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJl
+AFZTVEFSVFNjcmlwdE9iamVjdE1vZGVsQmFzZQBJbnRlcm5hbERhdGFDb2xsZWN0aW9uQmFzZQBB
+cHBsaWNhdGlvblNldHRpbmdzQmFzZQBEaXNwb3NlAEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBp
+bGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdn
+YWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJp
+YnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUA
+QXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1
+dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1
+dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAU1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0
+cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJp
+YnV0ZQBnZXRfVmFsdWUAdmFsdWUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBUb1N0cmluZwBN
+YXRoAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNyb3NvZnQuU3FsU2VydmVyLkR0
+cy5UYXNrcy5TY3JpcHRUYXNrAE5ldHdvcmtDcmVkZW50aWFsAFNjcmlwdE9iamVjdE1vZGVsAFN5
+c3RlbS5Db21wb25lbnRNb2RlbABTeXN0ZW0uTmV0Lk1haWwAU1RfY2EyMDgxMWI3ZDBlNGMwZGIz
+ZDg1YTAzMDM2MmZmMGIuZGxsAEZpbGwAc2V0X0lzQm9keUh0bWwAc2V0X0VuYWJsZVNzbABnZXRf
+SXRlbQBTeXN0ZW0Ac2V0X0Zyb20ARW51bQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAFN5c3RlbS5D
+b25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAE1haWxB
+ZGRyZXNzQ29sbGVjdGlvbgBEYXRhUm93Q29sbGVjdGlvbgBnZXRfVG8AQ3VsdHVyZUluZm8AU3lz
+dGVtLkxpbnEAQ2hhcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAE9sZURiRGF0YUFkYXB0ZXIASUVudW1l
+cmF0b3IAR2V0RW51bWVyYXRvcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAFN5c3Rl
+bS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTVF9jYTIwODExYjdk
+MGU0YzBkYjNkODVhMDMwMzYyZmYwYi5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVi
+dWdnaW5nTW9kZXMAU1RfY2EyMDgxMWI3ZDBlNGMwZGIzZDg1YTAzMDM2MmZmMGIuUHJvcGVydGll
+cwBnZXRfVmFyaWFibGVzAFNldHRpbmdzAHNldF9DcmVkZW50aWFscwBTeXN0ZW0uQ29sbGVjdGlv
+bnMAU3VjY2VzcwBNYWlsQWRkcmVzcwBnZXRfRHRzAFNjcmlwdFJlc3VsdHMAZ2V0X1Jvd3MAT2Jq
+ZWN0AHNldF9TdWJqZWN0AFN5c3RlbS5OZXQAU3BsaXQAZ2V0X0RlZmF1bHQAc2V0X1Rhc2tSZXN1
+bHQAU210cENsaWVudABnZXRfQ3VycmVudABnZXRfQ291bnQAVG9MaXN0AElDcmVkZW50aWFsc0J5
+SG9zdABNb3ZlTmV4dABEYXRhUm93AHJvdwBNYXgAc2V0X0JvZHkAZ2V0X0Fzc2VtYmx5AElzTnVs
+bE9yRW1wdHkAAAAAACFVAHMAZQByADoAOgBNAGEAaQBsAE8AYgBqAGUAYwB0AAA1JABQAHIAbwBq
+AGUAYwB0ADoAOgBDAG8AbgBuAGUAYwB0AGkAbwBuAFMAdAByAGkAbgBnAAAfJABQAHIAbwBqAGUA
+YwB0ADoAOgBMAG8AZwBpAG4AABkkAFAAcgBvAGoAZQBjAHQAOgA6AFAAVwAABVQAbwAABUMAQwAA
+B0IAQwBDAAAPUwB1AGIAagBlAGMAdAAACUIAbwBkAHkAAB1VAHMAZQByADoAOgBNAGEAaQBsAEYA
+cgBvAG0AAHFTAFQAXwBjAGEAMgAwADgAMQAxAGIANwBkADAAZQA0AGMAMABkAGIAMwBkADgANQBh
+ADAAMwAwADMANgAyAGYAZgAwAGIALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIA
+YwBlAHMAAAAAAHQenH8MyZ5IrHz7/SxLjsMABCABAQgDIAABBSABARERBCABAQ4FIAEBEXUQBwgS
+PRJBEkUSSQ4OEk0SUQUgABKAgQUgABKAhQYgARKAiRwDIAAcBSAAEoCNAyAACAQgABJBAyAADgUg
+AgEOCAQgAQECBSACAQ4OBiABARKAmQUgAQESSQMgAAIWBwcSSRUSVQEOFRJVAQ4VElUBDg4OCAQg
+ARwOBiABHQ4dAwYVEmUCDgIFIAIBHBgYEAECFRKAqQEeABUSgKkBHgAVEmUCHgACAwoBDhAQAQEV
+ElUBHgAVEoCpAR4ABRUSVQEOBSAAEoCtBSABEwAIBQACCAgIBiABARKAtQUHAhwSPQYgAggSPRwI
+AAESgL0RgMEFIAASgMUHIAIBDhKAxQQAAQIOCLd6XFYZNOCJCImEXc2AgMyRBAAAAAAEAQAAAAMG
+Em0DBhJxAwYSEAIGCAMGERQDBhIYBwYVEmUCDgIGIAESSRJFBSABEj0cBAAAEm0EAAAScQUAAQES
+cQQAABIQAwAAAQQgAQIOBAgAEm0ECAAScQQIABIQCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhj
+ZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTVF9jYTIwODExYjdkMGU0YzBkYjNkODVhMDMwMzYy
+ZmYwYgAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDI0AABJAQAaLk5FVEZyYW1ld29yayxWZXJz
+aW9uPXY0LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuN7QAAADO
+yu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZl
+cnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5
+MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFE
+UEFEULQAAAAgNwAAAAAAAAAAAAA6NwAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALDcAAAAAAAAA
+AAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAEgA
 AABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8AAAAA
-AL0E7/4AAAEAAAABAKZanSIAAAEAplqdIj8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAA
+AL0E7/4AAAEAAAABADxqtiIAAAEAPGq2Ij8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAA
 AQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8AbgAA
 AAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAwADAA
 MAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEAbgB5
 AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAA
 UwBUAF8AYwBhADIAMAA4ADEAMQBiADcAZAAwAGUANABjADAAZABiADMAZAA4ADUAYQAwADMAMAAz
 ADYAMgBmAGYAMABiAAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADgA
-OAA2ADEALgAyADMAMgAwADYAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBU
+OAA4ADYALgAyADcAMQA5ADYAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBU
 AF8AYwBhADIAMAA4ADEAMQBiADcAZAAwAGUANABjADAAZABiADMAZAA4ADUAYQAwADMAMAAzADYA
 MgBmAGYAMABiAC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABD
 AG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADQAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEA
@@ -1158,15 +1119,15 @@ AGUAAABTAFQAXwBjAGEAMgAwADgAMQAxAGIANwBkADAAZQA0AGMAMABkAGIAMwBkADgANQBhADAA
 MwAwADMANgAyAGYAZgAwAGIALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAA
 AAAAUwBUAF8AYwBhADIAMAA4ADEAMQBiADcAZAAwAGUANABjADAAZABiADMAZAA4ADUAYQAwADMA
 MAAzADYAMgBmAGYAMABiAAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAu
-ADAALgA4ADgANgAxAC4AMgAzADIAMAA2AAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUA
-cgBzAGkAbwBuAAAAMQAuADAALgA4ADgANgAxAC4AMgAzADIAMAA2AAAAAAAAAAAAAAAAAAAAAAAA
+ADAALgA4ADgAOAA2AC4AMgA3ADEAOQA2AAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUA
+cgBzAGkAbwBuAAAAMQAuADAALgA4ADgAOAA2AC4AMgA3ADEAOQA2AAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAABw2AAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAAEw3AAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1176,6 +1137,16 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+          <Breakpoint
+            Enabled="True"
+            File="ScriptMain.cs"
+            Line="108"
+            Column="17" />
+          <Breakpoint
+            Enabled="True"
+            File="ScriptMain.cs"
+            Line="178"
+            Column="13" />
         </ScriptProject>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1183,52 +1154,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
       DTS:refId="Package\Send Email V2"
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
-      DTS:DTSID="{2d91c516-3dc9-47ef-a9d0-d1ef3b6e3ba1}"
+      DTS:DTSID="{21549c0a-8dd8-4170-a22f-57815ea3c46e}"
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Send Email V2"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
-          Name="ST_3e71e3bc7d71454ebe66e143824d7df7"
+          Name="ST_fca5c71be4484325a40ee7d68021ae93"
           VSTAMajorVersion="15"
           VSTAMinorVersion="0"
           Language="CSharp"
           ReadOnlyVariables="User::MailFrom,User::MailObject,$Project::ConnectionString,$Project::Login,$Project::PW">
-          <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
-[assembly: AssemblyCopyright("Copyright @  2024")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
-          <ProjectItem
-            Name="ST_3e71e3bc7d71454ebe66e143824d7df7.csproj"
-            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{a36909de-0fb7-4d3c-a4cf-69c233c8ac4c}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_ca20811b7d0e4c0db3d85a030362ff0b</RootNamespace><AssemblyName>ST_3e71e3bc7d71454ebe66e143824d7df7</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="ScriptTask" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" /><Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex=""></Host><ProjectClient><HostIdentifier>SSIS_ST150</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -1348,6 +1286,35 @@ using System.Runtime.CompilerServices;
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 </root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties.Settings.get_Default():ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties.Sett" +
+    "ings")]
+
+namespace ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
           <ProjectItem
             Name="ScriptMain.cs"
             Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
@@ -1547,6 +1514,9 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
     }
 }]]></ProjectItem>
           <ProjectItem
+            Name="ST_fca5c71be4484325a40ee7d68021ae93.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{a36909de-0fb7-4d3c-a4cf-69c233c8ac4c}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_ca20811b7d0e4c0db3d85a030362ff0b</RootNamespace><AssemblyName>ST_fca5c71be4484325a40ee7d68021ae93</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="ScriptTask" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" /><Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex=""></Host><ProjectClient><HostIdentifier>SSIS_ST150</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+          <ProjectItem
             Name="Project"
             Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
@@ -1557,7 +1527,7 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
     <msb:ProjectId>{F147787C-2965-4158-9278-A6883FB5FB00}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
-    <msb:Project Include="ST_3e71e3bc7d71454ebe66e143824d7df7.csproj" />
+    <msb:Project Include="ST_fca5c71be4484325a40ee7d68021ae93.csproj" />
     <msb:File Include="Properties\Resources.resx" />
     <msb:File Include="Properties\Settings.settings" />
     <msb:File Include="Properties\AssemblyInfo.cs" />
@@ -1567,34 +1537,35 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
   </msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
 //
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
+[assembly: AssemblyCopyright("Copyright @  2024")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
 
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties.Settings.get_Default():ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties.Sett" +
-    "ings")]
-
-namespace ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Settings.settings"
             Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
@@ -1834,10 +1805,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{81CF2756-CF46-4B68-BB9D-28CC373F9AF8}"
-      DTS:From="Package\runCALENDAR_NEEDS_RELEASED"
+      DTS:DTSID="{232CFD64-441A-4B19-9248-A55DACEAA6E0}"
+      DTS:From="Package\runExecuteSpoolSRCAccrualRpt"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
+      DTS:To="Package\Send Email" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{48CCEB3D-7630-4842-82F7-1E7B9A872DD6}"
+      DTS:From="Package\runExecuteSpoolSRCAccrualRpt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
       DTS:To="Package\Send Email V2" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -1851,45 +1830,79 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="264,42"
-          Id="Package\runCALENDAR_NEEDS_RELEASED"
+          Size="240,42"
+          Id="Package\runExecuteSpoolSRCAccrualRpt"
           TopLeft="85,166" />
         <NodeLayout
           Size="135,42"
           Id="Package\Send Email"
-          TopLeft="92,277" />
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Send Email V2"
-          TopLeft="250,278" />
+          TopLeft="151,276" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="217,208">
+          TopLeft="205,208">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="109,70"
+              EndConnector="13.5,68"
               Start="0,0"
-              End="109,62.5">
+              End="13.5,60.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31" />
+                    End="0,30" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31"
-                    Point2="0,35"
-                    Point3="4,35" />
+                    Point1="0,30"
+                    Point2="0,34"
+                    Point3="4,34" />
                   <mssgle:LineSegment
-                    End="105,35" />
+                    End="9.5,34" />
                   <mssgle:CubicBezierSegment
-                    Point1="105,35"
-                    Point2="109,35"
-                    Point3="109,39" />
+                    Point1="9.5,34"
+                    Point2="13.5,34"
+                    Point3="13.5,38" />
                   <mssgle:LineSegment
-                    End="109,62.5" />
+                    End="13.5,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Send Email V2"
+          TopLeft="313,273" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="243.666666666667,208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="145.333333333333,65"
+              Start="0,0"
+              End="145.333333333333,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.2582781456954" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.2582781456954"
+                    Point2="0,26.2582781456954"
+                    Point3="4,26.2582781456954" />
+                  <mssgle:LineSegment
+                    End="141.333333333333,26.2582781456954" />
+                  <mssgle:CubicBezierSegment
+                    Point1="141.333333333333,26.2582781456954"
+                    Point2="145.333333333333,26.2582781456954"
+                    Point3="145.333333333333,30.2582781456954" />
+                  <mssgle:LineSegment
+                    End="145.333333333333,57.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1902,32 +1915,32 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\runCALENDAR_NEEDS_RELEASED">
+    design-time-name="Package\runExecuteSpoolSRCAccrualRpt">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="157,42"
-          Id="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source"
-          TopLeft="171,102" />
+          Id="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source"
+          TopLeft="185,87" />
         <NodeLayout
           Size="187,42"
-          Id="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination"
-          TopLeft="160,224" />
+          Id="Package\runExecuteSpoolSRCAccrualRpt\Recordset Destination"
+          TopLeft="166,213" />
         <EdgeLayout
-          Id="Package\runCALENDAR_NEEDS_RELEASED.Paths[OLE DB Source Output]"
-          TopLeft="251.5,144">
+          Id="Package\runExecuteSpoolSRCAccrualRpt.Paths[OLE DB Source Output]"
+          TopLeft="261.5,129">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,80"
+              EndConnector="0,84"
               Start="0,0"
-              End="0,72.5">
+              End="0,76.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,72.5" />
+                    End="0,76.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1940,15 +1953,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source">
+    design-time-name="Package\runExecuteSpoolSRCAccrualRpt\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

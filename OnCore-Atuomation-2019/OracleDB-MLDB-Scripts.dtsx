@@ -11,24 +11,10 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="OracleDB-MLDB-Scripts"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{B737A443-E478-4DE0-9526-D39139995BE3}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{F42A45E5-3C2C-4170-8D8B-00797116E2EC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[COM-ONCORE-SQL]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{13133FC2-8ACD-4AC9-AFD1-39A77C9079D1}"
-      DTS:ObjectName="COM-ONCORE-SQL">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=COM-ONCORE-SQL;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{13133FC2-8ACD-4AC9-AFD1-39A77C9079D1}COM-ONCORE-SQL;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -40,11 +26,11 @@
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="runspCreate_TB_Oncore_DT4"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{13133FC2-8ACD-4AC9-AFD1-39A77C9079D1}"
+          SQLTask:Connection="{E81AE254-C8F4-4C68-B874-85976E236502}"
           SQLTask:SqlStatementSource="exec('BEGIN UACC_ONCORE_RW_UTILS.CREATE_TB_ONCORE_DT4; END;') at ONCOREPROD;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -56,11 +42,11 @@
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="runspUpdate_Protocols"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{13133FC2-8ACD-4AC9-AFD1-39A77C9079D1}"
+          SQLTask:Connection="{E81AE254-C8F4-4C68-B874-85976E236502}"
           SQLTask:SqlStatementSource="exec('BEGIN UACC_ONCORE_RW_UTILS.UPDATE_PROTOCOLS; END;') at ONCOREPROD;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -72,11 +58,11 @@
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="runspUPDATE_PROTOCOLS_UNQIUE_INFO"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{13133FC2-8ACD-4AC9-AFD1-39A77C9079D1}"
+          SQLTask:Connection="{E81AE254-C8F4-4C68-B874-85976E236502}"
           SQLTask:SqlStatementSource="exec('BEGIN UACC_ONCORE_RW_UTILS.UPDATE_PROTOCOLS_UNIQUE_INFO; END;') at ONCOREPROD;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -89,11 +75,11 @@
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="runspUpdate_Protocol_Subjects_Info"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{13133FC2-8ACD-4AC9-AFD1-39A77C9079D1}"
+          SQLTask:Connection="{E81AE254-C8F4-4C68-B874-85976E236502}"
           SQLTask:SqlStatementSource="exec('BEGIN UACC_ONCORE_RW_UTILS.UPDATE_PROTOCOL_SUBJECTS_INFO; END;') at ONCOREPROD;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -129,19 +115,19 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="198.4,41.6"
+          Size="198,42"
           Id="Package\runspCreate_TB_Oncore_DT4"
           TopLeft="431,133" />
         <NodeLayout
-          Size="260.8,41.6"
+          Size="261,42"
           Id="Package\runspUpdate_Protocol_Subjects_Info"
           TopLeft="112.135531135531,296.314285714286" />
         <NodeLayout
-          Size="193.6,41.6"
+          Size="194,42"
           Id="Package\runspUpdate_Protocols"
           TopLeft="143.849816849817,133.673992708431" />
         <NodeLayout
-          Size="307.2,41.6"
+          Size="307,42"
           Id="Package\runspUPDATE_PROTOCOLS_UNQIUE_INFO"
           TopLeft="94.2857142857142,220.438095244983" />
         <EdgeLayout

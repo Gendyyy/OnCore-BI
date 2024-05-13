@@ -5,20 +5,20 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="COM-05361"
   DTS:CreatorName="BLUECAT\gendy"
-  DTS:DTSID="{1BCC510D-3CBC-44F5-9B22-C2C11F7EA6A8}"
+  DTS:DTSID="{D2724261-423C-47B5-A190-CE9B38873A81}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5270.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="EmailNotification-CalendarNeedsReleased"
+  DTS:ObjectName="EmailNotification-Username_NetID_Discrepancy"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{EEE7A835-B585-4B63-ACF0-EC6AE6601895}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{F5C4E90C-BC47-420B-9A11-256C051D235D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{8BD85656-133D-470C-850B-B9DD3278AE06}"
+      DTS:DTSID="{CE0B7035-4961-4041-9B51-B4714097B95A}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="MailFrom">
@@ -27,7 +27,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{3EC57C11-B98C-4DA7-B023-C27D4B61DAF4}"
+      DTS:DTSID="{ACB1A4D5-56A2-4966-9B7B-71108087162C}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="MailObject">
@@ -46,13 +46,13 @@
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\runCALENDAR_NEEDS_RELEASED"
+      DTS:refId="Package\Prepare Data"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{305B53D7-F362-4FDC-B8C1-E7319C87DCAD}"
+      DTS:DTSID="{04FC489E-543D-4A66-9AB8-CB12BE72D1B6}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="runCALENDAR_NEEDS_RELEASED"
+      DTS:ObjectName="Prepare Data"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -60,7 +60,7 @@
           version="1">
           <components>
             <component
-              refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source"
+              refId="Package\Prepare Data\OLE DB Source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -75,7 +75,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[automation].[EmailNotification_CalendarNeedsReleased]</property>
+                  name="OpenRowset">[automation].[EmailNotification_Username_NetID_Discrepancy]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -109,7 +109,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Connections[OleDbConnection]"
+                  refId="Package\Prepare Data\OLE DB Source.Connections[OleDbConnection]"
                   connectionManagerID="{E81AE254-C8F4-4C68-B874-85976E236502}:external"
                   connectionManagerRefId="Project.ConnectionManagers[COM-ONCORE-SQL]"
                   description="The OLE DB runtime connection used to access the database."
@@ -117,272 +117,167 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output]"
+                  refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]"
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CC]"
+                      externalMetadataColumnId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CC]"
                       length="1"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]"
                       name="CC"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]"
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
-                      length="31"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]"
+                      externalMetadataColumnId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
+                      length="39"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]"
                       name="BCC"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]"
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Body]"
-                      length="4000"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]"
+                      externalMetadataColumnId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Body]"
+                      length="874"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]"
                       name="Body"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[PROTOCOL_NO]"
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PROTOCOL_NO]"
-                      length="35"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[PROTOCOL_NO]"
-                      name="PROTOCOL_NO"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrentDate]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CurrentDate]"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrentDate]"
-                      name="CurrentDate"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[formatted_date]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[formatted_date]"
-                      length="10"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[formatted_date]"
-                      name="formatted_date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEPARTMENT_NAME]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEPARTMENT_NAME]"
+                      externalMetadataColumnId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[To]"
                       length="50"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEPARTMENT_NAME]"
-                      name="DEPARTMENT_NAME"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[To]"
-                      length="25"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]"
                       name="To"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[From]"
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[From]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[From]"
-                      length="25"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[From]"
+                      externalMetadataColumnId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[From]"
+                      length="1"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[From]"
                       name="From"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]"
-                      dataType="wstr"
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
-                      length="78"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]"
-                      name="Subject"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CAL_STATUS]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CAL_STATUS]"
+                      externalMetadataColumnId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
                       length="32"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CAL_STATUS]"
-                      name="CAL_STATUS"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]"
+                      name="Subject"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CC]"
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CC]"
                       codePage="1252"
                       dataType="str"
                       length="1"
                       name="CC" />
                     <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BCC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="39"
+                      name="BCC" />
+                    <externalMetadataColumn
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Body]"
+                      dataType="wstr"
+                      length="874"
+                      name="Body" />
+                    <externalMetadataColumn
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[To]"
+                      dataType="wstr"
+                      length="50"
+                      name="To" />
+                    <externalMetadataColumn
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[From]"
                       codePage="1252"
                       dataType="str"
                       length="1"
-                      name="BCC" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Body]"
-                      dataType="wstr"
-                      length="4000"
-                      name="Body" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PROTOCOL_NO]"
-                      dataType="wstr"
-                      length="35"
-                      name="PROTOCOL_NO" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CurrentDate]"
-                      dataType="dbTimeStamp"
-                      name="CurrentDate" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[formatted_date]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="formatted_date" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEPARTMENT_NAME]"
-                      dataType="wstr"
-                      length="50"
-                      name="DEPARTMENT_NAME" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[To]"
-                      codePage="1252"
-                      dataType="str"
-                      length="25"
-                      name="To" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[From]"
-                      codePage="1252"
-                      dataType="str"
-                      length="25"
                       name="From" />
                     <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
-                      dataType="wstr"
-                      length="78"
-                      name="Subject" />
-                    <externalMetadataColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CAL_STATUS]"
-                      dataType="wstr"
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
+                      codePage="1252"
+                      dataType="str"
                       length="32"
-                      name="CAL_STATUS" />
+                      name="Subject" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[To]"
-                      codePage="1252"
-                      dataType="str"
-                      length="25"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[To]"
-                      name="To" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[From]"
-                      codePage="1252"
-                      dataType="str"
-                      length="25"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[From]"
-                      name="From" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CC]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CC]"
-                      name="CC" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BCC]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BCC]"
-                      name="BCC" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subject]"
-                      dataType="wstr"
-                      length="78"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subject]"
-                      name="Subject" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Body]"
-                      dataType="wstr"
-                      length="4000"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Body]"
-                      name="Body" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PROTOCOL_NO]"
-                      dataType="wstr"
-                      length="35"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PROTOCOL_NO]"
-                      name="PROTOCOL_NO" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CAL_STATUS]"
-                      dataType="wstr"
-                      length="32"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CAL_STATUS]"
-                      name="CAL_STATUS" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CurrentDate]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CurrentDate]"
-                      name="CurrentDate" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[formatted_date]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[formatted_date]"
-                      name="formatted_date" />
-                    <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEPARTMENT_NAME]"
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[To]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEPARTMENT_NAME]"
-                      name="DEPARTMENT_NAME" />
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[To]"
+                      name="To" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[From]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[From]"
+                      name="From" />
+                    <outputColumn
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CC]"
+                      name="CC" />
+                    <outputColumn
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BCC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="39"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BCC]"
+                      name="BCC" />
+                    <outputColumn
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subject]"
+                      codePage="1252"
+                      dataType="str"
+                      length="32"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subject]"
+                      name="Subject" />
+                    <outputColumn
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Body]"
+                      dataType="wstr"
+                      length="874"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Body]"
+                      name="Body" />
+                    <outputColumn
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -391,7 +286,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination"
+              refId="Package\Prepare Data\Recordset Destination"
               componentClassID="Microsoft.RecordsetDestination"
               contactInfo="Recordset Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates and populates an in-memory ADO recordset that is available outside of the data flow. Scripts and other package elements can use the recordset. For example, use a recordset to store the names of files that will be loaded into the data warehouse."
@@ -404,43 +299,43 @@
               </properties>
               <inputs>
                 <input
-                  refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input]"
+                  refId="Package\Prepare Data\Recordset Destination.Inputs[Recordset Destination Input]"
                   hasSideEffects="true"
                   name="Recordset Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[Subject]"
-                      cachedDataType="wstr"
-                      cachedLength="78"
-                      cachedName="Subject"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]" />
-                    <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[Body]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="Body"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]" />
-                    <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[To]"
+                      refId="Package\Prepare Data\Recordset Destination.Inputs[Recordset Destination Input].Columns[Subject]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="25"
-                      cachedName="To"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]" />
+                      cachedLength="32"
+                      cachedName="Subject"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subject]" />
                     <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[CC]"
+                      refId="Package\Prepare Data\Recordset Destination.Inputs[Recordset Destination Input].Columns[Body]"
+                      cachedDataType="wstr"
+                      cachedLength="874"
+                      cachedName="Body"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Body]" />
+                    <inputColumn
+                      refId="Package\Prepare Data\Recordset Destination.Inputs[Recordset Destination Input].Columns[To]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="To"
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[To]" />
+                    <inputColumn
+                      refId="Package\Prepare Data\Recordset Destination.Inputs[Recordset Destination Input].Columns[CC]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="CC"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]" />
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CC]" />
                     <inputColumn
-                      refId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input].Columns[BCC]"
+                      refId="Package\Prepare Data\Recordset Destination.Inputs[Recordset Destination Input].Columns[BCC]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="31"
+                      cachedLength="39"
                       cachedName="BCC"
-                      lineageId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]" />
+                      lineageId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BCC]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -449,10 +344,10 @@
           </components>
           <paths>
             <path
-              refId="Package\runCALENDAR_NEEDS_RELEASED.Paths[OLE DB Source Output]"
-              endId="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination.Inputs[Recordset Destination Input]"
+              refId="Package\Prepare Data.Paths[OLE DB Source Output]"
+              endId="Package\Prepare Data\Recordset Destination.Inputs[Recordset Destination Input]"
               name="OLE DB Source Output"
-              startId="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source.Outputs[OLE DB Source Output]" />
+              startId="Package\Prepare Data\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -462,11 +357,11 @@
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
       DTS:Disabled="True"
-      DTS:DTSID="{0A9F4283-8075-4B61-A080-89EC5677D139}"
+      DTS:DTSID="{039D5BF8-B2D3-45BB-B412-258DED831C6D}"
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Send Email"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
@@ -476,14 +371,35 @@
           Language="CSharp"
           ReadOnlyVariables="User::ConnectionString,User::MailFrom,User::MailObject">
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
+[assembly: AssemblyCopyright("Copyright @  2024")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -883,7 +799,7 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
     <msb:CodeName>ST_ca20811b7d0e4c0db3d85a030362ff0b</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>ST_ca20811b7d0e4c0db3d85a030362ff0b</msb:DisplayName>
-    <msb:ProjectId>{06446233-4572-4EF0-8181-B6D87542040B}</msb:ProjectId>
+    <msb:ProjectId>{D93C0873-8002-415E-81EE-36E0216FD01C}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="ST_ca20811b7d0e4c0db3d85a030362ff0b.csproj" />
@@ -925,35 +841,14 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
-[assembly: AssemblyCopyright("Copyright @  2024")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -1025,7 +920,7 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties {
           <BinaryItem
             Name="ST_ca20811b7d0e4c0db3d85a030362ff0b.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDALxWEGYAAAAAAAAAAOAAIiALATAAABgAAAAIAAAAAAAAGjYA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDADc4IGYAAAAAAAAAAOAAIiALATAAABgAAAAIAAAAAAAAGjYA
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
 ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAMg1AABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1073,7 +968,7 @@ EACRABMF2QCRADUHEACRAKMHEAB5AP8FBgBhAf8FBgBhAe8E5gBxAP8FBgCxAP8FBgBpAZEB7QBp
 AawH9gDZAP8F/AD5AP8FBgAxAbkHBAEIABQAGwEIABgAIAEpAHsApgEuAAsAfgEuABMAhwEuABsA
 pgEuACMArwEuACsA2AEuADMA2AEuADsA2AEuAEMArwEuAEsA3gEuAFMA2AEuAFsA9QFDAGMAIAFJ
 AHsApgFhAGsAIAFjAHMAIAHDAGsAIAEbAF4A4AADAAEABAADAAAAxAVvAQAAAgJ0AQAASwd5AQIA
-BgADAAIABwAFAAEACAAFAAIACQAHAIYAwQAEgAAAAQAAAJ0iploAAAAAAADEAAAABAAAAAAAAAAA
+BgADAAIABwAFAAEACAAFAAIACQAHAIYAwQAEgAAAAQAAAKkiY2IAAAAAAADEAAAABAAAAAAAAAAA
 AAAACQH6AAAAAAAPAAAAAAAAAAAAAAASAUcEAAAAAAQAAAAAAAAAAAAAAAkBuAAAAAAABAAAAAAA
 AAAAAAAACQEMBQAAAAAPAAAAAAAAAAAAAAASAZEAAAAAAAQAAAAAAAAAAAAAAAkBzgEAAAAAAAAA
 AAEAAABQBgAABQACAAYAAgBHAKwASQCsAAAAADw+OV9fMV8wADxOZXdNYWlsTWVzc2FnZT5iX18x
@@ -1116,7 +1011,7 @@ AAAtVQBzAGUAcgA6ADoAQwBvAG4AbgBlAGMAdABpAG8AbgBTAHQAcgBpAG4AZwAABVQAbwAABUMA
 QwAAB0IAQwBDAAAPUwB1AGIAagBlAGMAdAAACUIAbwBkAHkAAB1VAHMAZQByADoAOgBNAGEAaQBs
 AEYAcgBvAG0AAHFTAFQAXwBjAGEAMgAwADgAMQAxAGIANwBkADAAZQA0AGMAMABkAGIAMwBkADgA
 NQBhADAAMwAwADMANgAyAGYAZgAwAGIALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1
-AHIAYwBlAHMAAADnE+6VcBA+T65wIHQ4w/5YAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARF1DgcG
+AHIAYwBlAHMAAAApJ/G6nsVzRavVi8QOLIKIAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARF1DgcG
 Ej0SQRJFEkkSTRJRBSAAEoCBBSAAEoCFBiABEoCJHAMgABwFIAASgI0DIAAIBCAAEkEDIAAOBSAB
 ARJJAyAAAhYHBxJJFRJVAQ4VElUBDhUSVQEODg4IBCABAQIEIAEcDgYgAR0OHQMGFRJlAg4CBSAC
 ARwYGBABAhUSgKEBHgAVEoChAR4AFRJlAh4AAgMKAQ4QEAEBFRJVAR4AFRKAoQEeAAUVElUBDgUg
@@ -1142,14 +1037,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAEgA
 AABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8AAAAA
-AL0E7/4AAAEAAAABAKZanSIAAAEAplqdIj8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAA
+AL0E7/4AAAEAAAABAGNiqSIAAAEAY2KpIj8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAA
 AQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8AbgAA
 AAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAwADAA
 MAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEAbgB5
 AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAA
 UwBUAF8AYwBhADIAMAA4ADEAMQBiADcAZAAwAGUANABjADAAZABiADMAZAA4ADUAYQAwADMAMAAz
 ADYAMgBmAGYAMABiAAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADgA
-OAA2ADEALgAyADMAMgAwADYAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBU
+OAA3ADMALgAyADUAMQA4ADcAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBU
 AF8AYwBhADIAMAA4ADEAMQBiADcAZAAwAGUANABjADAAZABiADMAZAA4ADUAYQAwADMAMAAzADYA
 MgBmAGYAMABiAC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABD
 AG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADQAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEA
@@ -1158,8 +1053,8 @@ AGUAAABTAFQAXwBjAGEAMgAwADgAMQAxAGIANwBkADAAZQA0AGMAMABkAGIAMwBkADgANQBhADAA
 MwAwADMANgAyAGYAZgAwAGIALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAA
 AAAAUwBUAF8AYwBhADIAMAA4ADEAMQBiADcAZAAwAGUANABjADAAZABiADMAZAA4ADUAYQAwADMA
 MAAzADYAMgBmAGYAMABiAAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAu
-ADAALgA4ADgANgAxAC4AMgAzADIAMAA2AAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUA
-cgBzAGkAbwBuAAAAMQAuADAALgA4ADgANgAxAC4AMgAzADIAMAA2AAAAAAAAAAAAAAAAAAAAAAAA
+ADAALgA4ADgANwAzAC4AMgA1ADEAOAA3AAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUA
+cgBzAGkAbwBuAAAAMQAuADAALgA4ADgANwAzAC4AMgA1ADEAOAA3AAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1183,52 +1078,28 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
       DTS:refId="Package\Send Email V2"
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
-      DTS:DTSID="{2d91c516-3dc9-47ef-a9d0-d1ef3b6e3ba1}"
+      DTS:DTSID="{96cd86f6-3f4a-4231-aae7-efd88edcaa76}"
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Send Email V2"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
-          Name="ST_3e71e3bc7d71454ebe66e143824d7df7"
+          Name="ST_2e939293632e46db88fe22fbc39614f2"
           VSTAMajorVersion="15"
           VSTAMinorVersion="0"
           Language="CSharp"
           ReadOnlyVariables="User::MailFrom,User::MailObject,$Project::ConnectionString,$Project::Login,$Project::PW">
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
-[assembly: AssemblyCopyright("Copyright @  2024")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
-          <ProjectItem
-            Name="ST_3e71e3bc7d71454ebe66e143824d7df7.csproj"
-            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{a36909de-0fb7-4d3c-a4cf-69c233c8ac4c}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_ca20811b7d0e4c0db3d85a030362ff0b</RootNamespace><AssemblyName>ST_3e71e3bc7d71454ebe66e143824d7df7</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="ScriptTask" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" /><Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex=""></Host><ProjectClient><HostIdentifier>SSIS_ST150</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -1547,6 +1418,9 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
     }
 }]]></ProjectItem>
           <ProjectItem
+            Name="ST_2e939293632e46db88fe22fbc39614f2.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{a36909de-0fb7-4d3c-a4cf-69c233c8ac4c}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_ca20811b7d0e4c0db3d85a030362ff0b</RootNamespace><AssemblyName>ST_2e939293632e46db88fe22fbc39614f2</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="ScriptTask" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" /><Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex=""></Host><ProjectClient><HostIdentifier>SSIS_ST150</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+          <ProjectItem
             Name="Project"
             Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
@@ -1557,7 +1431,7 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b
     <msb:ProjectId>{F147787C-2965-4158-9278-A6883FB5FB00}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
-    <msb:Project Include="ST_3e71e3bc7d71454ebe66e143824d7df7.csproj" />
+    <msb:Project Include="ST_2e939293632e46db88fe22fbc39614f2.csproj" />
     <msb:File Include="Properties\Resources.resx" />
     <msb:File Include="Properties\Settings.settings" />
     <msb:File Include="Properties\AssemblyInfo.cs" />
@@ -1596,14 +1470,35 @@ namespace ST_ca20811b7d0e4c0db3d85a030362ff0b.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_ca20811b7d0e4c0db3d85a030362ff0b")]
+[assembly: AssemblyCopyright("Copyright @  2024")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -1834,10 +1729,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{81CF2756-CF46-4B68-BB9D-28CC373F9AF8}"
-      DTS:From="Package\runCALENDAR_NEEDS_RELEASED"
+      DTS:DTSID="{962ABE38-5B43-40A0-9281-97D7A322C010}"
+      DTS:From="Package\Prepare Data"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
+      DTS:To="Package\Send Email" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{AAB9F1BA-D79C-40C8-A212-3C6E62347B01}"
+      DTS:From="Package\Prepare Data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
       DTS:To="Package\Send Email V2" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -1851,45 +1754,67 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="264,42"
-          Id="Package\runCALENDAR_NEEDS_RELEASED"
-          TopLeft="85,166" />
+          Size="144,45"
+          Id="Package\Prepare Data"
+          TopLeft="144,166" />
         <NodeLayout
           Size="135,42"
           Id="Package\Send Email"
-          TopLeft="92,277" />
+          TopLeft="151,276" />
         <NodeLayout
           Size="152,42"
           Id="Package\Send Email V2"
-          TopLeft="250,278" />
+          TopLeft="298,277" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="217,208">
+          TopLeft="217.25,211">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="109,70"
+              EndConnector="0,65"
               Start="0,0"
-              End="109,62.5">
+              End="0,57.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31"
-                    Point2="0,35"
-                    Point3="4,35" />
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="238.666666666667,211">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="135.333333333333,66"
+              Start="0,0"
+              End="135.333333333333,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="105,35" />
+                    End="0,22.8351648351648" />
                   <mssgle:CubicBezierSegment
-                    Point1="105,35"
-                    Point2="109,35"
-                    Point3="109,39" />
+                    Point1="0,22.8351648351648"
+                    Point2="0,26.8351648351648"
+                    Point3="4,26.8351648351648" />
                   <mssgle:LineSegment
-                    End="109,62.5" />
+                    End="131.333333333333,26.8351648351648" />
+                  <mssgle:CubicBezierSegment
+                    Point1="131.333333333333,26.8351648351648"
+                    Point2="135.333333333333,26.8351648351648"
+                    Point3="135.333333333333,30.8351648351648" />
+                  <mssgle:LineSegment
+                    End="135.333333333333,58.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1902,20 +1827,20 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\runCALENDAR_NEEDS_RELEASED">
+    design-time-name="Package\Prepare Data">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="157,42"
-          Id="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source"
+          Id="Package\Prepare Data\OLE DB Source"
           TopLeft="171,102" />
         <NodeLayout
           Size="187,42"
-          Id="Package\runCALENDAR_NEEDS_RELEASED\Recordset Destination"
+          Id="Package\Prepare Data\Recordset Destination"
           TopLeft="160,224" />
         <EdgeLayout
-          Id="Package\runCALENDAR_NEEDS_RELEASED.Paths[OLE DB Source Output]"
+          Id="Package\Prepare Data.Paths[OLE DB Source Output]"
           TopLeft="251.5,144">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1940,7 +1865,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\runCALENDAR_NEEDS_RELEASED\OLE DB Source">
+    design-time-name="Package\Prepare Data\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

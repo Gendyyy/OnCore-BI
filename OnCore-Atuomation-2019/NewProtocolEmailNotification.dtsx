@@ -11,47 +11,10 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="NewProtocolEmailNotification"
   DTS:PackageType="5"
-  DTS:VersionBuild="112"
-  DTS:VersionGUID="{A98C1733-5B65-4CAE-9155-51C4E9D03BF5}">
+  DTS:VersionBuild="115"
+  DTS:VersionGUID="{C0C66D3A-FEE2-4ACE-ADBE-DBE9B31BB811}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[com-dtrust-prod.bluecat.arizona.edu]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{1DB6BF9D-D402-4331-A182-F428566F9154}"
-      DTS:ObjectName="com-dtrust-prod.bluecat.arizona.edu">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=com-dtrust-prod.bluecat.arizona.edu;Initial Catalog=ClinicalTrialData;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{1DB6BF9D-D402-4331-A182-F428566F9154}com-dtrust-prod.bluecat.arizona.edu;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[COM-ONCORE-SQL]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{B932067F-9DED-4BB9-85DB-E89FB05184BD}"
-      DTS:ObjectName="COM-ONCORE-SQL">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=COM-ONCORE-SQL;Initial Catalog=OnCoreStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-NewProtocolEmailNotification-{B932067F-9DED-4BB9-85DB-E89FB05184BD}COM-ONCORE-SQL;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
-      DTS:CreationName="SMTP"
-      DTS:DTSID="{39C79D69-E67E-4972-B0F9-48F44BEA5785}"
-      DTS:ObjectName="SMTP Connection Manager">
-      <DTS:ObjectData>
-        <SmtpConnectionManager
-          ConnectionString="SmtpServer=ob1.hc4604-54.iphmx.com;UseWindowsAuthentication=False;EnableSsl=True;"
-          ConnectByProxy="False" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:PackageParameters>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -149,8 +112,8 @@
               <connections>
                 <connection
                   refId="Package\Prod\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[COM-ONCORE-SQL]"
-                  connectionManagerRefId="Package.ConnectionManagers[COM-ONCORE-SQL]"
+                  connectionManagerID="{E81AE254-C8F4-4C68-B874-85976E236502}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[COM-ONCORE-SQL]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2073,8 +2036,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               <connections>
                 <connection
                   refId="Package\Test\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[COM-ONCORE-SQL]"
-                  connectionManagerRefId="Package.ConnectionManagers[COM-ONCORE-SQL]"
+                  connectionManagerID="{E81AE254-C8F4-4C68-B874-85976E236502}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[COM-ONCORE-SQL]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3824,25 +3787,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             DTS:DataType="11">-1</DTS:VariableValue>
         </DTS:Variable>
       </DTS:Variables>
-      <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package.EventHandlers[OnError]\Send Mail Task"
-          DTS:CreationName="Microsoft.SendMailTask"
-          DTS:Description="Send Mail Task"
-          DTS:DTSID="{F1E3402D-E352-47F6-AC56-8B489DF3A0EA}"
-          DTS:ExecutableType="Microsoft.SendMailTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Send Mail Task">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SendMailTask:SendMailTaskData
-              SendMailTask:SMTPServer="{39C79D69-E67E-4972-B0F9-48F44BEA5785}"
-              SendMailTask:From="TicketCat-NoReply@arizona.edu"
-              SendMailTask:To="gendy@arizona.edu"
-              SendMailTask:Subject="NewProtocolEmailNotification Package Failure" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-      </DTS:Executables>
+      <DTS:Executables />
     </DTS:EventHandler>
   </DTS:EventHandlers>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -3875,7 +3820,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
           Size="155,42"
-          Id="Package.EventHandlers[OnError]\Send Mail Task"
+          Id="{F1E3402D-E352-47F6-AC56-8B489DF3A0EA}"
           TopLeft="277,69.8666666735543" />
       </GraphLayout>
     </LayoutInfo>
@@ -3935,7 +3880,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     design-time-name="Package\Test">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="167,42"
           Id="Package\Test\Script Component"
@@ -3963,9 +3908,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
