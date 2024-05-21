@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-01-ManagementGroup-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{8A31F86B-B95C-496B-9630-0C71F051E8C2}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{94486510-7309-4430-8328-8787C283E60B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Snowflake _ OnCore.gendy@arizona.edu"
+  DTS:DTSID="{54524758-ABAC-48F6-AAB5-1253155150AD}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=gendy@arizona.edu;Dsn=Snowflake | OnCore;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAfZcK+zSz1UanxpSZ+AKbrQAAAAACAAAAAAADZgAAwAAAABAAAAB+qIY0J8dm638Rfo9oOws3AAAAAASAAACgAAAAEAAAADICkY6JdsTRTsxgY6sSppx4AAAAs1TeLpSkHmj1SUEFP6zcpRR+/xl8yxmEeCSnqOchCgF2PZYHvCnKPo1OhyFZVE2B/EP6GS5JMNhdlc7xI2bDfSNbElcI8sftaJacQDOvVU9sSyMeRItf7G0NT7y3qFYyXL4Un7vKZhE2pA6RM/FLi8GFOt6ajwfpFAAAADQFrXwvbQvBnAi1dznhD9Tbu0Ov</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
