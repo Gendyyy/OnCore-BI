@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">COM-05361</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhRy3JMwO90mrz2BA2auC+wAAAAACAAAAAAADZgAAwAAAABAAAAD52O0ujLH9+JHLsziVUPhyAAAAAASAAACgAAAAEAAAABY0ai2pFpjz6GrcAKHEEUqIAAAA7/PKJr9GRsEJ67eZ+8gzNAIpaiYf+v7g/FfbTvIfWnPNo+Dzva3LlHaBMu/d2peZpY5ShVRKkg6NiTDJG2FIqSk72Z82fCXqD7BKYsK7CvBtwsnNuff8F3B8zNcGinm6YI0e4gKkQG2lLYK2OeW3Sfcy3CFFCHLHDGutszre4HSrOcLmAEq20xQAAABiJmjkaDkWo5htTNFCz1WtclznYQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAfZcK+zSz1UanxpSZ+AKbrQAAAAACAAAAAAADZgAAwAAAABAAAAA9QLhYAqZHi376H9dVEylNAAAAAASAAACgAAAAEAAAACIJlQZIX/6jhokFisFM4+OIAAAAM3q6lZU138Ryq6DPvhWWZKdM0kM6t3y2VqlIHSfh9RBIjXV7elVOgi0rFNQI/1sZYTIlPeArqXYrGVKsdHGoGPyrsj8OoEMOmDB1lag7mqJbMj9vccN4hL1XfWKtqlMQYf0pBd0Y2gtC5jD3OBhtCI/7hw7q1DeJhnJLiHG495mzwMm1g0fz/RQAAAChNed9V2wTiHQU5ZuxqgJAjOSaYQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -45,6 +45,7 @@
           <SSIS:Package SSIS:Name="EmailNotification-Studies_UAHS_RA_SIGNOFF.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="EmailNotification-CRF_SRC_Approval.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="EmailNotification-Test.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="EmailNotification-OnCoreDown.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="COM-ONCORE-SQL.conmgr" />
@@ -508,6 +509,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{97A490FF-D2B9-4B1F-BA26-C5075842B6DA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="EmailNotification-OnCoreDown.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{DB0A15C7-9F39-410F-A4E9-012A6021D1C1}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">EmailNotification-OnCoreDown</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">32</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{FA46AEDF-AF96-4398-AFF8-006A840F0BDF}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
