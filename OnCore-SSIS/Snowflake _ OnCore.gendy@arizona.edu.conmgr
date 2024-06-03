@@ -8,7 +8,7 @@
       DTS:ConnectionString="uid=gendy@arizona.edu;Dsn=Snowflake | OnCore;">
       <DTS:Password
         DTS:Name="pwd"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAfZcK+zSz1UanxpSZ+AKbrQAAAAACAAAAAAADZgAAwAAAABAAAAB+qIY0J8dm638Rfo9oOws3AAAAAASAAACgAAAAEAAAADICkY6JdsTRTsxgY6sSppx4AAAAs1TeLpSkHmj1SUEFP6zcpRR+/xl8yxmEeCSnqOchCgF2PZYHvCnKPo1OhyFZVE2B/EP6GS5JMNhdlc7xI2bDfSNbElcI8sftaJacQDOvVU9sSyMeRItf7G0NT7y3qFYyXL4Un7vKZhE2pA6RM/FLi8GFOt6ajwfpFAAAADQFrXwvbQvBnAi1dznhD9Tbu0Ov</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAfZcK+zSz1UanxpSZ+AKbrQAAAAACAAAAAAADZgAAwAAAABAAAABPcxwenBbdTlIZpApzpQoTAAAAAASAAACgAAAAEAAAABsfA5KoY1YfEyqN0mDdHVR4AAAAc5OHwmlUxv2jHvdwmGXnZYsIrIebm8QsPfTOqEK2i0SzsIwUW7DW2a3FEKcVIPmIGHN4Wuwxnfk2w34rIS0bG/GQ4i9TiiL3IPCXng10e263Autt1JcJy0xLGFEKMBLzD16VaL4uUUz/4i4vJITab3Nug77sr9umFAAAAMQoDFGd2jZrFMwOydtGnyc0hmaB</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>
