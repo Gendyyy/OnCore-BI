@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-05-ProtocolStatusHistory-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{AC4CDF21-0B7F-4360-B5D1-15F2468BE9DF}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{C321303C-306E-45F0-A709-FC181721B699}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -178,11 +178,19 @@
                   name="Data Conversion Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input].Columns[status]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="status"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]" />
+                      refId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input].Columns[PROTOCOL_NO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="35"
+                      cachedName="PROTOCOL_NO"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_NO]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input].Columns[PROTOCOL_STATUS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="35"
+                      cachedName="PROTOCOL_STATUS"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -195,20 +203,41 @@
                   synchronousInputId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of status]"
+                      refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PROTOCOL_NO]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="35"
-                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of status]"
-                      name="Copy of status"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PROTOCOL_NO]"
+                      name="Copy of PROTOCOL_NO"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]}</property>
+                          name="SourceInputColumnLineageID">#{Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_NO]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PROTOCOL_STATUS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="35"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PROTOCOL_STATUS]"
+                      name="Copy of PROTOCOL_STATUS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -320,191 +349,243 @@
               </inputs>
             </component>
             <component
-              refId="Package\DFT Extract to Staging\OLE DB Source"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="OLE DB Source"
+              refId="Package\DFT Extract to Staging\ODBC Source"
+              componentClassID="Microsoft.SSISODBCSrc"
+              contactInfo="ODBC Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="ODBC Source"
+              name="ODBC Source"
               usesDispositions="true"
-              version="7">
+              version="1">
               <properties>
                 <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
                   dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[etl_extract].[ProtocolStatusHistory]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
                 <property
                   dataType="System.String"
                   description="The SQL command to be executed."
+                  expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from etl_extract.ProtocolStatusHistory</property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable">User::TableName</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from etl_extract_protocols_status_history</property>
                 <property
                   dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
                 <property
                   dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
                 <property
                   dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
                 <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT Extract to Staging\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{DDC1C496-85F8-4E00-B4D7-6EACC166A026}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[OnCore-Prod-Staging]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
+                  refId="Package\DFT Extract to Staging\ODBC Source.Connections[ODBCConnection]"
+                  connectionManagerID="{54524758-ABAC-48F6-AAB5-1253155150AD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Snowflake _ OnCore.gendy@arizona.edu]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
+                  refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_no]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[protocol_no]"
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_NO]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_NO]"
                       length="35"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_no]"
-                      name="protocol_no"
-                      truncationRowDisposition="FailComponent" />
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_NO]"
+                      name="PROTOCOL_NO" />
                     <outputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[status]"
-                      length="100"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]"
-                      name="status"
-                      truncationRowDisposition="FailComponent" />
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_ID]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_ID]"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_ID]"
+                      name="PROTOCOL_ID"
+                      precision="38" />
                     <outputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[status_date]"
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS]"
+                      length="35"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS]"
+                      name="PROTOCOL_STATUS" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS_DATE_RANK]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS_DATE_RANK]"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS_DATE_RANK]"
+                      name="PROTOCOL_STATUS_DATE_RANK"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS_DATE]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS_DATE]"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS_DATE]"
+                      name="PROTOCOL_STATUS_DATE" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS_CREATED_DATE]"
                       dataType="dbTimeStamp2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[status_date]"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[status_date]"
-                      name="status_date"
-                      scale="7"
-                      truncationRowDisposition="FailComponent" />
+                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS_CREATED_DATE]"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS_CREATED_DATE]"
+                      name="PROTOCOL_STATUS_CREATED_DATE"
+                      scale="7" />
                     <outputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[MODIFIED_DATE]"
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS_MODIFIED_DATE]"
                       dataType="dbTimeStamp2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MODIFIED_DATE]"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[MODIFIED_DATE]"
-                      name="MODIFIED_DATE"
-                      scale="7"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[created_date]"
-                      dataType="dbTimeStamp2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[created_date]"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[created_date]"
-                      name="created_date"
-                      scale="7"
-                      truncationRowDisposition="FailComponent" />
+                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS_MODIFIED_DATE]"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS_MODIFIED_DATE]"
+                      name="PROTOCOL_STATUS_MODIFIED_DATE"
+                      scale="7" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[protocol_no]"
-                      dataType="wstr"
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_NO]"
+                      codePage="1252"
+                      dataType="str"
                       length="35"
-                      name="protocol_no" />
+                      name="PROTOCOL_NO" />
                     <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[status]"
-                      dataType="wstr"
-                      length="100"
-                      name="status" />
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_ID]"
+                      dataType="numeric"
+                      name="PROTOCOL_ID"
+                      precision="38" />
                     <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[status_date]"
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="35"
+                      name="PROTOCOL_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS_DATE_RANK]"
+                      dataType="numeric"
+                      name="PROTOCOL_STATUS_DATE_RANK"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS_DATE]"
+                      dataType="dbDate"
+                      name="PROTOCOL_STATUS_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS_CREATED_DATE]"
                       dataType="dbTimeStamp2"
-                      name="status_date"
+                      name="PROTOCOL_STATUS_CREATED_DATE"
                       scale="7" />
                     <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MODIFIED_DATE]"
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS_MODIFIED_DATE]"
                       dataType="dbTimeStamp2"
-                      name="MODIFIED_DATE"
-                      scale="7" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[created_date]"
-                      dataType="dbTimeStamp2"
-                      name="created_date"
+                      name="PROTOCOL_STATUS_MODIFIED_DATE"
                       scale="7" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output]"
                   isErrorOut="true"
-                  name="OLE DB Source Error Output">
+                  name="ODBC Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[protocol_no]"
-                      dataType="wstr"
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[PROTOCOL_NO]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_NO]"
                       length="35"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[protocol_no]"
-                      name="protocol_no" />
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[PROTOCOL_NO]"
+                      name="PROTOCOL_NO" />
                     <outputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status]"
-                      dataType="wstr"
-                      length="100"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status]"
-                      name="status" />
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[PROTOCOL_ID]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_ID]"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[PROTOCOL_ID]"
+                      name="PROTOCOL_ID"
+                      precision="38" />
                     <outputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status_date]"
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[PROTOCOL_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS]"
+                      length="35"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[PROTOCOL_STATUS]"
+                      name="PROTOCOL_STATUS" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[PROTOCOL_STATUS_DATE_RANK]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS_DATE_RANK]"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[PROTOCOL_STATUS_DATE_RANK]"
+                      name="PROTOCOL_STATUS_DATE_RANK"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[PROTOCOL_STATUS_DATE]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS_DATE]"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[PROTOCOL_STATUS_DATE]"
+                      name="PROTOCOL_STATUS_DATE" />
+                    <outputColumn
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[PROTOCOL_STATUS_CREATED_DATE]"
                       dataType="dbTimeStamp2"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status_date]"
-                      name="status_date"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS_CREATED_DATE]"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[PROTOCOL_STATUS_CREATED_DATE]"
+                      name="PROTOCOL_STATUS_CREATED_DATE"
                       scale="7" />
                     <outputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[created_date]"
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[PROTOCOL_STATUS_MODIFIED_DATE]"
                       dataType="dbTimeStamp2"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[created_date]"
-                      name="created_date"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PROTOCOL_STATUS_MODIFIED_DATE]"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[PROTOCOL_STATUS_MODIFIED_DATE]"
+                      name="PROTOCOL_STATUS_MODIFIED_DATE"
                       scale="7" />
                     <outputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MODIFIED_DATE]"
-                      dataType="dbTimeStamp2"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MODIFIED_DATE]"
-                      name="MODIFIED_DATE"
-                      scale="7" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -528,7 +609,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[ProtocolStatusHistory]</property>
+                  name="OpenRowset">[snowflake_staging].[ProtocolStatusHistory]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -585,40 +666,39 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[protocol_no]"
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[Copy of PROTOCOL_NO]"
                       cachedDataType="wstr"
                       cachedLength="35"
-                      cachedName="protocol_no"
+                      cachedName="Copy of PROTOCOL_NO"
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[protocol_no]"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[protocol_no]" />
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PROTOCOL_NO]" />
                     <inputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[status_date]"
-                      cachedDataType="dbTimeStamp2"
-                      cachedName="status_date"
-                      cachedScale="7"
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[PROTOCOL_STATUS_DATE]"
+                      cachedDataType="dbDate"
+                      cachedName="PROTOCOL_STATUS_DATE"
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[status_date]"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[status_date]" />
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS_DATE]" />
                     <inputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[MODIFIED_DATE]"
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[PROTOCOL_STATUS_MODIFIED_DATE]"
                       cachedDataType="dbTimeStamp2"
-                      cachedName="MODIFIED_DATE"
+                      cachedName="PROTOCOL_STATUS_MODIFIED_DATE"
                       cachedScale="7"
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[modified_date]"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[MODIFIED_DATE]" />
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS_MODIFIED_DATE]" />
                     <inputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[Copy of status]"
-                      cachedDataType="wstr"
-                      cachedLength="35"
-                      cachedName="Copy of status"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[status]"
-                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of status]" />
-                    <inputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[created_date]"
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[PROTOCOL_STATUS_CREATED_DATE]"
                       cachedDataType="dbTimeStamp2"
-                      cachedName="created_date"
+                      cachedName="PROTOCOL_STATUS_CREATED_DATE"
                       cachedScale="7"
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[created_date]"
-                      lineageId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[created_date]" />
+                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[PROTOCOL_STATUS_CREATED_DATE]" />
+                    <inputColumn
+                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[Copy of PROTOCOL_STATUS]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="Copy of PROTOCOL_STATUS"
+                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                      lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PROTOCOL_STATUS]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -738,15 +818,15 @@
               name="Data Conversion Output"
               startId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output]" />
             <path
+              refId="Package\DFT Extract to Staging.Paths[ODBC Source Output]"
+              endId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input]"
+              name="ODBC Source Output"
+              startId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output]" />
+            <path
               refId="Package\DFT Extract to Staging.Paths[OLE DB Destination Error Output]"
               endId="Package\DFT Extract to Staging\RC Error.Inputs[Row Count Input 1]"
               name="OLE DB Destination Error Output"
               startId="Package\DFT Extract to Staging\OLE DB Stage.Outputs[OLE DB Destination Error Output]" />
-            <path
-              refId="Package\DFT Extract to Staging.Paths[OLE DB Source Output]"
-              endId="Package\DFT Extract to Staging\Data Conversion.Inputs[Data Conversion Input]"
-              name="OLE DB Source Output"
-              startId="Package\DFT Extract to Staging\OLE DB Source.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DFT Extract to Staging.Paths[Row Count Output 1]"
               endId="Package\DFT Extract to Staging\FF Errors.Inputs[Flat File Destination Input]"
@@ -915,7 +995,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{DDC1C496-85F8-4E00-B4D7-6EACC166A026}"
-          SQLTask:SqlStatementSource="truncate table ProtocolStatusHistory" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table snowflake_staging.ProtocolStatusHistory" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -1082,29 +1162,25 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="132,42"
-          Id="Package\DFT Extract to Staging\RC Extract"
-          TopLeft="369,191" />
+          Size="122,42"
+          Id="Package\DFT Extract to Staging\RC Error"
+          TopLeft="59,266" />
         <NodeLayout
           Size="125,42"
           Id="Package\DFT Extract to Staging\FF Errors"
           TopLeft="57,344" />
         <NodeLayout
-          Size="122,42"
-          Id="Package\DFT Extract to Staging\RC Error"
-          TopLeft="59,266" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\DFT Extract to Staging\OLE DB Source"
-          TopLeft="361,113" />
+          Size="151,42"
+          Id="Package\DFT Extract to Staging\OLE DB Stage"
+          TopLeft="357,263" />
         <NodeLayout
           Size="161,42"
           Id="Package\DFT Extract to Staging\Data Conversion"
           TopLeft="553,158" />
         <NodeLayout
-          Size="151,42"
-          Id="Package\DFT Extract to Staging\OLE DB Stage"
-          TopLeft="357,263" />
+          Size="132,42"
+          Id="Package\DFT Extract to Staging\RC Extract"
+          TopLeft="369,191" />
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[Row Count Output 11]"
           TopLeft="433.75,233">
@@ -1141,40 +1217,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Extract to Staging.Paths[OLE DB Source Output]"
-          TopLeft="518,134">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="35,39.3333333333333"
-              Start="0,0"
-              End="27.5,39.3333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="16.2293577981652,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="16.2293577981652,0"
-                    Point2="20.2293577981652,0"
-                    Point3="20.2293577981652,4" />
-                  <mssgle:LineSegment
-                    End="20.2293577981652,35.3333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="20.2293577981652,35.3333333333333"
-                    Point2="20.2293577981652,39.3333333333333"
-                    Point3="24.2293577981652,39.3333333333333" />
-                  <mssgle:LineSegment
-                    End="27.5,39.3333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1241,22 +1283,47 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="149,42"
+          Id="Package\DFT Extract to Staging\ODBC Source"
+          TopLeft="339,54" />
+        <EdgeLayout
+          Id="Package\DFT Extract to Staging.Paths[ODBC Source Output]"
+          TopLeft="413.5,96">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="220,62"
+              Start="0,0"
+              End="220,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27"
+                    Point2="0,31"
+                    Point3="4,31" />
+                  <mssgle:LineSegment
+                    End="216,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="216,31"
+                    Point2="220,31"
+                    Point3="220,35" />
+                  <mssgle:LineSegment
+                    End="220,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT Extract to Staging\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT Extract to Staging\OLE DB Stage">
     <Properties>
@@ -1267,6 +1334,14 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Extract to Staging\ODBC Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
