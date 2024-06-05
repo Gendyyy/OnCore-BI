@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-02-Protocols-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="112"
-  DTS:VersionGUID="{DA2B838D-93A7-420E-AFB4-EC1C18E1C44D}">
+  DTS:VersionBuild="113"
+  DTS:VersionGUID="{D0036778-E512-4EFE-8F09-8ED8FB019A32}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -453,43 +453,19 @@ namespace ST_e144e9a220464730a747e7bdc968d10f.Properties {
   </msb:ItemGroup>
 </c:Project>]]></ProjectItem>
               <ProjectItem
-                Name="Model\Dto\CtGovStudyDto.cs"
+                Name="Service\Contracts\IOnCoreAPIService.cs"
                 Encoding="UTF8"><![CDATA[using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ST_e144e9a220464730a747e7bdc968d10f
 {
-    public class CtGovStudyDto : ANctNumberedEntity
+    interface IOnCoreAPIService
     {
-        // [Key]
-        public string NctNumber { get; set; }
-        public string OfficialTitle { get; set; }
-        public string BriefTitle { get; set; }
-        public string BriefSummary { get; set; }
-        public string EligibilityCriteria { get; set; }
-
-        public string StudyType { get; set; }
-
-        // public int EnrollmentCount { get; set; }
-        public string Phases { get; set; }
-
-        // public string LeadSponsorName { get; set; }
-        public string[] Conditions { get; set; }
-
-        public int? MinimumAge { get; set; }
-        public int? MaximumAge { get; set; }
-
-        public DateTime? StartDate { get; set; }
-        public DateTime? LastUpdateSubmitDate { get; set; }
-        public DateTime? CompletionDate { get; set; }
-
-        // "StartDate", "CompletionDate", "BriefSummary", "EligibilityCriteria",
-        // "LeadSponsorName", "Phase", "StudyType", "EnrollmentCount", "KeywordList",
-        // "LastUpdateSubmitDate"
+        CtGovStudyJson ApiGetCall(string nctNumListCommaSeparated,
+            Dictionary<string, string> parameters);
     }
 }]]></ProjectItem>
               <ProjectItem
@@ -523,62 +499,43 @@ using System.Runtime.CompilerServices;
 
 [assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
               <ProjectItem
-                Name="Config\Mapper\MapperConfig.cs"
-                Encoding="UTF8"><![CDATA[using System;
-//using Mapster;
+                Name="Service\PlainOnCoreAPIService.cs"
+                Encoding="UTF8"><![CDATA[using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ST_e144e9a220464730a747e7bdc968d10f
 {
-    //public class MapperConfig
-    //{
-    //    public static void RegisterMaps()
-    //    {
-        
-    //        TypeAdapterConfig<ProtocolSection, CtGovStudyDto>.NewConfig()
-    //            .Map(dest => dest.NctNumber, src => src.IdentificationModule != null ? src.IdentificationModule.NctId : null)
-    //            .Map(dest => dest.BriefSummary, src => src.DescriptionModule != null ? src.DescriptionModule.BriefSummary : null)
-    //            .Map(dest => dest.BriefTitle, src => src.IdentificationModule != null ? src.IdentificationModule.BriefTitle : null)
-    //            .Map(dest => dest.OfficialTitle, src => src.IdentificationModule != null ? src.IdentificationModule.OfficialTitle : null)
-    //            .Map(dest => dest.StartDate, src => src.StatusModule != null ? src.StatusModule.StartDateStruct != null ? DateTime.Parse(src.StatusModule.StartDateStruct.Date) : new DateTime(1900,01,01) : new DateTime(1900,01,01))
-    //            .Map(dest => dest.LastUpdateSubmitDate, src => src.StatusModule != null ? DateTime.Parse(src.StatusModule.LastUpdateSubmitDate) : new DateTime(1900,01,01))
-    //            .Map(dest => dest.CompletionDate, src => src.StatusModule != null ? src.StatusModule.CompletionDateStruct != null ? DateTime.Parse(src.StatusModule.CompletionDateStruct.Date) : new DateTime(1900,01,01) : new DateTime(1900,01,01))
-    //            .Map(dest => dest.EligibilityCriteria, src => src.EligibilityModule != null ? src.EligibilityModule.EligibilityCriteria : null)
-    //            .Map(dest => dest.MaximumAge, src => ParseAge(src.EligibilityModule.MaximumAge))
-    //            .Map(dest => dest.MinimumAge, src => ParseAge(src.EligibilityModule.MinimumAge))
-    //            .Map(dest => dest.Phases, src => ParsePhases(src.DesignModule))
-    //            .Map(dest => dest.StudyType, src => src.DesignModule != null ? src.DesignModule.StudyType : null)
-    //            .IgnoreNullValues(true);
-        
-    //    }
+    class PlainOnCoreAPIService : IOnCoreAPIService
+    {
+        public CtGovStudyJson ApiGetCall(string nctNumListCommaSeparated,
+            Dictionary<string, string> parameters)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string baseUri = $"https://clinicaltrials.gov/api/v2/studies?filter.ids={nctNumListCommaSeparated}&";
 
-    //    private static string ParsePhases(DesignModule designModule)
-    //    {
-    //        if (designModule?.Phases != null)
-    //        {
-    //            if (designModule?.Phases?.Length != 0)
-    //            {
-    //                return string.Join(",", designModule?.Phases);
-    //            }
-    //        }
+                string fullUri = string.Concat(baseUri,
+                    string.Join("&",
+                        parameters.Select((kvp) => $"{kvp.Key}={kvp.Value}")));
 
-    //        return string.Empty;
-    //    }
+                var request = new HttpRequestMessage(HttpMethod.Get, fullUri);
 
-    //    private static int ParseAge(string ageString)
-    //    {
-    //        if (string.IsNullOrEmpty(ageString))
-    //            return -1;
+                var response = client.SendAsync(request).Result;
 
-    //        string[] parts = ageString.Split(' ');
-    //        if (parts.Length == 0)
-    //            return -1;
+                response.EnsureSuccessStatusCode();
 
-    //        if (!int.TryParse(parts[0], out int age))
-    //            return -1;
+                string stringResponse = response.Content.ReadAsStringAsync().Result;
 
-    //        return age;
-    //    }
-    //}
+                return JsonConvert.DeserializeObject<CtGovStudyJson>(stringResponse);
+            }
+        }
+
+    }
 }]]></ProjectItem>
               <ProjectItem
                 Name="DAO\IOnCoreDAO.cs"
@@ -598,21 +555,153 @@ namespace ST_e144e9a220464730a747e7bdc968d10f
     }
 }]]></ProjectItem>
               <ProjectItem
-                Name="app.config"
-                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-	<appSettings>
-		<add key="OnCoreStagingConnectionString" value="data source=COM-ONCORE-SQL;initial catalog=oncorestaging;Integrated Security=SSPI;" />
-	</appSettings>
-  <runtime>
-    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
-      <dependentAssembly>
-        <assemblyIdentity name="System.Net.Http" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-4.1.1.3" newVersion="4.1.1.3" />
-      </dependentAssembly>
-    </assemblyBinding>
-  </runtime>
-</configuration>]]></ProjectItem>
+                Name="Model\CtGovStudyJson.cs"
+                Encoding="UTF8"><![CDATA[
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ST_e144e9a220464730a747e7bdc968d10f
+{
+    public class CtGovStudyJson
+    {
+        [JsonProperty("studies")]
+        public Studies[] Studies { get; set; }
+    }
+
+    public class Studies
+    {
+        [JsonProperty("protocolSection")]
+        public ProtocolSection ProtocolSection { get; set; }
+    }
+
+    public class ProtocolSection
+    {
+        [JsonProperty("identificationModule")]
+        public IdentificationModule IdentificationModule { get; set; }
+        [JsonProperty("statusModule")]
+        public StatusModule StatusModule { get; set; }
+        [JsonProperty("sponsorCollaboratorsModule")]
+        public SponsorCollaboratorsModule SponsorCollaboratorsModule { get; set; }
+        [JsonProperty("descriptionModule")]
+        public DescriptionModule DescriptionModule { get; set; }
+        [JsonProperty("conditionsModule")]
+        public ConditionsModule ConditionsModule { get; set; }
+        [JsonProperty("designModule")]
+        public DesignModule DesignModule { get; set; }
+        [JsonProperty("eligibilityModule")]
+        public EligibilityModule EligibilityModule { get; set; }
+        [JsonProperty("contactsLocationsModule")]
+        public ContactsLocationsModule ContactsLocationsModule { get; set; }
+    }
+
+    public class IdentificationModule
+    {
+        [JsonProperty("nctId")]
+        public string NctId { get; set; }
+        [JsonProperty("briefTitle")]
+        public string BriefTitle { get; set; }
+        [JsonProperty("officialTitle")]
+        public string OfficialTitle { get; set; }
+    }
+
+    public class StatusModule
+    {
+        [JsonProperty("startDateStruct")]
+        public StartDateStruct StartDateStruct { get; set; }
+        [JsonProperty("completionDateStruct")]
+        public CompletionDateStruct CompletionDateStruct { get; set; }
+        [JsonProperty("lastUpdateSubmitDate")]
+        public string LastUpdateSubmitDate { get; set; }
+    }
+
+    public class StartDateStruct
+    {
+        [JsonProperty("date")]
+        public string Date { get; set; }
+    }
+
+    public class CompletionDateStruct
+    {
+        [JsonProperty("date")]
+        public string Date { get; set; }
+    }
+
+    public class SponsorCollaboratorsModule
+    {
+        [JsonProperty("leadSponsor")]
+        public LeadSponsor LeadSponsor { get; set; }
+    }
+
+    public class LeadSponsor
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class DescriptionModule
+    {
+        [JsonProperty("briefSummary")]
+        public string BriefSummary { get; set; }
+    }
+
+    public class ConditionsModule
+    {
+        [JsonProperty("keywords")]
+        public string[] Keywords { get; set; }
+    }
+
+    public class DesignModule
+    {
+        [JsonProperty("studyType")]
+        public string StudyType { get; set; }
+        [JsonProperty("phases")]
+        public string[] Phases { get; set; }
+        [JsonProperty("enrollmentInfo")]
+        public EnrollmentInfo EnrollmentInfo { get; set; }
+    }
+
+    public class EnrollmentInfo
+    {
+        [JsonProperty("count")]
+        public int Count { get; set; }
+    }
+
+    public class EligibilityModule
+    {
+        [JsonProperty("eligibilityCriteria")]
+        public string EligibilityCriteria { get; set; }
+        [JsonProperty("minimumAge")]
+        public string MinimumAge { get; set; }
+        [JsonProperty("maximumAge")]
+        public string MaximumAge { get; set; }
+    }
+
+    public class ContactsLocationsModule
+    {
+        [JsonProperty("locations")]
+        public Locations[] Locations { get; set; }
+    }
+
+    public class Locations
+    {
+        [JsonProperty("facility")]
+        public string Facility { get; set; }
+        [JsonProperty("status")]
+        public string Status { get; set; }
+        [JsonProperty("city")]
+        public string City { get; set; }
+        [JsonProperty("state")]
+        public string State { get; set; }
+        [JsonProperty("zip")]
+        public string Zip { get; set; }
+        [JsonProperty("country")]
+        public string Country { get; set; }
+    }
+}]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.Designer.cs"
                 Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -678,122 +767,6 @@ namespace ST_e144e9a220464730a747e7bdc968d10f.Properties {
             set {
                 resourceCulture = value;
             }
-        }
-    }
-}]]></ProjectItem>
-              <ProjectItem
-                Name="DAO\OnCoreDAO.cs"
-                Encoding="UTF8"><![CDATA[using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ST_e144e9a220464730a747e7bdc968d10f
-{
-    class OnCoreDAO : IOnCoreDAO
-    {
-        private readonly string _connectionString;
-        public OnCoreDAO()
-        {
-            _connectionString = "data source=COM-ONCORE-SQL;initial catalog=oncorestaging;Integrated Security=SSPI;";
-        }
-
-        public List<CtGovStudyDto> CtGovStudies()
-        {
-            var studies = new List<CtGovStudyDto>();
-            using (var con = new SqlConnection(_connectionString))
-            {
-                con.Open();
-                var sql = "select * from dbo.CtGovStudies";
-                using (SqlCommand cmd = new SqlCommand(sql,con))
-                {
-                    var reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        var CompletionDate = DateTime.TryParse(reader["CompletionDate"].ToString(), out DateTime completionDate);
-                        var LastUpdateSubmitDate = DateTime.TryParse(reader["LastUpdateSubmitDate"].ToString(), out DateTime lastUpdateSubmitDate);
-                        var StartDate = DateTime.TryParse(reader["StartDate"].ToString(), out DateTime startDate);
-                        var MaxAge = int.TryParse(reader["MaximumAge"].ToString(), out int maxAge);
-                        var MinAge = int.TryParse(reader["MinimumAge"].ToString(), out int minAge);
-
-                        studies.Add(new CtGovStudyDto
-                        {
-                            BriefTitle = reader["BriefTitle"].ToString(),
-                            BriefSummary = reader["BriefSummary"].ToString(),
-                            CompletionDate = completionDate,
-                            Conditions = reader["Conditions"].ToString().Split(','),
-                            EligibilityCriteria = reader["EligibilityCriteria"].ToString(),
-                            LastUpdateSubmitDate = lastUpdateSubmitDate,
-                            MaximumAge = maxAge,
-                            MinimumAge = minAge,
-                            NctNumber = reader["BriefTitle"].ToString(),
-                            OfficialTitle = reader["BriefTitle"].ToString(),
-                            Phases = reader["BriefTitle"].ToString(),
-                            StartDate = startDate,
-                            StudyType = reader["BriefTitle"].ToString(),
-                        });
-                    }
-                }
-            }
-            return studies;
-        }
-
-        public void InsertCtGovStudies(CtGovStudyDto ctGovStudyDto)
-        {
-            using (var con = new SqlConnection(_connectionString))
-            {
-                con.Open();
-                var sql = @"INSERT INTO dbo.CtGovStudies (BriefTitle, BriefSummary, CompletionDate, Conditions, 
-                EligibilityCriteria, LastUpdateSubmitDate, MaximumAge, MinimumAge, NctNumber, OfficialTitle, 
-                Phases, StartDate, StudyType) 
-                VALUES (@BriefTitle, @BriefSummary, @CompletionDate, @Conditions, @EligibilityCriteria,
-                @LastUpdateSubmitDate, @MaximumAge, @MinimumAge, @NctNumber, @OfficialTitle,
-                @Phases, @StartDate, @StudyType)";
-
-                using (var cmd = new SqlCommand(sql, con))
-                {
-                    cmd.Parameters.AddWithValue("@BriefTitle", ctGovStudyDto.BriefTitle ?? "");
-                    cmd.Parameters.AddWithValue("@BriefSummary", ctGovStudyDto.BriefSummary ?? "");
-                    cmd.Parameters.AddWithValue("@CompletionDate", ctGovStudyDto.CompletionDate ?? new DateTime(1900, 01, 01));
-                    cmd.Parameters.AddWithValue("@Conditions", ctGovStudyDto.Conditions != null ? string.Join(",", ctGovStudyDto.Conditions) : "");
-                    cmd.Parameters.AddWithValue("@EligibilityCriteria", ctGovStudyDto.EligibilityCriteria ?? "");
-                    cmd.Parameters.AddWithValue("@LastUpdateSubmitDate", ctGovStudyDto.LastUpdateSubmitDate ?? new DateTime(1900, 01, 01) );
-                    cmd.Parameters.AddWithValue("@MaximumAge", ctGovStudyDto.MaximumAge ?? -1);
-                    cmd.Parameters.AddWithValue("@MinimumAge", ctGovStudyDto.MinimumAge ?? -1);
-                    cmd.Parameters.AddWithValue("@NctNumber", ctGovStudyDto.NctNumber ?? "");
-                    cmd.Parameters.AddWithValue("@OfficialTitle", ctGovStudyDto.OfficialTitle ?? "");
-                    cmd.Parameters.AddWithValue("@Phases", ctGovStudyDto.Phases ?? "");
-                    cmd.Parameters.AddWithValue("@StartDate", ctGovStudyDto.StartDate ?? new DateTime(1900, 01, 01));
-                    cmd.Parameters.AddWithValue("@StudyType", ctGovStudyDto.StudyType ?? "");
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
-
-        }
-
-        public List<ProtocolDto> Protocols()
-        {
-            var protocols = new List<ProtocolDto>();
-            using (var con = new SqlConnection(_connectionString))
-            {
-                con.Open();
-                var sql = "select * from dbo.protocols";
-                using (SqlCommand cmd = new SqlCommand(sql,con))
-                {
-                    var reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        protocols.Add(new ProtocolDto
-                        {
-                            NCT_ID = reader["NCT_ID"].ToString(),
-                        });
-                    }
-                }
-            }
-            return protocols;
         }
     }
 }]]></ProjectItem>
@@ -914,33 +887,157 @@ namespace ST_e144e9a220464730a747e7bdc968d10f
 	}
 }]]></ProjectItem>
               <ProjectItem
-                Name="Service\FlurlOncoreAPIService.cs"
-                Encoding="UTF8"><![CDATA[using Flurl;
-using Flurl.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+                Name="ST_e144e9a220464730a747e7bdc968d10f.csproj"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B3C26464-4664-4D1B-B2C1-AEB58E1B7391}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_e144e9a220464730a747e7bdc968d10f</RootNamespace>
+    <AssemblyName>ST_e144e9a220464730a747e7bdc968d10f</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper">
+      <HintPath>C:\Users\gendy\Workspace\OnCore\Temp\Packages\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Flurl">
+      <HintPath>C:\Users\gendy\Workspace\OnCore\Temp\Packages\Flurl.dll</HintPath>
+    </Reference>
+    <Reference Include="Flurl.Http">
+      <HintPath>C:\Users\gendy\Workspace\OnCore\Temp\Packages\Flurl.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\gendy\Workspace\OnCore\Temp\Packages\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http">
+      <HintPath>C:\Users\gendy\Workspace\OnCore\Temp\Packages\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Config\Mapper\CustomMapper.cs" />
+    <Compile Include="Config\Mapper\MapperConfig.cs" />
+    <Compile Include="Config\Infra\OnCoreDbContext.cs" />
+    <Compile Include="DAO\IOnCoreDAO.cs" />
+    <Compile Include="DAO\OnCoreDAO.cs" />
+    <Compile Include="Model\CtGovStudyJson.cs" />
+    <Compile Include="Model\Dto\ANctNumberedEntity.cs" />
+    <Compile Include="Model\Dto\CtGovDtoWrapper.cs" />
+    <Compile Include="Model\Dto\CtGovStudyDto.cs" />
+    <Compile Include="Model\Dto\CtGovStudyLocationDto.cs" />
+    <Compile Include="Model\Dto\ProtocolDto.cs" />
+    <Compile Include="DAO\OnCoreDapperDAO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\FlurlOncoreAPIService.cs" />
+    <Compile Include="Service\Contracts\IOnCoreAPIService.cs" />
+    <Compile Include="Service\PlainOnCoreAPIService.cs" />
+    <Compile Include="Service\OnCoreService.cs" />
+    <Compile Include="Service\Contracts\IOnCoreService.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Config\Infra\OnCoreDbContext.cs"
+                Encoding="UTF8"><![CDATA[using System;
+//using System.Data.Entity;
+//using System.Data.Entity;
 
-namespace ST_e144e9a220464730a747e7bdc968d10f.Service
+
+namespace ST_e144e9a220464730a747e7bdc968d10f
 {
-    class FlurlOncoreAPIService : IOnCoreAPIService
-    {
-        public CtGovStudyJson ApiGetCall(string nctNumListCommaSeparated,
-            Dictionary<string, string> parameters)
-        {
+    //public class OnCoreDbContext : DbContext
+    //{
+    //    public OnCoreDbContext() : base(ConnectionString)
+    //    {
 
-            string baseUri = $"https://clinicaltrials.gov/api/v2/studies";
-            var response = baseUri
-                .SetQueryParam("filter.ids", nctNumListCommaSeparated)
-                .SetQueryParams(parameters)
-                .GetJsonAsync<CtGovStudyJson>()
-                .Result;
+    //    }
+    //    private const string ConnectionString = "data source=COM-ONCORE-SQL;initial catalog=oncorestaging;Integrated Security=SSPI;";
 
-            return response;
-        }
-    }
+    //    public DbSet<CtGovStudyDto> CtGovStudies { get; set; }
+    //    public DbSet<ProtocolDto> Protocols { get; set; }
+    //    // public DbSet<CtGovStudyLocation> CtGovStudyLocations { get; set; }
+
+    //    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    //    {
+    //        modelBuilder.Entity<CtGovStudyDto>().HasKey(c => c.NctNumber);
+    //        modelBuilder.Entity<ProtocolDto>().HasKey(c => c.NCT_ID);
+    //    }
+    //}
 }]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.resx"
@@ -1123,32 +1220,44 @@ namespace ST_e144e9a220464730a747e7bdc968d10f
     }
 }]]></ProjectItem>
               <ProjectItem
-                Name="Config\Infra\OnCoreDbContext.cs"
+                Name="Model\Dto\CtGovStudyDto.cs"
                 Encoding="UTF8"><![CDATA[using System;
-//using System.Data.Entity;
-//using System.Data.Entity;
-
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ST_e144e9a220464730a747e7bdc968d10f
 {
-    //public class OnCoreDbContext : DbContext
-    //{
-    //    public OnCoreDbContext() : base(ConnectionString)
-    //    {
+    public class CtGovStudyDto : ANctNumberedEntity
+    {
+        // [Key]
+        public string NctNumber { get; set; }
+        public string OfficialTitle { get; set; }
+        public string BriefTitle { get; set; }
+        public string BriefSummary { get; set; }
+        public string EligibilityCriteria { get; set; }
 
-    //    }
-    //    private const string ConnectionString = "data source=COM-ONCORE-SQL;initial catalog=oncorestaging;Integrated Security=SSPI;";
+        public string StudyType { get; set; }
 
-    //    public DbSet<CtGovStudyDto> CtGovStudies { get; set; }
-    //    public DbSet<ProtocolDto> Protocols { get; set; }
-    //    // public DbSet<CtGovStudyLocation> CtGovStudyLocations { get; set; }
+        // public int EnrollmentCount { get; set; }
+        public string Phases { get; set; }
 
-    //    protected override void OnModelCreating(DbModelBuilder modelBuilder)
-    //    {
-    //        modelBuilder.Entity<CtGovStudyDto>().HasKey(c => c.NctNumber);
-    //        modelBuilder.Entity<ProtocolDto>().HasKey(c => c.NCT_ID);
-    //    }
-    //}
+        // public string LeadSponsorName { get; set; }
+        public string[] Conditions { get; set; }
+
+        public int? MinimumAge { get; set; }
+        public int? MaximumAge { get; set; }
+
+        public DateTime? StartDate { get; set; }
+        public DateTime? LastUpdateSubmitDate { get; set; }
+        public DateTime? CompletionDate { get; set; }
+
+        // "StartDate", "CompletionDate", "BriefSummary", "EligibilityCriteria",
+        // "LeadSponsorName", "Phase", "StudyType", "EnrollmentCount", "KeywordList",
+        // "LastUpdateSubmitDate"
+    }
 }]]></ProjectItem>
               <ProjectItem
                 Name="Service\OnCoreService.cs"
@@ -1237,317 +1346,195 @@ namespace ST_e144e9a220464730a747e7bdc968d10f
     }
 }]]></ProjectItem>
               <ProjectItem
-                Name="Model\CtGovStudyJson.cs"
-                Encoding="UTF8"><![CDATA[
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+                Name="app.config"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<appSettings>
+		<add key="OnCoreStagingConnectionString" value="data source=COM-ONCORE-SQL;initial catalog=oncorestaging;Integrated Security=SSPI;" />
+	</appSettings>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="System.Net.Http" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.1.1.3" newVersion="4.1.1.3" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+</configuration>]]></ProjectItem>
+              <ProjectItem
+                Name="Config\Mapper\MapperConfig.cs"
+                Encoding="UTF8"><![CDATA[using System;
+//using Mapster;
 
 namespace ST_e144e9a220464730a747e7bdc968d10f
 {
-    public class CtGovStudyJson
-    {
-        [JsonProperty("studies")]
-        public Studies[] Studies { get; set; }
-    }
+    //public class MapperConfig
+    //{
+    //    public static void RegisterMaps()
+    //    {
+        
+    //        TypeAdapterConfig<ProtocolSection, CtGovStudyDto>.NewConfig()
+    //            .Map(dest => dest.NctNumber, src => src.IdentificationModule != null ? src.IdentificationModule.NctId : null)
+    //            .Map(dest => dest.BriefSummary, src => src.DescriptionModule != null ? src.DescriptionModule.BriefSummary : null)
+    //            .Map(dest => dest.BriefTitle, src => src.IdentificationModule != null ? src.IdentificationModule.BriefTitle : null)
+    //            .Map(dest => dest.OfficialTitle, src => src.IdentificationModule != null ? src.IdentificationModule.OfficialTitle : null)
+    //            .Map(dest => dest.StartDate, src => src.StatusModule != null ? src.StatusModule.StartDateStruct != null ? DateTime.Parse(src.StatusModule.StartDateStruct.Date) : new DateTime(1900,01,01) : new DateTime(1900,01,01))
+    //            .Map(dest => dest.LastUpdateSubmitDate, src => src.StatusModule != null ? DateTime.Parse(src.StatusModule.LastUpdateSubmitDate) : new DateTime(1900,01,01))
+    //            .Map(dest => dest.CompletionDate, src => src.StatusModule != null ? src.StatusModule.CompletionDateStruct != null ? DateTime.Parse(src.StatusModule.CompletionDateStruct.Date) : new DateTime(1900,01,01) : new DateTime(1900,01,01))
+    //            .Map(dest => dest.EligibilityCriteria, src => src.EligibilityModule != null ? src.EligibilityModule.EligibilityCriteria : null)
+    //            .Map(dest => dest.MaximumAge, src => ParseAge(src.EligibilityModule.MaximumAge))
+    //            .Map(dest => dest.MinimumAge, src => ParseAge(src.EligibilityModule.MinimumAge))
+    //            .Map(dest => dest.Phases, src => ParsePhases(src.DesignModule))
+    //            .Map(dest => dest.StudyType, src => src.DesignModule != null ? src.DesignModule.StudyType : null)
+    //            .IgnoreNullValues(true);
+        
+    //    }
 
-    public class Studies
-    {
-        [JsonProperty("protocolSection")]
-        public ProtocolSection ProtocolSection { get; set; }
-    }
+    //    private static string ParsePhases(DesignModule designModule)
+    //    {
+    //        if (designModule?.Phases != null)
+    //        {
+    //            if (designModule?.Phases?.Length != 0)
+    //            {
+    //                return string.Join(",", designModule?.Phases);
+    //            }
+    //        }
 
-    public class ProtocolSection
-    {
-        [JsonProperty("identificationModule")]
-        public IdentificationModule IdentificationModule { get; set; }
-        [JsonProperty("statusModule")]
-        public StatusModule StatusModule { get; set; }
-        [JsonProperty("sponsorCollaboratorsModule")]
-        public SponsorCollaboratorsModule SponsorCollaboratorsModule { get; set; }
-        [JsonProperty("descriptionModule")]
-        public DescriptionModule DescriptionModule { get; set; }
-        [JsonProperty("conditionsModule")]
-        public ConditionsModule ConditionsModule { get; set; }
-        [JsonProperty("designModule")]
-        public DesignModule DesignModule { get; set; }
-        [JsonProperty("eligibilityModule")]
-        public EligibilityModule EligibilityModule { get; set; }
-        [JsonProperty("contactsLocationsModule")]
-        public ContactsLocationsModule ContactsLocationsModule { get; set; }
-    }
+    //        return string.Empty;
+    //    }
 
-    public class IdentificationModule
-    {
-        [JsonProperty("nctId")]
-        public string NctId { get; set; }
-        [JsonProperty("briefTitle")]
-        public string BriefTitle { get; set; }
-        [JsonProperty("officialTitle")]
-        public string OfficialTitle { get; set; }
-    }
+    //    private static int ParseAge(string ageString)
+    //    {
+    //        if (string.IsNullOrEmpty(ageString))
+    //            return -1;
 
-    public class StatusModule
-    {
-        [JsonProperty("startDateStruct")]
-        public StartDateStruct StartDateStruct { get; set; }
-        [JsonProperty("completionDateStruct")]
-        public CompletionDateStruct CompletionDateStruct { get; set; }
-        [JsonProperty("lastUpdateSubmitDate")]
-        public string LastUpdateSubmitDate { get; set; }
-    }
+    //        string[] parts = ageString.Split(' ');
+    //        if (parts.Length == 0)
+    //            return -1;
 
-    public class StartDateStruct
-    {
-        [JsonProperty("date")]
-        public string Date { get; set; }
-    }
+    //        if (!int.TryParse(parts[0], out int age))
+    //            return -1;
 
-    public class CompletionDateStruct
-    {
-        [JsonProperty("date")]
-        public string Date { get; set; }
-    }
-
-    public class SponsorCollaboratorsModule
-    {
-        [JsonProperty("leadSponsor")]
-        public LeadSponsor LeadSponsor { get; set; }
-    }
-
-    public class LeadSponsor
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class DescriptionModule
-    {
-        [JsonProperty("briefSummary")]
-        public string BriefSummary { get; set; }
-    }
-
-    public class ConditionsModule
-    {
-        [JsonProperty("keywords")]
-        public string[] Keywords { get; set; }
-    }
-
-    public class DesignModule
-    {
-        [JsonProperty("studyType")]
-        public string StudyType { get; set; }
-        [JsonProperty("phases")]
-        public string[] Phases { get; set; }
-        [JsonProperty("enrollmentInfo")]
-        public EnrollmentInfo EnrollmentInfo { get; set; }
-    }
-
-    public class EnrollmentInfo
-    {
-        [JsonProperty("count")]
-        public int Count { get; set; }
-    }
-
-    public class EligibilityModule
-    {
-        [JsonProperty("eligibilityCriteria")]
-        public string EligibilityCriteria { get; set; }
-        [JsonProperty("minimumAge")]
-        public string MinimumAge { get; set; }
-        [JsonProperty("maximumAge")]
-        public string MaximumAge { get; set; }
-    }
-
-    public class ContactsLocationsModule
-    {
-        [JsonProperty("locations")]
-        public Locations[] Locations { get; set; }
-    }
-
-    public class Locations
-    {
-        [JsonProperty("facility")]
-        public string Facility { get; set; }
-        [JsonProperty("status")]
-        public string Status { get; set; }
-        [JsonProperty("city")]
-        public string City { get; set; }
-        [JsonProperty("state")]
-        public string State { get; set; }
-        [JsonProperty("zip")]
-        public string Zip { get; set; }
-        [JsonProperty("country")]
-        public string Country { get; set; }
-    }
+    //        return age;
+    //    }
+    //}
 }]]></ProjectItem>
               <ProjectItem
-                Name="Service\PlainOnCoreAPIService.cs"
-                Encoding="UTF8"><![CDATA[using Newtonsoft.Json;
-using System;
+                Name="DAO\OnCoreDAO.cs"
+                Encoding="UTF8"><![CDATA[using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ST_e144e9a220464730a747e7bdc968d10f
 {
-    class PlainOnCoreAPIService : IOnCoreAPIService
+    class OnCoreDAO : IOnCoreDAO
     {
-        public CtGovStudyJson ApiGetCall(string nctNumListCommaSeparated,
-            Dictionary<string, string> parameters)
+        private readonly string _connectionString;
+        public OnCoreDAO()
         {
-            using (HttpClient client = new HttpClient())
-            {
-                string baseUri = $"https://clinicaltrials.gov/api/v2/studies?filter.ids={nctNumListCommaSeparated}&";
-
-                string fullUri = string.Concat(baseUri,
-                    string.Join("&",
-                        parameters.Select((kvp) => $"{kvp.Key}={kvp.Value}")));
-
-                var request = new HttpRequestMessage(HttpMethod.Get, fullUri);
-
-                var response = client.SendAsync(request).Result;
-
-                response.EnsureSuccessStatusCode();
-
-                string stringResponse = response.Content.ReadAsStringAsync().Result;
-
-                return JsonConvert.DeserializeObject<CtGovStudyJson>(stringResponse);
-            }
+            _connectionString = "data source=COM-ONCORE-SQL;initial catalog=oncorestaging;Integrated Security=SSPI;";
         }
 
+        public List<CtGovStudyDto> CtGovStudies()
+        {
+            var studies = new List<CtGovStudyDto>();
+            using (var con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                var sql = "select * from dbo.CtGovStudies";
+                using (SqlCommand cmd = new SqlCommand(sql,con))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var CompletionDate = DateTime.TryParse(reader["CompletionDate"].ToString(), out DateTime completionDate);
+                        var LastUpdateSubmitDate = DateTime.TryParse(reader["LastUpdateSubmitDate"].ToString(), out DateTime lastUpdateSubmitDate);
+                        var StartDate = DateTime.TryParse(reader["StartDate"].ToString(), out DateTime startDate);
+                        var MaxAge = int.TryParse(reader["MaximumAge"].ToString(), out int maxAge);
+                        var MinAge = int.TryParse(reader["MinimumAge"].ToString(), out int minAge);
+
+                        studies.Add(new CtGovStudyDto
+                        {
+                            BriefTitle = reader["BriefTitle"].ToString(),
+                            BriefSummary = reader["BriefSummary"].ToString(),
+                            CompletionDate = completionDate,
+                            Conditions = reader["Conditions"].ToString().Split(','),
+                            EligibilityCriteria = reader["EligibilityCriteria"].ToString(),
+                            LastUpdateSubmitDate = lastUpdateSubmitDate,
+                            MaximumAge = maxAge,
+                            MinimumAge = minAge,
+                            NctNumber = reader["BriefTitle"].ToString(),
+                            OfficialTitle = reader["BriefTitle"].ToString(),
+                            Phases = reader["BriefTitle"].ToString(),
+                            StartDate = startDate,
+                            StudyType = reader["BriefTitle"].ToString(),
+                        });
+                    }
+                }
+            }
+            return studies;
+        }
+
+        public void InsertCtGovStudies(CtGovStudyDto ctGovStudyDto)
+        {
+            using (var con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                var sql = @"INSERT INTO dbo.CtGovStudies (BriefTitle, BriefSummary, CompletionDate, Conditions, 
+                EligibilityCriteria, LastUpdateSubmitDate, MaximumAge, MinimumAge, NctNumber, OfficialTitle, 
+                Phases, StartDate, StudyType) 
+                VALUES (@BriefTitle, @BriefSummary, @CompletionDate, @Conditions, @EligibilityCriteria,
+                @LastUpdateSubmitDate, @MaximumAge, @MinimumAge, @NctNumber, @OfficialTitle,
+                @Phases, @StartDate, @StudyType)";
+
+                using (var cmd = new SqlCommand(sql, con))
+                {
+                    cmd.Parameters.AddWithValue("@BriefTitle", ctGovStudyDto.BriefTitle ?? "");
+                    cmd.Parameters.AddWithValue("@BriefSummary", ctGovStudyDto.BriefSummary ?? "");
+                    cmd.Parameters.AddWithValue("@CompletionDate", ctGovStudyDto.CompletionDate ?? new DateTime(1900, 01, 01));
+                    cmd.Parameters.AddWithValue("@Conditions", ctGovStudyDto.Conditions != null ? string.Join(",", ctGovStudyDto.Conditions) : "");
+                    cmd.Parameters.AddWithValue("@EligibilityCriteria", ctGovStudyDto.EligibilityCriteria ?? "");
+                    cmd.Parameters.AddWithValue("@LastUpdateSubmitDate", ctGovStudyDto.LastUpdateSubmitDate ?? new DateTime(1900, 01, 01) );
+                    cmd.Parameters.AddWithValue("@MaximumAge", ctGovStudyDto.MaximumAge ?? -1);
+                    cmd.Parameters.AddWithValue("@MinimumAge", ctGovStudyDto.MinimumAge ?? -1);
+                    cmd.Parameters.AddWithValue("@NctNumber", ctGovStudyDto.NctNumber ?? "");
+                    cmd.Parameters.AddWithValue("@OfficialTitle", ctGovStudyDto.OfficialTitle ?? "");
+                    cmd.Parameters.AddWithValue("@Phases", ctGovStudyDto.Phases ?? "");
+                    cmd.Parameters.AddWithValue("@StartDate", ctGovStudyDto.StartDate ?? new DateTime(1900, 01, 01));
+                    cmd.Parameters.AddWithValue("@StudyType", ctGovStudyDto.StudyType ?? "");
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+        }
+
+        public List<ProtocolDto> Protocols()
+        {
+            var protocols = new List<ProtocolDto>();
+            using (var con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                var sql = "select * from dbo.protocols";
+                using (SqlCommand cmd = new SqlCommand(sql,con))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        protocols.Add(new ProtocolDto
+                        {
+                            NCT_ID = reader["NCT_ID"].ToString(),
+                        });
+                    }
+                }
+            }
+            return protocols;
+        }
     }
 }]]></ProjectItem>
-              <ProjectItem
-                Name="ST_e144e9a220464730a747e7bdc968d10f.csproj"
-                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B3C26464-4664-4D1B-B2C1-AEB58E1B7391}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ST_e144e9a220464730a747e7bdc968d10f</RootNamespace>
-    <AssemblyName>ST_e144e9a220464730a747e7bdc968d10f</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
-    <TargetFrameworkProfile></TargetFrameworkProfile>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>.\bin\Debug\</OutputPath>
-    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DebugSymbols>false</DebugSymbols>
-    <Optimize>true</Optimize>
-    <OutputPath>.\bin\Release\</OutputPath>
-    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Dapper">
-      <HintPath>C:\Users\gendy\Workspace\OnCore\Temp\Packages\Dapper.dll</HintPath>
-    </Reference>
-    <Reference Include="Flurl">
-      <HintPath>C:\Users\gendy\Workspace\OnCore\Temp\Packages\Flurl.dll</HintPath>
-    </Reference>
-    <Reference Include="Flurl.Http">
-      <HintPath>C:\Users\gendy\Workspace\OnCore\Temp\Packages\Flurl.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\gendy\Workspace\OnCore\Temp\Packages\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http">
-      <HintPath>C:\Users\gendy\Workspace\OnCore\Temp\Packages\System.Net.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
-    <Compile Include="Config\Mapper\CustomMapper.cs" />
-    <Compile Include="Config\Mapper\MapperConfig.cs" />
-    <Compile Include="Config\Infra\OnCoreDbContext.cs" />
-    <Compile Include="DAO\IOnCoreDAO.cs" />
-    <Compile Include="DAO\OnCoreDAO.cs" />
-    <Compile Include="Model\CtGovStudyJson.cs" />
-    <Compile Include="Model\Dto\ANctNumberedEntity.cs" />
-    <Compile Include="Model\Dto\CtGovDtoWrapper.cs" />
-    <Compile Include="Model\Dto\CtGovStudyDto.cs" />
-    <Compile Include="Model\Dto\CtGovStudyLocationDto.cs" />
-    <Compile Include="Model\Dto\ProtocolDto.cs" />
-    <Compile Include="DAO\OnCoreDapperDAO.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\FlurlOncoreAPIService.cs" />
-    <Compile Include="Service\Contracts\IOnCoreAPIService.cs" />
-    <Compile Include="Service\PlainOnCoreAPIService.cs" />
-    <Compile Include="Service\OnCoreService.cs" />
-    <Compile Include="Service\Contracts\IOnCoreService.cs" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="app.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="ScriptMain.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <!-- Include the build rules for a C# project.-->
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ProjectExtensions>
-    <VisualStudio>
-      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
-        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
-        <Host Name="ScriptTask" />
-        <ProjectClient>
-          <HostIdentifier>SSIS_ST150</HostIdentifier>
-        </ProjectClient>
-      </FlavorProperties>
-    </VisualStudio>
-  </ProjectExtensions>
-</Project>]]></ProjectItem>
               <ProjectItem
                 Name="Model\Dto\CtGovStudyLocationDto.cs"
                 Encoding="UTF8"><![CDATA[using System;
@@ -1598,19 +1585,32 @@ namespace ST_e144e9a220464730a747e7bdc968d10f
     }
 }]]></ProjectItem>
               <ProjectItem
-                Name="Service\Contracts\IOnCoreAPIService.cs"
-                Encoding="UTF8"><![CDATA[using System;
+                Name="Service\FlurlOncoreAPIService.cs"
+                Encoding="UTF8"><![CDATA[using Flurl;
+using Flurl.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ST_e144e9a220464730a747e7bdc968d10f
+namespace ST_e144e9a220464730a747e7bdc968d10f.Service
 {
-    interface IOnCoreAPIService
+    class FlurlOncoreAPIService : IOnCoreAPIService
     {
-        CtGovStudyJson ApiGetCall(string nctNumListCommaSeparated,
-            Dictionary<string, string> parameters);
+        public CtGovStudyJson ApiGetCall(string nctNumListCommaSeparated,
+            Dictionary<string, string> parameters)
+        {
+
+            string baseUri = $"https://clinicaltrials.gov/api/v2/studies";
+            var response = baseUri
+                .SetQueryParam("filter.ids", nctNumListCommaSeparated)
+                .SetQueryParams(parameters)
+                .GetJsonAsync<CtGovStudyJson>()
+                .Result;
+
+            return response;
+        }
     }
 }]]></ProjectItem>
               <ProjectItem
@@ -4293,11 +4293,6 @@ AAA=</BinaryItem>
                           dataType="wstr"
                           length="1000"
                           name="ManagementGroup" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT Extract to Staging From OnCore\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Protocol_Institutions]"
-                          dataType="wstr"
-                          length="100"
-                          name="Protocol_Institutions" />
                         <externalMetadataColumn
                           refId="Package\Sequence Container\DFT Extract to Staging From OnCore\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[Department_Name]"
                           dataType="wstr"
@@ -8456,21 +8451,51 @@ FROM UACC_ONCORE_RW_UTILS.MYPV4')</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="125,42"
-          Id="Package\Sequence Container\DFT Extract to Staging From OnCore\FF Errors"
-          TopLeft="143,509" />
+          Size="149,42"
+          Id="Package\Sequence Container\DFT Extract to Staging From OnCore\ODBC Source"
+          TopLeft="136,54" />
         <NodeLayout
           Size="132,42"
           Id="Package\Sequence Container\DFT Extract to Staging From OnCore\RC Extract"
           TopLeft="138,139" />
         <NodeLayout
+          Size="151,42"
+          Id="Package\Sequence Container\DFT Extract to Staging From OnCore\OLE DB Stage"
+          TopLeft="136,327" />
+        <NodeLayout
           Size="122,42"
           Id="Package\Sequence Container\DFT Extract to Staging From OnCore\RC Error"
           TopLeft="148,423" />
         <NodeLayout
-          Size="151,42"
-          Id="Package\Sequence Container\DFT Extract to Staging From OnCore\OLE DB Stage"
-          TopLeft="136,327" />
+          Size="125,42"
+          Id="Package\Sequence Container\DFT Extract to Staging From OnCore\FF Errors"
+          TopLeft="143,509" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Sequence Container\DFT Extract to Staging From OnCore\Data Conversion"
+          TopLeft="131,232" />
+        <EdgeLayout
+          Id="Package\Sequence Container\DFT Extract to Staging From OnCore.Paths[Row Count Output 11]"
+          TopLeft="207.75,181">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container\DFT Extract to Staging From OnCore.Paths[Row Count Output 1]"
           TopLeft="207.25,465">
@@ -8517,24 +8542,20 @@ FROM UACC_ONCORE_RW_UTILS.MYPV4')</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Sequence Container\DFT Extract to Staging From OnCore\Data Conversion"
-          TopLeft="131,232" />
         <EdgeLayout
-          Id="Package\Sequence Container\DFT Extract to Staging From OnCore.Paths[Row Count Output 11]"
-          TopLeft="207.75,181">
+          Id="Package\Sequence Container\DFT Extract to Staging From OnCore.Paths[ODBC Source Output]"
+          TopLeft="207.25,96">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,51"
+              EndConnector="0,43"
               Start="0,0"
-              End="0,43.5">
+              End="0,35.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.5" />
+                    End="0,35.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8565,35 +8586,17 @@ FROM UACC_ONCORE_RW_UTILS.MYPV4')</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="149,42"
-          Id="Package\Sequence Container\DFT Extract to Staging From OnCore\ODBC Source"
-          TopLeft="136,54" />
-        <EdgeLayout
-          Id="Package\Sequence Container\DFT Extract to Staging From OnCore.Paths[ODBC Source Output]"
-          TopLeft="207.25,96">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT Extract to Staging From OnCore\ODBC Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\DFT Extract to Staging From OnCore\OLE DB Stage">
     <Properties>
@@ -8761,14 +8764,6 @@ FROM UACC_ONCORE_RW_UTILS.MYPV4')</property>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\DFT Extract to Staging From OnCore V2\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT Extract to Staging From OnCore\ODBC Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
