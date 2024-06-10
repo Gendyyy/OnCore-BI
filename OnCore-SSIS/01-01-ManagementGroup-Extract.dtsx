@@ -7,12 +7,12 @@
   DTS:CreatorName="BLUECAT\gendy"
   DTS:DTSID="{DC50ABF1-931D-4CAA-A498-D29252D3234D}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="01-01-ManagementGroup-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{B65012E3-BB36-421B-8849-19AB8F618A53}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{535E098B-6418-4E04-9E39-56CCAE9828A1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -559,36 +559,6 @@
                       lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[ACTIVE_FLAG]"
                       name="ACTIVE_FLAG"
                       precision="1" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[GROUP_CREATED_USERNAME]"
-                      codePage="1252"
-                      dataType="str"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GROUP_CREATED_USERNAME]"
-                      length="100"
-                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[GROUP_CREATED_USERNAME]"
-                      name="GROUP_CREATED_USERNAME" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[GROUP_CREATED_DATE]"
-                      dataType="dbTimeStamp2"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GROUP_CREATED_DATE]"
-                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[GROUP_CREATED_DATE]"
-                      name="GROUP_CREATED_DATE"
-                      scale="7" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[GROUP_MODIFIED_USERNAME]"
-                      codePage="1252"
-                      dataType="str"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GROUP_MODIFIED_USERNAME]"
-                      length="100"
-                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[GROUP_MODIFIED_USERNAME]"
-                      name="GROUP_MODIFIED_USERNAME" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[GROUP_MODIFIED_DATE]"
-                      dataType="dbTimeStamp2"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GROUP_MODIFIED_DATE]"
-                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[GROUP_MODIFIED_DATE]"
-                      name="GROUP_MODIFIED_DATE"
-                      scale="7" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -609,28 +579,6 @@
                       dataType="numeric"
                       name="ACTIVE_FLAG"
                       precision="1" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GROUP_CREATED_USERNAME]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="GROUP_CREATED_USERNAME" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GROUP_CREATED_DATE]"
-                      dataType="dbTimeStamp2"
-                      name="GROUP_CREATED_DATE"
-                      scale="7" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GROUP_MODIFIED_USERNAME]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="GROUP_MODIFIED_USERNAME" />
-                    <externalMetadataColumn
-                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GROUP_MODIFIED_DATE]"
-                      dataType="dbTimeStamp2"
-                      name="GROUP_MODIFIED_DATE"
-                      scale="7" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -661,36 +609,6 @@
                       lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[ACTIVE_FLAG]"
                       name="ACTIVE_FLAG"
                       precision="1" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[GROUP_CREATED_USERNAME]"
-                      codePage="1252"
-                      dataType="str"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GROUP_CREATED_USERNAME]"
-                      length="100"
-                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[GROUP_CREATED_USERNAME]"
-                      name="GROUP_CREATED_USERNAME" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[GROUP_CREATED_DATE]"
-                      dataType="dbTimeStamp2"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GROUP_CREATED_DATE]"
-                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[GROUP_CREATED_DATE]"
-                      name="GROUP_CREATED_DATE"
-                      scale="7" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[GROUP_MODIFIED_USERNAME]"
-                      codePage="1252"
-                      dataType="str"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GROUP_MODIFIED_USERNAME]"
-                      length="100"
-                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[GROUP_MODIFIED_USERNAME]"
-                      name="GROUP_MODIFIED_USERNAME" />
-                    <outputColumn
-                      refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[GROUP_MODIFIED_DATE]"
-                      dataType="dbTimeStamp2"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GROUP_MODIFIED_DATE]"
-                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[GROUP_MODIFIED_DATE]"
-                      name="GROUP_MODIFIED_DATE"
-                      scale="7" />
                     <outputColumn
                       refId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -781,20 +699,6 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[GROUP_CREATED_DATE]"
-                      cachedDataType="dbTimeStamp2"
-                      cachedName="GROUP_CREATED_DATE"
-                      cachedScale="7"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[CREATED_DATE]"
-                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[GROUP_CREATED_DATE]" />
-                    <inputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[GROUP_MODIFIED_DATE]"
-                      cachedDataType="dbTimeStamp2"
-                      cachedName="GROUP_MODIFIED_DATE"
-                      cachedScale="7"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[MODIFIED_DATE]"
-                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[GROUP_MODIFIED_DATE]" />
-                    <inputColumn
                       refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[Copy of GROUP_NAME]"
                       cachedDataType="wstr"
                       cachedLength="255"
@@ -815,22 +719,6 @@
                       cachedPrecision="1"
                       externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[ACTIVE_FLAG]"
                       lineageId="Package\DFT Extract to Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ACTIVE_FLAG]" />
-                    <inputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[GROUP_CREATED_USERNAME]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="GROUP_CREATED_USERNAME"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[CREATED_USER]"
-                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[GROUP_CREATED_USERNAME]" />
-                    <inputColumn
-                      refId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].Columns[GROUP_MODIFIED_USERNAME]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="GROUP_MODIFIED_USERNAME"
-                      externalMetadataColumnId="Package\DFT Extract to Staging\OLE DB Stage.Inputs[OLE DB Destination Input].ExternalColumns[MODIFIED_USER]"
-                      lineageId="Package\DFT Extract to Staging\ODBC Source.Outputs[ODBC Source Output].Columns[GROUP_MODIFIED_USERNAME]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1005,7 +893,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{E190B8E8-B10A-46B9-B012-C6B7F3A402C4}"
-          SQLTask:SqlStatementSource="insert into [dw].DimAudit&#xA;(&#xA;&#x9;[ParentAuditKey],&#xA;&#x9;[TableName] ,&#xA;&#x9;[PkgName] ,&#xA;&#x9;[PkgGUID] ,&#xA;&#x9;[ExecStartDate],&#xA;&#x9;[ExecStopDate] ,&#xA;&#x9;[ExecutionInstanceGUID],&#xA;&#x9;[ExtractRowCount],&#xA;&#x9;[InsertRowCount],&#xA;&#x9;[UpdateRowCount],&#xA;&#x9;[ErrorRowCount] ,&#xA;&#x9;[TableInitialRowCount],&#xA;&#x9;[TableFinalRowCount] ,&#xA;&#x9;[TableMaxDateTime] ,&#xA;&#x9;[SuccessfulProcessing]&#xA;)&#xA;VALUES&#xA;(?,&#xA;?,&#xA;?,&#xA;?,&#xA;?,&#xA;null,&#xA;?,&#xA;null,&#xA;null,&#xA;null,&#xA;null,&#xA;?,&#xA;null,&#xA;null,&#xA;'N')&#xA;SELECT AuditKey from [dw].[DimAudit] where TableName = ?  and ExecStartDate = ?"
+          SQLTask:SqlStatementSource="insert into [snowflake_dw].DimAudit&#xA;(&#xA;&#x9;[ParentAuditKey],&#xA;&#x9;[TableName] ,&#xA;&#x9;[PkgName] ,&#xA;&#x9;[PkgGUID] ,&#xA;&#x9;[ExecStartDate],&#xA;&#x9;[ExecStopDate] ,&#xA;&#x9;[ExecutionInstanceGUID],&#xA;&#x9;[ExtractRowCount],&#xA;&#x9;[InsertRowCount],&#xA;&#x9;[UpdateRowCount],&#xA;&#x9;[ErrorRowCount] ,&#xA;&#x9;[TableInitialRowCount],&#xA;&#x9;[TableFinalRowCount] ,&#xA;&#x9;[TableMaxDateTime] ,&#xA;&#x9;[SuccessfulProcessing]&#xA;)&#xA;VALUES&#xA;(?,&#xA;?,&#xA;?,&#xA;?,&#xA;?,&#xA;null,&#xA;?,&#xA;null,&#xA;null,&#xA;null,&#xA;null,&#xA;?,&#xA;null,&#xA;null,&#xA;'N')&#xA;SELECT AuditKey from [dw].[DimAudit] where TableName = ?  and ExecStartDate = ?"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"
@@ -1081,7 +969,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{E190B8E8-B10A-46B9-B012-C6B7F3A402C4}"
-          SQLTask:SqlStatementSource="UPDATE [dw].[DimAudit]&#xA;SET ExecStopDate = SYSDATETIME()&#xA;&#x9;, ExtractRowCount = ?&#xA;&#x9;,TableFinalRowCount = ?&#xA;&#x9;,ErrorRowCount = ?&#xA;&#x9;,SuccessfulProcessing='Y'&#xA;WHERE AuditKey = ?&#xA;;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="UPDATE [snowflake_dw].[DimAudit]&#xA;SET ExecStopDate = SYSDATETIME()&#xA;&#x9;, ExtractRowCount = ?&#xA;&#x9;,TableFinalRowCount = ?&#xA;&#x9;,ErrorRowCount = ?&#xA;&#x9;,SuccessfulProcessing='Y'&#xA;WHERE AuditKey = ?&#xA;;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="User::RowCountExtract"
@@ -1316,17 +1204,69 @@
           Id="Package\DFT Extract to Staging\OLE DB Stage"
           TopLeft="130,350" />
         <NodeLayout
-          Size="122,42"
-          Id="Package\DFT Extract to Staging\RC Error"
-          TopLeft="143,446" />
-        <NodeLayout
           Size="132,42"
           Id="Package\DFT Extract to Staging\RC Extract"
           TopLeft="139,170" />
         <NodeLayout
+          Size="122,42"
+          Id="Package\DFT Extract to Staging\RC Error"
+          TopLeft="143,446" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\DFT Extract to Staging\ODBC Source"
+          TopLeft="138,77" />
+        <NodeLayout
           Size="125,42"
           Id="Package\DFT Extract to Staging\FF Errors"
           TopLeft="138,532" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DFT Extract to Staging\Data Conversion"
+          TopLeft="130,246" />
+        <EdgeLayout
+          Id="Package\DFT Extract to Staging.Paths[Data Conversion Output]"
+          TopLeft="208,288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62"
+              Start="0,0"
+              End="0,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Extract to Staging.Paths[Row Count Output 11]"
+          TopLeft="207.75,212">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[Row Count Output 1]"
           TopLeft="202.25,488">
@@ -1373,10 +1313,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="149,42"
-          Id="Package\DFT Extract to Staging\ODBC Source"
-          TopLeft="138,77" />
         <EdgeLayout
           Id="Package\DFT Extract to Staging.Paths[ODBC Source Output]"
           TopLeft="208.75,119">
@@ -1391,54 +1327,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,43.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="161,42"
-          Id="Package\DFT Extract to Staging\Data Conversion"
-          TopLeft="130,246" />
-        <EdgeLayout
-          Id="Package\DFT Extract to Staging.Paths[Row Count Output 11]"
-          TopLeft="207.75,212">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34"
-              Start="0,0"
-              End="0,26.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Extract to Staging.Paths[Data Conversion Output]"
-          TopLeft="208,288">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,62"
-              Start="0,0"
-              End="0,54.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

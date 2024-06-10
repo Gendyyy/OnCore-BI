@@ -7,12 +7,12 @@
   DTS:CreatorName="BLUECAT\gendy"
   DTS:DTSID="{8E0A10DB-EA4A-446D-917F-2BDD3E8F0212}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="02-01-DimManagementGroup-Transform-Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{B091C5E4-06C8-42B5-BFB1-667EDE6CDC4A}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{AE733B2F-0CDA-476B-BAB1-2650CFACD2CB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -411,7 +411,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dw].[DimManagementGroup]</property>
+                  name="OpenRowset">[snowflake_dw].[DimManagementGroup]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -566,7 +566,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dw].[DimManagementGroup] SET [NAME] = ? WHERE [CODE] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [snowflake_dw].[DimManagementGroup] SET [AuditKey] = ?,[NAME] = ?,[ONC_MANAGEMENT_GROUP_ID] = ? WHERE [CODE] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -589,27 +589,51 @@
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[AuditKey]"
+                      cachedDataType="i4"
+                      cachedName="AuditKey"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT Transform-Load\DC Audit Key.Outputs[Derived Column Output].Columns[AuditKey]" />
+                    <inputColumn
                       refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[CODE]"
                       cachedDataType="wstr"
                       cachedLength="12"
                       cachedName="CODE"
-                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE]" />
                     <inputColumn
                       refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[NAME]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="NAME"
-                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[NAME]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[ONC_MANAGEMENT_GROUP_ID]"
+                      cachedDataType="numeric"
+                      cachedName="ONC_MANAGEMENT_GROUP_ID"
+                      cachedPrecision="10"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[ONC_MANAGEMENT_GROUP_ID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       dataType="wstr"
                       length="255"
-                      name="Param_0">
+                      name="Param_1">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -618,10 +642,22 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="numeric"
+                      name="Param_2"
+                      precision="10">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                       dataType="wstr"
                       length="12"
-                      name="Param_1">
+                      name="Param_3">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -680,7 +716,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[etl_transform_load].[DimManagementGroup]</property>
+                  name="OpenRowset">[snowflake_etl_transform_load].[DimManagementGroup]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -964,7 +1000,7 @@
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [CODE], [NAME] FROM [dw].[DimManagementGroup]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [AuditKey], [CODE], [NAME], [ONC_MANAGEMENT_GROUP_ID] FROM [snowflake_dw].[DimManagementGroup]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -1013,6 +1049,19 @@
                   name="Slowly Changing Dimension Input">
                   <inputColumns>
                     <inputColumn
+                      refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[AuditKey]"
+                      cachedDataType="i4"
+                      cachedName="AuditKey"
+                      externalMetadataColumnId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[AuditKey]"
+                      lineageId="Package\DFT Transform-Load\DC Audit Key.Outputs[Derived Column Output].Columns[AuditKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
                       refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[CODE]"
                       cachedDataType="wstr"
                       cachedLength="12"
@@ -1040,9 +1089,27 @@
                           typeConverter="ColumnType">2</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ONC_MANAGEMENT_GROUP_ID]"
+                      cachedDataType="numeric"
+                      cachedName="ONC_MANAGEMENT_GROUP_ID"
+                      cachedPrecision="10"
+                      externalMetadataColumnId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ONC_MANAGEMENT_GROUP_ID]"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[ONC_MANAGEMENT_GROUP_ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[AuditKey]"
+                      dataType="i4"
+                      name="AuditKey" />
                     <externalMetadataColumn
                       refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CODE]"
                       dataType="wstr"
@@ -1053,6 +1120,11 @@
                       dataType="wstr"
                       length="255"
                       name="NAME" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ONC_MANAGEMENT_GROUP_ID]"
+                      dataType="numeric"
+                      name="ONC_MANAGEMENT_GROUP_ID"
+                      precision="10" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1172,7 +1244,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{E190B8E8-B10A-46B9-B012-C6B7F3A402C4}"
-          SQLTask:SqlStatementSource="insert into [dw].DimAudit&#xA;(&#xA;&#x9;[ParentAuditKey],&#xA;&#x9;[TableName] ,&#xA;&#x9;[PkgName] ,&#xA;&#x9;[PkgGUID] ,&#xA;&#x9;[ExecStartDate],&#xA;&#x9;[ExecStopDate] ,&#xA;&#x9;[ExecutionInstanceGUID],&#xA;&#x9;[ExtractRowCount],&#xA;&#x9;[InsertRowCount],&#xA;&#x9;[UpdateRowCount],&#xA;&#x9;[ErrorRowCount] ,&#xA;&#x9;[TableInitialRowCount],&#xA;&#x9;[TableFinalRowCount] ,&#xA;&#x9;[TableMaxDateTime] ,&#xA;&#x9;[SuccessfulProcessing]&#xA;)&#xA;VALUES&#xA;(?,&#xA;?,&#xA;?,&#xA;?,&#xA;?,&#xA;null,&#xA;?,&#xA;null,&#xA;null,&#xA;null,&#xA;null,&#xA;?,&#xA;null,&#xA;null,&#xA;'N')&#xA;SELECT AuditKey from [dw].[DimAudit] where TableName = ?  and ExecStartDate = ?"
+          SQLTask:SqlStatementSource="insert into snowflake_dw.DimAudit&#xA;(&#xA;&#x9;[ParentAuditKey],&#xA;&#x9;[TableName] ,&#xA;&#x9;[PkgName] ,&#xA;&#x9;[PkgGUID] ,&#xA;&#x9;[ExecStartDate],&#xA;&#x9;[ExecStopDate] ,&#xA;&#x9;[ExecutionInstanceGUID],&#xA;&#x9;[ExtractRowCount],&#xA;&#x9;[InsertRowCount],&#xA;&#x9;[UpdateRowCount],&#xA;&#x9;[ErrorRowCount] ,&#xA;&#x9;[TableInitialRowCount],&#xA;&#x9;[TableFinalRowCount] ,&#xA;&#x9;[TableMaxDateTime] ,&#xA;&#x9;[SuccessfulProcessing]&#xA;)&#xA;VALUES&#xA;(?,&#xA;?,&#xA;?,&#xA;?,&#xA;?,&#xA;null,&#xA;?,&#xA;null,&#xA;null,&#xA;null,&#xA;null,&#xA;?,&#xA;null,&#xA;null,&#xA;'N')&#xA;SELECT AuditKey from snowflake_dw.DimAudit where TableName = ?  and ExecStartDate = ?"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"
@@ -1248,7 +1320,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{E190B8E8-B10A-46B9-B012-C6B7F3A402C4}"
-          SQLTask:SqlStatementSource="UPDATE [dw].[DimAudit]&#xA;SET ExecStopDate = SYSDATETIME()&#xA;&#x9;, ExtractRowCount = ?&#xA;,InsertRowCount = ?&#xA;,UpdateRowCount = ?&#xA;&#x9;,TableFinalRowCount = ?&#xA;&#x9;,ErrorRowCount = ?&#xA;&#x9;,SuccessfulProcessing='Y'&#xA;WHERE AuditKey = ?&#xA;;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="UPDATE snowflake_dw.[DimAudit]&#xA;SET ExecStopDate = SYSDATETIME()&#xA;&#x9;, ExtractRowCount = ?&#xA;,InsertRowCount = ?&#xA;,UpdateRowCount = ?&#xA;&#x9;,TableFinalRowCount = ?&#xA;&#x9;,ErrorRowCount = ?&#xA;&#x9;,SuccessfulProcessing='Y'&#xA;WHERE AuditKey = ?&#xA;;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="User::RowCountExtract"
@@ -1302,7 +1374,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{E190B8E8-B10A-46B9-B012-C6B7F3A402C4}"
-          SQLTask:SqlStatementSource="select count(*) from dw.DimManagementGroup"
+          SQLTask:SqlStatementSource="select count(*) from snowflake_dw.DimManagementGroup"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"
@@ -1382,37 +1454,37 @@
         <NodeLayout
           Size="182,42"
           Id="Package\DFT Transform-Load"
-          TopLeft="117,235" />
+          TopLeft="514,119" />
         <NodeLayout
           Size="160,42"
           Id="Package\SQL Audit Begin"
-          TopLeft="130,147" />
+          TopLeft="314,118" />
         <NodeLayout
           Size="152,42"
           Id="Package\SQL Audit End"
-          TopLeft="125,402" />
+          TopLeft="949,119" />
         <NodeLayout
           Size="203,42"
           Id="Package\SQL Count Current Rows"
-          TopLeft="108,55" />
+          TopLeft="67,119" />
         <NodeLayout
           Size="164,42"
           Id="Package\SQL Count Rows"
-          TopLeft="133,321" />
+          TopLeft="749,118" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="209.75,97">
+          TopLeft="270,139.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50"
+              EndConnector="44,0"
               Start="0,0"
-              End="0,42.5">
+              End="36.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.5" />
+                    End="36.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1423,18 +1495,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="209,189">
+          TopLeft="474,139.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,46"
+              EndConnector="40,0"
               Start="0,0"
-              End="0,38.5">
+              End="32.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.5" />
+                    End="32.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1445,18 +1517,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="211.5,277">
+          TopLeft="696,139.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44"
+              EndConnector="53,0"
               Start="0,0"
-              End="0,36.5">
+              End="45.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.5" />
+                    End="45.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1467,30 +1539,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="215,363">
+          TopLeft="913,139.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-14,39"
+              EndConnector="36,0"
               Start="0,0"
-              End="-14,31.5">
+              End="28.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.5"
-                    Point2="0,19.5"
-                    Point3="-4,19.5" />
-                  <mssgle:LineSegment
-                    End="-10,19.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-10,19.5"
-                    Point2="-14,19.5"
-                    Point3="-14,23.5" />
-                  <mssgle:LineSegment
-                    End="-14,31.5" />
+                    End="28.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1508,59 +1568,95 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="122,42"
-          Id="Package\DFT Transform-Load\RC Error"
-          TopLeft="176,554.5" />
+          Size="133,42"
+          Id="Package\DFT Transform-Load\RC Update"
+          TopLeft="844.5,390.5" />
         <NodeLayout
           Size="165,42"
           Id="Package\DFT Transform-Load\Insert Destination"
-          TopLeft="150.5,478.5" />
-        <NodeLayout
-          Size="216,42"
-          Id="Package\DFT Transform-Load\Slowly Changing Dimension"
-          TopLeft="190,311.5" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\DFT Transform-Load\FF Errors"
-          TopLeft="174.5,656.5" />
-        <NodeLayout
-          Size="133,42"
-          Id="Package\DFT Transform-Load\RC Update"
-          TopLeft="430,420" />
+          TopLeft="516.5,442.5" />
         <NodeLayout
           Size="125,42"
           Id="Package\DFT Transform-Load\RC Insert"
-          TopLeft="75,388" />
-        <NodeLayout
-          Size="173,42"
-          Id="Package\DFT Transform-Load\OLE DB Command"
-          TopLeft="417.5,533.5" />
+          TopLeft="366.5,391.5" />
         <NodeLayout
           Size="157,42"
           Id="Package\DFT Transform-Load\OLE DB Source"
-          TopLeft="219.5,5.49999999999989" />
+          TopLeft="575.5,5.49999999999989" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\DFT Transform-Load\FF Errors"
+          TopLeft="530.5,652.5" />
         <NodeLayout
           Size="132,42"
           Id="Package\DFT Transform-Load\RC Extract"
-          TopLeft="232,107.5" />
+          TopLeft="588,107.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\DFT Transform-Load\OLE DB Command"
+          TopLeft="825.5,486.5" />
+        <NodeLayout
+          Size="122,42"
+          Id="Package\DFT Transform-Load\RC Error"
+          TopLeft="532,550.5" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\DFT Transform-Load\Slowly Changing Dimension"
+          TopLeft="546,311.5" />
         <NodeLayout
           Size="145,42"
           Id="Package\DFT Transform-Load\DC Audit Key"
-          TopLeft="225.5,209.5" />
+          TopLeft="581.5,209.5" />
         <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Row Count Output 13]"
-          TopLeft="500.25,462">
+          Id="Package\DFT Transform-Load.Paths[Changing Attribute Updates Output]"
+          TopLeft="688.666666666667,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,71.4999999999999"
+              EndConnector="222.333333333333,37.0000000000001"
               Start="0,0"
-              End="0,63.9999999999999">
+              End="222.333333333333,29.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,63.9999999999999" />
+                    End="0,10.9632352941177" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.9632352941177"
+                    Point2="0,14.9632352941177"
+                    Point3="4,14.9632352941177" />
+                  <mssgle:LineSegment
+                    End="218.333333333333,14.9632352941177" />
+                  <mssgle:CubicBezierSegment
+                    Point1="218.333333333333,14.9632352941177"
+                    Point2="222.333333333333,14.9632352941177"
+                    Point3="222.333333333333,18.9632352941177" />
+                  <mssgle:LineSegment
+                    End="222.333333333333,29.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="32.6327604166667,19.9632352941177,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Row Count Output 13]"
+          TopLeft="911.5,432.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.9999999999999"
+              Start="0,0"
+              End="0,46.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1571,30 +1667,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Row Count Output 12]"
-          TopLeft="137.5,430">
+          TopLeft="491.5,412.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="95.5000000000001,48.4999999999999"
+              EndConnector="24.9999999999999,51"
               Start="0,0"
-              End="95.5000000000001,40.9999999999999">
+              End="17.4999999999999,51">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2499999999999" />
+                    End="8.49999999999997,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2499999999999"
-                    Point2="0,24.2499999999999"
-                    Point3="4,24.2499999999999" />
+                    Point1="8.49999999999997,0"
+                    Point2="12.5,0"
+                    Point3="12.5,4" />
                   <mssgle:LineSegment
-                    End="91.5000000000001,24.2499999999999" />
+                    End="12.5,47" />
                   <mssgle:CubicBezierSegment
-                    Point1="91.5000000000001,24.2499999999999"
-                    Point2="95.5000000000001,24.2499999999999"
-                    Point3="95.5000000000001,28.2499999999999" />
+                    Point1="12.5,47"
+                    Point2="12.5,51"
+                    Point3="16.5,51" />
                   <mssgle:LineSegment
-                    End="95.5000000000001,40.9999999999999" />
+                    End="17.4999999999999,51" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1605,7 +1701,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Row Count Output 11]"
-          TopLeft="298,149.5">
+          TopLeft="654,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1627,7 +1723,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Row Count Output 1]"
-          TopLeft="237,596.5">
+          TopLeft="593,592.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1649,7 +1745,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[OLE DB Source Output]"
-          TopLeft="298,47.4999999999999">
+          TopLeft="654,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1671,67 +1767,67 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[OLE DB Destination Error Output]"
-          TopLeft="235,520.5">
+          TopLeft="596,484.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34"
+              EndConnector="0,66.0000000000001"
               Start="0,0"
-              End="0,26.5">
+              End="0,58.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.5" />
+                    End="0,58.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-73.20890625,7.533203125,146.4178125,11.43359375"
+              BoundingBox="-73.20890625,23.5332031250001,146.4178125,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[New Output]"
-          TopLeft="263.333333333333,353.5">
+          TopLeft="619.333333333333,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-125.833333333333,34.5000000000001"
+              EndConnector="-190.333333333333,38"
               Start="0,0"
-              End="-125.833333333333,27.0000000000001">
+              End="-190.333333333333,30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.95220588235298" />
+                    End="0,11.3676470588235" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9.95220588235298"
-                    Point2="0,13.952205882353"
-                    Point3="-4,13.952205882353" />
+                    Point1="0,11.3676470588235"
+                    Point2="0,15.3676470588235"
+                    Point3="-4,15.3676470588235" />
                   <mssgle:LineSegment
-                    End="-121.833333333333,13.952205882353" />
+                    End="-186.333333333333,15.3676470588235" />
                   <mssgle:CubicBezierSegment
-                    Point1="-121.833333333333,13.952205882353"
-                    Point2="-125.833333333333,13.952205882353"
-                    Point3="-125.833333333333,17.952205882353" />
+                    Point1="-186.333333333333,15.3676470588235"
+                    Point2="-190.333333333333,15.3676470588235"
+                    Point3="-190.333333333333,19.3676470588235" />
                   <mssgle:LineSegment
-                    End="-125.833333333333,27.0000000000001" />
+                    End="-190.333333333333,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-90.0080533854167,18.952205882353,54.1827734375,11.43359375"
+              BoundingBox="-122.258053385417,20.3676470588235,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Derived Column Output]"
-          TopLeft="298,251.5">
+          TopLeft="654,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1751,45 +1847,35 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Changing Attribute Updates Output]"
-          TopLeft="332.666666666667,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="163.833333333333,66.5000000000001"
-              Start="0,0"
-              End="163.833333333333,59.0000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.8933823529412" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22.8933823529412"
-                    Point2="0,26.8933823529412"
-                    Point3="4,26.8933823529412" />
-                  <mssgle:LineSegment
-                    End="159.833333333333,26.8933823529412" />
-                  <mssgle:CubicBezierSegment
-                    Point1="159.833333333333,26.8933823529412"
-                    Point2="163.833333333333,26.8933823529412"
-                    Point3="163.833333333333,30.8933823529412" />
-                  <mssgle:LineSegment
-                    End="163.833333333333,59.0000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="3.38276041666666,31.8933823529412,157.0678125,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Transform-Load\Insert Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Transform-Load\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT Transform-Load\Slowly Changing Dimension">
     <Properties>
@@ -1799,13 +1885,13 @@
           type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;ConnectionID&gt;{E190B8E8-B10A-46B9-B012-C6B7F3A402C4}&lt;/ConnectionID&gt;
-  &lt;TableName&gt;[dw].[DimManagementGroup]&lt;/TableName&gt;
+  &lt;TableName&gt;[snowflake_dw].[DimManagementGroup]&lt;/TableName&gt;
   &lt;InputToColumnsCollection&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;DC Audit Key.Outputs[Derived Column Output].Columns[AuditKey]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;AuditKey&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE]&lt;/IdentificationString&gt;
@@ -1823,7 +1909,7 @@
       &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[ONC_MANAGEMENT_GROUP_ID]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;ONC_MANAGEMENT_GROUP_ID&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
   &lt;/InputToColumnsCollection&gt;
   &lt;GeneratedComponentsIdentificationStrings&gt;
@@ -1842,19 +1928,6 @@
   &lt;DateVariable /&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT Transform-Load\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
