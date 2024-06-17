@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="11/2/2023 8:58:32 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-00-Master-Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{7C9E6FD6-0B60-476C-AC3E-B1A36E6529B9}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{ED2D54EE-E3F8-468D-BC4A-318483182955}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -174,6 +174,27 @@
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
               <PackageName>01-04-Staff-Extract.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>ParentAuditKey</ParameterName>
+                <BindedVariableOrParameterName>User::ParentAuditKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Pull to Staging\EP UoAFaculty Extract"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{0e7efb19-bbbd-4707-90fe-32c0b6eb25bf}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EP UoAFaculty Extract"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>01-07-UoAFaculty-Extract.dtsx</PackageName>
               <ParameterAssignment>
                 <ParameterName>ParentAuditKey</ParameterName>
                 <BindedVariableOrParameterName>User::ParentAuditKey</BindedVariableOrParameterName>
@@ -382,11 +403,15 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Pull to Staging\EP UoAFaculty Extract"
+          TopLeft="23,107" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="834,269"
-          Size="834,312"
+          PanelSize="834,247"
+          Size="834,290"
           Id="Package\Pull to Staging"
           TopLeft="114,152" />
         <NodeLayout
@@ -396,7 +421,7 @@
         <NodeLayout
           Size="152,42"
           Id="Package\SQL Audit End"
-          TopLeft="450,497" />
+          TopLeft="448,481" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="452,102">
@@ -433,18 +458,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="528.5,464">
+          TopLeft="527.5,442">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33"
+              EndConnector="0,39"
               Start="0,0"
-              End="0,25.5">
+              End="0,31.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.5" />
+                    End="0,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
