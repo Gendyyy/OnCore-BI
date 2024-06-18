@@ -7,12 +7,12 @@
   DTS:CreatorName="BLUECAT\gendy"
   DTS:DTSID="{136D2999-4F07-4202-8BB4-1A8ED9C551D5}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="02-03-FactProtocols-Transform-Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="75"
-  DTS:VersionGUID="{D32C4362-C93E-4A12-9927-D8BE9CA20071}">
+  DTS:VersionBuild="76"
+  DTS:VersionGUID="{69182414-C457-4E40-8F49-6E9E9C5716EB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2217,6 +2217,13 @@ where [refTable].[Date] = ?</property>
                       cachedName="IsSummaryAccrual"
                       externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsSummaryAccrual]"
                       lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[IsSummaryAccrual]" />
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ACCRUAL_NOT_APPLICABLE]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="ACCRUAL_NOT_APPLICABLE"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACCRUAL_NOT_APPLICABLE]"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[ACCRUAL_NOT_APPLICABLE]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2339,6 +2346,11 @@ where [refTable].[Date] = ?</property>
                       dataType="wstr"
                       length="1"
                       name="IsSummaryAccrual" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACCRUAL_NOT_APPLICABLE]"
+                      dataType="wstr"
+                      length="1"
+                      name="ACCRUAL_NOT_APPLICABLE" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2711,6 +2723,16 @@ where [refTable].[Date] = ?</property>
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[pi_email]"
                       name="pi_email"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCRUAL_NOT_APPLICABLE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACCRUAL_NOT_APPLICABLE]"
+                      length="1"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCRUAL_NOT_APPLICABLE]"
+                      name="ACCRUAL_NOT_APPLICABLE"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2852,6 +2874,11 @@ where [refTable].[Date] = ?</property>
                       dataType="wstr"
                       length="50"
                       name="pi_email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACCRUAL_NOT_APPLICABLE]"
+                      dataType="wstr"
+                      length="1"
+                      name="ACCRUAL_NOT_APPLICABLE" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3026,6 +3053,12 @@ where [refTable].[Date] = ?</property>
                       length="1"
                       lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsSummaryAccrual]"
                       name="IsSummaryAccrual" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACCRUAL_NOT_APPLICABLE]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACCRUAL_NOT_APPLICABLE]"
+                      name="ACCRUAL_NOT_APPLICABLE" />
                     <outputColumn
                       refId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -3580,6 +3613,20 @@ where [refTable].[Date] = ?</property>
                           name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[pi_netid]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1].Columns[ACCRUAL_NOT_APPLICABLE]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="ACCRUAL_NOT_APPLICABLE"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[ACCRUAL_NOT_APPLICABLE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[ACCRUAL_NOT_APPLICABLE]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4026,6 +4073,20 @@ where [refTable].[Date] = ?</property>
                           name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[pi_netid]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 2].Columns[ACCRUAL_NOT_APPLICABLE]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="ACCRUAL_NOT_APPLICABLE"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[ACCRUAL_NOT_APPLICABLE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[ACCRUAL_NOT_APPLICABLE]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4224,6 +4285,12 @@ where [refTable].[Date] = ?</property>
                       length="35"
                       lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[Primary_IRB_Coord]"
                       name="Primary_IRB_Coord" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[ACCRUAL_NOT_APPLICABLE]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT Transform-Load\Union All ManagementGroup.Outputs[Union All Output 1].Columns[ACCRUAL_NOT_APPLICABLE]"
+                      name="ACCRUAL_NOT_APPLICABLE" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -4666,6 +4733,20 @@ where [refTable].[Date] = ?</property>
                           name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[pi_email]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 1].Columns[ACCRUAL_NOT_APPLICABLE]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="ACCRUAL_NOT_APPLICABLE"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCRUAL_NOT_APPLICABLE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[ACCRUAL_NOT_APPLICABLE]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -5099,6 +5180,20 @@ where [refTable].[Date] = ?</property>
                           name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[pi_email]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2].Columns[ACCRUAL_NOT_APPLICABLE]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="ACCRUAL_NOT_APPLICABLE"
+                      lineageId="Package\DFT Transform-Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCRUAL_NOT_APPLICABLE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[ACCRUAL_NOT_APPLICABLE]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -5292,6 +5387,12 @@ where [refTable].[Date] = ?</property>
                       dataType="i4"
                       lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[PIKey]"
                       name="PIKey" />
+                    <outputColumn
+                      refId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[ACCRUAL_NOT_APPLICABLE]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT Transform-Load\Union All PI.Outputs[Union All Output 1].Columns[ACCRUAL_NOT_APPLICABLE]"
+                      name="ACCRUAL_NOT_APPLICABLE" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -5462,39 +5563,39 @@ where [refTable].[Date] = ?</property>
               startId="Package\DFT Transform-Load\Unmatched PI.Outputs[Derived Column Output]" />
             <path
               refId="Package\DFT Transform-Load.Paths[Lookup Match Output5]"
-              endId="Package\DFT Transform-Load\RC Insert.Inputs[Row Count Input 1]"
-              name="Lookup Match Output"
-              startId="Package\DFT Transform-Load\Lookup StudyClosureDate_Key.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\DFT Transform-Load.Paths[Lookup Match Output4]"
-              endId="Package\DFT Transform-Load\Lookup CurrentStatusDate_Key.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\DFT Transform-Load\Lookup ClosedDate_Key.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\DFT Transform-Load.Paths[Lookup Match Output3]"
-              endId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2]"
-              name="Lookup Match Output"
-              startId="Package\DFT Transform-Load\Lookup PI_Key.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\DFT Transform-Load.Paths[Lookup Match Output6]"
-              endId="Package\DFT Transform-Load\Lookup ClosedDate_Key.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\DFT Transform-Load\Lookup InitialOpenDate_Key.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\DFT Transform-Load.Paths[Lookup Match Output1]"
-              endId="Package\DFT Transform-Load\Lookup StudyClosureDate_Key.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\DFT Transform-Load\Lookup CurrentStatusDate_Key.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\DFT Transform-Load.Paths[Lookup Match Output]"
               endId="Package\DFT Transform-Load\Union All ManagementGroup.Inputs[Union All Input 1]"
               name="Lookup Match Output"
               startId="Package\DFT Transform-Load\Lookup ManagementGroup_Key.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\DFT Transform-Load.Paths[Lookup Match Output2]"
+              refId="Package\DFT Transform-Load.Paths[Lookup Match Output4]"
+              endId="Package\DFT Transform-Load\Lookup StudyClosureDate_Key.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT Transform-Load\Lookup CurrentStatusDate_Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT Transform-Load.Paths[Lookup Match Output3]"
+              endId="Package\DFT Transform-Load\Lookup ClosedDate_Key.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT Transform-Load\Lookup InitialOpenDate_Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT Transform-Load.Paths[Lookup Match Output6]"
               endId="Package\DFT Transform-Load\Lookup InitialOpenDate_Key.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\DFT Transform-Load\Lookup CreatedDate_Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT Transform-Load.Paths[Lookup Match Output1]"
+              endId="Package\DFT Transform-Load\Lookup CurrentStatusDate_Key.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT Transform-Load\Lookup ClosedDate_Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT Transform-Load.Paths[Lookup Match Output]"
+              endId="Package\DFT Transform-Load\RC Insert.Inputs[Row Count Input 1]"
+              name="Lookup Match Output"
+              startId="Package\DFT Transform-Load\Lookup StudyClosureDate_Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT Transform-Load.Paths[Lookup Match Output2]"
+              endId="Package\DFT Transform-Load\Union All PI.Inputs[Union All Input 2]"
+              name="Lookup Match Output"
+              startId="Package\DFT Transform-Load\Lookup PI_Key.Outputs[Lookup Match Output]" />
             <path
               refId="Package\DFT Transform-Load.Paths[Lookup No Match Output]"
               endId="Package\DFT Transform-Load\Unmatched ManagementGroup.Inputs[Derived Column Input]"
@@ -6028,7 +6129,7 @@ where [refTable].[Date] = ?</property>
         <NodeLayout
           Size="157,42"
           Id="Package\DFT Transform-Load\OLE DB Source"
-          TopLeft="219.5,5.5" />
+          TopLeft="219.5,6.5" />
         <NodeLayout
           Size="125,42"
           Id="Package\DFT Transform-Load\RC Insert"
@@ -6076,7 +6177,7 @@ where [refTable].[Date] = ?</property>
         <NodeLayout
           Size="177,42"
           Id="Package\DFT Transform-Load\OLE DB Destination"
-          TopLeft="220,1309" />
+          TopLeft="220,1308" />
         <NodeLayout
           Size="145,42"
           Id="Package\DFT Transform-Load\DC Audit Key"
@@ -6183,26 +6284,26 @@ where [refTable].[Date] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="11,51"
+              EndConnector="11,50"
               Start="0,0"
-              End="11,43.5">
+              End="11,42.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.5" />
+                    End="0,21" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.5"
-                    Point2="0,25.5"
-                    Point3="4,25.5" />
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="4,25" />
                   <mssgle:LineSegment
-                    End="7,25.5" />
+                    End="7,25" />
                   <mssgle:CubicBezierSegment
-                    Point1="7,25.5"
-                    Point2="11,25.5"
-                    Point3="11,29.5" />
+                    Point1="7,25"
+                    Point2="11,25"
+                    Point3="11,29" />
                   <mssgle:LineSegment
-                    End="11,43.5" />
+                    End="11,42.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6213,18 +6314,18 @@ where [refTable].[Date] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[OLE DB Source Output]"
-          TopLeft="298,47.5">
+          TopLeft="298,48.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59"
               Start="0,0"
-              End="0,52.5">
+              End="0,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6235,13 +6336,13 @@ where [refTable].[Date] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[OLE DB Destination Error Output]"
-          TopLeft="220,1330">
+          TopLeft="220,1329">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-60.9999999999999,26.5"
+              EndConnector="-60.9999999999999,27.5"
               Start="0,0"
-              End="-53.4999999999999,26.5">
+              End="-53.4999999999999,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -6252,13 +6353,13 @@ where [refTable].[Date] = ?</property>
                     Point2="-30.4999999999999,0"
                     Point3="-30.4999999999999,4" />
                   <mssgle:LineSegment
-                    End="-30.4999999999999,22.5" />
+                    End="-30.4999999999999,23.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-30.4999999999999,22.5"
-                    Point2="-30.4999999999999,26.5"
-                    Point3="-34.4999999999999,26.5" />
+                    Point1="-30.4999999999999,23.5"
+                    Point2="-30.4999999999999,27.5"
+                    Point3="-34.4999999999999,27.5" />
                   <mssgle:LineSegment
-                    End="-53.4999999999999,26.5" />
+                    End="-53.4999999999999,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6331,7 +6432,7 @@ where [refTable].[Date] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Lookup Match Output6]"
-          TopLeft="298,863.5">
+          TopLeft="298,761.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6355,31 +6456,31 @@ where [refTable].[Date] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Lookup Match Output5]"
-          TopLeft="297.75,1169.5">
+          TopLeft="334.916666666667,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,46.5"
+              EndConnector="0,162"
               Start="0,0"
-              End="0,39">
+              End="0,154.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39" />
+                    End="0,154.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,13.6953125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,71.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Lookup Match Output4]"
-          TopLeft="298,965.5">
+          TopLeft="298,1067.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6403,6 +6504,30 @@ where [refTable].[Date] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Lookup Match Output3]"
+          TopLeft="298,863.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Transform-Load.Paths[Lookup Match Output2]"
           TopLeft="298,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6438,32 +6563,8 @@ where [refTable].[Date] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT Transform-Load.Paths[Lookup Match Output2]"
-          TopLeft="298,761.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Lookup Match Output1]"
-          TopLeft="298,1067.5">
+          TopLeft="298,965.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6487,25 +6588,25 @@ where [refTable].[Date] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Transform-Load.Paths[Lookup Match Output]"
-          TopLeft="334.916666666667,455.5">
+          TopLeft="297.75,1169.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,162"
+              EndConnector="0,46.5"
               Start="0,0"
-              End="0,154.5">
+              End="0,39">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,154.5" />
+                    End="0,39" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,71.4453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,13.6953125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
