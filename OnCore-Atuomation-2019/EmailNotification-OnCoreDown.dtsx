@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="EmailNotification-OnCoreDown"
   DTS:PackageType="5"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{B24E69DF-35C1-43CB-B681-330DA3B97771}">
+  DTS:VersionBuild="42"
+  DTS:VersionGUID="{7DFA608E-13CB-4EB8-A6DC-844A3D31F1DE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
