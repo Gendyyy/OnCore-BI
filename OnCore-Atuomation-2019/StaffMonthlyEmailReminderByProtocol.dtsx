@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="11/6/2023 7:44:07 PM"
@@ -7,12 +7,12 @@
   DTS:CreatorName="BLUECAT\gendy"
   DTS:DTSID="{B7324ADE-8D35-450A-9A86-B509833BDA64}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="StaffMonthlyEmailReminderByProtocol"
   DTS:PackageType="5"
-  DTS:VersionBuild="109"
-  DTS:VersionGUID="{680F3225-7445-4EE7-8DAA-C10E18C8DD01}">
+  DTS:VersionBuild="114"
+  DTS:VersionGUID="{7C68904D-B401-4201-8228-871A54FDED06}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -1930,8 +1930,21 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from automation.EmailNotification_StaffMonthlyEmailReminderByProtocol e
-where not exists(select * from logs.MonthlyReminder m where month(ExecutionTime) = 6 and m.Protocol_No = e.Protocol_No)</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select
+    tst.DelayFor6Months,
+       tst.DelayedReminderDate,
+       e.*
+from automation.EmailNotification_StaffMonthlyEmailReminderByProtocol e
+         outer apply (select top 1 ProtocolNo, created_date, DelayFor6Months, DelayedReminderDate
+                      from TicketCat_SummaryAcrrual_Tickets tst
+                      where tst.ProtocolNo = e.Protocol_No
+                        and DelayFor6Months = 'Yes'
+                      order by created_date desc) tst
+
+-- where e.Protocol_No = '2010109636'
+where tst.DelayedReminderDate is null
+   or (year(getdate()) = year(tst.DelayedReminderDate)
+    and month(getdate()) = month(tst.DelayedReminderDate))</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -2035,6 +2048,25 @@ where not exists(select * from logs.MonthlyReminder m where month(ExecutionTime)
                       lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExecutionTime]"
                       name="ExecutionTime"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Output].Columns[DelayFor6Months]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DelayFor6Months]"
+                      length="5"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Output].Columns[DelayFor6Months]"
+                      name="DelayFor6Months"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Output].Columns[DelayedReminderDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DelayedReminderDate]"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Output].Columns[DelayedReminderDate]"
+                      name="DelayedReminderDate"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2071,6 +2103,15 @@ where not exists(select * from logs.MonthlyReminder m where month(ExecutionTime)
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExecutionTime]"
                       dataType="dbTimeStamp"
                       name="ExecutionTime" />
+                    <externalMetadataColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DelayFor6Months]"
+                      dataType="wstr"
+                      length="5"
+                      name="DelayFor6Months" />
+                    <externalMetadataColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DelayedReminderDate]"
+                      dataType="dbTimeStamp"
+                      name="DelayedReminderDate" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2078,6 +2119,17 @@ where not exists(select * from logs.MonthlyReminder m where month(ExecutionTime)
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DelayFor6Months]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DelayFor6Months]"
+                      name="DelayFor6Months" />
+                    <outputColumn
+                      refId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DelayedReminderDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DelayedReminderDate]"
+                      name="DelayedReminderDate" />
                     <outputColumn
                       refId="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Protocol_No]"
                       dataType="wstr"
@@ -2542,7 +2594,7 @@ public class ScriptMain : UserComponent
     <msb:CodeName>SC_3db158b159f245518ad13bc988f321af</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>SC_3db158b159f245518ad13bc988f321af</msb:DisplayName>
-    <msb:ProjectId>{85BC1BFF-FBB2-4FDF-AA0B-77EFE00A3CEF}</msb:ProjectId>
+    <msb:ProjectId>{1E8CB9EF-115F-4221-8ABE-D0D40F4D9A07}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="SC_3db158b159f245518ad13bc988f321af.csproj" />
@@ -3354,7 +3406,7 @@ namespace SC_3db158b159f245518ad13bc988f321af
                     <arrayElement
                       dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAIKfX2YAAAAAAAAAAOAAIiALATAAAFAAAAAIAAAAAAAAJm4A
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDALPUeWYAAAAAAAAAAOAAIiALATAAAFAAAAAIAAAAAAAAJm4A
 AAAgAAAAgAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAADAAAAAAgAAAAAAAAMAYIUAABAA
 ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAANRtAABPAAAAAIAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAKAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -3691,8 +3743,8 @@ bABlAGEAcwBlACAAcwB1AGIAbQBpAHQAIABhACAAdABpAGMAawBlAHQAIABpAG4AIAA8AGEAIABo
 AHIAZQBmAD0AIgBoAHQAdABwAHMAOgAvAC8AdABpAGMAawBlAHQAYwBhAHQALgBhAHIAaQB6AG8A
 bgBhAC4AZQBkAHUALwAiAD4AVABpAGMAawBlAHQAQwBhAHQAPAAvAGEAPgAKACAAIAAgACAAIAAg
 ACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAA8AC8AYgBvAGQAeQA+AAoAIAAgACAAIAAgACAA
-IAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgADwALwBoAHQAbQBsAD4AAQAADJZRpnPzaEOOpYYt
-748ifgAEIAEBCAMgAAEFIAEBEREEIAEBDgYgAQERgIkFFRE9AQgFIAEBEwAFFRJFAQ4EIAEBAgUg
+IAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgADwALwBoAHQAbQBsAD4AAQAAfLwr22SEiUa9Ou2o
+/Rk14gAEIAEBCAMgAAEFIAEBEREEIAEBDgYgAQERgIkFFRE9AQgFIAEBEwAFFRJFAQ4EIAEBAgUg
 AgEOCAUgAgEODgYgAQESgJkFIAEBEkkDIAAOCgcCFRFdARIMEgwGFRJZARIMCCAAFRFdARMABhUR
 XQESDAQgABMAAyAAAggHAxIIEgwSYQUAAg4ODgkgAwESaR0IEm0DBhJpAwYdCAQgAQ4IBCABAggE
 IAEICAUgARFBCAcgAgIOEYClBSABHQgIBSAAEoCpBiABEoCtHAUAABKAsQYgARwSgLUGBwISdRJ5
@@ -7224,25 +7276,25 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         <NodeLayout
           Size="162,42"
           Id="Package\DFT StaffMonthlyEmailReminderByProtocol V2\Script Component"
-          TopLeft="174,152" />
+          TopLeft="178,225" />
         <NodeLayout
           Size="157,42"
           Id="Package\DFT StaffMonthlyEmailReminderByProtocol V2\OLE DB Source"
           TopLeft="174,60" />
         <EdgeLayout
           Id="Package\DFT StaffMonthlyEmailReminderByProtocol V2.Paths[OLE DB Source Output]"
-          TopLeft="253.75,102">
+          TopLeft="255.75,102">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50"
+              EndConnector="0,123"
               Start="0,0"
-              End="0,42.5">
+              End="0,115.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.5" />
+                    End="0,115.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
