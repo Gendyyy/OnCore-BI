@@ -1,0 +1,3932 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/6/2023 6:54:40 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="COM-ONCORE-SQL"
+  DTS:CreatorName="BLUECAT\gendy"
+  DTS:DTSID="{3B06EC69-287A-4893-B733-415DECE005F9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="01-08-TicketCat-Tickets-Extract"
+  DTS:PackageType="5"
+  DTS:VersionBuild="120"
+  DTS:VersionGUID="{85FAC2DB-5876-4FF9-9F23-F0D578B58EFA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AllFaculty]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{5CC23C14-EE95-44AD-AB75-59CB2F88546C}"
+      DTS:ObjectName="AllFaculty">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"\\\\com-dtrust-prod.bluecat.arizona.edu\\Data\\AllFaculty\\AllFacultyAllTitle_" + 
+RIGHT("0" + (DT_WSTR, 2) DATEPART("MM", GETDATE()), 2) + "-" +
+RIGHT("0" + (DT_WSTR, 2) DATEPART("DD", GETDATE()), 2) + "-" +
+(DT_WSTR, 4) DATEPART("YYYY", GETDATE()) + ".csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="\\com-dtrust-prod.bluecat.arizona.edu\Data\AllFaculty\AllFacultyAllTitle_06-18-2024.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HR Status Description"
+              DTS:DTSID="{4E9CC4DA-362E-458F-8557-EA8B421CBB52}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee Status Code"
+              DTS:DTSID="{749763CE-BF7C-4312-922F-DB9E86E1E3D9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee Status Description"
+              DTS:DTSID="{63F29453-19A1-49A7-9A92-A80776F7BEC2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Gender"
+              DTS:DTSID="{104FCDE7-039E-471F-A626-1FC3734ADC5F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee Type Description"
+              DTS:DTSID="{DEB5BF7E-D042-4255-BEB3-50925E461D26}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee ID"
+              DTS:DTSID="{2F14F4E5-8712-4ABB-8E12-D68E3C4AF82E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{44060CC9-4B23-4676-A7BC-711A6EB89F21}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Net Id"
+              DTS:DTSID="{395E167F-8B24-42DD-B8FA-2D121470FC52}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="First Name"
+              DTS:DTSID="{750F79C4-7C7C-4221-BBB8-F8879B63E4B0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Middle Name"
+              DTS:DTSID="{AD0C64A5-8779-4789-9E32-BA5FB00E701B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Last Name"
+              DTS:DTSID="{A26C9D63-353C-43D7-8771-EBC4D55BE41B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Birthdate"
+              DTS:DTSID="{E63CE241-0D43-4DE0-8917-9FED89CF1418}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="College Id for Title Department"
+              DTS:DTSID="{85929CD5-8321-4030-8EBC-5E21CAB6D9A2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="College Name for Title Department"
+              DTS:DTSID="{B573D1C3-5DA7-4B6C-8E24-48B73E250A50}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="College Id - Name for Title Department"
+              DTS:DTSID="{84C669D0-5A33-469C-85CC-05A5C84050AF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="College Id - Name for Title &amp; Tenure Department"
+              DTS:DTSID="{2253AE32-1589-4A7B-A6BC-953E440579E6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Title Department Id"
+              DTS:DTSID="{FF095BDD-6F4D-4570-9FF8-149101131A67}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Title Department Description"
+              DTS:DTSID="{14738630-9919-4269-A2E6-45DD8ED050AC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Title from Position"
+              DTS:DTSID="{13005888-B4B5-49E6-8881-41F6B0DD1CDF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Faculty Tenure Code"
+              DTS:DTSID="{96F2A8B3-1BC1-4DF4-A48D-13368CD84C89}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tenure Status"
+              DTS:DTSID="{7A612DE6-4AA9-4B58-9F65-B54E27C6317E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tenure Track Start Date"
+              DTS:DTSID="{AB68D4D8-73B8-4EB3-8168-16C81AD79CB7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tenure Home Department Description"
+              DTS:DTSID="{01B1EBCA-3757-4F31-AE9D-3BB04B40385D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tenure Home Department"
+              DTS:DTSID="{D6796C30-AC75-4BD3-8122-C6A3F39B702B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Title Year Tenure"
+              DTS:DTSID="{14C3F335-7F40-402C-9AE0-8E09ECECD544}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Years of Credit Granted"
+              DTS:DTSID="{9C215B6C-2988-4044-B358-3B923FD8F9B0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Academic Rank"
+              DTS:DTSID="{4DD74C9E-BAB3-48B1-A437-9F32F160CC6F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Academic Rank Description"
+              DTS:DTSID="{7F24797C-8A11-4B65-98C7-C256F7DF4F3A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee Title Set"
+              DTS:DTSID="{0EAFEE67-72F7-4451-BEE3-D5B518FEA481}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Original TE CE Track Start Date"
+              DTS:DTSID="{113A512F-7DA9-4122-91C7-6B1C9C73527E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Mandatory Review Date"
+              DTS:DTSID="{82B9EB4E-A1A9-43E9-8C42-62F4635F084B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Partial Year Credit"
+              DTS:DTSID="{2E7E6455-527B-4849-AC16-84ABF4F32C10}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Teaching Title Indicator"
+              DTS:DTSID="{6F587241-4E1B-4C78-8BEE-93F17F439872}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Terminal Year Flag"
+              DTS:DTSID="{B1FB11DB-A298-4F27-951F-F25E998C6CF0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UA Employee Type"
+              DTS:DTSID="{18F524DE-B8AE-4F89-A0CF-884B0F8FE016}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UA Title"
+              DTS:DTSID="{A7AB7301-B890-460F-BEC4-597AE087E014}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Priority"
+              DTS:DTSID="{44ACF191-7BFB-4323-B680-5D4C7CD5D888}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Research Title Indicator"
+              DTS:DTSID="{FD04E2D3-7BEB-4C39-A546-92D6D1F8BC00}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Effective Date"
+              DTS:DTSID="{53D2F38A-BACF-4C9F-8C4D-E7AB96DB713F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Effective End Date"
+              DTS:DTSID="{40B49120-DD2C-4393-AA60-F51F55A59C38}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Gender Code"
+              DTS:DTSID="{C22BF5A2-4A8C-461E-9C23-B0041378492A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UA Faculty Description"
+              DTS:DTSID="{14EB6328-A64E-4F71-AA26-57FF5197F33F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Primary Title Code"
+              DTS:DTSID="{227D68FD-EA0D-4845-993B-C7B07525F018}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Home Department"
+              DTS:DTSID="{7816135F-3535-48D4-836C-E2AFB778C396}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Home Title Department Description"
+              DTS:DTSID="{1400C538-5D25-4966-82E0-CF6C5291B556}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Home Title Department Id - Description"
+              DTS:DTSID="{42720744-F2D7-4474-907F-710B304700CE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Email Address"
+              DTS:DTSID="{418A2FB6-BA32-4AB8-AFCB-8E4DBBFA975B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Other Title Indicator"
+              DTS:DTSID="{B2A6EC3E-54BD-4329-A111-AAEB9F7283F3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Primary Administrative Title"
+              DTS:DTSID="{B216CF82-1154-4B83-95B7-9EE748BAB4D0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Primary Faculty Title"
+              DTS:DTSID="{76344CA6-D5CA-4E9D-8BD8-0FB63767B024}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Primary Professional Title"
+              DTS:DTSID="{8E36C9DF-62C9-4460-90C9-6BBB09509E5E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Clinical Title Indicator"
+              DTS:DTSID="{DDB59665-0092-44DD-A05F-E542F8A963F5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ABOR Code"
+              DTS:DTSID="{EEC449F1-4E0D-4586-A87E-EF4547001B10}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ABOR Code Description"
+              DTS:DTSID="{F28BA427-7595-488E-A8E6-34E0850BABF0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Jobcode (Primary)"
+              DTS:DTSID="{ACE5D0EA-6541-4BC2-A0FD-E0FA52E8C971}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Jobcode Description (Primary)"
+              DTS:DTSID="{DC5667FF-C9F9-4733-A6A1-AA0E23E4C7BA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UA Adds to FTE Actual Indicator"
+              DTS:DTSID="{A1DAE1C1-D128-4D02-8859-DB88DA10E58B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Citizenship Status Code"
+              DTS:DTSID="{CC0276CA-D70F-48FE-9827-5A83D906C5C9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Citizenship Status Long Description"
+              DTS:DTSID="{8F63B26F-26DA-487A-98F3-15C01DBDA1C5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ethnic Group Primary Indicator"
+              DTS:DTSID="{D05E87A7-705F-4090-904F-042FCCA0E3C3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ethnic Group Code"
+              DTS:DTSID="{16C06F6B-56F1-447C-AF6B-A307E24D5871}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ethnicity Group Description"
+              DTS:DTSID="{152CCCFD-1CE8-4B73-8270-388795589EE9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ethnicity Description"
+              DTS:DTSID="{C03AACDE-F7A8-4FC6-B51C-72D38C0964DB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ethnicity Code"
+              DTS:DTSID="{64DE171E-3CC4-4A79-98CA-B993E2C9A1DE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Highest Education Level Code"
+              DTS:DTSID="{4BB266D9-F5DE-4816-87E5-2FB5E54C9378}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Highest Education Level Description"
+              DTS:DTSID="{7B924585-A16D-4994-AEDA-416485F1F749}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Visa Permit Type"
+              DTS:DTSID="{D5DA793F-DF33-425D-B5BE-AD11063C5F27}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Visa Expiration Date"
+              DTS:DTSID="{0AB23E91-1ED1-46A0-8CE4-02FB7AC4715C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Faculty Voting Code"
+              DTS:DTSID="{EFE248F3-F062-4BB2-A436-F1DFADF040CB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Faculty Vote Description"
+              DTS:DTSID="{78DB16C8-15FA-41D2-ABD8-6B6D44974B9C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Fac180 - Annual Review Flag"
+              DTS:DTSID="{CF1F444A-4FA6-45CB-B013-E94EB7A3B96E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="State Budget Document Class (Faculty Code)"
+              DTS:DTSID="{B6A63F7A-C3F3-4432-AFB8-0995336B4FAE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Standard Occupational Classification Code"
+              DTS:DTSID="{E7B928E4-1F17-42FA-9F92-A77C752D7E14}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Original Hire Day Date"
+              DTS:DTSID="{8A2C3F7B-E584-4AF9-B805-5A9A71EEE9D3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Last Hire Day Date"
+              DTS:DTSID="{EA8EFDF6-976D-49E2-B29A-F9845476A293}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Title Code"
+              DTS:DTSID="{AD489D29-9351-4972-A519-225806C1AF11}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AllFaculty 1]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{E5C4AB88-7E0A-4DB5-9659-5BCCD1C084EC}"
+      DTS:ObjectName="AllFaculty 1">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"\\\\com-dtrust-prod.bluecat.arizona.edu\\Data\\AllFaculty\\" + @[User::FileName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="\\com-dtrust-prod.bluecat.arizona.edu\Data\AllFaculty\">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HR Status Description"
+              DTS:DTSID="{4E9CC4DA-362E-458F-8557-EA8B421CBB52}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee Status Code"
+              DTS:DTSID="{749763CE-BF7C-4312-922F-DB9E86E1E3D9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee Status Description"
+              DTS:DTSID="{63F29453-19A1-49A7-9A92-A80776F7BEC2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Gender"
+              DTS:DTSID="{104FCDE7-039E-471F-A626-1FC3734ADC5F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee Type Description"
+              DTS:DTSID="{DEB5BF7E-D042-4255-BEB3-50925E461D26}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee ID"
+              DTS:DTSID="{2F14F4E5-8712-4ABB-8E12-D68E3C4AF82E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{44060CC9-4B23-4676-A7BC-711A6EB89F21}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Net Id"
+              DTS:DTSID="{395E167F-8B24-42DD-B8FA-2D121470FC52}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="First Name"
+              DTS:DTSID="{750F79C4-7C7C-4221-BBB8-F8879B63E4B0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Middle Name"
+              DTS:DTSID="{AD0C64A5-8779-4789-9E32-BA5FB00E701B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Last Name"
+              DTS:DTSID="{A26C9D63-353C-43D7-8771-EBC4D55BE41B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Birthdate"
+              DTS:DTSID="{E63CE241-0D43-4DE0-8917-9FED89CF1418}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="College Id for Title Department"
+              DTS:DTSID="{85929CD5-8321-4030-8EBC-5E21CAB6D9A2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="College Name for Title Department"
+              DTS:DTSID="{B573D1C3-5DA7-4B6C-8E24-48B73E250A50}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="College Id - Name for Title Department"
+              DTS:DTSID="{84C669D0-5A33-469C-85CC-05A5C84050AF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="College Id - Name for Title &amp; Tenure Department"
+              DTS:DTSID="{2253AE32-1589-4A7B-A6BC-953E440579E6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Title Department Id"
+              DTS:DTSID="{FF095BDD-6F4D-4570-9FF8-149101131A67}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Title Department Description"
+              DTS:DTSID="{14738630-9919-4269-A2E6-45DD8ED050AC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Title from Position"
+              DTS:DTSID="{13005888-B4B5-49E6-8881-41F6B0DD1CDF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Faculty Tenure Code"
+              DTS:DTSID="{96F2A8B3-1BC1-4DF4-A48D-13368CD84C89}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tenure Status"
+              DTS:DTSID="{7A612DE6-4AA9-4B58-9F65-B54E27C6317E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tenure Track Start Date"
+              DTS:DTSID="{AB68D4D8-73B8-4EB3-8168-16C81AD79CB7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tenure Home Department Description"
+              DTS:DTSID="{01B1EBCA-3757-4F31-AE9D-3BB04B40385D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tenure Home Department"
+              DTS:DTSID="{D6796C30-AC75-4BD3-8122-C6A3F39B702B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Title Year Tenure"
+              DTS:DTSID="{14C3F335-7F40-402C-9AE0-8E09ECECD544}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Years of Credit Granted"
+              DTS:DTSID="{9C215B6C-2988-4044-B358-3B923FD8F9B0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Academic Rank"
+              DTS:DTSID="{4DD74C9E-BAB3-48B1-A437-9F32F160CC6F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Academic Rank Description"
+              DTS:DTSID="{7F24797C-8A11-4B65-98C7-C256F7DF4F3A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee Title Set"
+              DTS:DTSID="{0EAFEE67-72F7-4451-BEE3-D5B518FEA481}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Original TE CE Track Start Date"
+              DTS:DTSID="{113A512F-7DA9-4122-91C7-6B1C9C73527E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Mandatory Review Date"
+              DTS:DTSID="{82B9EB4E-A1A9-43E9-8C42-62F4635F084B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Partial Year Credit"
+              DTS:DTSID="{2E7E6455-527B-4849-AC16-84ABF4F32C10}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Teaching Title Indicator"
+              DTS:DTSID="{6F587241-4E1B-4C78-8BEE-93F17F439872}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Terminal Year Flag"
+              DTS:DTSID="{B1FB11DB-A298-4F27-951F-F25E998C6CF0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UA Employee Type"
+              DTS:DTSID="{18F524DE-B8AE-4F89-A0CF-884B0F8FE016}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UA Title"
+              DTS:DTSID="{A7AB7301-B890-460F-BEC4-597AE087E014}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Priority"
+              DTS:DTSID="{44ACF191-7BFB-4323-B680-5D4C7CD5D888}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Research Title Indicator"
+              DTS:DTSID="{FD04E2D3-7BEB-4C39-A546-92D6D1F8BC00}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Effective Date"
+              DTS:DTSID="{53D2F38A-BACF-4C9F-8C4D-E7AB96DB713F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Effective End Date"
+              DTS:DTSID="{40B49120-DD2C-4393-AA60-F51F55A59C38}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Gender Code"
+              DTS:DTSID="{C22BF5A2-4A8C-461E-9C23-B0041378492A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UA Faculty Description"
+              DTS:DTSID="{14EB6328-A64E-4F71-AA26-57FF5197F33F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Primary Title Code"
+              DTS:DTSID="{227D68FD-EA0D-4845-993B-C7B07525F018}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Home Department"
+              DTS:DTSID="{7816135F-3535-48D4-836C-E2AFB778C396}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Home Title Department Description"
+              DTS:DTSID="{1400C538-5D25-4966-82E0-CF6C5291B556}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Home Title Department Id - Description"
+              DTS:DTSID="{42720744-F2D7-4474-907F-710B304700CE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Email Address"
+              DTS:DTSID="{418A2FB6-BA32-4AB8-AFCB-8E4DBBFA975B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Other Title Indicator"
+              DTS:DTSID="{B2A6EC3E-54BD-4329-A111-AAEB9F7283F3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Primary Administrative Title"
+              DTS:DTSID="{B216CF82-1154-4B83-95B7-9EE748BAB4D0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Primary Faculty Title"
+              DTS:DTSID="{76344CA6-D5CA-4E9D-8BD8-0FB63767B024}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Primary Professional Title"
+              DTS:DTSID="{8E36C9DF-62C9-4460-90C9-6BBB09509E5E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Clinical Title Indicator"
+              DTS:DTSID="{DDB59665-0092-44DD-A05F-E542F8A963F5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ABOR Code"
+              DTS:DTSID="{EEC449F1-4E0D-4586-A87E-EF4547001B10}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ABOR Code Description"
+              DTS:DTSID="{F28BA427-7595-488E-A8E6-34E0850BABF0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Jobcode (Primary)"
+              DTS:DTSID="{ACE5D0EA-6541-4BC2-A0FD-E0FA52E8C971}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Jobcode Description (Primary)"
+              DTS:DTSID="{DC5667FF-C9F9-4733-A6A1-AA0E23E4C7BA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UA Adds to FTE Actual Indicator"
+              DTS:DTSID="{A1DAE1C1-D128-4D02-8859-DB88DA10E58B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Citizenship Status Code"
+              DTS:DTSID="{CC0276CA-D70F-48FE-9827-5A83D906C5C9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Citizenship Status Long Description"
+              DTS:DTSID="{8F63B26F-26DA-487A-98F3-15C01DBDA1C5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ethnic Group Primary Indicator"
+              DTS:DTSID="{D05E87A7-705F-4090-904F-042FCCA0E3C3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ethnic Group Code"
+              DTS:DTSID="{16C06F6B-56F1-447C-AF6B-A307E24D5871}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ethnicity Group Description"
+              DTS:DTSID="{152CCCFD-1CE8-4B73-8270-388795589EE9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ethnicity Description"
+              DTS:DTSID="{C03AACDE-F7A8-4FC6-B51C-72D38C0964DB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ethnicity Code"
+              DTS:DTSID="{64DE171E-3CC4-4A79-98CA-B993E2C9A1DE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Highest Education Level Code"
+              DTS:DTSID="{4BB266D9-F5DE-4816-87E5-2FB5E54C9378}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Highest Education Level Description"
+              DTS:DTSID="{7B924585-A16D-4994-AEDA-416485F1F749}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Visa Permit Type"
+              DTS:DTSID="{D5DA793F-DF33-425D-B5BE-AD11063C5F27}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Visa Expiration Date"
+              DTS:DTSID="{0AB23E91-1ED1-46A0-8CE4-02FB7AC4715C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Faculty Voting Code"
+              DTS:DTSID="{EFE248F3-F062-4BB2-A436-F1DFADF040CB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Faculty Vote Description"
+              DTS:DTSID="{78DB16C8-15FA-41D2-ABD8-6B6D44974B9C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Fac180 - Annual Review Flag"
+              DTS:DTSID="{CF1F444A-4FA6-45CB-B013-E94EB7A3B96E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="State Budget Document Class (Faculty Code)"
+              DTS:DTSID="{B6A63F7A-C3F3-4432-AFB8-0995336B4FAE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Standard Occupational Classification Code"
+              DTS:DTSID="{E7B928E4-1F17-42FA-9F92-A77C752D7E14}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Original Hire Day Date"
+              DTS:DTSID="{8A2C3F7B-E584-4AF9-B805-5A9A71EEE9D3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Last Hire Day Date"
+              DTS:DTSID="{EA8EFDF6-976D-49E2-B29A-F9845476A293}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Title Code"
+              DTS:DTSID="{AD489D29-9351-4972-A519-225806C1AF11}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{4BD96E88-8077-4B1E-A3DA-876E8E7EB511}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"C:\\BI-Logs\\SSIS\\Errors\\Extract\\" +  @[User::TableName]  + "Error.txt"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\BI-Logs\SSIS\Errors\Extract\TicketCat_SummaryAcrrual_TicketsError.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="35"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="protocol_no"
+              DTS:DTSID="{0E7A9DB3-54AA-4975-A6C5-275682A29B73}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="304"
+              DTS:DataScale="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="on_studydate"
+              DTS:DTSID="{74935768-0C02-48DD-B144-BF3AF38A192E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NumberOfEnrollments"
+              DTS:DTSID="{ADBE1847-00A4-469A-BF80-36BD8D2CD195}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorCode"
+              DTS:DTSID="{5085E4A8-22D4-4822-8EB2-90CF39488E15}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorColumn"
+              DTS:DTSID="{C17F3C48-062D-4981-B852-2E40C0E97BAE}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{1A324805-0C50-46DB-8EA4-717E46828D89}"
+      DTS:ObjectName="Auth"
+      DTS:Sensitive="True">
+      <DTS:Property
+        DTS:Name="ParameterValue">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="ParameterValue"
+          Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAfZcK+zSz1UanxpSZ+AKbrQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB9AyfJHQVW6BkcDqx54wYiAAAAAASAAACgAAAAEAAAAExIlVRypbilhzMM9F8adxVQAAAAMsTl8zCB+yvpFcXThayHrAU2bncoC1r6K83EzCIPSlPlMwD34SGOIpXYBNzET+7s4jtq+QCccSMrCMWTsV3VFxve0z2qQR+BcmZnNyzQAdQUAAAAs+oB3PXg1c5YGKtYFJ5Wm6oTNiY</DTS:Property>
+      </DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{FFC43953-D5C1-4200-9689-7FDE00A951DD}"
+      DTS:ObjectName="ParentAuditKey">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3972330D-A280-4E4B-815F-64762821ACA8}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="AllFacultyDataSet">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{83DF72C5-6BF0-44FD-A8CC-5FB94C0FD062}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="AuditKey">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9F4A405F-90FA-4CAE-9D92-1C7E0387FAEA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{44716121-6DA3-4EE8-968A-992B8D76776D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::ParentAuditKey]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ParentAuditKey">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9F9B821A-F979-4F1B-AAEF-8E1DB735EE46}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{779FF55A-A6E4-41A4-85DB-239D678886CC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCountError">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CF481847-3AA7-4303-ACFA-F67C5CC3B3CE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCountExtract">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{107BB747-AE5A-4AFE-B5C0-B3C8DC7AB60F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">TicketCat_SummaryAcrrual_Tickets</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{262797E6-7221-4427-816B-517CF1C5EDDF}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="GETDATE()"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Today">
+      <DTS:VariableValue
+        DTS:DataType="7">6/18/2024 4:30:05 PM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Pull Ticketcat Tickets"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9E28788F-9850-4321-A889-945A21AB852A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Pull Ticketcat Tickets"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Pull Ticketcat Tickets\New Tickets"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="New Tickets"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[TicketCat_SummaryAcrrual_Tickets]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[TicketCat_SummaryAcrrual_Tickets]) [refTable]
+where [refTable].[ticketNo] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="subject" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ticketNo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DelayFor6Months" dataType="DT_WSTR" length="5" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NoAccrualsToReport" dataType="DT_WSTR" length="5" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProtocolNo" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[ticketNo]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Pull Ticketcat Tickets\New Tickets.Connections[OleDbConnection]"
+                  connectionManagerID="{DDC1C496-85F8-4E00-B4D7-6EACC166A026}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OnCore-Prod-Staging]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Pull Ticketcat Tickets\New Tickets.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Pull Ticketcat Tickets\New Tickets.Inputs[Lookup Input].Columns[ticketNo]"
+                      cachedDataType="i4"
+                      cachedName="ticketNo"
+                      lineageId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[ticketNo]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ticketNo</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Pull Ticketcat Tickets\New Tickets.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Match Output].Columns[subject]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="200"
+                      lineageId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Match Output].Columns[subject]"
+                      name="subject"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">subject</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Match Output].Columns[created_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Match Output].Columns[created_date]"
+                      name="created_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">created_date</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Match Output].Columns[ticketNo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Match Output].Columns[ticketNo]"
+                      name="ticketNo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ticketNo</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Match Output].Columns[DelayFor6Months]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="5"
+                      lineageId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Match Output].Columns[DelayFor6Months]"
+                      name="DelayFor6Months"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DelayFor6Months</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Match Output].Columns[NoAccrualsToReport]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="5"
+                      lineageId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Match Output].Columns[NoAccrualsToReport]"
+                      name="NoAccrualsToReport"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">NoAccrualsToReport</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Match Output].Columns[ProtocolNo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Match Output].Columns[ProtocolNo]"
+                      name="ProtocolNo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProtocolNo</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Pull Ticketcat Tickets\New Tickets.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Pull Ticketcat Tickets\New Tickets.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Pull Ticketcat Tickets\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TicketCat_SummaryAcrrual_Tickets]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{DDC1C496-85F8-4E00-B4D7-6EACC166A026}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OnCore-Prod-Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ticketNo]"
+                      cachedDataType="i4"
+                      cachedName="ticketNo"
+                      externalMetadataColumnId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ticketNo]"
+                      lineageId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[ticketNo]" />
+                    <inputColumn
+                      refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[created_date]"
+                      cachedDataType="dbDate"
+                      cachedName="created_date"
+                      externalMetadataColumnId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[created_date]"
+                      lineageId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[created_date]" />
+                    <inputColumn
+                      refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[subject]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="subject"
+                      externalMetadataColumnId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[subject]"
+                      lineageId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[subject]" />
+                    <inputColumn
+                      refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DelayFor6Months]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="DelayFor6Months"
+                      externalMetadataColumnId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DelayFor6Months]"
+                      lineageId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[DelayFor6Months]" />
+                    <inputColumn
+                      refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[noAccrualsToReport]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="noAccrualsToReport"
+                      externalMetadataColumnId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NoAccrualsToReport]"
+                      lineageId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[noAccrualsToReport]" />
+                    <inputColumn
+                      refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[protocolNo]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="protocolNo"
+                      externalMetadataColumnId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProtocolNo]"
+                      lineageId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[protocolNo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[subject]"
+                      dataType="wstr"
+                      length="200"
+                      name="subject" />
+                    <externalMetadataColumn
+                      refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[created_date]"
+                      dataType="dbDate"
+                      name="created_date" />
+                    <externalMetadataColumn
+                      refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ticketNo]"
+                      dataType="i4"
+                      name="ticketNo" />
+                    <externalMetadataColumn
+                      refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DelayFor6Months]"
+                      dataType="wstr"
+                      length="5"
+                      name="DelayFor6Months" />
+                    <externalMetadataColumn
+                      refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NoAccrualsToReport]"
+                      dataType="wstr"
+                      length="5"
+                      name="NoAccrualsToReport" />
+                    <externalMetadataColumn
+                      refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProtocolNo]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProtocolNo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Pull Ticketcat Tickets\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Pull Ticketcat Tickets\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Pull Ticketcat Tickets\Tickcat API"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;12"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="Tickcat API"
+              version="12">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="36">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_2097f332476d4a5cb1e66f6bb88de768")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("College of Medicine")]
+[assembly: AssemblyProduct("SC_2097f332476d4a5cb1e66f6bb88de768")]
+[assembly: AssemblyCopyright("Copyright @ College of Medicine 2024")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+using Newtonsoft.Json;
+using SC_2097f332476d4a5cb1e66f6bb88de768;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    /// 
+
+    private string Auth;
+    private List<Ticket> tickets;
+    private string ticketsAPI;
+    DateTime minDate;
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+        Auth = Variables.Auth;
+
+        tickets = new List<Ticket>();
+        ticketsAPI = "https://universityofarizona.freshservice.com/api/v2/tickets";
+        minDate = DateTime.Now;
+
+
+        var result = GetTicketsWithPage(ticketsAPI);
+        var ticketsBatch = result.Tickets;
+        tickets.AddRange(result.Tickets);
+
+
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+
+
+
+    }
+
+    public override void CreateNewOutputRows()
+    {
+        /*
+          Add rows by calling the AddRow method on the member variable named "<Output Name>Buffer".
+          For example, call MyOutputBuffer.AddRow() if your output was named "MyOutput".
+        */
+
+        var ticketsProcessed = tickets
+        .Where(t => t.subject.Contains("OnCore Summary Accrual File Upload"))
+        .Select(t => new
+        {
+            TitleArray = t.subject.Split(':'),
+            CreatedDate = t.created_at,
+            Subject = t.subject,
+            TicketNo = t.id
+        })
+        .Where(t => t.TitleArray.Length == 4)
+        .Select(t =>
+        {
+            return new
+            {
+
+                ProtocolNo = t.TitleArray[1].Trim(),
+                NoAccrualsToReport = t.TitleArray[2].Trim(),
+                DelayFor6Month = t.TitleArray[3].Trim(),
+                CreatedDate = t.CreatedDate,
+                Subject = t.Subject,
+                TicketNo = t.TicketNo
+            };
+        })
+        .ToList();
+
+        foreach (var item in ticketsProcessed)
+        {
+            Output0Buffer.AddRow();
+            Output0Buffer.ticketNo = item.TicketNo;
+            Output0Buffer.protocolNo = item.ProtocolNo;
+            Output0Buffer.createddate = item.CreatedDate;
+            Output0Buffer.subject = item.Subject;
+            Output0Buffer.DelayFor6Months = item.DelayFor6Month;
+            Output0Buffer.noAccrualsToReport = item.NoAccrualsToReport;
+
+        }
+    }
+
+    (string nextBatchAPI, List<Ticket> Tickets) GetTicketsWithPage(string ticketsAPI)
+    {
+        var client = new HttpClient();
+        var request = new HttpRequestMessage(HttpMethod.Get, ticketsAPI);
+        request.Headers.Add("Authorization", Auth);
+        var response = client.SendAsync(request).Result;
+        response.EnsureSuccessStatusCode();
+        string nextBatchAPI = response.Headers.GetValues("Link").FirstOrDefault();
+        nextBatchAPI = GetNextPage(nextBatchAPI);
+        string responseBody = response.Content.ReadAsStringAsync().Result;
+        TicketResponse ticketResponse = JsonConvert.DeserializeObject<TicketResponse>(responseBody);
+        return (nextBatchAPI, ticketResponse.Tickets);
+    }
+    string GetNextPage(string link)
+    {
+        // Define a regular expression to extract the URL
+        string pattern = @"<([^>]+)>; rel=""next""";
+        Match match = Regex.Match(link, pattern);
+
+        // Check if the match is successful
+        if (match.Success)
+        {
+            string nextPageUrl = match.Groups[1].Value;
+            return nextPageUrl;
+        }
+        else
+        {
+            return "";
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Output0Buffer: ScriptBuffer
+
+{
+    public Output0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public Int32 ticketNo
+    {
+        set
+        {
+            this[0] = value;
+        }
+    }
+    public bool ticketNo_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(0);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public DateTime createddate
+    {
+        set
+        {
+            this[1] = value;
+        }
+    }
+    public bool createddate_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(1);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String subject
+    {
+        set
+        {
+            this[2] = value;
+        }
+    }
+    public bool subject_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String DelayFor6Months
+    {
+        set
+        {
+            this[3] = value;
+        }
+    }
+    public bool DelayFor6Months_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(3);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String noAccrualsToReport
+    {
+        set
+        {
+            this[4] = value;
+        }
+    }
+    public bool noAccrualsToReport_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(4);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String protocolNo
+    {
+        set
+        {
+            this[5] = value;
+        }
+    }
+    public bool protocolNo_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(5);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public void AddRow()
+    {
+        base.AddRow();
+    }
+
+    new public void SetEndOfRowset()
+    {
+        base.SetEndOfRowset();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public Output0Buffer Output0Buffer;
+
+    public virtual void FinishOutputs()
+    {
+    }
+
+    private void MarkOutputsFinished()
+    {
+
+        if (null != Output0Buffer)
+        {
+            Output0Buffer.SetEndOfRowset();
+            Output0Buffer = null;
+        }
+
+    }
+
+    public override void PrimeOutput(int Outputs, int[] OutputIDs, PipelineBuffer[] Buffers, OutputNameMap OutputMap)
+    {
+       for(int Idx = 0; Idx < Outputs; Idx++)
+       {
+            if(OutputIDs[Idx] == GetOutputID(OutputMap, @"Output 0"))
+            {
+                Output0Buffer = new Output0Buffer(Buffers[Idx], GetColumnIndexes(OutputIDs[Idx]), OutputMap);
+            }
+        }
+
+        CreateNewOutputRows();
+
+        FinishOutputs();
+        MarkOutputsFinished();
+
+    }
+
+    public virtual void CreateNewOutputRows()
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+    public String Auth
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["Auth"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_2097f332476d4a5cb1e66f6bb88de768.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DC0027C6-5CD5-48A0-AADA-4707860C027A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_2097f332476d4a5cb1e66f6bb88de768</RootNamespace>
+    <AssemblyName>SC_2097f332476d4a5cb1e66f6bb88de768</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="TicketResponse.cs" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>C:\Users\gendy\AppData\Local\Temp\Vsta\SSIS_SC150\VstaNP810AYsCUKxJJJYmgzVyA\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_2097f332476d4a5cb1e66f6bb88de768</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_2097f332476d4a5cb1e66f6bb88de768</msb:DisplayName>
+    <msb:ProjectId>{7AA73774-50AC-4134-8BBF-4FE8C61A0B53}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_2097f332476d4a5cb1e66f6bb88de768.csproj" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="TicketResponse.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="packages.config" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_2097f332476d4a5cb1e66f6bb88de768.Properties.Settings.get_Default():SC_2097f332476d4a5cb1e66f6bb88de768.Properties.Sett" +
+    "ings")]
+
+namespace SC_2097f332476d4a5cb1e66f6bb88de768.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_2097f332476d4a5cb1e66f6bb88de768.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_2097f332476d4a5cb1e66f6bb88de768.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_2097f332476d4a5cb1e66f6bb88de768.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_2097f332476d4a5cb1e66f6bb88de768.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_2097f332476d4a5cb1e66f6bb88de768.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TicketResponse.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SC_2097f332476d4a5cb1e66f6bb88de768
+{
+    public class TicketResponse
+    {
+        public List<Ticket> Tickets { get; set; }
+        // Add other properties if needed (e.g., total, etc.)
+    }
+    public class Ticket
+    {
+        public string subject { get; set; }
+        public object group_id { get; set; }
+        public object department_id { get; set; }
+        public object category { get; set; }
+        public object sub_category { get; set; }
+        public object item_category { get; set; }
+        public long requester_id { get; set; }
+        public long responder_id { get; set; }
+        public DateTime due_by { get; set; }
+        public bool fr_escalated { get; set; }
+        public bool deleted { get; set; }
+        public bool spam { get; set; }
+        public object email_config_id { get; set; }
+        public object[] fwd_emails { get; set; }
+        public object[] reply_cc_emails { get; set; }
+        public object[] cc_emails { get; set; }
+        public bool is_escalated { get; set; }
+        public DateTime fr_due_by { get; set; }
+        public int id { get; set; }
+        public int priority { get; set; }
+        public int status { get; set; }
+        public int source { get; set; }
+        public DateTime created_at { get; set; }
+        public DateTime updated_at { get; set; }
+        public int workspace_id { get; set; }
+        public long requested_for_id { get; set; }
+        public object to_emails { get; set; }
+        public string type { get; set; }
+        public string description { get; set; }
+        public string description_text { get; set; }
+        public Custom_Fields custom_fields { get; set; }
+        public int tasks_dependency_type { get; set; }
+    }
+
+    public class Custom_Fields
+    {
+        public object major_incident_type { get; set; }
+        public object who_are_you_submitting_this_request_for { get; set; }
+        public object business_impact { get; set; }
+        public object impacted_locations { get; set; }
+        public object no_of_customers_impacted { get; set; }
+        public object your_name { get; set; }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[packages.config]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="Newtonsoft.Json" version="13.0.3" targetFramework="net47" />
+</packages>]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_2097f332476d4a5cb1e66f6bb88de768.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDANUXcmYAAAAAAAAAAOAAIiALATAAAEwAAAAIAAAAAAAAamoA
+AAAgAAAAgAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAADAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAABhqAABPAAAAAIAAAJQEAAAAAAAAAAAAAAAAAAAA
+AAAAAKAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAcEoAAAAgAAAATAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAJQEAAAAgAAAAAYAAABOAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAKAAAAACAAAAVAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABM
+agAAAAAAAEgAAAACAAUA9CwAAGw8AAABAAAAAAAAAGBpAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CexMAAAoqHgJ7FAAACioeAnsVAAAKKh4CexYAAAoqkgIo
+FwAACgIDfRMAAAoCBH0UAAAKAgV9FQAACgIOBH0WAAAKKgAAABMwAwBxAAAAAQAAEQN1AQAAGwoC
+Bi5kBixfKBgAAAoCexMAAAoGexMAAApvGQAACixHKBoAAAoCexQAAAoGexQAAApvGwAACiwvKBwA
+AAoCexUAAAoGexUAAApvHQAACiwXKB4AAAoCexYAAAoGexYAAApvHwAACioWKhcqAAAAEzADAGIA
+AAAAAAAAIPbABz0gKVVVpVooGAAACgJ7EwAACm8gAAAKWCApVVWlWigaAAAKAnsUAAAKbyEAAApY
+IClVVaVaKBwAAAoCexUAAApvIgAAClggKVVVpVooHgAACgJ7FgAACm8jAAAKWCoAABMwBwCyAAAA
+AgAAERRyAQAAcBqNDgAAASUWAnsTAAAKChIAJXEGAAAbjAYAABstBCYUKwv+FgYAABtvJAAACqIl
+FwJ7FAAACgsSASVxBwAAG4wHAAAbLQQmFCsL/hYHAAAbbyQAAAqiJRgCexUAAAoMEgIlcQgAABuM
+CAAAGy0EJhQrC/4WCAAAG28kAAAKoiUZAnsWAAAKDRIDJXEJAAAbjAkAABstBCYUKwv+FgkAABtv
+JAAACqIoJQAACioeAnsmAAAKKh4CeycAAAoqHgJ7KAAACioeAnspAAAKKh4CeyoAAAoqHgJ7KwAA
+CirSAigXAAAKAgN9JgAACgIEfScAAAoCBX0oAAAKAg4EfSkAAAoCDgV9KgAACgIOBn0rAAAKKgAT
+MAMApwAAAAMAABEDdQoAABsKAgY7lwAAAAY5jwAAACgYAAAKAnsmAAAKBnsmAAAKbxkAAAosdyga
+AAAKAnsnAAAKBnsnAAAKbxsAAAosXygcAAAKAnsoAAAKBnsoAAAKbx0AAAosRygeAAAKAnspAAAK
+BnspAAAKbx8AAAosLygsAAAKAnsqAAAKBnsqAAAKby0AAAosFyguAAAKAnsrAAAKBnsrAAAKby8A
+AAoqFioXKgATMAMAkAAAAAAAAAAgZpWDYSApVVWlWigYAAAKAnsmAAAKbyAAAApYIClVVaVaKBoA
+AAoCeycAAApvIQAAClggKVVVpVooHAAACgJ7KAAACm8iAAAKWCApVVWlWigeAAAKAnspAAAKbyMA
+AApYIClVVaVaKCwAAAoCeyoAAApvMAAAClggKVVVpVooLgAACgJ7KwAACm8xAAAKWCoTMAcABAEA
+AAQAABEUcpQAAHAcjQ4AAAElFgJ7JgAACgoSACVxBgAAG4wGAAAbLQQmFCsL/hYGAAAbbyQAAAqi
+JRcCeycAAAoLEgElcQcAABuMBwAAGy0EJhQrC/4WBwAAG28kAAAKoiUYAnsoAAAKDBICJXEIAAAb
+jAgAABstBCYUKwv+FggAABtvJAAACqIlGQJ7KQAACg0SAyVxCQAAG4wJAAAbLQQmFCsL/hYJAAAb
+byQAAAqiJRoCeyoAAAoTBBIEJXENAAAbjA0AABstBCYUKwv+Fg0AABtvJAAACqIlGwJ7KwAAChMF
+EgUlcQ4AABuMDgAAGy0EJhQrC/4WDgAAG28kAAAKoiglAAAKKhMwAgBXAAAABQAAEQIoMgAACgIC
+exAAAARvMAAABn0LAAAEAnMzAAAKfQwAAAQCcocBAHB9DQAABAIoNAAACn0OAAAEAgJ7DQAABCgW
+AAAGCgJ7DAAABAZ7NQAACm82AAAKKh4CKDcAAAoqABswAwA5AQAABgAAEQJ7DAAABH4/AAAEJS0X
+Jn4+AAAE/gaLAAAGczgAAAolgD8AAAQoAQAAK35AAAAEJS0XJn4+AAAE/gaMAAAGczoAAAolgEAA
+AAQoAgAAK35BAAAEJS0XJn4+AAAE/gaNAAAGczwAAAolgEEAAAQoAwAAK35CAAAEJS0XJn4+AAAE
+/gaOAAAGcz0AAAolgEIAAAQoBAAAKygFAAArbz8AAAoKK3kSAChAAAAKCwJ7EQAABG8mAAAGAnsR
+AAAEB29BAAAKbxoAAAYCexEAAAQHb0IAAApvJAAABgJ7EQAABAdvQwAACm8cAAAGAnsRAAAEB29E
+AAAKbx4AAAYCexEAAAQHb0UAAApvIAAABgJ7EQAABAdvRgAACm8iAAAGEgAoRwAACjp7////3g4S
+AP4WFgAAG29IAAAK3CoAAAABEAAAAgChAIkqAQ4AAAAAEzAEAHkAAAAHAAARc0kAAAooSgAACgNz
+SwAACgoGb0wAAApy/wEAcAJ7CwAABG9NAAAKBm9OAAAKb08AAAolb1AAAAomJW9RAAAKchsCAHBv
+UgAACigGAAArCwIHKBcAAAYLb1QAAApvVQAACm9WAAAKKAcAACsMBwhvMQAABnNYAAAKKgAAABMw
+AgAuAAAACAAAEXIlAgBwCgMGKFkAAAoLB29aAAAKLBIHb1sAAAoXb1wAAApvXQAACipyUQIAcCoe
+AigpAAAGKioCAwQFKF4AAAoqOgIWA4w4AAABKF8AAAoqWgMsCAIWKGAAAAoqclMCAHBzYQAACno6
+AhcDjBQAAAEoXwAACipaAywIAhcoYAAACipyUwIAcHNhAAAKeiYCGAMoXwAACipaAywIAhgoYAAA
+CipyUwIAcHNhAAAKeiYCGQMoXwAACipaAywIAhkoYAAACipyUwIAcHNhAAAKeiYCGgMoXwAACipa
+AywIAhooYAAACipyUwIAcHNhAAAKeiYCGwMoXwAACipaAywIAhsoYAAACipyUwIAcHNhAAAKeh4C
+KGIAAAoqHgIoYwAACioeAihkAAAKKn4CKGUAAAoCAnMuAAAGfQ8AAAQCAnMvAAAGfRAAAAQqBipu
+AnsRAAAELBICexEAAARvJwAABgIUfREAAAQqABMwBQBJAAAACQAAERYKKy4EBpQOBHLwAgBwKGYA
+AAozGQIFBpoCBAaUKGcAAAoOBHMZAAAGfREAAAQGF1gKBgMyzgJvLQAABgJvKgAABgIoKwAABio6
+AigXAAAKAgN9EgAABCo6AigXAAAKAgN9EwAABCqWAnsTAAAEb2gAAApyAgMAcG9pAAAKKGoAAApv
+awAACnQmAAABKh4CexQAAAQqIgIDfRQAAAQqHgIoFwAACioeAnsVAAAEKiICA30VAAAEKh4CexYA
+AAQqIgIDfRYAAAQqHgJ7FwAABCoiAgN9FwAABCoeAnsYAAAEKiICA30YAAAEKh4CexkAAAQqIgID
+fRkAAAQqHgJ7GgAABCoiAgN9GgAABCoeAnsbAAAEKiICA30bAAAEKh4CexwAAAQqIgIDfRwAAAQq
+HgJ7HQAABCoiAgN9HQAABCoeAnseAAAEKiICA30eAAAEKh4Cex8AAAQqIgIDfR8AAAQqHgJ7IAAA
+BCoiAgN9IAAABCoeAnshAAAEKiICA30hAAAEKh4CeyIAAAQqIgIDfSIAAAQqHgJ7IwAABCoiAgN9
+IwAABCoeAnskAAAEKiICA30kAAAEKh4CeyUAAAQqIgIDfSUAAAQqHgJ7JgAABCoiAgN9JgAABCoe
+AnsnAAAEKiICA30nAAAEKh4CeygAAAQqIgIDfSgAAAQqHgJ7KQAABCoiAgN9KQAABCoeAnsqAAAE
+KiICA30qAAAEKh4CeysAAAQqIgIDfSsAAAQqHgJ7LAAABCoiAgN9LAAABCoeAnstAAAEKiICA30t
+AAAEKh4Cey4AAAQqIgIDfS4AAAQqHgJ7LwAABCoiAgN9LwAABCoeAnswAAAEKiICA30wAAAEKh4C
+ezEAAAQqIgIDfTEAAAQqHgJ7MgAABCoiAgN9MgAABCoeAnszAAAEKiICA30zAAAEKh4CezQAAAQq
+IgIDfTQAAAQqHgJ7NQAABCoiAgN9NQAABCoeAns2AAAEKiICA302AAAEKh4CezcAAAQqIgIDfTcA
+AAQqHgJ7OAAABCoiAgN9OAAABCoeAns5AAAEKiICA305AAAEKh4CezoAAAQqIgIDfToAAAQqrn47
+AAAELR5yDAMAcNAMAAACKGwAAApvbQAACnNuAAAKgDsAAAR+OwAABCoafjwAAAQqHgKAPAAABCoa
+fj0AAAQqHgIobwAACiouc4cAAAaAPQAABCouc4oAAAaAPgAABCpGA280AAAGcn4DAHBvcAAACiq6
+A280AAAGF41BAAABJRYfOp1vcQAACgNvYAAABgNvNAAABgNvWAAABnNyAAAKKjIDb3MAAAqOaRr+
+ASr+A29zAAAKF5pvdAAACgNvcwAAChiab3QAAAoDb3MAAAoZmm90AAAKA291AAAKA292AAAKA293
+AAAKc3gAAAoqQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAA9BkAACN+AABgGgAA
+oBcAACNTdHJpbmdzAAAAAAAyAADEAwAAI1VTAMQ1AAAQAAAAI0dVSUQAAADUNQAAmAYAACNCbG9i
+AAAAAAAAAAIAAAFXFaIJCQ8AAAD6ATMAFgAAAQAAAEEAAAAOAAAAQgAAAI4AAABQAAAAeAAAAJsA
+AAAJAAAACQAAAEEAAABpAAAAGgAAAAEAAAAIAAAAAQAAAAEAAAAKAAAABwAAAAAAgw0BAAAAAAAG
+AEoMjxEGAN4MjxEGAEgLShEPAAMSAAAGAJALsQ4GABIMsQ4GAPMLsQ4GAMUMsQ4GAGoMsQ4GAIMM
+sQ4GAKcLsQ4GAMILIw0GABALjxEGAOUUZA4GAOQKShEGAFwLShEGANsLShEKAJ4MrwkGAKwAngEG
+AKYJZA4GAOUAZA5PACgRAAAGAC8MjxEOADMJnA8SAEYNSBMGAN4AZA4KAIQQrwkWAHUQrwkKAGEP
+rwkKAIoVrwkGACsLShEGAJUQrxEGAFUPnA4SAPsKbQ0SAHcLbQ0SAI0Khw4GAJkAngEGAD8NZA4G
+AFcQZA4GAIQAngEaAE8Jsg8GAFoJZA4OAGEVnA8OAKsInA8OAPATrBMOAOQTrBMGAJIAoxIOAB8J
+nA8OANATrBMOALIVnA8eANsVDQ8SAM8WSBMSAKwPSBMSAMMOSBMSAIUKSBMGALMAZA4GANMOZA4i
+ABEApRAiAAEApRB7AJAWAAAiACIApRAGANAJZA4GAGYJZA4GABoXsQ4GAFIQZA4AAAAAcQEAAAAA
+AQABAAABEAAdAQAAOQABAAEAAAEQADMBAAA5AAUACQABABAAfA4AABgACwATAAEAEABnEAAAbQAP
+ABkAAQAQAGwVAAB5AA8AKQABABAAlRMAADkAEgAuAAEAEABNEgAAOQATAC8AAQAQAKUKSQE5ABQA
+MQABABAAHxVJATkAFQA0AAEAEABdEUkBOQA1AHUAAAAQALYREhI5ADsAggAAARAAhhISEpEAPQCG
+AAMhEACaAQAAOQA+AIkAIQANBDUAIQCHAzkAIQDeAz0AIQDLA0EAIQC2AzUAIQDwAzkAIQCdAz0A
+IQCHA0EAIQDeA8IAIQDLA8YAAQBjDccDAQAvFMoDAQCGAccDAQDMCtIDBgCVE9YDBgBNEtoDBgBn
+EN4DAQB6FeIDAQB6FeIDAQBCB8oDAQDMB8cDAQD0BOYDAQBsBeYDAQA6COYDAQBUCOYDAQByCOYD
+AQAsBekDAQAOBekDAQAHCNIDAQAiBOwDAQCIBOwDAQAgBuwDAQDTBOYDAQDnBu8DAQDGBu8DAQCr
+Bu8DAQBABOwDAQAfCNIDAQChBPMDAQCRCPMDAQBbB/MDAQCLBfMDAQCPB9IDAQBzB9IDAQC1BPMD
+AQBKBekDAQADB+YDAQC+BccDAQA2BscDAQDlB8cDAQCMBvYDAQD5BfMDAQDUBeYDAQBTBuYDAQCr
+B+YDAQAeB+YDAQBeBOYDAQCjBeYDEQBwDvoDEQB1Cv8DEQC2CAQENgBtAQgEFgA6AAwEFgBfABUE
+FgC5ACcEFgD4ADgEUCAAAAAAhgjVFk0CAQBYIAAAAACGCLwKcgIBAGAgAAAAAIYI7BRtAgEAaCAA
+AAAAhgg7D2MCAQBwIAAAAACGGDMRhwMBAJggAAAAAMYAuhJTBAUAGCEAAAAAxgDcCFgEBgCIIQAA
+AADGAD0NmgAGAEYiAAAAAIYIHQ9NAgYATiIAAAAAhgjnFXICBgBWIgAAAACGCEwNbQIGAF4iAAAA
+AIYIvApjAgYAZiIAAAAAhgjsFGgCBgBuIgAAAACGCDsPXgIGAHYiAAAAAIYYMxGTAwYArCIAAAAA
+xgC6ElMEDABgIwAAAADGANwIWAQNAPwjAAAAAMYAPQ2aAA0ADCUAAAAAxgD8DAYADQBvJQAAAADG
+AAcNBgANAHglAAAAAMYAWxQGAA0A0CYAAAAAgQAACVwEDQBYJwAAAACBABMJawQPAJInAAAAAIYY
+MxEGABAAmicAAAAAhhgzER4DEAClJwAAAACGCEgPAQATALQnAAAAAIYI2A1wBBQAyycAAAAAhgjU
+CnUEFQDaJwAAAACGCKsNcAQWAPEnAAAAAIYIBBUQABcA+ycAAAAAhggHDnAEGAASKAAAAACGCI8S
+EAAZABwoAAAAAIYI7A1wBBoAMygAAAAAhgj+FRAAGwA9KAAAAACGCBoOcAQcAFQoAAAAAIYILA8Q
+AB0AXigAAAAAhgjCDXAEHgB1KAAAAACGAMgWBgAfAH0oAAAAAIYAJhUGAB8AhSgAAAAAhgApFXcC
+HwCNKAAAAACGGDMRBgAfAK0oAAAAAMYBNxQGAB8ArygAAAAAgQDZAQYAHwDMKAAAAADGAD0WewQf
+AK0oAAAAAMYBWxQGACMAISkAAAAAhhgzEYcEIwAwKQAAAACGGDMRhwQkAD8pAAAAAIYIXw2aACUA
+ZSkAAAAAhggXFI0EJQBtKQAAAACGCCMUlgQlAHYpAAAAAIYYMxEGACYAfikAAAAAhgj4FJoAJgCG
+KQAAAACGCAQVEAAmAI8pAAAAAIYIzQKgBCcAlykAAAAAhgjaAqQEJwCgKQAAAACGCGMDoAQoAKgp
+AAAAAIYIdQOkBCgAsSkAAAAAhghpF6AEKQC5KQAAAACGCHYXpAQpAMIpAAAAAIYIIxegBCoAyikA
+AAAAhgg0F6QEKgDTKQAAAACGCEUXoAQrANspAAAAAIYIVxekBCsA5CkAAAAAhggJA6kELADsKQAA
+AACGCBoDrQQsAPUpAAAAAIYI5wKpBC0A/SkAAAAAhgj4Aq0ELQAGKgAAAACGCAAXsgQuAA4qAAAA
+AIYICxd1BC4AFyoAAAAAhgjtAXcCLwAfKgAAAACGCP4BcAQvACgqAAAAAIYIawJ3AjAAMCoAAAAA
+hgh3AnAEMAA5KgAAAACGCEAOdwIxAEEqAAAAAIYISQ5wBDEASioAAAAAhgilAqAEMgBSKgAAAACG
+CLkCpAQyAFsqAAAAAIYIBRO3BDMAYyoAAAAAhggUE7wEMwBsKgAAAACGCN0StwQ0AHQqAAAAAIYI
+8RK8BDQAfSoAAAAAhgjBErcENQCFKgAAAACGCM8SvAQ1AI4qAAAAAIYIDwJ3AjYAlioAAAAAhggg
+AnAENgCfKgAAAACGCOQWsgQ3AKcqAAAAAIYI8hZ1BDcAsCoAAAAAhghVA1gEOAC4KgAAAACGCFwD
+AQA4AMEqAAAAAIYIgxdYBDkAySoAAAAAhgiQFwEAOQDSKgAAAACGCEUUWAQ6ANoqAAAAAIYIUBQB
+ADoA4yoAAAAAhgjGCFgEOwDrKgAAAACGCNEIAQA7APQqAAAAAIYIjRSyBDwA/CoAAAAAhgicFHUE
+PAAFKwAAAACGCG8UsgQ9AA0rAAAAAIYIfhR1BD0AFisAAAAAhgiDAlgEPgAeKwAAAACGCJQCAQA+
+ACcrAAAAAIYIKwOpBD8ALysAAAAAhghAA60EPwA4KwAAAACGCCMToARAAEArAAAAAIYIMROkBEAA
+SSsAAAAAhgjVCZoAQQBRKwAAAACGCN4JEABBAForAAAAAIYI7Q6aAEIAYisAAAAAhgj9DhAAQgBr
+KwAAAACGCFIWmgBDAHMrAAAAAIYIZxYQAEMAfCsAAAAAhghrEcIERACEKwAAAACGCH0RxwREAI0r
+AAAAAIYIFwpYBEUAlSsAAAAAhggxCgEARQB2KQAAAACGGDMRBgBGAJ4rAAAAAIYI5wmgBEYApisA
+AAAAhgj/CaQERgCvKwAAAACGCM0QoARHALcrAAAAAIYI+RCkBEcAwCsAAAAAhgiyFKAESADIKwAA
+AACGCMYUpARIANErAAAAAIYIZxOgBEkA2SsAAAAAhgh+E6QESQDiKwAAAACGCDECoARKAOorAAAA
+AIYITgKkBEoA8ysAAAAAhgiKCaAESwD7KwAAAACGCJgJpARLAHYpAAAAAIYYMxEGAEwAdikAAAAA
+gxgzEQYATAAELAAAAACTCJEQzQRMADAsAAAAAJMIXQrTBEwANywAAAAAkwhpCtkETAA/LAAAAACW
+CDsV4ARNAEYsAAAAAIYYMxEGAE0ATiwAAAAAkRg5EeUETQBaLAAAAACRGDkR5QRNAHYpAAAAAIYY
+MxEGAE0AZiwAAAAAgwBDAOkETQB4LAAAAACDAGgA7wROAKcsAAAAAIMAwgD+BE8AtCwAAAAAgwAB
+AQwFUAAAAAEA2RYAAAIAwAoAAAMA8BQAAAQAPw8AAAEAHQ0AAAEAIQ8AAAIA6xUAAAMAUA0AAAQA
+wAoAAAUA8BQAAAYAPw8AAAEAHQ0AAAAAAAAAAAEAhgEAAAEAaA0AAAEAihAAAAIAYRIAAAMAbw8A
+AAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEA
+HQ0AAAEAHQ0AAAEAHQ0AAAEAPRQAAAIAQBEAAAMAAxQAAAQAbw8AAAEAkBUAAAEAkBUAAAEAHQ0A
+AAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEA
+HQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0A
+AAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEA
+HQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0AAAEAHQ0A
+AAEAHQ0AAAEAvhYAAAEAvhYAAAEAvhYAAAEAvhYJADMRAQARADMRBgAZADMRCgApADMREAAxADMR
+EAA5ADMREABBADMREABJADMREABRADMREABZADMREABhADMREABpADMRBgCBADMRFQCJADMRBgCR
+ADMRBgC5ADMRGwD5ADMRBgAZATMRIQAMAA0ENQAMAIcDOQAMAN4DPQAMAMsDQQBxADMRBgAUADsV
+XAAUALoSZgAcADsVXAAcALoSZgAkADsVXAAkALoSZgAsADsVXAAsALoSZgAUANwIhgAcANwIhgAk
+ANwIhgAsANwIhgBxAD0NmgAxAasUpwBUALYDNQBUAPADOQBUAJ0DPQBUAIcDQQBUAN4DwgBUAMsD
+xgBcADsVXABcALoSZgBkADsVXABkALoSZgBcANwIhgBkANwIhgDxAPwMBgB8ADMRBgChAMAWFwGE
+APIAOQB8AEYJKAHxAAcNBgCMADMRWAFJAUsKXgGUADMRWAFJARAVjQGcADMRWAGkADMRWAFJARUW
+BQKsACURNAK0AJoVTQK8ADsPXgK8AB0PTQK8ALwKYwK8AOwUaAK8AEwNbQK8AOcVcgK0AEkWdwJR
+AbQKBgBZATMRBgBhARcVgwLBADMRiQLBAMQTkQJxAdUBlwJZAbkBnQLEAFYVTQKBAegIswKBAcQT
+uQJxAVcSvwJJAUcVyQKBAaYV2gKRAcMB4ALMAFYVTQKZAdoU8AKEADMR/AKhAUYNCgOpAQsUdwLJ
+AKETEQOxAVIOFwO5ARMNmgDZADMRHgPZAFsOKAPZADgOAQDJATMREADZAMgWBgDZACYVBgDZACkV
+dwLxADMRBgDxAHoBMgPxAHUSOQPxAEESPwPRAVIORQPxAKsWTAPZAXwWUgPxAXgJWQPxARYXYgMB
+ATMRaAMhATMRBgAxAT8TcAMxATUVdQPUADMRhwPUANUWTQIxAWsOmgDUALwKcgLUAOwUbQLUADsP
+YwK8ADMRkwMhAGsAcQYuAAsAfwUuABMAiAUuABsApwUuACMAsAUuACsA2QUuADMA2QUuADsA3wUu
+AEMAsAUuAEsA+AUuAFMA2QUuAFsAIgZBAGsAcQZDAGMAbAZhAGsAcQZjAGMAbAaBAGsAcQaDAHsA
+bAagAHMAbAahAGsAcQbAAHMAbAbBAGsAcQbgAHMAbAbhAGsAcQYAAXMAbAYBAWsAcQYhAWsAcQZB
+AWsAcQaDAYsAbAakAYMAegbDAWMAbAbgAXMAbAYAAnMAbAYgAnMAbAZAAnMAbAaBAmMAbAahAmMA
+bAbBAmMAbAbhAmMAbAYBA2MAbAYhA2MAbAZBA2MAbAZhA2MAbAaBA2MAbAahA2MAbAbBA2MAbAbh
+A2MAbAYBBGMAbAYhBGMAbAZBBGMAbAZhBGMAbAaBBGMAbAahBGMAbAbBBGMAbAbhBGMAbAYBBWMA
+bAYhBWMAbAZBBWMAbAZhBWMAbAaBBWMAbAahBWMAbAbBBWMAbAbhBWMAbAYBBmMAbAYgBmMAbAYh
+BmMAbAZABmMAbAZBBmMAbAZhBmMAbAaABmMAbAaBBmMAbAagBmMAbAahBmMAbAbABmMAbAbBBmMA
+bAbgBmMAbAbhBmMAbAYAB2MAbAYBB2MAbAYgB2MAbAYhB2MAbAZAB2MAbAZBB2MAbAZgB2MAbAaA
+B2MAbAagB2MAbAahB2MAbAbAB2MAbAbgB2MAbAbpB5MApwUACGMAbAYJCJMApwUgCGMAbAZACGMA
+bAZgCGMAbAaACGMAbAagCGMAbAbACGMAbAbgCGMAbAYACWMAbAYgCWMAbAZACWMAbAZgCWMAbAaA
+CWMAbAagCWMAbAbACWMAbAbgCWMAbAYACmMAbAYgCmMAbAZACmMAbAZgCmMAbAaACmMAbAagCmMA
+bAbACmMAbAbgCmMAbAYAC2MAbAYgC2MAbAZAC2MAbAZgC2MAbAaAC2MAbAagC2MAbAbAC2MAbAbg
+C2MAbAYADGMAbAYgDGMAbAZADGMAbAZgDGMAbAaADGMAbAagDGMAbAbADGMAbAbgDGMAbAYADWMA
+bAYgDWMAbAZADWMAbAZgDWMAbAaADWMAbAagDWMAbAbADWMAbAbgDWMAbAYADmMAbAYgDmMAbAZA
+DmMAbAZgDmMAbAagDmMAbAbADmMAbAbgDmMAbAYAD2MAbAYgD2MAbAZAD2MAbAZgD2MAbAaAD2MA
+bAagD2MAbAbAD2MAbAbgD2MAbAYAEGMAbAZFAIwAygDtAAIBMwF7AgQDLgMCAAEAAwAFAAUACwAI
+ABcACQAYAAoAGQALADkADAA/AA0AQQAAANkWJAUAAMAKKQUAAPAULgUAAD8PMwUAACEPJAUAAOsV
+KQUAAFANLgUAAMAKMwUAAPAUOAUAAD8PPQUAAEwPQgUAANwNRgUAANgKSgUAAK8NRgUAAAgVTwUA
+AAsORgUAAJMSTwUAAPANRgUAAAIWTwUAAB4ORgUAADAPTwUAAMYNRgUAAGMNTwUAACcUUwUAAAgV
+TwUAAN4CXAUAAHkDXAUAAHoXXAUAADgXXAUAAFsXXAUAAB4DYAUAAPwCYAUAAA8XSgUAAAICRgUA
+AHsCRgUAAE0ORgUAAL0CXAUAABgTZAUAAPUSZAUAAPsSZAUAACQCRgUAAPYWSgUAAIQDQgUAAJQX
+QgUAAFQUQgUAANUIQgUAAKAUSgUAAIIUSgUAAJgCQgUAAEQDYAUAADUTXAUAAEYKTwUAAAEPTwUA
+AGsWTwUAAIERaQUAADUKQgUAAAMKXAUAAP0QXAUAAMoUXAUAAIITXAUAAFICXAUAAJwJXAUAAJUQ
+bgUAAH0KdAUAAE4VegUCAAEAAwACAAIABQACAAMABwACAAQACQACAAkACwACAAoADQACAAsADwAC
+AAwAEQACAA0AEwACAA4AFQABABoAFwABABsAGQABABwAGwABAB0AHQABAB4AHwABAB8AIQABACAA
+IwABACEAJQABACIAJwABACMAKQABACQAKwABACUALQACADAALwACADEAMQABADIAMQACADQAMwAB
+ADUAMwACADYANQABADcANQACADgANwABADkANwACADoAOQABADsAOQACADwAOwABAD0AOwACAD4A
+PQABAD8APQACAEAAPwABAEEAPwACAEIAQQABAEMAQQACAEQAQwABAEUAQwACAEYARQABAEcARQAC
+AEgARwABAEkARwACAEoASQABAEsASQACAEwASwABAE0ASwACAE4ATQABAE8ATQACAFAATwABAFEA
+TwACAFIAUQABAFMAUQACAFQAUwABAFUAUwACAFYAVQABAFcAVQACAFgAVwABAFkAVwACAFoAWQAB
+AFsAWQACAFwAWwABAF0AWwACAF4AXQABAF8AXQACAGAAXwABAGEAXwACAGIAYQABAGMAYQACAGQA
+YwABAGUAYwACAGYAZQABAGcAZQACAGgAZwABAGkAZwACAGoAaQABAGsAaQACAGwAawABAG0AawAC
+AG4AbQABAG8AbQACAHAAbwABAHEAbwACAHIAcQABAHMAcQACAHUAcwABAHYAcwACAHcAdQABAHgA
+dQACAHkAdwABAHoAdwACAHsAeQABAHwAeQACAH0AewABAH4AewACAH8AfQABAIAAfQACAIMAfwAC
+AIQAgQABAIUAgQACAIYAgwAoAFQAbgB2AH4AlwCeAKEApACxAN0A5QD8AP8AEAEcAVABfAG2AdMB
+JAI9AlICqgLpAnwDBIAAAAEAAAAAAAAAAAAAAAAASQEAAAQAAAAAAAAAAAAAAKMDkQEAAAAADwAA
+AAAAAAAAAAAArAO+FQAAAAAEAAAAAAAAAAAAAAC1A5wPAAAAAAQAAAAAAAAAAAAAAKMDZA4AAAAA
+DwAAAAAAAAAAAAAArAMcFgAAAAAEAAAAAAAAAAAAAACjA1EKAAAAAA0AAAAAAAAAAAAAAL4DDQ8A
+AAAADwAAAAAAAAAAAAAArAN5DwAAAAAAAAAAAQAAAMARAAAOAAQAAAAAAAQAPhABAAAABAC+DwIA
+AAAEABEQAwAAAAQA/w8AAAAABgDrDwEAAAAGACIQAgAAAAYA0w8DAAAABgC+DwQAAAAGABEQBQAA
+AAYA/w9zAHcBdwCnAXMAxgF3AO0BfQAWAqcA1gKvAPcCAAAASURUU1ZhcmlhYmxlMTAwAElEVFNW
+YXJpYWJsZXMxMDAASURUU0V2YWx1YXRvckNvbnRleHQxMDAAPD45X182XzAAPENyZWF0ZU5ld091
+dHB1dFJvd3M+Yl9fNl8wADw+OV9fNl8xADxDcmVhdGVOZXdPdXRwdXRSb3dzPmJfXzZfMQBJRW51
+bWVyYWJsZWAxAFRhc2tgMQBFcXVhbGl0eUNvbXBhcmVyYDEATGlzdGAxAEludDMyADw+OV9fNl8y
+ADxDcmVhdGVOZXdPdXRwdXRSb3dzPmJfXzZfMgBGdW5jYDIAVmFsdWVUdXBsZWAyAEl0ZW0yADw+
+OV9fNl8zADxDcmVhdGVOZXdPdXRwdXRSb3dzPmJfXzZfMwA8PmZfX0Fub255bW91c1R5cGUwYDQA
+PD5mX19Bbm9ueW1vdXNUeXBlMWA2AFNDXzIwOTdmMzMyNDc2ZDRhNWNiMWU2NmY2YmI4OGRlNzY4
+ADw+OQA8TW9kdWxlPgBHZXRPdXRwdXRJRAB0aWNrZXRzQVBJAG1zY29ybGliADw+YwBTeXN0ZW0u
+Q29sbGVjdGlvbnMuR2VuZXJpYwBTZW5kQXN5bmMAUmVhZEFzU3RyaW5nQXN5bmMAQWRkAE1hcmtP
+dXRwdXRzRmluaXNoZWQAZ2V0X2ZyX2VzY2FsYXRlZABzZXRfZnJfZXNjYWxhdGVkAGdldF9pc19l
+c2NhbGF0ZWQAc2V0X2lzX2VzY2FsYXRlZABnZXRfbm9fb2ZfY3VzdG9tZXJzX2ltcGFjdGVkAHNl
+dF9ub19vZl9jdXN0b21lcnNfaW1wYWN0ZWQAZ2V0X2RlbGV0ZWQAc2V0X2RlbGV0ZWQAZ2V0X3dv
+cmtzcGFjZV9pZABzZXRfd29ya3NwYWNlX2lkAGdldF9lbWFpbF9jb25maWdfaWQAc2V0X2VtYWls
+X2NvbmZpZ19pZABnZXRfZ3JvdXBfaWQAc2V0X2dyb3VwX2lkAGdldF9yZXNwb25kZXJfaWQAc2V0
+X3Jlc3BvbmRlcl9pZABnZXRfcmVxdWVzdGVyX2lkAHNldF9yZXF1ZXN0ZXJfaWQAZ2V0X3JlcXVl
+c3RlZF9mb3JfaWQAc2V0X3JlcXVlc3RlZF9mb3JfaWQAZ2V0X2lkAHNldF9pZABnZXRfZGVwYXJ0
+bWVudF9pZABzZXRfZGVwYXJ0bWVudF9pZAA8Q3JlYXRlZERhdGU+aV9fRmllbGQAPERlbGF5Rm9y
+Nk1vbnRoPmlfX0ZpZWxkADxQcm90b2NvbE5vPmlfX0ZpZWxkADxUaWNrZXRObz5pX19GaWVsZAA8
+U3ViamVjdD5pX19GaWVsZAA8Tm9BY2NydWFsc1RvUmVwb3J0PmlfX0ZpZWxkADxUaXRsZUFycmF5
+PmlfX0ZpZWxkADxmcl9lc2NhbGF0ZWQ+a19fQmFja2luZ0ZpZWxkADxpc19lc2NhbGF0ZWQ+a19f
+QmFja2luZ0ZpZWxkADxub19vZl9jdXN0b21lcnNfaW1wYWN0ZWQ+a19fQmFja2luZ0ZpZWxkADxk
+ZWxldGVkPmtfX0JhY2tpbmdGaWVsZAA8aWQ+a19fQmFja2luZ0ZpZWxkADx3b3Jrc3BhY2VfaWQ+
+a19fQmFja2luZ0ZpZWxkADxlbWFpbF9jb25maWdfaWQ+a19fQmFja2luZ0ZpZWxkADxncm91cF9p
+ZD5rX19CYWNraW5nRmllbGQAPHJlc3BvbmRlcl9pZD5rX19CYWNraW5nRmllbGQAPHJlcXVlc3Rl
+cl9pZD5rX19CYWNraW5nRmllbGQAPHJlcXVlc3RlZF9mb3JfaWQ+a19fQmFja2luZ0ZpZWxkADxk
+ZXBhcnRtZW50X2lkPmtfX0JhY2tpbmdGaWVsZAA8c291cmNlPmtfX0JhY2tpbmdGaWVsZAA8eW91
+cl9uYW1lPmtfX0JhY2tpbmdGaWVsZAA8dHlwZT5rX19CYWNraW5nRmllbGQAPG1ham9yX2luY2lk
+ZW50X3R5cGU+a19fQmFja2luZ0ZpZWxkADx0YXNrc19kZXBlbmRlbmN5X3R5cGU+a19fQmFja2lu
+Z0ZpZWxkADxzcGFtPmtfX0JhY2tpbmdGaWVsZAA8ZGVzY3JpcHRpb24+a19fQmFja2luZ0ZpZWxk
+ADx3aG9fYXJlX3lvdV9zdWJtaXR0aW5nX3RoaXNfcmVxdWVzdF9mb3I+a19fQmFja2luZ0ZpZWxk
+ADxjdXN0b21fZmllbGRzPmtfX0JhY2tpbmdGaWVsZAA8Y2NfZW1haWxzPmtfX0JhY2tpbmdGaWVs
+ZAA8cmVwbHlfY2NfZW1haWxzPmtfX0JhY2tpbmdGaWVsZAA8ZndkX2VtYWlscz5rX19CYWNraW5n
+RmllbGQAPHRvX2VtYWlscz5rX19CYWNraW5nRmllbGQAPGltcGFjdGVkX2xvY2F0aW9ucz5rX19C
+YWNraW5nRmllbGQAPFRpY2tldHM+a19fQmFja2luZ0ZpZWxkADxzdGF0dXM+a19fQmFja2luZ0Zp
+ZWxkADx1cGRhdGVkX2F0PmtfX0JhY2tpbmdGaWVsZAA8Y3JlYXRlZF9hdD5rX19CYWNraW5nRmll
+bGQAPGJ1c2luZXNzX2ltcGFjdD5rX19CYWNraW5nRmllbGQAPHN1YmplY3Q+a19fQmFja2luZ0Zp
+ZWxkADxkZXNjcmlwdGlvbl90ZXh0PmtfX0JhY2tpbmdGaWVsZAA8ZHVlX2J5PmtfX0JhY2tpbmdG
+aWVsZAA8ZnJfZHVlX2J5PmtfX0JhY2tpbmdGaWVsZAA8Y2F0ZWdvcnk+a19fQmFja2luZ0ZpZWxk
+ADxzdWJfY2F0ZWdvcnk+a19fQmFja2luZ0ZpZWxkADxpdGVtX2NhdGVnb3J5PmtfX0JhY2tpbmdG
+aWVsZAA8cHJpb3JpdHk+a19fQmFja2luZ0ZpZWxkAEh0dHBNZXRob2QAZGVmYXVsdEluc3RhbmNl
+AGdldF9zb3VyY2UAc2V0X3NvdXJjZQBHZXRIYXNoQ29kZQBFbnN1cmVTdWNjZXNzU3RhdHVzQ29k
+ZQBHZXRUaWNrZXRzV2l0aFBhZ2UAR2V0TmV4dFBhZ2UASHR0cFJlc3BvbnNlTWVzc2FnZQBIdHRw
+UmVxdWVzdE1lc3NhZ2UAQWRkUmFuZ2UARW51bWVyYWJsZQBJRGlzcG9zYWJsZQBSdW50aW1lVHlw
+ZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBnZXRfeW91cl9uYW1lAHNldF95b3VyX25hbWUARGF0
+ZVRpbWUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUGlwZWxpbmUAVHlwZQBnZXRfdHlwZQBzZXRf
+dHlwZQBnZXRfbWFqb3JfaW5jaWRlbnRfdHlwZQBzZXRfbWFqb3JfaW5jaWRlbnRfdHlwZQBnZXRf
+dGFza3NfZGVwZW5kZW5jeV90eXBlAHNldF90YXNrc19kZXBlbmRlbmN5X3R5cGUAV2hlcmUAU3lz
+dGVtLkNvcmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAENhcHR1cmUA
+QXBwbGljYXRpb25TZXR0aW5nc0Jhc2UAVGlja2V0UmVzcG9uc2UARGlzcG9zZQBnZXRfQ3JlYXRl
+ZERhdGUAbWluRGF0ZQBzZXRfY3JlYXRlZGRhdGUARGVidWdnZXJCcm93c2FibGVTdGF0ZQBFZGl0
+b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1Z2dlck5vblVz
+ZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARGVidWdnZXJCcm93c2FibGVBdHRy
+aWJ1dGUARWRpdG9yQnJvd3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNz
+ZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAERlYnVnZ2Vy
+SGlkZGVuQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseURl
+c2NyaXB0aW9uQXR0cmlidXRlAFR1cGxlRWxlbWVudE5hbWVzQXR0cmlidXRlAENvbXBpbGF0aW9u
+UmVsYXhhdGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29w
+eXJpZ2h0QXR0cmlidXRlAFNTSVNTY3JpcHRDb21wb25lbnRFbnRyeVBvaW50QXR0cmlidXRlAEFz
+c2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBQcmVF
+eGVjdXRlAFBvc3RFeGVjdXRlAGdldF9WYWx1ZQB2YWx1ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9u
+aW5nAFRvU3RyaW5nAE1hdGNoAGdldF9EZWxheUZvcjZNb250aABnZXRfQXV0aABsaW5rAFN5c3Rl
+bS5Db21wb25lbnRNb2RlbABTQ18yMDk3ZjMzMjQ3NmQ0YTVjYjFlNjZmNmJiODhkZTc2OC5kbGwA
+c2V0X2NyZWF0ZWRkYXRlX0lzTnVsbABzZXRfcHJvdG9jb2xOb19Jc051bGwAc2V0X3RpY2tldE5v
+X0lzTnVsbABzZXRfRGVsYXlGb3I2TW9udGhzX0lzTnVsbABzZXRfc3ViamVjdF9Jc051bGwAc2V0
+X25vQWNjcnVhbHNUb1JlcG9ydF9Jc051bGwAU2V0TnVsbABnZXRfc3BhbQBzZXRfc3BhbQBnZXRf
+SXRlbQBzZXRfSXRlbQBTeXN0ZW0AVHJpbQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAFN5c3RlbS5D
+b25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAEdyb3Vw
+Q29sbGVjdGlvbgBJbnZhbGlkT3BlcmF0aW9uRXhjZXB0aW9uAGdldF9kZXNjcmlwdGlvbgBzZXRf
+ZGVzY3JpcHRpb24ATmV3dG9uc29mdC5Kc29uAGdldF9Qcm90b2NvbE5vAHNldF9wcm90b2NvbE5v
+AGdldF9UaWNrZXRObwBzZXRfdGlja2V0Tm8AQ3VsdHVyZUluZm8AT3V0cHV0TmFtZU1hcABPdXRw
+dXRNYXAATWljcm9zb2Z0LlNxbFNlcnZlci5EVFNSdW50aW1lV3JhcABTeXN0ZW0uTmV0Lkh0dHAA
+R3JvdXAAU3lzdGVtLkxpbnEAPENyZWF0ZWREYXRlPmpfX1RQYXIAPERlbGF5Rm9yNk1vbnRoPmpf
+X1RQYXIAPFByb3RvY29sTm8+al9fVFBhcgA8VGlja2V0Tm8+al9fVFBhcgA8U3ViamVjdD5qX19U
+UGFyADxOb0FjY3J1YWxzVG9SZXBvcnQ+al9fVFBhcgA8VGl0bGVBcnJheT5qX19UUGFyAENoYXIA
+SUZvcm1hdFByb3ZpZGVyAE91dHB1dDBCdWZmZXIAUGlwZWxpbmVCdWZmZXIAU2NyaXB0QnVmZmVy
+AGdldF9SZXNvdXJjZU1hbmFnZXIATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVudGltZS5XcmFw
+cGVyAGdldF93aG9fYXJlX3lvdV9zdWJtaXR0aW5nX3RoaXNfcmVxdWVzdF9mb3IAc2V0X3dob19h
+cmVfeW91X3N1Ym1pdHRpbmdfdGhpc19yZXF1ZXN0X2ZvcgBHZXRFbnVtZXJhdG9yAC5jdG9yAC5j
+Y3RvcgBPdXRwdXRJRHMAU3lzdGVtLkRpYWdub3N0aWNzAEN1c3RvbV9GaWVsZHMAZ2V0X2N1c3Rv
+bV9maWVsZHMAc2V0X2N1c3RvbV9maWVsZHMAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNl
+cwBTeXN0ZW0uUmVzb3VyY2VzAFNDXzIwOTdmMzMyNDc2ZDRhNWNiMWU2NmY2YmI4OGRlNzY4LlBy
+b3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTQ18yMDk3ZjMzMjQ3
+NmQ0YTVjYjFlNjZmNmJiODhkZTc2OC5Qcm9wZXJ0aWVzAGdldF9SZWFkT25seVZhcmlhYmxlcwBH
+ZXRWYWx1ZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5JbmRleGVzAFNldHRpbmdzAHNl
+dF9EZWxheUZvcjZNb250aHMAU3lzdGVtLlRocmVhZGluZy5UYXNrcwBFcXVhbHMAZ2V0X2NjX2Vt
+YWlscwBzZXRfY2NfZW1haWxzAGdldF9yZXBseV9jY19lbWFpbHMAc2V0X3JlcGx5X2NjX2VtYWls
+cwBnZXRfZndkX2VtYWlscwBzZXRfZndkX2VtYWlscwBnZXRfdG9fZW1haWxzAHNldF90b19lbWFp
+bHMAQ29udGFpbnMAU3lzdGVtLlRleHQuUmVndWxhckV4cHJlc3Npb25zAGdldF9pbXBhY3RlZF9s
+b2NhdGlvbnMAc2V0X2ltcGFjdGVkX2xvY2F0aW9ucwBDb25uZWN0aW9ucwBnZXRfR3JvdXBzAFN5
+c3RlbS5OZXQuSHR0cC5IZWFkZXJzAGdldF9IZWFkZXJzAEh0dHBSZXNwb25zZUhlYWRlcnMASHR0
+cEhlYWRlcnMASHR0cFJlcXVlc3RIZWFkZXJzAEJ1ZmZlcnMAZ2V0X1N1Y2Nlc3MAZ2V0X1RpY2tl
+dHMAc2V0X1RpY2tldHMAdGlja2V0cwBGaW5pc2hPdXRwdXRzAGdldF9zdGF0dXMAc2V0X3N0YXR1
+cwBDcmVhdGVOZXdPdXRwdXRSb3dzAGdldF91cGRhdGVkX2F0AHNldF91cGRhdGVkX2F0AGdldF9j
+cmVhdGVkX2F0AHNldF9jcmVhdGVkX2F0AEZvcm1hdABnZXRfYnVzaW5lc3NfaW1wYWN0AHNldF9i
+dXNpbmVzc19pbXBhY3QARGVzZXJpYWxpemVPYmplY3QAZ2V0X1N1YmplY3QAZ2V0X3N1YmplY3QA
+c2V0X3N1YmplY3QAU2VsZWN0AGdldF9HZXQAVGlja2V0AFNldEVuZE9mUm93c2V0AFNwbGl0AGdl
+dF9EZWZhdWx0AEZpcnN0T3JEZWZhdWx0AGdldF9SZXN1bHQASHR0cENsaWVudABVc2VyQ29tcG9u
+ZW50AFBhcmVudENvbXBvbmVudABTY3JpcHRDb21wb25lbnQAZ2V0X0N1cnJlbnQAZ2V0X0NvbnRl
+bnQASHR0cENvbnRlbnQATWljcm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlwdABKc29uQ29udmVydABn
+ZXRfTm9BY2NydWFsc1RvUmVwb3J0AHNldF9ub0FjY3J1YWxzVG9SZXBvcnQAVG9MaXN0AE1pY3Jv
+c29mdC5TcWxTZXJ2ZXIuUGlwZWxpbmVIb3N0AFByaW1lT3V0cHV0AE1vdmVOZXh0AGdldF9kZXNj
+cmlwdGlvbl90ZXh0AHNldF9kZXNjcmlwdGlvbl90ZXh0AEdldFZhbHVlV2l0aENvbnRleHQAU2Ny
+aXB0Q29tcG9uZW50RXZhbENvbnRleHQAZ2V0X0V2YWx1YXRvckNvbnRleHQAZ2V0X05vdwBBZGRS
+b3cAUmVnZXgAZ2V0X1RpdGxlQXJyYXkAZ2V0X2ZyX2R1ZV9ieQBzZXRfZnJfZHVlX2J5AGdldF9k
+dWVfYnkAc2V0X2R1ZV9ieQBnZXRfQXNzZW1ibHkAZ2V0X3N1Yl9jYXRlZ29yeQBzZXRfc3ViX2Nh
+dGVnb3J5AGdldF9pdGVtX2NhdGVnb3J5AHNldF9pdGVtX2NhdGVnb3J5AGdldF9jYXRlZ29yeQBz
+ZXRfY2F0ZWdvcnkAZ2V0X3ByaW9yaXR5AHNldF9wcmlvcml0eQAAAAAAgJF7AHsAIABUAGkAdABs
+AGUAQQByAHIAYQB5ACAAPQAgAHsAMAB9ACwAIABDAHIAZQBhAHQAZQBkAEQAYQB0AGUAIAA9ACAA
+ewAxAH0ALAAgAFMAdQBiAGoAZQBjAHQAIAA9ACAAewAyAH0ALAAgAFQAaQBjAGsAZQB0AE4AbwAg
+AD0AIAB7ADMAfQAgAH0AfQAAgPF7AHsAIABQAHIAbwB0AG8AYwBvAGwATgBvACAAPQAgAHsAMAB9
+ACwAIABOAG8AQQBjAGMAcgB1AGEAbABzAFQAbwBSAGUAcABvAHIAdAAgAD0AIAB7ADEAfQAsACAA
+RABlAGwAYQB5AEYAbwByADYATQBvAG4AdABoACAAPQAgAHsAMgB9ACwAIABDAHIAZQBhAHQAZQBk
+AEQAYQB0AGUAIAA9ACAAewAzAH0ALAAgAFMAdQBiAGoAZQBjAHQAIAA9ACAAewA0AH0ALAAgAFQA
+aQBjAGsAZQB0AE4AbwAgAD0AIAB7ADUAfQAgAH0AfQAAd2gAdAB0AHAAcwA6AC8ALwB1AG4AaQB2
+AGUAcgBzAGkAdAB5AG8AZgBhAHIAaQB6AG8AbgBhAC4AZgByAGUAcwBoAHMAZQByAHYAaQBjAGUA
+LgBjAG8AbQAvAGEAcABpAC8AdgAyAC8AdABpAGMAawBlAHQAcwAAG0EAdQB0AGgAbwByAGkAegBh
+AHQAaQBvAG4AAAlMAGkAbgBrAAArPAAoAFsAXgA+AF0AKwApAD4AOwAgAHIAZQBsAD0AIgBuAGUA
+eAB0ACIAAAEAgJtJAHMATgB1AGwAbAAgAHAAcgBvAHAAZQByAHQAeQAgAGMAYQBuAG4AbwB0ACAA
+YgBlACAAcwBlAHQAIAB0AG8AIABGAGEAbABzAGUALgAgAEEAcwBzAGkAZwBuACAAYQAgAHYAYQBs
+AHUAZQAgAHQAbwAgAHQAaABlACAAYwBvAGwAdQBtAG4AIABpAG4AcwB0AGUAYQBkAC4AABFPAHUA
+dABwAHUAdAAgADAAAAlBAHUAdABoAABxUwBDAF8AMgAwADkANwBmADMAMwAyADQANwA2AGQANABh
+ADUAYwBiADEAZQA2ADYAZgA2AGIAYgA4ADgAZABlADcANgA4AC4AUAByAG8AcABlAHIAdABpAGUA
+cwAuAFIAZQBzAG8AdQByAGMAZQBzAABFTwBuAEMAbwByAGUAIABTAHUAbQBtAGEAcgB5ACAAQQBj
+AGMAcgB1AGEAbAAgAEYAaQBsAGUAIABVAHAAbABvAGEAZAAAZeNoKk30V0GM8aytxYM+gQAEIAEB
+CAMgAAEFIAEBEREEIAEBDgUgAQERPQUgAQEdDgYgAQERgIkMFRIIBBMAEwETAhMDAwYTAAMGEwED
+BhMCAwYTAw4HARUSCAQTABMBEwITAwcVEoCVARMACQAAFRKAlQETAAcgAgITABMABxUSgJUBEwEH
+FRKAlQETAgcVEoCVARMDBSABCBMACgcEEwATARMCEwMCEwADIAAOAhMBAhMCAhMDCQADDhKAnQ4d
+HBAVEgwGEwATARMCEwMTBBMFAwYTBAMGEwUSBwEVEgwGEwATARMCEwMTBBMFBxUSgJUBEwQHFRKA
+lQETBQ4HBhMAEwETAhMDEwQTBQITBAITBQ0HARURVQIOFRJNARIoBhUSTQESKAQAABFRCxURVQIO
+FRJNARIoCiABARUSgKEBEwAcBwIVEVkBFRIMBg4ODhFRDggVEgwGDg4OEVEOCAcVEmkCEigCBSAC
+ARwYGBABAhUSgKEBHgAVEoChAR4AFRJpAh4AAgQKARIoEBUSaQISKBUSCAQdDhFRDggZEAICFRKA
+oQEeARUSgKEBHgAVEmkCHgAeAQ4KAhIoFRIIBB0OEVEOCA8VEmkCFRIIBB0OEVEOCAIMCgEVEggE
+HQ4RUQ4IGRUSaQIVEggEHQ4RUQ4IFRIMBg4ODhFRDggXCgIVEggEHQ4RUQ4IFRIMBg4ODhFRDggQ
+EAEBFRJNAR4AFRKAoQEeAA0KARUSDAYODg4RUQ4IDxUSTQEVEgwGDg4OEVEOCAggABURWQETAA8V
+EVkBFRIMBg4ODhFRDggEIAATAAsVEgwGDg4OEVEOCAQgABMFBCAAEwMEIAATBAQgABMCBCAAEwED
+IAACBwcDEmEOEiQFAAASgLEHIAIBEoCxDgUgABKAtQUgAgEODgwgARUSgL0BEoDBEmEIFRKAvQES
+gMEFIAASgMEFIAASgMUJIAEVEoChAQ4ODBABAR4AFRKAoQEeAAMKAQ4FIAASgMkIIAAVEoC9AQ4G
+FRKAvQEOBhABAR4ADgQKARIkByACARMAEwEFBwIOEmUGAAISZQ4OBSAAEoDZBiABEoDVCAkgAwES
+cR0IEnUFIAIBCBwDBwEIBgACCBJ1DgUgAR0ICAUgABKA6QYgARKA7RwFAAASgPEGIAEcEoD1CAAB
+EoD5EYD9BSAAEoEBByACAQ4SgQEEIAECDgYgAR0OHQMKFRIIBB0OEVEOCAsgBAETABMBEwITAw8g
+BgETABMBEwITAxMEEwUIt3pcVhk04IkIiYRdzYCAzJEIsD9ffxHVCjoIMK1P5rKmru0CBg4HBhUS
+TQESKAMGEVEDBhIcAwYSIAMGEhQDBhJ5AgYcAgYKAgYCAwYdHAIGCAMGEiwEBhKAgQQGEoCFAwYS
+NAMGEjgIBhUSaQISKAIRBhUSaQISKBUSCAQdDhFRDggQBhUSaQIVEggEHQ4RUQ4IAhoGFRJpAhUS
+CAQdDhFRDggVEgwGDg4OEVEOCAQgAQIcAyAACA4gARURVQIOFRJNARIoDgQgAQ4OBCABAQIFIAEB
+EVELIAQBCB0IHRJxEnUFIAEBEnkIIAAVEk0BEigJIAEBFRJNARIoAyAAHAQgAQEcAyAACgQgAQEK
+BCAAEVEEIAAdHAUgAQEdHAQgABIsBSABARIsBQAAEoCBBQAAEoCFBgABARKAhQQAABI0AwAAAQUg
+AQISKA4gARUSCAQdDhFRDggSKA0gAQIVEggEHQ4RUQ4IFyABFRIMBg4ODhFRDggVEggEHQ4RUQ4I
+BCgAEwAEKAATAQQoABMCBCgAEwMEKAATBAQoABMFAygACAMoAAIEKAARUQMoAA4IKAAVEk0BEigD
+KAAcAygACgQoAB0cBCgAEiwFCAASgIEFCAASgIUECAASNAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5v
+bkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU0NfMjA5N2YzMzI0NzZkNGE1Y2IxZTY2ZjZi
+Yjg4ZGU3NjgAAAUBAAAAABgBABNDb2xsZWdlIG9mIE1lZGljaW5lAAApAQAkQ29weXJpZ2h0IEAg
+Q29sbGVnZSBvZiBNZWRpY2luZSAyMDI0AABJAQAaLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0LjcB
+AFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuNwQBAAAACAEAAAAAAAAA
+HQEAAgAAAAxuZXh0QmF0Y2hBUEkHVGlja2V0cwAAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVz
+b3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJl
+PW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNl
+cy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAAEBqAAAAAAAAAAAAAFpq
+AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAABMagAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29y
+ZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAAB
+AAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABIAAAAWIAAADgEAAAAAAAAAAAAADgENAAAAFYA
+UwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAAAAC9BO/+AAABAAAAAQAAAAAAAAABAAAAAAA/
+AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAA
+AAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4AAAAAAAAAsASYAwAAAQBTAHQAcgBpAG4AZwBG
+AGkAbABlAEkAbgBmAG8AAAB0AwAAAQAwADAAMAAwADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUA
+bgB0AHMAAAAAAAAASAAUAAEAQwBvAG0AcABhAG4AeQBOAGEAbQBlAAAAAABDAG8AbABsAGUAZwBl
+ACAAbwBmACAATQBlAGQAaQBjAGkAbgBlAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQA
+aQBvAG4AAAAAAFMAQwBfADIAMAA5ADcAZgAzADMAMgA0ADcANgBkADQAYQA1AGMAYgAxAGUANgA2
+AGYANgBiAGIAOAA4AGQAZQA3ADYAOAAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAA
+MQAuADAALgAwAC4AMAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AMgAw
+ADkANwBmADMAMwAyADQANwA2AGQANABhADUAYwBiADEAZQA2ADYAZgA2AGIAYgA4ADgAZABlADcA
+NgA4AC4AZABsAGwAAABuACUAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5
+AHIAaQBnAGgAdAAgAEAAIABDAG8AbABsAGUAZwBlACAAbwBmACAATQBlAGQAaQBjAGkAbgBlACAA
+MgAwADIANAAAAAAAKgABAAEATABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMAAAAAAAAAAAB4
+ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8AMgAwADkANwBmADMA
+MwAyADQANwA2AGQANABhADUAYwBiADEAZQA2ADYAZgA2AGIAYgA4ADgAZABlADcANgA4AC4AZABs
+AGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfADIAMAA5ADcAZgAzADMA
+MgA0ADcANgBkADQAYQA1AGMAYgAxAGUANgA2AGYANgBiAGIAOAA4AGQAZQA3ADYAOAAAADQACAAB
+AFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4AAgAAQBBAHMA
+cwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAGAAAAwAAABsOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAA=]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_2097f332476d4a5cb1e66f6bb88de768</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg">$Package::Auth</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum140"
+                  typeConverter="NOTBROWSABLE">1F</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <outputs>
+                <output
+                  refId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0]"
+                  hasSideEffects="true"
+                  name="Output 0">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[ticketNo]"
+                      dataType="i4"
+                      lineageId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[ticketNo]"
+                      name="ticketNo" />
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[created_date]"
+                      dataType="dbDate"
+                      lineageId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[created_date]"
+                      name="created_date" />
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[subject]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[subject]"
+                      name="subject" />
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[DelayFor6Months]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[DelayFor6Months]"
+                      name="DelayFor6Months" />
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[noAccrualsToReport]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[noAccrualsToReport]"
+                      name="noAccrualsToReport" />
+                    <outputColumn
+                      refId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[protocolNo]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0].Columns[protocolNo]"
+                      name="protocolNo" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Pull Ticketcat Tickets.Paths[Lookup No Match Output]"
+              endId="Package\Pull Ticketcat Tickets\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Pull Ticketcat Tickets\New Tickets.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Pull Ticketcat Tickets.Paths[Output 0]"
+              endId="Package\Pull Ticketcat Tickets\New Tickets.Inputs[Lookup Input]"
+              name="Output 0"
+              startId="Package\Pull Ticketcat Tickets\Tickcat API.Outputs[Output 0]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Audit Begin"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5E74E627-99ED-451C-B93F-0C1F5767C656}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Audit Begin"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E190B8E8-B10A-46B9-B012-C6B7F3A402C4}"
+          SQLTask:SqlStatementSource="insert into [dw].DimAudit&#xA;(&#xA;&#x9;[ParentAuditKey],&#xA;&#x9;[TableName] ,&#xA;&#x9;[PkgName] ,&#xA;&#x9;[PkgGUID] ,&#xA;&#x9;[ExecStartDate],&#xA;&#x9;[ExecStopDate] ,&#xA;&#x9;[ExecutionInstanceGUID],&#xA;&#x9;[ExtractRowCount],&#xA;&#x9;[InsertRowCount],&#xA;&#x9;[UpdateRowCount],&#xA;&#x9;[ErrorRowCount] ,&#xA;&#x9;[TableInitialRowCount],&#xA;&#x9;[TableFinalRowCount] ,&#xA;&#x9;[TableMaxDateTime] ,&#xA;&#x9;[SuccessfulProcessing]&#xA;)&#xA;VALUES&#xA;(?,&#xA;?,&#xA;?,&#xA;?,&#xA;?,&#xA;null,&#xA;?,&#xA;null,&#xA;null,&#xA;null,&#xA;null,&#xA;?,&#xA;null,&#xA;null,&#xA;'N')&#xA;SELECT AuditKey from [dw].[DimAudit] where TableName = ?  and ExecStartDate = ?"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::AuditKey" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::ParentAuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="72"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="4"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="5"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="72"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="6"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="7"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="8"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Audit End"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D24948D5-B72C-439B-8AAD-6BE6FB55F14A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Audit End"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E190B8E8-B10A-46B9-B012-C6B7F3A402C4}"
+          SQLTask:SqlStatementSource="UPDATE [dw].[DimAudit]&#xA;SET ExecStopDate = SYSDATETIME()&#xA;&#x9;, ExtractRowCount = ?&#xA;&#x9;,TableFinalRowCount = ?&#xA;&#x9;,ErrorRowCount = ?&#xA;&#x9;,SuccessfulProcessing='Y'&#xA;WHERE AuditKey = ?&#xA;;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::RowCountExtract"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::RowCountError"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="User::AuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Count Rows"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{80016715-2A62-417A-86FA-DB27EAD04FC2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Count Rows"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DDC1C496-85F8-4E00-B4D7-6EACC166A026}"
+          SQLTask:SqlStatementSource="select count(*) from TicketCat_SummaryAcrrual_Tickets"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Truncate Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{B33DA3A6-DDF5-4EF2-8503-ED3E596B7F25}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Truncate Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DDC1C496-85F8-4E00-B4D7-6EACC166A026}"
+          SQLTask:SqlStatementSource="truncate table snowflake_staging.allfaculty" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{7E85EA83-A39A-42EA-ABD1-C0B4F52B516F}"
+      DTS:From="Package\SQL Truncate Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL Audit Begin" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{57B73353-52E5-4B47-B5B2-6B891E8BB8AB}"
+      DTS:From="Package\SQL Audit Begin"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Pull Ticketcat Tickets" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{12A37B0B-F06D-4BD9-B417-75381DDB0D26}"
+      DTS:From="Package\Pull Ticketcat Tickets"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL Count Rows" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{8932D74E-5068-4681-A261-B6F14D1FB4BF}"
+      DTS:From="Package\SQL Count Rows"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\SQL Audit End" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\SQL Audit Begin"
+          TopLeft="229,53" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\SQL Audit End"
+          TopLeft="834,57" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\SQL Count Rows"
+          TopLeft="641,55" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\SQL Truncate Table"
+          TopLeft="19,48" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="197,71.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32,0"
+              Start="0,0"
+              End="24.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="24.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="805,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29,0"
+              Start="0,0"
+              End="21.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="21.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Pull Ticketcat Tickets"
+          TopLeft="425,54" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="389,74.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="36,0"
+              Start="0,0"
+              End="28.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="28.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="607,75.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="34,0"
+              Start="0,0"
+              End="26.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="26.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Pull Ticketcat Tickets">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Pull Ticketcat Tickets\Tickcat API"
+          TopLeft="61,51" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Pull Ticketcat Tickets\OLE DB Destination"
+          TopLeft="555,54" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Pull Ticketcat Tickets\New Tickets"
+          TopLeft="290,53" />
+        <EdgeLayout
+          Id="Package\Pull Ticketcat Tickets.Paths[Output 0]"
+          TopLeft="196,73">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="94,0"
+              Start="0,0"
+              End="86.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="86.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Pull Ticketcat Tickets.Paths[Lookup No Match Output]"
+          TopLeft="429,74.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="126,0"
+              Start="0,0"
+              End="118.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="118.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="3.44361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Pull Ticketcat Tickets\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Pull Ticketcat Tickets\New Tickets">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[TicketCat_SummaryAcrrual_Tickets]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
